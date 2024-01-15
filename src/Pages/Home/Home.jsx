@@ -1,5 +1,12 @@
+import Courses from '../Courses/Courses';
+
 const Home = () => {
-  return <div>this is home</div>;
+  return (
+    <div>
+   
+      <Courses></Courses>
+    </div>
+  );
 };
 
 export default Home;

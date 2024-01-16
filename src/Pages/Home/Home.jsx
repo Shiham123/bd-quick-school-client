@@ -1,11 +1,12 @@
-import './hover.css'
-
+import Banner from '../../Components/Banner/Banner';
+import './hover.css';
 
 const Home = () => {
-  return <div>
-    this is home
-  </div>;
-
+  return (
+    <div>
+      <Banner />
+    </div>
+  );
 };
 
 export default Home;

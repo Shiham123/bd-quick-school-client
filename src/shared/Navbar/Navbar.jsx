@@ -30,9 +30,50 @@ const Navbar = () => {
       fontWeight: isActive ? 'bold' : '',
     };
   };
+
+  const Navlinks = (
+    <>
+      {NavPages.map((page) => {
+        return page.submenu ? (
+          <li>
+            <details>
+              <summary>{page?.page}</summary>
+              <ul className="bg-base-100 text-black rounded-t-none">
+                {page.submenu &&
+                  page?.submenu.map((menu) => (
+                    <li key={menu?.id}>
+                      <NavLink
+                        style={activeRouteStyle}
+                        className="px-8 py-2 hover:text-[#deb2ac] uppercase font-medium"
+                        to={menu?.href}
+                      >
+                        {menu?.page}
+                      </NavLink>
+                    </li>
+                  ))}
+              </ul>
+            </details>
+          </li>
+        ) : (
+          <>
+            <li>
+              <NavLink
+                style={activeRouteStyle}
+                className="mx-5 hover:text-[#deb2ac] uppercase font-medium"
+                to={page.href}
+              >
+                {page?.page}
+              </NavLink>
+            </li>
+          </>
+        );
+      })}
+    </>
+  );
+
   return (
     <>
-      <div className={`z-50 bg-orange-400  top-0 mx-auto w-full text-white ${stickyClass}`}>
+      <div className={`z-50 top-0 mx-auto bg-black w-full text-white ${stickyClass}`}>
         <div className={`navbar mx-auto flex justify-between items-center`}>
           {/* Nav Logo */}
           <div>
@@ -44,18 +85,9 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu  menu-sm bg-green-500 dropdown-content mt-3 z-[1] space-y-4 shadow rounded-box w-52"
+                className="menu  menu-sm bg-black  dropdown-content mt-3 z-[1] space-y-4 shadow rounded-box w-52"
               >
-                {NavPages.map((page) => (
-                  <NavLink
-                    key={page.id}
-                    style={activeRouteStyle}
-                    className="mx-5 hover:text-orange-700 uppercase font-medium"
-                    to={page.href}
-                  >
-                    {page.page}
-                  </NavLink>
-                ))}
+                {Navlinks}
               </ul>
             </div>
             <NavLink to="/" className="flex items-center justify-center normal-case">
@@ -65,7 +97,7 @@ const Navbar = () => {
                 alt=""
               />
               <span className="text-white font-semibold hover:">
-                <span className="text-lg text-blue-700">:ogo </span>
+                <span className="text-lg text-white">Logo </span>
               </span>
             </NavLink>
           </div>
@@ -73,34 +105,7 @@ const Navbar = () => {
           {/* NavLink */}
           <div className="navbar-center hidden lg:flex">
             <ul className="menu dropdown-content menu-horizontal px-1 justify-center items-center flex">
-              {NavPages.map((page) => (
-                <NavLink
-                  key={page.id}
-                  style={activeRouteStyle}
-                  className="mx-5 hover:text-orange-700 uppercase font-medium"
-                  to={page.href}
-                >
-                  {page?.submenu ? (
-                    <details>
-                      <summary>{page.page}</summary>
-                      <ul className="p-2">
-                        <li>
-                          <NavLink
-                            key={page.id}
-                            style={activeRouteStyle}
-                            className="mx-5 hover:text-orange-700 uppercase font-medium"
-                            to={page.href}
-                          >
-                            Link-2
-                          </NavLink>
-                        </li>
-                      </ul>
-                    </details>
-                  ) : (
-                    <>{page.page}</>
-                  )}
-                </NavLink>
-              ))}
+              {Navlinks}
             </ul>
           </div>
 

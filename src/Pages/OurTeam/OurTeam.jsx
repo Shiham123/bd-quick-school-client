@@ -1,5 +1,5 @@
 import Marquee from "react-fast-marquee";
-import { FaEye, FaFacebook, FaGit, FaGithub } from "react-icons/fa";
+import {  FaFacebook, FaGithub } from "react-icons/fa";
 
 const OurTeam = () => {
     return (

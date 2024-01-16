@@ -1,5 +1,5 @@
 const Footer = () => {
-  return <div>this footer</div>;
+  return <div className="text-[#ffffff]">this footer</div>;
 };
 
 export default Footer;

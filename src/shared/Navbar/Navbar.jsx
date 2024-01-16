@@ -38,19 +38,21 @@ const Navbar = () => {
           <li>
             <details>
               <summary>{page?.page}</summary>
-              <ul className="bg-base-100 text-black rounded-t-none">
+              <ul className="bg-gradient-to-b from-[#42275a] to-[#734b6d] text-white rounded-t-none">
                 {page.submenu &&
-                  page?.submenu.map((menu) => (
-                    <li key={menu?.id}>
-                      <NavLink
-                        style={activeRouteStyle}
-                        className="px-8 py-2 hover:text-[#deb2ac] uppercase font-medium"
-                        to={menu?.href}
-                      >
-                        {menu?.page}
-                      </NavLink>
-                    </li>
-                  ))}
+                  page?.submenu.map((menu) => {
+                    return (
+                      <li key={menu?.id}>
+                        <NavLink
+                          style={activeRouteStyle}
+                          className="px-8 py-2 hover:text-[#deb2ac] uppercase font-medium"
+                          to={menu?.href}
+                        >
+                          {menu?.page}
+                        </NavLink>
+                      </li>
+                    );
+                  })}
               </ul>
             </details>
           </li>
@@ -73,7 +75,9 @@ const Navbar = () => {
 
   return (
     <>
-      <div className={`z-50 top-0 mx-auto bg-black w-full text-white ${stickyClass}`}>
+      <div
+        className={`z-50 top-0 mx-auto bg-gradient-to-r from-[#42275a] to-[#734b6d] w-full text-white ${stickyClass}`}
+      >
         <div className={`navbar mx-auto flex justify-between items-center`}>
           {/* Nav Logo */}
           <div>
@@ -85,7 +89,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu  menu-sm bg-black  dropdown-content mt-3 z-[1] space-y-4 shadow rounded-box w-52"
+                className="menu  menu-sm bg-gradient-to-b from-[#42275a] to-[#734b6d] dropdown-content mt-3 z-[1] space-y-4 shadow rounded-box w-52"
               >
                 {Navlinks}
               </ul>

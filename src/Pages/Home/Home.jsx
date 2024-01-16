@@ -1,11 +1,18 @@
-import './hover.css'
-
+import Banner from '../../Components/Banner/Banner';
+import Courses from '../Courses/Courses';
+import Faq from '../Faq/Faq';
+import OurTeam from '../OurTeam/OurTeam';
+import './hover.css';
 
 const Home = () => {
-  return <div>
-    this is home
-  </div>;
-
+  return (
+    <div>
+      <Banner />
+      <Courses />
+      <OurTeam />
+      <Faq />
+    </div>
+  );
 };
 
 export default Home;

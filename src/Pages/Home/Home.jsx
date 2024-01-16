@@ -1,10 +1,12 @@
-import Courses from '../Courses/Courses';
+import Banner from '../../Components/Banner/Banner';
+import './hover.css';
 
 const Home = () => {
   return (
     <div>
-   
-      <Courses></Courses>
+      <Banner />
+
+      
     </div>
   );
 };

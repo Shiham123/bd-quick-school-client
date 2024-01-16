@@ -1,11 +1,7 @@
-import './hover.css'
-
+import './hover.css';
 
 const Home = () => {
-  return <div>
-    this is home
-  </div>;
-
+  return <div></div>;
 };
 
 export default Home;

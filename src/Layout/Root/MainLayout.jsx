@@ -4,7 +4,7 @@ import Navbar from '../../shared/Navbar/Navbar';
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className="min-h-screen container mx-auto">
       <Navbar />
       <Outlet />
       <Footer />

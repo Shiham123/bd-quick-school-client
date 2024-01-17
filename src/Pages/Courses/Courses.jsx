@@ -8,6 +8,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 const Courses = () => {
   const [posts, setPosts] = useState([]);
@@ -40,10 +41,10 @@ const Courses = () => {
 
   return (
     <>
-      <div className=" ">
+      <div className=" mt-5">
         <div className="container mx-auto lg:pl-12">
-          <h2 className=" text-2xl lg:text-4xl text-center lg:text-start font-bold text-white mb-5">Great discounts on select skill development courses!</h2>
-          <p className='text-base lg:text-lg text-center lg:text-start font-medium text-white mb-5 lg:mb-0 md:px-5 lg:px-0'>Get selected BD Quick School courses at special prices throughout the month. Start learning now with BD Quick School!</p>
+          <h2 className=" text-2xl lg:text-4xl text-center lg:text-start font-bold text-white mb-5 ">Great discounts on select skill development courses!</h2>
+          <p className='text-base lg:text-lg text-center lg:text-start font-mediu text-white/70 mb-5 lg:mb-0 md:px-5 lg:px-0'>Get selected BD Quick School courses at special prices throughout the month. Start learning now with BD Quick School!</p>
         </div>
       </div>
       <div className='flex   justify-between relative top-[150px] '>
@@ -80,14 +81,16 @@ const Courses = () => {
           className="mySwiper lg:max-w-7xl"
         >
           {posts
-            .filter((post) => post.IsRecommended === true)
             .map((post) => (
               <SwiperSlide key={post.Id}>
                 <img className=" rounded-md" src={post.ImageUrl} alt={post.Name} />
               </SwiperSlide>
             ))}
         </Swiper>
-        <p className='text-xl md:text-center font-medium mt-6 text-[#1CAB55]'>Click to enroll in 30+ free courses</p>
+        <div className='mt-6 text-[#1CAB55] flex items-center justify-center'>
+          <p className='text-xl  font-medium '>Click to Enroll in 30+ Free Courses</p>
+          <MdKeyboardArrowRight className='text-xl mt-1'/>
+        </div>
       </div>
       <hr className="w-[400px] mx-auto mb-20 border-2" />
     </>

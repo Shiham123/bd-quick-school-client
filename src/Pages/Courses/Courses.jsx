@@ -74,7 +74,7 @@ const Courses = () => {
             },
             1024: {
               slidesPerView: 6,
-              spaceBetween: 50,
+              spaceBetween: 20,
             },
           }}
           onSwiper={(swiper) => setSwiper(swiper)}

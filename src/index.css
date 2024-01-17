@@ -1,7 +1,11 @@
+
+/* Tailwind Css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
+/* Team Section Animation */
 @layer components {
   .animate-updown {
     animation-name: animate-updownAnim;
@@ -20,8 +24,9 @@
     }
   }
 }
-/* this is body */
 
+
+/* Apply Css For body Section */
 body {
   /* background-image: linear-gradient(to right, #5e1458, #221126); */
   background-image: linear-gradient(to right, #42275a, #734b6d);

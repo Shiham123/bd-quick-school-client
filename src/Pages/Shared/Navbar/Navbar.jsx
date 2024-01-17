@@ -95,7 +95,7 @@ const Navbar = () => {
                 {Navlinks}
               </ul>
             </div>
-            <NavLink to="/" className="flex items-center justify-center normal-case pl-5">
+            <NavLink to="/" className="flex items-center justify-center normal-case lg:pl-5">
               <Player className="w-16"
                 autoplay
                 loop
@@ -148,7 +148,7 @@ const Navbar = () => {
             </>
           ) : (
             <div>
-              <NavLink to="/" className="btn-gradent-swipe-r2l pr-5">
+              <NavLink to="/" className="btn-gradent-swipe-r2l lg:pr-5">
                 <button className="relative z-10 text-lg btn btn-outline text-white">Join Us</button>
               </NavLink>
             </div>

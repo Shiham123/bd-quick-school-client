@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import bannerImg from '../../assets/bannerImg1-removebg-preview.png';
-import newBannerImg from '../../assets/bannerImg2-removebg-preview.png';
+// import bannerImg from '../../assets/bannerImg1-removebg-preview.png';
+// import newBannerImg from '../../assets/bannerImg2-removebg-preview.png';
 import BannerCard from './BannerCard';
+import { Player } from "@lottiefiles/react-lottie-player";
 
 const Banner = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -15,8 +16,8 @@ const Banner = () => {
   };
 
   return (
-    <section className="max-w-screen-[1600px] mx-10">
-      <div className="flex flex-col justify-center items-center gap-4 md:flex md:flex-col md:justify-center md:items-center lg:flex lg:flex-row lg:justify-between">
+    <section className="container  mx-auto mt-20 ">
+      <div className="flex flex-col justify-center items-center gap-5 md:flex md:flex-col md:justify-center md:items-center lg:flex lg:flex-row lg:justify-between">
         {/* left side */}
         <div className="w-2/3 flex justify-center items-center">
           <div>
@@ -35,7 +36,7 @@ const Banner = () => {
         </div>
         {/* right side */}
         <div className="lg:w-1/3 w-2/3">
-          <div
+          {/* <div
             className="w-full h-full rounded-lg"
             onMouseEnter={handleHover}
             onMouseLeave={handleLeave}
@@ -43,11 +44,17 @@ const Banner = () => {
             <img
               src={isHovered ? bannerImg : newBannerImg}
               className={`w-full h-full bg-contain bg-no-repeat rounded-lg transition-all duration-300 ${
-                isHovered ? 'scale-110' : 'scale-100'
+                isHovered ? 'scale-110' : 'scale-110'
               }`}
               alt=""
             />
-          </div>
+          </div> */}
+          <Player className=""
+                autoplay
+                loop
+                src="https://lottie.host/1b057336-efff-4816-87be-4cd9a6a69e38/uU7QQc28rA.json"
+              >
+              </Player>
         </div>
       </div>
     </section>

@@ -8,6 +8,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 const Courses = () => {
   const [posts, setPosts] = useState([]);
@@ -40,21 +41,22 @@ const Courses = () => {
 
   return (
     <>
-      <div className="p-3 -mt-[30px]">
-        <div className="">
-          <h2 className="text-center text-4xl">কোর্সসমূহ 🔥</h2>
+      <div className=" mt-5">
+        <div className="container mx-auto lg:pl-12">
+          <h2 className=" text-2xl lg:text-4xl text-center lg:text-start font-bold text-white mb-5 ">Great discounts on select skill development courses!</h2>
+          <p className='text-base lg:text-lg text-center lg:text-start font-mediu text-white/70 mb-5 lg:mb-0 md:px-5 lg:px-0'>Get selected BD Quick School courses at special prices throughout the month. Start learning now with BD Quick School!</p>
         </div>
       </div>
-      <div className='flex w-[90%] mx-auto justify-between relative p-5 top-[200px]'>
-      <button  className="custom-button prev rounded-full border text-5xl" onClick={goPrev}>
+      <div className='flex   justify-between relative top-[150px] '>
+        <button className="custom-button prev rounded-full border max-w-full px-[2px] py-[2px] text-white ml-40 text-5xl hidden lg:block" onClick={goPrev}>
           <IoIosArrowBack></IoIosArrowBack>
         </button>
-        <button className="custom-button next rounded-full border text-5xl" onClick={goNext}>
+        <button className="custom-button next rounded-full border max-w-full px-[2px] py-[2px] text-5xl text-white mr-80 hidden lg:block" onClick={goNext}>
           <IoIosArrowForward></IoIosArrowForward>
         </button>
       </div>
-      <div className="w-[80%] mx-auto">
-      
+      <div className="pb-20 ml-12 md:ml-4 md:mr-4 lg:mr-40 lg:ml-0">
+
         <Swiper
           slidesPerView={1}
           spaceBetween={5}
@@ -71,23 +73,26 @@ const Courses = () => {
               spaceBetween: 40,
             },
             1024: {
-              slidesPerView: 4,
-              spaceBetween: 50,
+              slidesPerView: 6,
+              spaceBetween: 20,
             },
           }}
           onSwiper={(swiper) => setSwiper(swiper)}
-          className="mySwiper"
+          className="mySwiper lg:max-w-7xl"
         >
           {posts
-            .filter((post) => post.IsRecommended === true)
             .map((post) => (
               <SwiperSlide key={post.Id}>
-                <img className="h-[330px] " src={post.ImageUrl} alt={post.Name} />
+                <img className=" rounded-md" src={post.ImageUrl} alt={post.Name} />
               </SwiperSlide>
             ))}
         </Swiper>
-        
+        <div className='mt-6 text-[#1CAB55] flex items-center justify-center'>
+          <p className='text-xl  font-medium '>Click to Enroll in 30+ Free Courses</p>
+          <MdKeyboardArrowRight className='text-xl mt-1'/>
+        </div>
       </div>
+      <hr className="w-[400px] mx-auto mb-20 border-2" />
     </>
   );
 };

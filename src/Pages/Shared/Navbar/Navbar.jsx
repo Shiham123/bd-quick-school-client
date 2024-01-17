@@ -77,7 +77,7 @@ const Navbar = () => {
   return (
     <>
       <div
-        className={`z-50 top-0 mx-auto   w-full text-white ${stickyClass}`}
+        className={`z-50 top-0 mx-auto pt-3  w-full text-white ${stickyClass}`}
       >
         <div className={`navbar mx-auto flex justify-between items-center`}>
           {/* Nav Logo */}
@@ -95,7 +95,7 @@ const Navbar = () => {
                 {Navlinks}
               </ul>
             </div>
-            <NavLink to="/" className="flex items-center justify-center normal-case">
+            <NavLink to="/" className="flex items-center justify-center normal-case pl-5">
               <Player className="w-16"
                 autoplay
                 loop
@@ -148,7 +148,7 @@ const Navbar = () => {
             </>
           ) : (
             <div>
-              <NavLink to="/" className="btn-gradent-swipe-r2l">
+              <NavLink to="/" className="btn-gradent-swipe-r2l pr-5">
                 <button className="relative z-10 text-lg btn btn-outline text-white">Join Us</button>
               </NavLink>
             </div>

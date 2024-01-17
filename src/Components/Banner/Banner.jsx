@@ -15,7 +15,7 @@ const Banner = () => {
   };
 
   return (
-    <section className="max-w-screen-[1600px] mx-10">
+    <section className="container  mx-auto mt-16 ">
       <div className="flex flex-col justify-center items-center gap-4 md:flex md:flex-col md:justify-center md:items-center lg:flex lg:flex-row lg:justify-between">
         {/* left side */}
         <div className="w-2/3 flex justify-center items-center">
@@ -43,7 +43,7 @@ const Banner = () => {
             <img
               src={isHovered ? bannerImg : newBannerImg}
               className={`w-full h-full bg-contain bg-no-repeat rounded-lg transition-all duration-300 ${
-                isHovered ? 'scale-110' : 'scale-100'
+                isHovered ? 'scale-110' : 'scale-110'
               }`}
               alt=""
             />

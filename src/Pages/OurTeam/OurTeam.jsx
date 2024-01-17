@@ -4,11 +4,11 @@ import { FaFacebook, FaGithub } from 'react-icons/fa';
 const OurTeam = () => {
   return (
     <>
-      <h1 className="text-center text-xl md:text-4xl lg:text-4xl font-bold uppercase text-gray-600 mb-10">
-        Meet Our Project Team Member
+      <h1 className="text-center text-xl md:text-4xl lg:text-4xl font-bold uppercase text-white mb-16">
+        Meet Our Team Member
       </h1>
 
-      <Marquee>
+      <Marquee className='container mx-auto'>
         <div className="flex mt-24  mb-20 pb-20">
           <div className="card card-compact w-80 bg-base-100  hover:bg-slate-200 shadow-xl m-5 pt-5 relative  ">
             <div className="absolute h-[150px] w-[150px]  mx-auto rounded-full -left-0 -top-20 -right-1 avatar flex justify-center ">
@@ -302,6 +302,7 @@ const OurTeam = () => {
           </div>
         </div>
       </Marquee>
+      <hr className="w-[400px] mx-auto mb-20 border-2" />
     </>
   );
 };

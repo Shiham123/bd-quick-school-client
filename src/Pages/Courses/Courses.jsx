@@ -41,9 +41,9 @@ const Courses = () => {
   return (
     <>
       <div className=" ">
-        <div className="container mx-auto pl-12">
-          <h2 className=" text-4xl font-bold text-white mb-5">Great discounts on select skill development courses!</h2>
-          <p className='text-lg font-medium text-white'>Get selected BD Quick School courses at special prices throughout the month. Start learning now with BD Quick School!</p>
+        <div className="container mx-auto lg:pl-12">
+          <h2 className=" text-2xl lg:text-4xl text-center lg:text-start font-bold text-white mb-5">Great discounts on select skill development courses!</h2>
+          <p className='text-base lg:text-lg text-center lg:text-start font-medium text-white mb-5 lg:mb-0 md:px-5 lg:px-0'>Get selected BD Quick School courses at special prices throughout the month. Start learning now with BD Quick School!</p>
         </div>
       </div>
       <div className='flex   justify-between relative top-[150px] '>
@@ -54,7 +54,7 @@ const Courses = () => {
           <IoIosArrowForward></IoIosArrowForward>
         </button>
       </div>
-      <div className="pb-20 ml-10 md:ml-4 md:mr-4 lg:mr-40 lg:ml-0">
+      <div className="pb-20 ml-12 md:ml-4 md:mr-4 lg:mr-40 lg:ml-0">
 
         <Swiper
           slidesPerView={1}
@@ -87,7 +87,7 @@ const Courses = () => {
               </SwiperSlide>
             ))}
         </Swiper>
-        <p className='text-xl text-center font-medium mt-6 text-[#1CAB55]'>Click to enroll in 30+ free courses</p>
+        <p className='text-xl md:text-center font-medium mt-6 text-[#1CAB55]'>Click to enroll in 30+ free courses</p>
       </div>
       <hr className="w-[400px] mx-auto mb-20 border-2" />
     </>

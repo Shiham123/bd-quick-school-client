@@ -15,7 +15,7 @@ const BannerCard = () => {
         </div>
 
         <div className="flex flex-col gap-4 items-center">
-          <h1 className="text-white font-semibold font-serif tracking-widest">
+          <h1 className="text-white font-semibold font-poppins tracking-widest">
             HSC Batch <span className="group-hover:text-yellow-400">2024</span>
           </h1>
 
@@ -35,7 +35,7 @@ const BannerCard = () => {
         </div>
 
         <div className="flex flex-col gap-4 items-center">
-          <h1 className="text-white font-semibold font-serif tracking-widest">
+          <h1 className="text-white font-semibold font-poppins tracking-widest">
             SSC Batch <span className="group-hover:text-yellow-400">2024</span>
           </h1>
 
@@ -54,7 +54,7 @@ const BannerCard = () => {
         </div>
 
         <div className="flex flex-col gap-4 items-center">
-          <h1 className="text-white font-semibold font-serif tracking-widest">
+          <h1 className="text-white font-semibold font-poppins tracking-widest">
             Class Eight <span className="group-hover:text-yellow-400">2024</span>
           </h1>
 
@@ -73,7 +73,7 @@ const BannerCard = () => {
         </div>
 
         <div className="flex flex-col gap-4 items-center">
-          <h1 className="text-white font-semibold font-serif tracking-widest">
+          <h1 className="text-white font-semibold font-poppins tracking-widest">
             Class Five <span className="group-hover:text-yellow-400">2024</span>
           </h1>
 

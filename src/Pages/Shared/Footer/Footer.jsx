@@ -1,9 +1,10 @@
-import { FaFacebookF } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { FaPinterestP } from "react-icons/fa6";
-import { CiTwitter } from "react-icons/ci";
-import { IoIosArrowForward } from "react-icons/io";
-import { Player } from "@lottiefiles/react-lottie-player";
+import { FaFacebookF } from 'react-icons/fa';
+import { FaInstagram } from 'react-icons/fa';
+import { FaPinterestP } from 'react-icons/fa6';
+import { CiTwitter } from 'react-icons/ci';
+import { IoIosArrowForward } from 'react-icons/io';
+import { Player } from '@lottiefiles/react-lottie-player';
+
 const Footer = () => {
   return (
     <div>
@@ -11,15 +12,19 @@ const Footer = () => {
         <div className="flex flex-col lg:flex-row lg:gap-28">
           <div className="mb-5  lg:ml-0">
             <div className="flex items-center ml-28 md:ml-5 lg:ml-0 gap-5 md:gap-3 mb-3">
-              <Player className="w-20"
+              <Player
+                className="w-20"
                 autoplay
                 loop
                 src="https://lottie.host/f3cfffce-06c0-498f-92b2-3c564fb9f40f/DVZgFbgX9m.json"
-              >
-              </Player>
+              ></Player>
               <a className="w-64 text-xl text-white font-bold">BD Quick School</a>
             </div>
-            <p className="text-base text-white font-semibold w-[400px] mx-auto text-center md:text-start lg:mx-0 md:ml-5">Welcome to BD Quick School, your reliable destination for comprehensive educational support. We seamlessly integrate innovative learning methodologies with a nurturing approach to prioritize your academic success</p>
+            <p className="text-base text-white font-semibold w-[400px] mx-auto text-center md:text-start lg:mx-0 md:ml-5">
+              Welcome to BD Quick School, your reliable destination for comprehensive educational
+              support. We seamlessly integrate innovative learning methodologies with a nurturing
+              approach to prioritize your academic success
+            </p>
             <div className="flex items-center justify-center md:justify-start gap-2 mt-4 ml-0 md:ml-5 lg:ml-0">
               <div className="border max-w-full px-3 py-3 rounded-full hover:bg-[#0AB99D] cursor-pointer">
                 <FaFacebookF className="text-white text-2xl" />
@@ -48,7 +53,9 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
-                <span className="text-lg font-medium hover:translate-x-4 hover:ease-out hover:duration-1000">Privacy Policy</span>
+                <span className="text-lg font-medium hover:translate-x-4 hover:ease-out hover:duration-1000">
+                  Privacy Policy
+                </span>
               </div>
               <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
@@ -94,12 +101,14 @@ const Footer = () => {
               </div>
             </div>
           </div>
-
         </div>
       </div>
-      <hr className='pb-5' />
-      <div className=' container mx-auto pb-5 flex items-center justify-between flex-col lg:flex-row'>
-        <small className='text-white text-base font-semibold pb-5 pt-3'> BD Quick School © 2024. All rights reserved.</small>
+      <hr className="pb-5" />
+      <div className=" container mx-auto pb-5 flex items-center justify-between flex-col lg:flex-row">
+        <small className="text-white text-base font-semibold pb-5 pt-3">
+          {' '}
+          BD Quick School © 2024. All rights reserved.
+        </small>
         <div className="flex items-center gap-5">
           <p className="text-white text-base font-semibold ">Privacy Policy</p>
           <p className="text-white text-base font-semibold ">Terms and Conditions</p>

@@ -6,6 +6,11 @@ import { IoCloudUploadOutline } from "react-icons/io5";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+
+// image hosting api
+const image_Hosting_Key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_Hosting_Api = `https://api.imgbb.com/1/upload?key=${image_Hosting_Key}`
+
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false)
 

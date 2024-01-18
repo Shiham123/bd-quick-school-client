@@ -2,6 +2,7 @@ import { FaUserCheck } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import { AiOutlineEye } from 'react-icons/ai';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
+import { IoCloudUploadOutline } from "react-icons/io5";
 import { useState } from "react";
 
 const Register = () => {
@@ -35,7 +36,7 @@ const Register = () => {
                             <div>
                                 <label className="text-sm mb-2 block text-white/90 font-bold">Name</label>
                                 <div className="relative flex items-center">
-                                    <input name="name" type="text" className="bg-white border border-gray-300 w-[350px] md:w-full text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter name" />
+                                    <input name="name" type="text" className="bg-white border border-dashed border-gray-300 w-[350px] md:w-full text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter name" />
                                     <FaUserCheck className="text-2xl absolute right-3"></FaUserCheck>
                                 </div>
                             </div>
@@ -45,7 +46,7 @@ const Register = () => {
                                 <div className="relative flex items-center">
                                     <input
 
-                                        name="email" type="email" className="bg-white border border-gray-300 w-[350px] md:w-full text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter email" />
+                                        name="email" type="email" className="bg-white border border-dashed border-gray-300 w-[350px] md:w-full text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter email" />
                                     <MdOutlineEmail className="text-2xl absolute right-3"></MdOutlineEmail>
                                 </div>
                             </div>
@@ -58,7 +59,7 @@ const Register = () => {
                                         name="password"
                                         type={showPassword ? "text" : "password"}
                                         required
-                                        className="bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
+                                        className="bg-white border border-dashed border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
                                         placeholder="Enter password"
                                     />
                                     <span className="absolute right-3 top-1/2 transform -translate-y-1/2" onClick={() => { setShowPassword(!showPassword) }} >
@@ -67,9 +68,22 @@ const Register = () => {
                                         }
                                     </span>
                                 </div>
+                            </div>
+                            {/* photo url */}
+                            <div>
+                                <label className="text-sm mb-2 block text-zinc-950 font-bold">Photo</label>
+                                <div className="flex items-center justify-center w-full">
+                                    <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-24 border border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                            <IoCloudUploadOutline className="text-4xl"></IoCloudUploadOutline>
+                                            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                                            <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                        </div>
+                                        <input
 
-
-
+                                            id="dropzone-file" type="file" className="hidden" />
+                                    </label>
+                                </div>
                             </div>
 
 

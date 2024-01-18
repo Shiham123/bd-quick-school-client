@@ -4,9 +4,12 @@ import { AiOutlineEye } from 'react-icons/ai';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from './../../Hooks/useAuth/useAuth';
 import { useForm } from "react-hook-form";
+
+import useAxiosPublic from './../../Hooks/useAxiosPublic/useAxiosPublic';
+import toast, { Toaster } from "react-hot-toast";
 
 
 // image hosting api
@@ -15,11 +18,52 @@ const image_Hosting_Api = `https://api.imgbb.com/1/upload?key=${image_Hosting_Ke
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false)
-    const { createUser, logOut, handleUpdateProfile } = useAuth()
+    const { createUser, logOut, handleUpdateProfile, setLoading } = useAuth()
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const axiosPublic = useAxiosPublic()
+    const navigate = useNavigate()
 
     const onSubmit = async (data) => {
-       
+        const imageFile = { image: data.photo[0] }
+        console.log(imageFile)
+        const res = await axiosPublic.post(image_Hosting_Api, imageFile, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+
+        // Create User
+        createUser(data.email, data.password)
+            .then(result => {
+                handleUpdateProfile(data.name, res.data.data.display_url)
+                    .then(() => {
+                        // Create User Entry in the database
+                        const usersInfo = {
+                            name: data.name,
+                            email: data.email,
+                            photoURL: res.data.data.display_url,
+                            role: 'user'
+                        }
+                        axiosPublic.post('/api/v1/users', usersInfo)
+                            .then(res => {
+                                console.log(res)
+                                if (res.data.insertedId) {
+                                    console.log('user added to the database')
+                                    reset()
+                                    // logOut()
+                                    navigate("/login")
+                                }
+                            })
+                        toast.success('User Create Successfully')
+
+                    })
+
+            })
+            // Catch Error 
+            .catch(error => {
+                toast.error('Email Already In use try another one')
+                setLoading(false)
+            })
 
     }
 
@@ -74,13 +118,10 @@ const Register = () => {
                                     <input
                                         {...register("password", {
                                             required: true,
-                                            minLength: 6,
-                                            maxLength: 20,
-                                            pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]+$/
                                         })}
                                         name="password"
                                         type={showPassword ? "text" : "password"}
-                                        required
+
                                         className="bg-white border border-dashed border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
                                         placeholder="Enter password"
                                     />
@@ -128,6 +169,7 @@ const Register = () => {
                     </form>
                 </div>
             </div>
+            <Toaster />
         </div>
     );
 };

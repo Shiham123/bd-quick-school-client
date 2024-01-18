@@ -9,13 +9,13 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 /* FAQ section */
 const Faq = () => {
   return (
-    <div className="py-10 rounded-2xl">
+    <div className="py-10 rounded-2xl ">
       {/* FAQ Header  */}
-      <h2 className="text-center text-5xl font-extrabold mb-14 text-white">
+      <h2 className="text-center text-5xl font-extrabold mb-20 text-white font-cinzel">
         Frequently Asked Questions
       </h2>
       {/* FAQ Body */}
-      <div className="w-[85%] bg-purple-800 mx-auto bg-transparent py-14 rounded-2xl border-2">
+      <div className="w-[85%] bg-purple-800 mx-auto bg-transparent py-14 rounded-2xl border-2 mb-20 pb-10 shadow-2xl shadow-[#2980b9]">
         {/* FAQ Content */}
         <div className="w-[90%]  mx-auto flex flex-col gap-y-4">
           <Accordion>
@@ -181,6 +181,7 @@ const Faq = () => {
           </Accordion>
         </div>
       </div>
+      <hr className="w-[400px] mx-auto mb-20 border-2" />
     </div>
   );
 };

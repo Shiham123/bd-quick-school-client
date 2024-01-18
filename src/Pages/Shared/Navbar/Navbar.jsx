@@ -148,7 +148,7 @@ const Navbar = () => {
             </>
           ) : (
             <div>
-              <NavLink to="/register" className="btn-gradent-swipe-r2l lg:pr-5">
+              <NavLink to="/login" className="btn-gradent-swipe-r2l lg:pr-5">
                 <button className="relative z-10 text-lg btn btn-outline text-white font-poppins">Join Us</button>
               </NavLink>
             </div>

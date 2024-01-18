@@ -43,6 +43,22 @@ const Login = () => {
                             </div>
 
                         </div>
+                        {/* remember and forget password */}
+                        <div className="flex items-center justify-between gap-2 mt-6">
+                            <div className="flex items-center">
+                                <input id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 shrink-0 border-gray-300 rounded" />
+                                <label htmlFor="remember-me" className="ml-3 block text-sm">
+                                    Remember me
+                                </label>
+                            </div>
+                            <div>
+                                <a className="text-sm font-semibold hover:underline">
+                                    Forgot Password?
+                                </a>
+                            </div>
+                        </div>
+
+                        
 
                     </form>
                 </div>

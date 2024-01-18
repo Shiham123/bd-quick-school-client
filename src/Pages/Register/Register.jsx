@@ -1,4 +1,5 @@
 import { FaUserCheck } from "react-icons/fa";
+import { MdOutlineEmail } from "react-icons/md";
 
 const Register = () => {
 
@@ -29,13 +30,24 @@ const Register = () => {
                         <div className="space-y-5">
                             {/* name */}
                             <div>
-                                <label className="text-sm mb-2 block text-white font-bold">Name</label>
+                                <label className="text-sm mb-2 block text-white/90 font-bold">Name</label>
                                 <div className="relative flex items-center">
-                                    <input name="name" type="text" className="bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter name" />
+                                    <input name="name" type="text" className="bg-white border border-gray-300 w-[350px] md:w-full text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter name" />
                                     <FaUserCheck className="text-2xl absolute right-3"></FaUserCheck>
+                                </div> 
+                            </div>
+                            {/* email */}
+                            <div>
+                                <label className="text-sm mb-2 block text-white/90 font-bold">Email </label>
+                                <div className="relative flex items-center">
+                                    <input
+                                        
+                                        name="email" type="email" className="bg-white border border-gray-300 w-[350px] md:w-full text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter email" />
+                                    <MdOutlineEmail className="text-2xl absolute right-3"></MdOutlineEmail>
                                 </div>
                                 
                             </div>
+                            
                             
                         </div>
                         

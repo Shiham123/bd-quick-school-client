@@ -24,7 +24,6 @@ const Navbar = () => {
     }
   };
 
-  //Navlik Active Class
   const activeRouteStyle = ({ isActive }) => {
     return {
       color: isActive ? '#C3FCF1' : '',
@@ -34,9 +33,9 @@ const Navbar = () => {
 
   const Navlinks = (
     <>
-      {NavPages.map((page) => {
+      {NavPages.map((page, index) => {
         return page.submenu ? (
-          <li>
+          <li key={index}>
             <details>
               <summary>{page?.page}</summary>
               <ul className=" text-white ">

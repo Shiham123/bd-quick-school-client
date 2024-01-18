@@ -5,15 +5,36 @@ import { FcGoogle } from "react-icons/fc";
 import { ImGithub } from "react-icons/im";
 import { BsFacebook } from "react-icons/bs";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from './../../Hooks/useAuth/useAuth';
+import toast, { Toaster } from "react-hot-toast";
+import { useForm } from "react-hook-form";
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false)
+    const { signIn, setLoading, signInWithGoogle, signInWithGithub } = useAuth()
+    const navigate = useNavigate()
+
+    // form functionality
+    const { register, handleSubmit, formState: { errors }, reset } = useForm()
+    const onSubmit = (data) => {
+        signIn(data.email, data.password)
+            .then(result => {
+                console.log(result.user)
+                reset()
+                toast.success("login succesfull")
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch(error => {
+                console.log(error)
+                toast.error(error.message)
+            })
+    }
 
     return (
         <div>
             <div className="flex justify-center items-center font-lora text-[#333] h-full min-h-screen p-4" style={{ backgroundImage: 'url(https://i.ibb.co/Jspy7Nq/register.png)', backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
                 <div className="max-w-md w-full mx-auto">
-                    <form className="bg-opacity-70 bg-white rounded-2xl p-6 shadow-xl">
+                    <form onSubmit={handleSubmit(onSubmit)} className="bg-opacity-70 bg-white rounded-2xl p-6 shadow-xl">
                         <div className="mb-10">
                             <h3 className="text-3xl font-extrabold ">Sign in</h3>
                         </div>
@@ -22,7 +43,7 @@ const Login = () => {
                             <div className="relative flex items-center">
                                 <MdOutlineEmail className="text-2xl absolute right-3 top-1/2 transform -translate-y-1/2" />
                                 <input
-
+                                    {...register('email', { required: true })}
                                     type="email"
 
                                     className="bg-transparent w-full text-sm border-b border-[#333] px-1 lg:px-2 py-3 outline-none placeholder:text-[#333]"
@@ -40,6 +61,12 @@ const Login = () => {
                                     }
                                 </span>
                                 <input
+                                    {...register("password", {
+                                        required: true,
+                                        minLength: 6,
+                                        maxLength: 20,
+                                        pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]+$/
+                                    })}
                                     type={showPassword ? "text" : "password"}
                                     className="bg-transparent w-full text-sm border-b border-[#333] px-1 lg:px-2 py-3 outline-none placeholder:text-[#333]"
                                     placeholder="Enter Password"
@@ -87,6 +114,7 @@ const Login = () => {
                     </form>
                 </div>
             </div>
+            <Toaster />
         </div>
     );
 };

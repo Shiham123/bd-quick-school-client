@@ -46,6 +46,11 @@ const Authprovider = ({ children }) => {
         })
     }
 
+    // User LogOut 
+    const logOut = () => {
+        setLoading(true)
+        return signOut(auth)
+    }
 
     // Manage Current User By On Auth State Changed
     useEffect(() => {
@@ -61,7 +66,7 @@ const Authprovider = ({ children }) => {
     }, [])
 
     // Value
-    const authInfo = { user, createUser, signIn, signInWithGoogle, signInWithGithub, signInWithFacebook, handleUpdateProfile }
+    const authInfo = { user, loading, setLoading, createUser, signIn, signInWithGoogle, signInWithGithub, signInWithFacebook, handleUpdateProfile, logOut }
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

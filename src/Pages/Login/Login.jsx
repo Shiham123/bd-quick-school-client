@@ -15,16 +15,28 @@ const Login = () => {
                             <div className="relative flex items-center">
                                 <MdOutlineEmail className="text-2xl absolute right-3 top-1/2 transform -translate-y-1/2" />
                                 <input
-                                    
+
                                     type="email"
 
                                     className="bg-transparent w-full text-sm border-b border-[#333] px-1 lg:px-2 py-3 outline-none placeholder:text-[#333]"
                                     placeholder="Enter email"
                                 />
                             </div>
-                           
+
                         </div>
-                       
+                        {/* password */}
+                        <div className="mt-8">
+                            <div className="flex items-center">
+                                <input  
+                                    className="bg-transparent w-full text-sm border-b border-[#333] px-1 lg:px-2 py-3 outline-none placeholder:text-[#333]"
+                                    placeholder="Enter password"
+                                />
+                            </div>
+                            
+                        </div>
+
+                        
+
 
                     </form>
                 </div>

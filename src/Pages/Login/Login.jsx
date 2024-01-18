@@ -65,6 +65,27 @@ const Login = () => {
     }
 
 
+    // Github sign in
+    const handleGithubSignIn = () => {
+        signInWithGithub()
+            .then(result => {
+                console.log(result.user)
+                const userInfo = {
+                    name: result.user?.displayName,
+                    email: result.user?.email,
+                    photoURL: result.user?.photoURL,
+                    role: 'user'
+                }
+                axiosPublic.post('/api/v1/users', userInfo)
+                    .then(res => {
+                        console.log(res.data)
+                        navigate(location?.state ? location.state : "/")
+                        swal("Good job!", "User logged Successfully", "success");
+                    })
+            })
+    }
+
+
     return (
         <div>
             <div className="flex justify-center items-center font-lora text-[#333] h-full min-h-screen p-4" style={{ backgroundImage: 'url(https://i.ibb.co/Jspy7Nq/register.png)', backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
@@ -140,7 +161,7 @@ const Login = () => {
                             <button onClick={handleGoogleSignIn} type="button" className="border-none outline-none">
                                 <FcGoogle className="text-4xl"></FcGoogle>
                             </button>
-                            <button onClick={() => handleSocialSignin(githubLogin)} type="button" className="border-none outline-none">
+                            <button onClick={handleGithubSignIn} type="button" className="border-none outline-none">
                                 <ImGithub className="text-4xl"></ImGithub>
                             </button>
                             <button type="button" className="border-none outline-none">

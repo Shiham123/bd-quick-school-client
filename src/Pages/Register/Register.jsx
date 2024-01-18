@@ -34,23 +34,39 @@ const Register = () => {
                                 <div className="relative flex items-center">
                                     <input name="name" type="text" className="bg-white border border-gray-300 w-[350px] md:w-full text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter name" />
                                     <FaUserCheck className="text-2xl absolute right-3"></FaUserCheck>
-                                </div> 
+                                </div>
                             </div>
                             {/* email */}
                             <div>
                                 <label className="text-sm mb-2 block text-white/90 font-bold">Email </label>
                                 <div className="relative flex items-center">
                                     <input
-                                        
+
                                         name="email" type="email" className="bg-white border border-gray-300 w-[350px] md:w-full text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter email" />
                                     <MdOutlineEmail className="text-2xl absolute right-3"></MdOutlineEmail>
                                 </div>
-                                
                             </div>
+                            {/* password */}
+                            <div>
+                                <label className="text-sm mb-2 block text-white/90 font-bold">Password</label>
+                                <div className="relative flex items-center">
+                                    <input
+
+                                        name="password"
+                                        required
+                                        className="bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
+                                        placeholder="Enter password"
+                                    />
+                                    
+                                </div>
+
+                            </div>
+
                             
-                            
+
+
                         </div>
-                        
+
                     </form>
                 </div>
             </div>

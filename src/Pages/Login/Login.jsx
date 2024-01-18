@@ -1,6 +1,9 @@
 import { MdOutlineEmail } from "react-icons/md";
+import { AiOutlineEye } from 'react-icons/ai';
+import { AiOutlineEyeInvisible } from 'react-icons/ai';
+import { useState } from "react";
 const Login = () => {
-
+    const [showPassword, setShowPassword] = useState(false)
 
     return (
         <div>
@@ -26,17 +29,20 @@ const Login = () => {
                         </div>
                         {/* password */}
                         <div className="mt-8">
-                            <div className="flex items-center">
-                                <input  
+                            <div className="relative flex items-center">
+                                <span className="absolute right-3 top-1/2 transform -translate-y-1/2" onClick={() => { setShowPassword(!showPassword) }} >
+                                    {
+                                        showPassword ? <AiOutlineEyeInvisible className='text-2xl'></AiOutlineEyeInvisible> : <AiOutlineEye className='text-2xl'></AiOutlineEye>
+                                    }
+                                </span>
+                                <input
+                                    type={showPassword ? "text" : "password"}
                                     className="bg-transparent w-full text-sm border-b border-[#333] px-1 lg:px-2 py-3 outline-none placeholder:text-[#333]"
                                     placeholder="Enter password"
                                 />
                             </div>
-                            
+
                         </div>
-
-                        
-
 
                     </form>
                 </div>

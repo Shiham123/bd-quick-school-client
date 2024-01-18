@@ -24,6 +24,7 @@ const Register = () => {
     const navigate = useNavigate()
 
     const onSubmit = async (data) => {
+        // Hosting Image
         const imageFile = { image: data.photo[0] }
         console.log(imageFile)
         const res = await axiosPublic.post(image_Hosting_Api, imageFile, {
@@ -44,6 +45,7 @@ const Register = () => {
                             photoURL: res.data.data.display_url,
                             role: 'user'
                         }
+                        // Post Method
                         axiosPublic.post('/api/v1/users', usersInfo)
                             .then(res => {
                                 console.log(res)
@@ -55,9 +57,7 @@ const Register = () => {
                                 }
                             })
                         toast.success('User Create Successfully')
-
                     })
-
             })
             // Catch Error 
             .catch(error => {
@@ -91,6 +91,7 @@ const Register = () => {
                             <h3 className="text-2xl lg:text-3xl font-bold text-white">Create an account</h3>
                         </div>
                         <div className="space-y-5">
+
                             {/* name */}
                             <div>
                                 <label className="text-sm mb-2 block text-white/90 font-bold">Name</label>
@@ -100,7 +101,9 @@ const Register = () => {
                                         name="name" type="text" className="bg-white border border-dashed border-gray-300 w-[350px] md:w-full text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter name" />
                                     <FaUserCheck className="text-2xl absolute right-3"></FaUserCheck>
                                 </div>
+                                {errors.name && <span className="text-red-500 font-medium">This field is required</span>}
                             </div>
+
                             {/* email */}
                             <div>
                                 <label className="text-sm mb-2 block text-white/90 font-bold">Email </label>
@@ -110,7 +113,9 @@ const Register = () => {
                                         name="email" type="email" className="bg-white border border-dashed border-gray-300 w-[350px] md:w-full text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter email" />
                                     <MdOutlineEmail className="text-2xl absolute right-3"></MdOutlineEmail>
                                 </div>
+                                {errors.email && <span className="text-red-500 font-medium">This field is required</span>}
                             </div>
+
                             {/* password */}
                             <div>
                                 <label className="text-sm mb-2 block text-white/90 font-bold">Password</label>
@@ -118,6 +123,9 @@ const Register = () => {
                                     <input
                                         {...register("password", {
                                             required: true,
+                                            minLength: 6,
+                                            maxLength: 20,
+                                            pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]+$/
                                         })}
                                         name="password"
                                         type={showPassword ? "text" : "password"}
@@ -131,7 +139,12 @@ const Register = () => {
                                         }
                                     </span>
                                 </div>
+                                {errors.password?.type === "required" && <span className="text-red-500 font-medium">This field is required</span>}
+                                {errors.password?.type === "minLength" && <span className="text-red-500 font-medium">Password Must be at least 6 character</span>}
+                                {errors.password?.type === "maxLength" && <span className="text-red-500 font-medium">Password can`t be more than 20 character</span>}
+                                {errors.password?.type === "pattern" && <span className="text-red-500 font-medium">Password have at least one lowercase,uppercase,special character and number</span>}
                             </div>
+
                             {/* photo url */}
                             <div>
                                 <label className="text-sm mb-2 block text-white/90 font-bold">Photo</label>
@@ -147,7 +160,9 @@ const Register = () => {
                                             id="dropzone-file" type="file" className="hidden" />
                                     </label>
                                 </div>
+                                {errors.photo && <span className="text-red-500 font-medium">This field is required</span>}
                             </div>
+                            
                             {/* terms and condition */}
                             <div className="flex items-center">
                                 <input id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" required />

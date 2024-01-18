@@ -5,6 +5,8 @@ import { AiOutlineEyeInvisible } from 'react-icons/ai';
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useAuth from './../../Hooks/useAuth/useAuth';
+import { useForm } from "react-hook-form";
 
 
 // image hosting api
@@ -13,6 +15,13 @@ const image_Hosting_Api = `https://api.imgbb.com/1/upload?key=${image_Hosting_Ke
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false)
+    const { createUser, logOut, handleUpdateProfile } = useAuth()
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+
+    const onSubmit = async (data) => {
+       
+
+    }
 
     return (
         <div style={{ backgroundImage: 'url(https://i.ibb.co/Jspy7Nq/register.png)', backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
@@ -33,7 +42,7 @@ const Register = () => {
                         </div>
                     </div>
                     {/* form */}
-                    <form className="md:col-span-2 w-full py-6 px-6 sm:px-16">
+                    <form onSubmit={handleSubmit(onSubmit)} className="md:col-span-2 w-full py-6 px-6 sm:px-16">
                         <div className="mb-6">
                             <h3 className="text-2xl lg:text-3xl font-bold text-white">Create an account</h3>
                         </div>
@@ -42,7 +51,9 @@ const Register = () => {
                             <div>
                                 <label className="text-sm mb-2 block text-white/90 font-bold">Name</label>
                                 <div className="relative flex items-center">
-                                    <input name="name" type="text" className="bg-white border border-dashed border-gray-300 w-[350px] md:w-full text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter name" />
+                                    <input
+                                        {...register("name", { required: true })}
+                                        name="name" type="text" className="bg-white border border-dashed border-gray-300 w-[350px] md:w-full text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter name" />
                                     <FaUserCheck className="text-2xl absolute right-3"></FaUserCheck>
                                 </div>
                             </div>
@@ -51,7 +62,7 @@ const Register = () => {
                                 <label className="text-sm mb-2 block text-white/90 font-bold">Email </label>
                                 <div className="relative flex items-center">
                                     <input
-
+                                        {...register("email", { required: true })}
                                         name="email" type="email" className="bg-white border border-dashed border-gray-300 w-[350px] md:w-full text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter email" />
                                     <MdOutlineEmail className="text-2xl absolute right-3"></MdOutlineEmail>
                                 </div>
@@ -61,7 +72,12 @@ const Register = () => {
                                 <label className="text-sm mb-2 block text-white/90 font-bold">Password</label>
                                 <div className="relative flex items-center">
                                     <input
-
+                                        {...register("password", {
+                                            required: true,
+                                            minLength: 6,
+                                            maxLength: 20,
+                                            pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]+$/
+                                        })}
                                         name="password"
                                         type={showPassword ? "text" : "password"}
                                         required
@@ -86,7 +102,7 @@ const Register = () => {
                                             <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                                         </div>
                                         <input
-
+                                            {...register("photo", { required: true })}
                                             id="dropzone-file" type="file" className="hidden" />
                                     </label>
                                 </div>

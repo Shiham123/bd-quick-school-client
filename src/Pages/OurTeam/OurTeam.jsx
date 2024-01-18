@@ -4,7 +4,7 @@ import { FaFacebook, FaGithub } from 'react-icons/fa';
 const OurTeam = () => {
   return (
     <>
-      <h1 className="text-center text-xl md:text-4xl lg:text-4xl font-bold uppercase text-white mb-16">
+      <h1 className="text-center text-xl md:text-4xl lg:text-4xl font-bold uppercase text-white mb-16 font-cinzel">
         Meet Our Team Member
       </h1>
 
@@ -21,11 +21,11 @@ const OurTeam = () => {
             </div>
 
             <div className="card-body mt-16 border-double">
-              <h2 className="text-center text-2xl font-bold text-gray-700 uppercase">
+              <h2 className="text-center text-2xl font-bold text-gray-700 uppercase font-cinzel">
                 Shiham Bin Yusuf
               </h2>
-              <h2 className="text-center font-bold text-gray-700">MERN-Stack Developer</h2>
-              <p className="w-[240px] text-center mx-auto text-sm">
+              <h2 className="text-center font-bold text-gray-700 font-poppins">MERN-Stack Developer</h2>
+              <p className="w-[240px] text-center mx-auto text-sm font-lora">
                 {' '}
                 👋 Hello, I am MERN stack developer. and i am love code. type code is most one of
                 the amazing work to do.🌐✨ - Shiham123
@@ -70,11 +70,11 @@ const OurTeam = () => {
               </div>
             </div>
             <div className="mt-16 card-body">
-              <h2 className="text-center text-2xl font-bold text-gray-700 uppercase">
+              <h2 className="text-center text-2xl font-bold text-gray-700 uppercase font-cinzel">
                 Sanjida Akter
               </h2>
-              <h2 className="text-center font-bold text-gray-700">MERN-Stack Developer</h2>
-              <p className="w-[250px] text-center mx-auto text-sm">
+              <h2 className="text-center font-bold text-gray-700 font-poppins">MERN-Stack Developer</h2>
+              <p className="w-[250px] text-center mx-auto text-sm font-lora">
                 {' '}
                 👋 I'm Sanjida Akter, a dedicated web developer with a love for crafting digital
                 experiences that blend functionality with aesthetics.🌐✨ - sanjidatanha09
@@ -119,11 +119,11 @@ const OurTeam = () => {
               </div>
             </div>
             <div className="card-body mt-16">
-              <h2 className="text-center text-xl font-bold text-gray-700 uppercase">
+              <h2 className="text-center text-xl font-bold text-gray-700 uppercase font-cinzel">
                 Mohammad Shah Israil
               </h2>
-              <h2 className="text-center font-bold text-gray-700">MERN-Stack Developer</h2>
-              <p className="w-[270px] text-center mx-auto text-sm">
+              <h2 className="text-center font-bold text-gray-700 font-poppins">MERN-Stack Developer</h2>
+              <p className="w-[270px] text-center mx-auto text-sm font-lora">
                 👋"Hello ,I'm Shah Israil, an aspiring Mern stack developer about crafting engaging
                 web interfaceswith a blend of innovation, design, and cutting-edge technology -🌐✨
                 shahisrail
@@ -168,11 +168,11 @@ const OurTeam = () => {
               </div>
             </div>
             <div className="card-body mt-16">
-              <h2 className="text-center text-2xl font-bold text-gray-700 uppercase">
+              <h2 className="text-center text-2xl font-bold text-gray-700 uppercase font-cinzel">
                 Shaif Shajed Tonoy
               </h2>
-              <h2 className="text-center font-bold text-gray-700">MERN-Stack Developer</h2>
-              <p className="w-[270px] text-center mx-auto text-sm">
+              <h2 className="text-center font-bold text-gray-700 font-poppins">MERN-Stack Developer</h2>
+              <p className="w-[270px] text-center mx-auto text-sm font-lora">
                 👋 Hello, World!I'm a Web Developer.Passionate about crafting exceptional web
                 experiences and turning ideas into reality through elegant code. 🌐✨ - tonoy3125
               </p>
@@ -213,11 +213,11 @@ const OurTeam = () => {
               </div>
             </div>
             <div className="card-body mt-16">
-              <h2 className="text-center text-2xl font-bold text-gray-700 uppercase">
+              <h2 className="text-center text-2xl font-bold text-gray-700 uppercase font-cinzel">
                 Subroto Das
               </h2>
-              <h2 className="text-center font-bold text-gray-700">MERN-Stack Developer</h2>
-              <p className="w-[250px] text-center mx-auto text-sm">
+              <h2 className="text-center font-bold text-gray-700 font-poppins">MERN-Stack Developer</h2>
+              <p className="w-[250px] text-center mx-auto text-sm font-lora">
                 👋 I want to contribute to the evolution of the web, which is not only visible, but
                 also a seamless, accessible opportunity for users.🌐✨ - subroto23
               </p>
@@ -261,11 +261,11 @@ const OurTeam = () => {
               </div>
             </div>
             <div className="card-body mt-16">
-              <h2 className="text-center text-xl font-bold text-gray-700 uppercase">
+              <h2 className="text-center text-xl font-bold text-gray-700 uppercase font-cinzel">
                 Mahibul Islam Ratul
               </h2>
-              <h2 className="text-center font-bold text-gray-700">MERN-Stack Developer</h2>
-              <p className="w-[270px] text-center mx-auto text-sm">
+              <h2 className="text-center font-bold text-gray-700 font-poppins">MERN-Stack Developer</h2>
+              <p className="w-[270px] text-center mx-auto text-sm font-lora">
                 {' '}
                 🌐 Front-End Architect & React Maestro 💻 | Crafting seamless web applications ✨ |
                 Reacting to challenges with flair, transforming ideas into dynamic user interfaces|

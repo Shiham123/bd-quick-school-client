@@ -1,6 +1,9 @@
 import { MdOutlineEmail } from "react-icons/md";
 import { AiOutlineEye } from 'react-icons/ai';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
+import { FcGoogle } from "react-icons/fc";
+import { ImGithub } from "react-icons/im";
+import { BsFacebook } from "react-icons/bs";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 const Login = () => {
@@ -66,7 +69,20 @@ const Login = () => {
                             <p className="text-sm text-center mt-6">Don`t have an account <Link to="/register"
                                 className="font-semibold hover:underline ml-1 whitespace-nowrap">Register Here</Link></p>
                         </div>
+                        <hr className="my-6 border-gray-500" />
 
+                        {/* social button */}
+                        <div className="space-x-8 flex justify-center">
+                            <button onClick={() => handleSocialSignin(googleLogin)} type="button" className="border-none outline-none">
+                                <FcGoogle className="text-4xl"></FcGoogle>
+                            </button>
+                            <button onClick={() => handleSocialSignin(githubLogin)} type="button" className="border-none outline-none">
+                                <ImGithub className="text-4xl"></ImGithub>
+                            </button>
+                            <button type="button" className="border-none outline-none">
+                                <BsFacebook className="text-4xl  text-sky-700 font-bold"></BsFacebook>
+                            </button>
+                        </div>
 
                     </form>
                 </div>

@@ -2,12 +2,13 @@ import { MdOutlineEmail } from "react-icons/md";
 import { AiOutlineEye } from 'react-icons/ai';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false)
 
     return (
         <div>
-            <div className="flex justify-center items-center font-[sans-serif] text-[#333] h-full min-h-screen p-4" style={{ backgroundImage: 'url(https://i.ibb.co/Jspy7Nq/register.png)', backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
+            <div className="flex justify-center items-center font-lora text-[#333] h-full min-h-screen p-4" style={{ backgroundImage: 'url(https://i.ibb.co/Jspy7Nq/register.png)', backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
                 <div className="max-w-md w-full mx-auto">
                     <form className="bg-opacity-70 bg-white rounded-2xl p-6 shadow-xl">
                         <div className="mb-10">
@@ -22,7 +23,7 @@ const Login = () => {
                                     type="email"
 
                                     className="bg-transparent w-full text-sm border-b border-[#333] px-1 lg:px-2 py-3 outline-none placeholder:text-[#333]"
-                                    placeholder="Enter email"
+                                    placeholder="Enter Email"
                                 />
                             </div>
 
@@ -38,7 +39,7 @@ const Login = () => {
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     className="bg-transparent w-full text-sm border-b border-[#333] px-1 lg:px-2 py-3 outline-none placeholder:text-[#333]"
-                                    placeholder="Enter password"
+                                    placeholder="Enter Password"
                                 />
                             </div>
 
@@ -57,8 +58,15 @@ const Login = () => {
                                 </a>
                             </div>
                         </div>
+                        {/* Button And Linked to Register Page */}
+                        <div className="mt-10">
+                            <button type="submit" className="w-full py-2.5 px-4 text-sm font-semibold rounded-full text-white bg-[#333] hover:bg-[#222] focus:outline-none">
+                                Sign in
+                            </button>
+                            <p className="text-sm text-center mt-6">Don`t have an account <Link to="/register"
+                                className="font-semibold hover:underline ml-1 whitespace-nowrap">Register Here</Link></p>
+                        </div>
 
-                        
 
                     </form>
                 </div>

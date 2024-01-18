@@ -71,7 +71,7 @@ const Register = () => {
                             </div>
                             {/* photo url */}
                             <div>
-                                <label className="text-sm mb-2 block text-zinc-950 font-bold">Photo</label>
+                                <label className="text-sm mb-2 block text-white/90 font-bold">Photo</label>
                                 <div className="flex items-center justify-center w-full">
                                     <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-24 border border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                                         <div className="flex flex-col items-center justify-center pt-5 pb-6">
@@ -85,7 +85,13 @@ const Register = () => {
                                     </label>
                                 </div>
                             </div>
-
+                            {/* terms and condition */}
+                            <div className="flex items-center">
+                                <input id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" required />
+                                <label htmlFor="remember-me" className="ml-3 block text-sm text-white/90">
+                                    I accept the <a className="text-white/90 font-semibold hover:underline ml-1">Terms and Conditions</a>
+                                </label>
+                            </div>
 
 
 

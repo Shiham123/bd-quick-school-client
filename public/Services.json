@@ -1,0 +1,45 @@
+ [
+    {
+      "id": 1,
+      "price":20,
+      "title": "Video Lessons",
+      "description": "Access high-quality video lessons covering a wide range of subjects and topics.",
+      "image": "https://cdn.10minuteschool.com/md/images/thumbnails/skills/ghore-boshe-Spoken-English-course-thumbnail-by-Munzereen-Shahid-16x9.jpg"
+    },
+    {
+      "id": 2,
+      "price":30,
+      "title": "Interactive Quizzes",
+      "description": "Engage in interactive quizzes to reinforce learning and test your knowledge.",
+      "image": "https://cdn.10minuteschool.com/md/images/Thumbnails/sohoje_spoken_arbi_16x9.jpg"
+    },
+    {
+      "id": 3,
+      "price":50,
+      "title": "Live Tutoring",
+      "description": "Connect with experienced tutors for live one-on-one or group tutoring sessions.",
+      "image": "https://cdn.10minuteschool.com/md/images/thumbnails/skills/microsoft-excel-course-thumbnail-by-abtahi-iptesam-16x9.jpg"
+    },
+    {
+      "id": 4,
+      "price":60,
+      "title": "Practice Exams",
+      "description": "Take practice exams to prepare for upcoming tests and examinations.",
+      "image": "https://cdn.10minuteschool.com/md/images/thumbnails/skills/facebook-marketing-course-thumbnail-by-ayman-sadiq-sadman-sadik-16x9.jpg"
+    },
+    {
+      "id": 5,
+      "price":70,
+      "title": "Study Plans",
+      "description": "Get personalized study plans tailored to your academic goals and schedule.",
+      "image": "https://cdn.10minuteschool.com/md/images/skills/thumbnails/job-ready-academy-thumbnail-sqr.jpg"
+    },
+    {
+      "id": 6,
+      "price":80,
+      "title": "Progress Tracking",
+      "description": "Monitor your progress with detailed analytics and performance tracking tools.",
+      "image": "https://cdn.10minuteschool.com/md/images/images/skills/career-guidance-course-thumbnail-16-9.jpg"
+    }
+    
+  ]

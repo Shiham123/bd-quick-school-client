@@ -1,5 +1,21 @@
+import Banner from '../../Components/Banner/Banner';
+import Courses from '../Courses/Courses';
+import Faq from '../Faq/Faq';
+import OurTeam from '../OurTeam/OurTeam';
+import Footer from '../Shared/Footer/Footer';
+import './hover.css';
+
+// all section
+
 const Home = () => {
-  return <div>this is home</div>;
+  return (
+    <div>
+      <Banner />
+      <Courses />
+      <OurTeam />
+      <Faq />
+    </div>
+  );
 };
 
 export default Home;

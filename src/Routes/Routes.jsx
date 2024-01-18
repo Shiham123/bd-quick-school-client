@@ -4,7 +4,6 @@ import ErrorElement from '../Layout/ErrorElement/ErrorElement';
 import Home from '../Pages/Home/Home';
 import CourseDetails from '../Pages/Courses/CourseDetails';
 
-
 const Router = createBrowserRouter([
   {
     path: '/',
@@ -16,10 +15,9 @@ const Router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path:"Couredetails",
-        element:<CourseDetails/>
-      }
-      
+        path: 'Couredetails',
+        element: <CourseDetails />,
+      },
     ],
   },
 ]);

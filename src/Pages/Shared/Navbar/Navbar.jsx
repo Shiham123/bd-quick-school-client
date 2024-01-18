@@ -90,7 +90,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu  menu-sm bg-gradient-to-b from-[#42275a] to-[#734b6d] dropdown-content mt-3 z-[1] space-y-4 shadow rounded-box w-52"
+                className="menu  menu-sm bg-gradient-to-b from-[#42275a] to-[#734b6d] dropdown-content mt-3 z-[1] font-poppins space-y-4 shadow rounded-box w-52"
               >
                 {Navlinks}
               </ul>
@@ -103,14 +103,14 @@ const Navbar = () => {
               >
               </Player>
               <span className="text-white font-semibold hover:">
-                <span className="text-xl text-white font-bold">BD Quick School </span>
+                <span className="text-xl text-white font-bold font-cinzel">BD Quick School </span>
               </span>
             </NavLink>
           </div>
 
           {/* NavLink */}
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu dropdown-content menu-horizontal px-1 justify-center items-center flex text-base">
+            <ul className="menu dropdown-content menu-horizontal px-1 justify-center items-center flex text-base font-poppins">
               {Navlinks}
             </ul>
           </div>
@@ -148,8 +148,8 @@ const Navbar = () => {
             </>
           ) : (
             <div>
-              <NavLink to="/" className="btn-gradent-swipe-r2l lg:pr-5">
-                <button className="relative z-10 text-lg btn btn-outline text-white">Join Us</button>
+              <NavLink to="/register" className="btn-gradent-swipe-r2l lg:pr-5">
+                <button className="relative z-10 text-lg btn btn-outline text-white font-poppins">Join Us</button>
               </NavLink>
             </div>
           )}

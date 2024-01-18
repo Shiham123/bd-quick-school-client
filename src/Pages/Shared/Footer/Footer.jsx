@@ -18,9 +18,9 @@ const Footer = () => {
                 loop
                 src="https://lottie.host/f3cfffce-06c0-498f-92b2-3c564fb9f40f/DVZgFbgX9m.json"
               ></Player>
-              <a className="w-64 text-xl text-white font-bold">BD Quick School</a>
+              <a className="w-64 text-xl text-white font-bold font-cinzel">BD Quick School</a>
             </div>
-            <p className="text-base text-white font-semibold w-[400px] mx-auto text-center md:text-start lg:mx-0 md:ml-5">
+            <p className="text-base text-white font-semibold w-[400px] mx-auto text-center md:text-start lg:mx-0 md:ml-5 font-lora">
               Welcome to BD Quick School, your reliable destination for comprehensive educational
               support. We seamlessly integrate innovative learning methodologies with a nurturing
               approach to prioritize your academic success
@@ -42,55 +42,55 @@ const Footer = () => {
           </div>
           <div className="flex flex-col md:flex-row gap-5 lg:gap-28 mt-5 mb-5">
             <div className="mb-5 overflow-hidden ml-5 lg:ml-0">
-              <h2 className="text-2xl text-white font-bold mb-5 ">Our Services</h2>
+              <h2 className="text-2xl text-white font-bold mb-5 font-cinzel">Our Services</h2>
               <div className="flex items-center gap-3 text-white mb-1 hover:text-[#ffbe0b] hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
-                <span className="text-lg font-medium ">Career</span>
+                <span className="text-lg font-medium font-poppins">Career</span>
               </div>
               <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
-                <span className="text-lg font-medium ">Join as a teacher</span>
+                <span className="text-lg font-medium font-poppins">Join as a teacher</span>
               </div>
               <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
-                <span className="text-lg font-medium hover:translate-x-4 hover:ease-out hover:duration-1000">
+                <span className="text-lg font-medium hover:translate-x-4 hover:ease-out hover:duration-1000 font-poppins">
                   Privacy Policy
                 </span>
               </div>
               <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
-                <span className="text-lg font-medium ">Refund Policy</span>
+                <span className="text-lg font-medium font-poppins">Refund Policy</span>
               </div>
               <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
-                <span className="text-lg font-medium">User Terms</span>
+                <span className="text-lg font-medium font-poppins">User Terms</span>
               </div>
             </div>
             <div className="mb-5 overflow-hidden ml-5 lg:ml-0">
-              <h2 className="text-2xl text-white font-bold mb-5">Quick Links</h2>
+              <h2 className="text-2xl text-white font-bold mb-5 font-cinzel">Quick Links</h2>
               <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
-                <span className="text-lg font-medium ">Blog And Article</span>
+                <span className="text-lg font-medium font-poppins">Blog And Article</span>
               </div>
               <div className="flex items-center gap-3 hover:text-[#ffbe0b] text-white mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
-                <span className="text-lg font-medium">Notes and Guides</span>
+                <span className="text-lg font-medium font-poppins">Notes and Guides</span>
               </div>
               <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
-                <span className="text-lg font-medium">Book store</span>
+                <span className="text-lg font-medium font-poppins">Book store</span>
               </div>
               <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
-                <span className="text-lg font-medium">Integrations</span>
+                <span className="text-lg font-medium font-poppins">Integrations</span>
               </div>
               <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
-                <span className="text-lg font-medium">Free download</span>
+                <span className="text-lg font-medium font-poppins">Free download</span>
               </div>
             </div>
             <div className="mb-5 ml-5 lg:ml-0">
-              <h2 className="text-2xl text-white font-bold mb-5">Gallery</h2>
+              <h2 className="text-2xl text-white font-bold mb-5 font-cinzel">Gallery</h2>
               <div className="grid grid-cols-3 gap-3 ">
                 <img src="https://i.ibb.co/3Cfdnqz/thumb-1-1.png" alt="" />
                 <img className="rounded-md" src="https://i.ibb.co/TBr86s7/thumb-1-2.jpg" alt="" />

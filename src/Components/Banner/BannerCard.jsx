@@ -9,7 +9,7 @@ const BannerCard = () => {
   return (
     <div className="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-row lg:justify-between my-10 cursor-pointer gap-4">
       {/* per item */}
-      <div className="group p-4 border-2 border-white/50 rounded-lg flex flex-col justify-center items-center gap-2 hover:translate-y-1 transition-all duration-300 hover:border-b-8 hover:bg-transparent">
+      <div className="group p-4 border-2 border-white/50 rounded-lg flex flex-col justify-center items-center gap-2 hover:translate-y-1 transition-all duration-300 hover:border-b-8 hover:bg-transparent shadow-2xl shadow-[#2980b9]">
         <div>
           <img src={hscLogo} width={70} height={70} alt="" />
         </div>
@@ -29,7 +29,7 @@ const BannerCard = () => {
       </div>
 
       {/* per item */}
-      <div className="group p-4 border-2 border-white/50 rounded-lg flex flex-col justify-center items-center gap-2 hover:translate-y-1 transition-all duration-300 hover:border-b-8 hover:bg-transparent">
+      <div className="group p-4 border-2 border-white/50 rounded-lg flex flex-col justify-center items-center gap-2 hover:translate-y-1 transition-all duration-300 hover:border-b-8 hover:bg-transparent shadow-2xl shadow-[#2980b9]">
         <div>
           <img src={sscLogo} width={70} height={70} alt="" />
         </div>
@@ -48,7 +48,7 @@ const BannerCard = () => {
         </div>
       </div>
       {/* per item */}
-      <div className="group p-4 border-2 border-white/50 rounded-lg flex flex-col justify-center items-center gap-2 hover:translate-y-1 transition-all duration-300 hover:border-b-8 hover:bg-transparent">
+      <div className="group p-4 border-2 border-white/50 rounded-lg flex flex-col justify-center items-center gap-2 hover:translate-y-1 transition-all duration-300 hover:border-b-8 hover:bg-transparent shadow-2xl shadow-[#2980b9]">
         <div>
           <img src={classEightLogo} width={70} height={70} alt="" />
         </div>
@@ -67,7 +67,7 @@ const BannerCard = () => {
         </div>
       </div>
       {/* per item */}
-      <div className="group p-4 border-2 border-white/50 rounded-lg flex flex-col justify-center items-center gap-2 hover:translate-y-1 transition-all duration-300 hover:border-b-8 hover:bg-transparent">
+      <div className="group p-4 border-2 border-white/50 rounded-lg flex flex-col justify-center items-center gap-2 hover:translate-y-1 transition-all duration-300 hover:border-b-8 hover:bg-transparent shadow-2xl shadow-[#2980b9]">
         <div>
           <img src={classFiveLogo} width={70} height={70} alt="" />
         </div>

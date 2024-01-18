@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from './../../Hooks/useAuth/useAuth';
 import toast, { Toaster } from "react-hot-toast";
 import { useForm } from "react-hook-form";
+import swal from "sweetalert";
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false)
     const { signIn, setLoading, signInWithGoogle, signInWithGithub } = useAuth()
@@ -16,20 +17,24 @@ const Login = () => {
 
     // form functionality
     const { register, handleSubmit, formState: { errors }, reset } = useForm()
+    // Handle Submit 
     const onSubmit = (data) => {
+
+        // Sign In User
         signIn(data.email, data.password)
             .then(result => {
-                console.log(result.user)
-                reset()
-                toast.success("login succesfull")
-                navigate(location?.state ? location.state : '/')
+                console.log('Navigating to:', location?.state ? location.state : "/");
+                navigate(location?.state ? location.state : "/")
+                swal("Good job!", "User logged Successfully", "success");
             })
             .catch(error => {
-                console.log(error)
-                toast.error(error.message)
+                const errormsg = error.message;
+                toast.error(errormsg);
+                setLoading(false)
+                e.target.reset()
             })
     }
-    
+
 
     return (
         <div>
@@ -51,7 +56,7 @@ const Login = () => {
                                     placeholder="Enter Email"
                                 />
                             </div>
-
+                            {errors.email && <span className="text-red-500 font-medium">This field is required</span>}
                         </div>
                         {/* password */}
                         <div className="mt-8">
@@ -73,7 +78,10 @@ const Login = () => {
                                     placeholder="Enter Password"
                                 />
                             </div>
-
+                            {errors.password?.type === "required" && <span className="text-red-500 font-medium">This field is required</span>}
+                            {errors.password?.type === "minLength" && <span className="text-red-500 font-medium">Password Must be at least 6 character</span>}
+                            {errors.password?.type === "maxLength" && <span className="text-red-500 font-medium">Password can`t be more than 20 character</span>}
+                            {errors.password?.type === "pattern" && <span className="text-red-500 font-medium">Password have at least one lowercase,uppercase,special character and number</span>}
                         </div>
                         {/* remember and forget password */}
                         <div className="flex items-center justify-between gap-2 mt-6">

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { IoMdArrowDropdown } from 'react-icons/io';
 
 const Services_banner = () => {

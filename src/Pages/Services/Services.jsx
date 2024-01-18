@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import { useEffect, useState } from 'react';
 import Services_banner from '../../Components/Services_Banner/Services_banner';
 

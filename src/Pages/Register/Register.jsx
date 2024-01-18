@@ -1,8 +1,11 @@
 import { FaUserCheck } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
+import { AiOutlineEye } from 'react-icons/ai';
+import { AiOutlineEyeInvisible } from 'react-icons/ai';
+import { useState } from "react";
 
 const Register = () => {
-
+    const [showPassword, setShowPassword] = useState(false)
 
     return (
         <div style={{ backgroundImage: 'url(https://i.ibb.co/Jspy7Nq/register.png)', backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
@@ -53,16 +56,23 @@ const Register = () => {
                                     <input
 
                                         name="password"
+                                        type={showPassword ? "text" : "password"}
                                         required
                                         className="bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
                                         placeholder="Enter password"
                                     />
-                                    
+                                    <span className="absolute right-3 top-1/2 transform -translate-y-1/2" onClick={() => { setShowPassword(!showPassword) }} >
+                                        {
+                                            showPassword ? <AiOutlineEyeInvisible className='text-2xl'></AiOutlineEyeInvisible> : <AiOutlineEye className='text-2xl'></AiOutlineEye>
+                                        }
+                                    </span>
                                 </div>
+
+
 
                             </div>
 
-                            
+
 
 
                         </div>

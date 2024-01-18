@@ -10,10 +10,14 @@ import useAuth from './../../Hooks/useAuth/useAuth';
 import toast, { Toaster } from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
+import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
+
+
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false)
     const { signIn, setLoading, signInWithGoogle, signInWithGithub } = useAuth()
     const navigate = useNavigate()
+    const axiosPublic = useAxiosPublic()
 
     // form functionality
     const { register, handleSubmit, formState: { errors }, reset } = useForm()
@@ -36,6 +40,31 @@ const Login = () => {
     }
 
 
+    // Google sign in
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                console.log(result.user)
+                const userInfo = {
+                    name: result.user?.displayName,
+                    email: result.user?.email,
+                    photoURL: result.user?.photoURL,
+                    role: 'user'
+                }
+                axiosPublic.post('/api/v1/users', userInfo)
+                    .then(res => {
+                        console.log(res.data)
+                        navigate(location?.state ? location.state : "/")
+                        swal("Good job!", "User logged Successfully", "success");
+                    })
+            })
+            .catch(error => {
+                const errormsg = error.message;
+                toast.error(errormsg);
+            })
+    }
+
+
     return (
         <div>
             <div className="flex justify-center items-center font-lora text-[#333] h-full min-h-screen p-4" style={{ backgroundImage: 'url(https://i.ibb.co/Jspy7Nq/register.png)', backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
@@ -51,7 +80,6 @@ const Login = () => {
                                 <input
                                     {...register('email', { required: true })}
                                     type="email"
-
                                     className="bg-transparent w-full text-sm border-b border-[#333] px-1 lg:px-2 py-3 outline-none placeholder:text-[#333]"
                                     placeholder="Enter Email"
                                 />
@@ -109,7 +137,7 @@ const Login = () => {
 
                         {/* social button */}
                         <div className="space-x-8 flex justify-center">
-                            <button onClick={() => handleSocialSignin(googleLogin)} type="button" className="border-none outline-none">
+                            <button onClick={handleGoogleSignIn} type="button" className="border-none outline-none">
                                 <FcGoogle className="text-4xl"></FcGoogle>
                             </button>
                             <button onClick={() => handleSocialSignin(githubLogin)} type="button" className="border-none outline-none">

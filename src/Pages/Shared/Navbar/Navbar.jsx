@@ -3,10 +3,12 @@ import { IoMenuSharp } from 'react-icons/io5';
 import { useEffect, useState } from 'react';
 import NavPages from './PageLists.json';
 import { Player } from "@lottiefiles/react-lottie-player";
+import useAuth from './../../../Hooks/useAuth/useAuth';
 
 const Navbar = () => {
-  const user = false;
+  // const user = false;
   const [stickyClass, setStickyClass] = useState('');
+  const { user, logOut } = useAuth()
 
   useEffect(() => {
     window.addEventListener('scroll', stickNavbar);
@@ -122,16 +124,21 @@ const Navbar = () => {
                 className="dropdown dropdown-end tooltip tooltip-left"
                 data-tip={user?.displayName}
               >
-                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                  <div className="w-10 rounded-full ">
-                    <img src={user?.photoURL} alt="userPhoto" />
+                <div className='flex items-center gap-3'>
+                  <div className='hidden md:block'>
+                    <h1 className='font-lora font-bold text-base'>{user?.displayName}</h1>
                   </div>
-                </label>
+                  <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                    <div className="w-10 rounded-full ">
+                      <img src={user?.photoURL} alt="userPhoto" />
+                    </div>
+                  </label>
+                </div>
                 <ul
                   tabIndex={0}
                   className=" menu-sm dropdown-content mt-3 z-[1] shadow rounded-lg w-52  text-white btn-toggle-style bg-green-500"
                 >
-                  <li className="hover:font-semibold py-2 border-b">User</li>
+                  <li className="hover:font-semibold py-2 border-b">{user?.displayName}</li>
                   <li className="hover:font-semibold  border-b py-2">
                     <button>
                       <Link to="/dashboard">Dashboard</Link>

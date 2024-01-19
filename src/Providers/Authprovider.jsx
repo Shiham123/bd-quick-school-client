@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import auth from './../Firebase/firebase.config';
 import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
+import useAxiosPublic from './../Hooks/useAxiosPublic/useAxiosPublic';
 
 // Called the Provider
 export const AuthContext = createContext(null)
@@ -11,6 +12,7 @@ const facebookProvider = new FacebookAuthProvider();
 const Authprovider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const axiosPublic = useAxiosPublic()
 
     // Email-Password 1st step User Create
     const createUser = (email, password) => {
@@ -56,14 +58,26 @@ const Authprovider = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
+            if (currentUser) {
+                const userInfo = { email: currentUser.email }
+                axiosPublic.post('/api/v1/jwt', userInfo)
+                    .then(res => {
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token)
+                        }
+                    })
+            }
+            else {
+                localStorage.removeItem('access-token')
+            }
             setLoading(false)
         })
-        // setLoading(false)
 
         return () => {
             unSubscribe()
         }
-    }, [])
+    }, [axiosPublic])
+
 
     // Value
     const authInfo = { user, loading, setLoading, createUser, signIn, signInWithGoogle, signInWithGithub, signInWithFacebook, handleUpdateProfile, logOut }

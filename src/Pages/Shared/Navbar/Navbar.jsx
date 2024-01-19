@@ -32,13 +32,12 @@ const Navbar = () => {
       // window height changed for the demo
       windowHeight > 50
         ? setStickyClass(
-          `fixed top-0 transition bg-gradient-to-b from-[#42275a] to-[#734b6d]  bg-opacity-100 duration-1000 ease-in-out`
-        )
+            `fixed top-0 transition bg-gradient-to-b from-[#42275a] to-[#734b6d]  bg-opacity-100 duration-1000 ease-in-out`
+          )
         : setStickyClass('');
     }
   };
 
-  //Navlik Active Class
   const activeRouteStyle = ({ isActive }) => {
     return {
       color: isActive ? '#C3FCF1' : '',
@@ -48,9 +47,9 @@ const Navbar = () => {
 
   const Navlinks = (
     <>
-      {NavPages.map((page) => {
+      {NavPages.map((page, index) => {
         return page.submenu ? (
-          <li>
+          <li key={index}>
             <details>
               <summary>{page?.page}</summary>
               <ul className=" text-white ">
@@ -90,9 +89,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div
-        className={`z-50 top-0 mx-auto pt-3  w-full text-white ${stickyClass}`}
-      >
+      <div className={`z-50 top-0 mx-auto pt-3  w-full text-white ${stickyClass}`}>
         <div className={`navbar mx-auto flex justify-between items-center`}>
           {/* Nav Logo */}
           <div>
@@ -110,12 +107,12 @@ const Navbar = () => {
               </ul>
             </div>
             <NavLink to="/" className="flex items-center justify-center normal-case lg:pl-5">
-              <Player className="w-16"
+              <Player
+                className="w-16"
                 autoplay
                 loop
                 src="https://lottie.host/f3cfffce-06c0-498f-92b2-3c564fb9f40f/DVZgFbgX9m.json"
-              >
-              </Player>
+              ></Player>
               <span className="text-white font-semibold hover:">
                 <span className="text-xl text-white font-bold font-cinzel">BD Quick School </span>
               </span>
@@ -177,4 +174,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

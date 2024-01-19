@@ -2,10 +2,8 @@ import Banner from '../../Components/Banner/Banner';
 import Courses from '../Courses/Courses';
 import Faq from '../Faq/Faq';
 import OurTeam from '../OurTeam/OurTeam';
-import Footer from '../Shared/Footer/Footer';
-import './hover.css';
 
-// all section
+import './hover.css';
 
 const Home = () => {
   return (

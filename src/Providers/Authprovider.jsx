@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import auth from './../Firebase/firebase.config';
-import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
+import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import useAxiosPublic from './../Hooks/useAxiosPublic/useAxiosPublic';
 
 // Called the Provider

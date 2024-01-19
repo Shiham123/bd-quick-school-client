@@ -10,6 +10,18 @@ const Navbar = () => {
   const [stickyClass, setStickyClass] = useState('');
   const { user, logOut } = useAuth()
 
+
+  // Handle Logout Function to logout the User
+  const handleLogOut = () => {
+    logOut()
+      .then(result => {
+        console.log(result.user)
+      })
+      .then(error => {
+        console.log(error)
+      })
+  }
+
   useEffect(() => {
     window.addEventListener('scroll', stickNavbar);
     return () => window.removeEventListener('scroll', stickNavbar);
@@ -122,7 +134,7 @@ const Navbar = () => {
             <>
               <div
                 className="dropdown dropdown-end tooltip tooltip-left"
-                data-tip={user?.displayName}
+                
               >
                 <div className='flex items-center gap-3'>
                   <div className='hidden md:block'>
@@ -136,7 +148,7 @@ const Navbar = () => {
                 </div>
                 <ul
                   tabIndex={0}
-                  className=" menu-sm dropdown-content mt-3 z-[1] shadow rounded-lg w-52  text-white btn-toggle-style bg-green-500"
+                  className=" menu-sm dropdown-content mt-3 z-[1] shadow rounded-lg w-52  text-white btn-toggle-style bg-gradient-to-b from-[#42275a] to-[#734b6d]"
                 >
                   <li className="hover:font-semibold py-2 border-b">{user?.displayName}</li>
                   <li className="hover:font-semibold  border-b py-2">
@@ -146,9 +158,7 @@ const Navbar = () => {
                   </li>
 
                   <li className="hover:font-semibold py-2">
-                    <button>
-                      <Link>Logout</Link>
-                    </button>
+                    <button onClick={handleLogOut}>Logout</button>
                   </li>
                 </ul>
               </div>

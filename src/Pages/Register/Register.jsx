@@ -170,9 +170,6 @@ const Register = () => {
                                     I accept the <a className="text-white/90 font-semibold hover:underline ml-1">Terms and Conditions</a>
                                 </label>
                             </div>
-
-
-
                         </div>
                         <div className="!mt-10">
                             <button type="submit" className="w-full py-3 px-4 text-sm font-semibold rounded text-white bg-gradient-to-r from-violet-900 to-violet-700  focus:outline-none">

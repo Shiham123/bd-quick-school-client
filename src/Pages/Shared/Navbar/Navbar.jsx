@@ -2,25 +2,24 @@ import { Link, NavLink } from 'react-router-dom';
 import { IoMenuSharp } from 'react-icons/io5';
 import { useEffect, useState } from 'react';
 import NavPages from './PageLists.json';
-import { Player } from "@lottiefiles/react-lottie-player";
+import { Player } from '@lottiefiles/react-lottie-player';
 import useAuth from './../../../Hooks/useAuth/useAuth';
 
 const Navbar = () => {
   // const user = false;
   const [stickyClass, setStickyClass] = useState('');
-  const { user, logOut } = useAuth()
-
+  const { user, logOut } = useAuth();
 
   // Handle Logout Function to logout the User
   const handleLogOut = () => {
     logOut()
-      .then(result => {
-        console.log(result.user)
+      .then((result) => {
+        console.log(result.user);
       })
-      .then(error => {
-        console.log(error)
-      })
-  }
+      .then((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     window.addEventListener('scroll', stickNavbar);
@@ -129,13 +128,10 @@ const Navbar = () => {
           {/* Profile */}
           {user ? (
             <>
-              <div
-                className="dropdown dropdown-end tooltip tooltip-left"
-                
-              >
-                <div className='flex items-center gap-3'>
-                  <div className='hidden md:block'>
-                    <h1 className='font-lora font-bold text-base'>{user?.displayName}</h1>
+              <div className="dropdown dropdown-end tooltip tooltip-left">
+                <div className="flex items-center gap-3">
+                  <div className="hidden md:block">
+                    <h1 className="font-lora font-bold text-base">{user?.displayName}</h1>
                   </div>
                   <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full ">
@@ -162,8 +158,10 @@ const Navbar = () => {
             </>
           ) : (
             <div>
-              <NavLink to="/login" className="btn-gradent-swipe-r2l lg:pr-5">
-                <button className="relative z-10 md:text-lg gi btn-md btn-outline text-white font-poppins">Join Us</button>
+              <NavLink to="/login" className="lg:pr-5">
+                <button className="relative z-10 md:text-lg rounded-lg border border-white px-4 py-2 btn-outline text-white font-poppins">
+                  Join Us
+                </button>
               </NavLink>
             </div>
           )}

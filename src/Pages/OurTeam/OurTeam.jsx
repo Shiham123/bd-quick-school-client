@@ -11,6 +11,8 @@ const OurTeam = () => {
 
       <Marquee className='container mx-auto'>
         <div className="flex mt-24  mb-20 pb-20">
+
+          {/* shiham's information start*/}
           <div className="card card-compact w-80 bg-base-100  hover:bg-slate-200 shadow-xl m-5 pt-5 relative  ">
             <div className="absolute h-[150px] w-[150px]  mx-auto rounded-full -left-0 -top-20 -right-1 avatar flex justify-center ">
               <div className="w-36 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 ">
@@ -60,13 +62,17 @@ const OurTeam = () => {
               </div>
             </div>
           </div>
+          {/* shiham's information end*/}
+
+
+          {/* sanjida's information start*/}
 
           <div className="card card-compact w-80 bg-base-100 shadow-xl m-5 pt-5 relative hover:bg-slate-200">
             <div className="absolute h-[150px] w-[150px]  mx-auto rounded-full -left-0 -top-20 -right-1 avatar flex justify-center border">
               <div className="w-36 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                 <img
                   className=""
-                  src="https://e1.pxfuel.com/desktop-wallpaper/627/132/desktop-wallpaper-niqab-girl-thumbnail.jpg"
+                  src="https://i.ibb.co/rMKMzLp/Whats-App-Image-2024-01-18-at-2-32-18-PM-2.jpg"
                 />
               </div>
             </div>
@@ -109,6 +115,11 @@ const OurTeam = () => {
               </div>
             </div>
           </div>
+
+          {/* sanjida's information end*/}
+
+
+          {/* Israil's information start*/}
 
           <div className="card card-compact w-80 bg-base-100 shadow-xl m-5 pt-5 relative hover:bg-slate-200">
             <div className="absolute h-[150px] w-[150px]  mx-auto rounded-full -left-0 -top-20 -right-1 avatar flex justify-center border">
@@ -159,6 +170,8 @@ const OurTeam = () => {
             </div>
           </div>
 
+          {/* Israil's information end*/}
+
           <div className="card card-compact w-80 bg-base-100 shadow-xl m-5 pt-5 relative hover:bg-slate-200">
             <div className="absolute h-[150px] w-[150px]  mx-auto rounded-full -left-0 -top-20 -right-1 avatar flex justify-center border">
               <div className="w-36 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
@@ -174,7 +187,7 @@ const OurTeam = () => {
               </h2>
               <h2 className="text-center font-bold text-gray-700 font-poppins">MERN-Stack Developer</h2>
               <p className="w-[270px] text-center mx-auto text-sm font-lora">
-                👋 Hello, World!I'm a Web Developer.Passionate about crafting exceptional web
+                👋 Hello, World! I'm a Web Developer.Passionate about crafting exceptional web
                 experiences and turning ideas into reality through elegant code. 🌐✨ - tonoy3125
               </p>
               <div className="flex justify-center items-center gap-5 ">

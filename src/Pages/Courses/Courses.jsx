@@ -1,10 +1,9 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-// import { Pagination, Navigation } from 'swiper/modules';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 
@@ -15,7 +14,7 @@ const Courses = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/public/Course_data.json');
+        const response = await axios.get('Course_data.json');
         setPosts(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -95,7 +94,6 @@ const Courses = () => {
             </p>
           </div>
         </div>
-
       </div>
       <hr className="w-[400px] mx-auto my-32 border-2" />
     </div>

@@ -9,7 +9,7 @@ const OurTeam = () => {
         Meet Our Team Member
       </h1>
 
-      <Marquee className='container mx-auto'>
+      <Marquee className="container mx-auto">
         <div className="flex mt-24  mb-20 pb-20">
 
           {/* shiham's information start*/}
@@ -27,7 +27,9 @@ const OurTeam = () => {
               <h2 className="text-center text-2xl font-bold text-gray-700 uppercase font-cinzel">
                 Shiham Bin Yusuf
               </h2>
-              <h2 className="text-center font-bold text-gray-700 font-poppins">MERN-Stack Developer</h2>
+              <h2 className="text-center font-bold text-gray-700 font-poppins">
+                MERN-Stack Developer
+              </h2>
               <p className="w-[240px] text-center mx-auto text-sm font-lora">
                 {' '}
                 👋 Hello, I am MERN stack developer. and i am love code. type code is most one of
@@ -80,7 +82,9 @@ const OurTeam = () => {
               <h2 className="text-center text-2xl font-bold text-gray-700 uppercase font-cinzel">
                 Sanjida Akter
               </h2>
-              <h2 className="text-center font-bold text-gray-700 font-poppins">MERN-Stack Developer</h2>
+              <h2 className="text-center font-bold text-gray-700 font-poppins">
+                MERN-Stack Developer
+              </h2>
               <p className="w-[250px] text-center mx-auto text-sm font-lora">
                 {' '}
                 👋 I'm Sanjida Akter, a dedicated web developer with a love for crafting digital
@@ -134,7 +138,9 @@ const OurTeam = () => {
               <h2 className="text-center text-xl font-bold text-gray-700 uppercase font-cinzel">
                 Mohammad Shah Israil
               </h2>
-              <h2 className="text-center font-bold text-gray-700 font-poppins">MERN-Stack Developer</h2>
+              <h2 className="text-center font-bold text-gray-700 font-poppins">
+                MERN-Stack Developer
+              </h2>
               <p className="w-[270px] text-center mx-auto text-sm font-lora">
                 👋"Hello ,I'm Shah Israil, an aspiring Mern stack developer about crafting engaging
                 web interfaceswith a blend of innovation, design, and cutting-edge technology -🌐✨
@@ -185,7 +191,9 @@ const OurTeam = () => {
               <h2 className="text-center text-2xl font-bold text-gray-700 uppercase font-cinzel">
                 Shaif Shajed Tonoy
               </h2>
-              <h2 className="text-center font-bold text-gray-700 font-poppins">MERN-Stack Developer</h2>
+              <h2 className="text-center font-bold text-gray-700 font-poppins">
+                MERN-Stack Developer
+              </h2>
               <p className="w-[270px] text-center mx-auto text-sm font-lora">
                 👋 Hello, World! I'm a Web Developer.Passionate about crafting exceptional web
                 experiences and turning ideas into reality through elegant code. 🌐✨ - tonoy3125
@@ -230,7 +238,9 @@ const OurTeam = () => {
               <h2 className="text-center text-2xl font-bold text-gray-700 uppercase font-cinzel">
                 Subroto Das
               </h2>
-              <h2 className="text-center font-bold text-gray-700 font-poppins">MERN-Stack Developer</h2>
+              <h2 className="text-center font-bold text-gray-700 font-poppins">
+                MERN-Stack Developer
+              </h2>
               <p className="w-[250px] text-center mx-auto text-sm font-lora">
                 👋 I want to contribute to the evolution of the web, which is not only visible, but
                 also a seamless, accessible opportunity for users.🌐✨ - subroto23
@@ -278,7 +288,9 @@ const OurTeam = () => {
               <h2 className="text-center text-xl font-bold text-gray-700 uppercase font-cinzel">
                 Mahibul Islam Ratul
               </h2>
-              <h2 className="text-center font-bold text-gray-700 font-poppins">MERN-Stack Developer</h2>
+              <h2 className="text-center font-bold text-gray-700 font-poppins">
+                MERN-Stack Developer
+              </h2>
               <p className="w-[270px] text-center mx-auto text-sm font-lora">
                 {' '}
                 🌐 Front-End Architect & React Maestro 💻 | Crafting seamless web applications ✨ |

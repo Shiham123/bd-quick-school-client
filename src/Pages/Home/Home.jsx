@@ -5,8 +5,6 @@ import OurTeam from '../OurTeam/OurTeam';
 
 import './hover.css';
 
-// all section
-
 const Home = () => {
   return (
     <div>

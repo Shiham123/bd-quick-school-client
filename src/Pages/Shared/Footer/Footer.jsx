@@ -9,8 +9,11 @@ const Footer = () => {
   return (
     <div>
       <div className="container mx-auto mt-10">
+
         <div className="flex flex-col lg:flex-row lg:gap-28">
+
           <div className="mb-5  lg:ml-0">
+
             <div className="flex items-center  ml-22 md:ml-5 lg:ml-0  mb-3">
 
               {/* lottie animation image start here*/}
@@ -23,15 +26,28 @@ const Footer = () => {
                 ></Player>
 
               </div>
-              {/* lottie animation image start here*/}
+              {/* lottie animation image end here*/}
+
+              {/* website name start here*/}
              
               <a className="w-64  text-xl text-white font-bold font-cinzel">BD Quick School</a>
+
+              {/* website name end here*/}
+
             </div>
-            <p className="text-base text-white font-semibold w-[400px] mx-auto text-center md:text-start lg:mx-0 md:ml-5 font-lora">
+
+            {/* website description start here*/}
+            <p className="text-base text-white font-semibold w-[400px] md:w-full lg:w-[540px] mx-auto text-center md:text-start lg:mx-0 md:ml-5 md:pr-6  font-lora">
               Welcome to BD Quick School, your reliable destination for comprehensive educational
               support. We seamlessly integrate innovative learning methodologies with a nurturing
               approach to prioritize your academic success
             </p>
+
+            {/* website description ends here*/}
+
+
+            {/* social logo start here*/}
+
             <div className="flex items-center justify-center md:justify-start gap-2 mt-4 ml-0 md:ml-5 lg:ml-0">
               <div className="border max-w-full px-3 py-3 rounded-full hover:bg-[#0AB99D] cursor-pointer">
                 <FaFacebookF className="text-white text-2xl" />
@@ -46,11 +62,17 @@ const Footer = () => {
                 <CiTwitter className="text-white text-2xl" />
               </div>
             </div>
+
+            {/* social logo start here*/}
+
           </div>
+
+          
 
           <div className="flex flex-col items-center justify-center md:flex-row gap-5 lg:gap-28 mt-5 mb-5">
 
             {/* Our Services start here*/}
+
             <div className="mb-5 overflow-hidden ml-5 lg:ml-0">
               <h2 className="text-2xl text-white font-bold mb-5 font-cinzel">Our Services</h2>
               <div className="flex items-center gap-3 text-white mb-1 hover:text-[#ffbe0b] hover:translate-x-4 hover:ease-out hover:duration-1000">
@@ -119,6 +141,7 @@ const Footer = () => {
                 <img className="rounded-md" src="https://i.ibb.co/6FNKX33/thumb-1-4.jpg" alt="" />
                 <img className="rounded-md" src="https://i.ibb.co/KFjsRck/thumb-1-5.jpg" alt="" />
                 <img className="rounded-md" src="https://i.ibb.co/34c6sD6/thumb-1-6.jpg" alt="" />
+               
               </div>
             </div>
 
@@ -137,7 +160,7 @@ const Footer = () => {
           {' '}
           BD Quick School © 2024. All rights reserved.
         </small>
-        <div className="flex items-center gap-5 lg:mr-40">
+        <div className="flex items-center gap-5 lg:mr-5">
           <p className="text-white text-base font-semibold ">Privacy Policy</p>
           <p className="text-white text-base font-semibold ">Terms and Conditions</p>
         </div>

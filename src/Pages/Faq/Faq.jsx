@@ -11,7 +11,7 @@ const Faq = () => {
   return (
     <div className="py-10 rounded-2xl ">
       {/* FAQ Header  */}
-      <h2 className="text-center lg:text-5xl font-extrabold mb-20 text-white font-cinzel">
+      <h2 className="text-center text-2xl md:text-4xl lg:text-5xl font-extrabold mb-20 text-white font-cinzel">
         Frequently Asked Questions
       </h2>
       {/* FAQ Body */}

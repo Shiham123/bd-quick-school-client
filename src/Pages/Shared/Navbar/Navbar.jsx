@@ -51,14 +51,14 @@ const Navbar = () => {
           <li key={index}>
             <details>
               <summary>{page?.page}</summary>
-              <ul className=" text-white ">
+              <ul className=" text-white z-10">
                 {page.submenu &&
                   page?.submenu.map((menu) => {
                     return (
                       <li key={menu?.id}>
                         <NavLink
                           style={activeRouteStyle}
-                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
+                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium "
                           to={menu?.href}
                         >
                           {menu?.page}

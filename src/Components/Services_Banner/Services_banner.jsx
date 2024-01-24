@@ -12,14 +12,21 @@ const Services_banner = () => {
       {/* banner image end here */}
 
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-purple-500 via-purple-800 to-purple-600 opacity-75"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white z-10]">
-        <h1 className="text-3xl lg:text-5xl font-bold text-center">Explore Our Services !</h1>
-        <p className="py-6 text-xl text-center">
+
+      <div className="w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white z-10]">
+
+        {/* banner title start here */}
+        <h1 className="text-3xl lg:text-5xl font-extrabold text-center ">Explore Our Services !</h1>
+        {/* banner title end here */}
+
+        {/* banner description start here */}
+        <p className="py-6 text-lg text-center  px-4">
           At BD Quick School, we pride ourselves on delivering exceptional solutions tailored to
           meet your unique needs. Our diverse range of services is designed to elevate your
           experience and drive success in today&apos;s dynamic business landscape. Explore our
           offerings below !
         </p>
+        {/* banner description end here */}
 
         {/* scroll below button start here */}
 

@@ -141,27 +141,28 @@ const Navbar = () => {
                 </div>
                 <ul
                   tabIndex={0}
-                  className=" menu-sm dropdown-content mt-3 z-[1] shadow rounded-lg w-80 px-10  text-white btn-toggle-style bg-gradient-to-b from-[#42275a] to-[#734b6d]"
+                  className=" menu-sm dropdown-content mt-3 z-[1] shadow border border-white rounded-lg w-80 px-10  text-white btn-toggle-style bg-gradient-to-b from-[#42275a] to-[#734b6d]"
                 >
-                  <label tabIndex={0} className="btn btn-ghost btn-circle avatar mb-20 mt-5">
+                  <label tabIndex={0} className="btn btn-ghost btn-circle avatar mb-32 mt-5">
                     <div className="w-24 rounded-full mb-3">
                       <img src={user?.photoURL} alt="userPhoto" />
                     </div>
+                    <h1 className="font-lora font-bold text-base mb-2" style={{ whiteSpace: "nowrap"}}>{user?.displayName}</h1>
                     <button className='btn btn-outline text-white'>View Profile</button>
                   </label>
-                  <NavLink><li className="hover:font-semibold py-2 border-b text-start">My Courses</li></NavLink>
+                  <NavLink><li className="hover:font-semibold py-2 border-b text-start font-lora font-medium">My Courses</li></NavLink>
 
-                  <li className="hover:font-semibold py-2 border-b text-start">Bookmark</li>
-                  <li className="hover:font-semibold py-2 border-b text-start">Certificate</li>
-                  <li className="hover:font-semibold py-2 border-b text-start">Payment History</li>
-                  <li className="hover:font-semibold py-2 border-b text-start">Payment Management</li>
-                  <li className="hover:font-semibold py-2 border-b text-start">Student Analytics</li>
-                  <li className="hover:font-semibold py-2 border-b text-start">Announcement</li>
-                  <NavLink to="/dashboard"><li className="hover:font-semibold  border-b py-2 text-start">
+                  <li className="hover:font-semibold py-2 border-b text-start font-lora font-medium">Bookmark</li>
+                  <li className="hover:font-semibold py-2 border-b text-start font-lora font-medium">Certificate</li>
+                  <li className="hover:font-semibold py-2 border-b text-start font-lora font-medium">Payment History</li>
+                  <li className="hover:font-semibold py-2 border-b text-start font-lora font-medium">Payment Management</li>
+                  <li className="hover:font-semibold py-2 border-b text-start font-lora font-medium">Student Analytics</li>
+                  <li className="hover:font-semibold py-2 border-b text-start font-lora font-medium">Announcement</li>
+                  <NavLink to="/dashboard"><li className="hover:font-semibold  border-b py-2 text-start font-lora font-medium">
                     Dashboard
                   </li></NavLink>
 
-                  <li className="hover:font-semibold py-2 text-start">
+                  <li className="hover:font-semibold py-2 text-start font-lora font-medium">
                     <button onClick={handleLogOut}>Logout</button>
                   </li>
                 </ul>

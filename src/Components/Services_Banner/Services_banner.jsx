@@ -22,10 +22,10 @@ const Services_banner = () => {
         </p>
 
         {/* scroll below button start here */}
-        
-        <div className="w-[30%] mx-auto">
-          <button className="bg-servicesBg flex justify-center items-center text-white font-bold py-4 px-8 border-b-4 border-[#2c122e] hover:border-[#000000] rounded text-xl">
-            <p>Scroll Below </p>
+
+        <div className="w-[80%] md:w-[50%] lg:w-[30%] mx-auto">
+          <button className="bg-servicesBg flex justify-center items-center text-white font-bold py-4 px-8 border-b-4 border-[#2c122e] hover:border-[#000000] rounded text-xl lg:w-full  mx-auto">
+            <p className='text-sm md:text-base'>Scroll Below </p>
             <IoMdArrowDropdown />
           </button>
         </div>

@@ -31,8 +31,8 @@ const Navbar = () => {
       // window height changed for the demo
       windowHeight > 50
         ? setStickyClass(
-            `fixed top-0 transition bg-gradient-to-b from-[#42275a] to-[#734b6d]  bg-opacity-100 duration-1000 ease-in-out`
-          )
+          `fixed top-0 transition bg-gradient-to-b from-[#42275a] to-[#734b6d]  bg-opacity-100 duration-1000 ease-in-out`
+        )
         : setStickyClass('');
     }
   };
@@ -141,16 +141,27 @@ const Navbar = () => {
                 </div>
                 <ul
                   tabIndex={0}
-                  className=" menu-sm dropdown-content mt-3 z-[1] shadow rounded-lg w-52  text-white btn-toggle-style bg-gradient-to-b from-[#42275a] to-[#734b6d]"
+                  className=" menu-sm dropdown-content mt-3 z-[1] shadow rounded-lg w-80 px-10  text-white btn-toggle-style bg-gradient-to-b from-[#42275a] to-[#734b6d]"
                 >
-                  <li className="hover:font-semibold py-2 border-b">{user?.displayName}</li>
-                  <li className="hover:font-semibold  border-b py-2">
-                    <button>
-                      <Link to="/dashboard">Dashboard</Link>
-                    </button>
-                  </li>
+                  <label tabIndex={0} className="btn btn-ghost btn-circle avatar mb-20 mt-5">
+                    <div className="w-24 rounded-full mb-3">
+                      <img src={user?.photoURL} alt="userPhoto" />
+                    </div>
+                    <button className='btn btn-outline text-white'>View Profile</button>
+                  </label>
+                  <NavLink><li className="hover:font-semibold py-2 border-b text-start">My Courses</li></NavLink>
 
-                  <li className="hover:font-semibold py-2">
+                  <li className="hover:font-semibold py-2 border-b text-start">Bookmark</li>
+                  <li className="hover:font-semibold py-2 border-b text-start">Certificate</li>
+                  <li className="hover:font-semibold py-2 border-b text-start">Payment History</li>
+                  <li className="hover:font-semibold py-2 border-b text-start">Payment Management</li>
+                  <li className="hover:font-semibold py-2 border-b text-start">Student Analytics</li>
+                  <li className="hover:font-semibold py-2 border-b text-start">Announcement</li>
+                  <NavLink to="/dashboard"><li className="hover:font-semibold  border-b py-2 text-start">
+                    Dashboard
+                  </li></NavLink>
+
+                  <li className="hover:font-semibold py-2 text-start">
                     <button onClick={handleLogOut}>Logout</button>
                   </li>
                 </ul>

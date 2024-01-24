@@ -51,14 +51,14 @@ const Navbar = () => {
           <li key={index}>
             <details>
               <summary>{page?.page}</summary>
-              <ul className=" text-white ">
+              <ul className=" text-white z-10">
                 {page.submenu &&
                   page?.submenu.map((menu) => {
                     return (
                       <li key={menu?.id}>
                         <NavLink
                           style={activeRouteStyle}
-                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
+                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium "
                           to={menu?.href}
                         >
                           {menu?.page}
@@ -113,7 +113,7 @@ const Navbar = () => {
                 src="https://lottie.host/f3cfffce-06c0-498f-92b2-3c564fb9f40f/DVZgFbgX9m.json"
               ></Player>
               <span className="text-white font-semibold hover:">
-                <span className="text-xl text-white font-bold font-cinzel">BD Quick School </span>
+                <span className="text-base md:text-lg lg:text-xl text-white font-bold font-cinzel">BD Quick School </span>
               </span>
             </NavLink>
           </div>

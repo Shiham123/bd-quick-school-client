@@ -14,8 +14,8 @@ const Services = () => {
   return (
     <div>
       <Services_banner></Services_banner>
-      <div className="py-16 w-[90%] md:w-[75%] mx-auto text-white">
-        <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-x-10 gap-y-10 py-10">
+      <div className="py-16 w-[90%] md:w-[90%] lg:w-[75%] mx-auto text-white">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-x-10 gap-y-10 py-10">
           {services.map((service, idx) => (
             <div
               key={idx}

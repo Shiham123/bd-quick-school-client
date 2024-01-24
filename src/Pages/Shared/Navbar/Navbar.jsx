@@ -113,7 +113,7 @@ const Navbar = () => {
                 src="https://lottie.host/f3cfffce-06c0-498f-92b2-3c564fb9f40f/DVZgFbgX9m.json"
               ></Player>
               <span className="text-white font-semibold hover:">
-                <span className="text-xl text-white font-bold font-cinzel">BD Quick School </span>
+                <span className="text-base md:text-lg lg:text-xl text-white font-bold font-cinzel">BD Quick School </span>
               </span>
             </NavLink>
           </div>

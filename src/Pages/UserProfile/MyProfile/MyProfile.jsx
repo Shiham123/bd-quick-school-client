@@ -9,7 +9,7 @@ const MyProfile = () => {
                 <h1 className="text-2xl font-poppins font-semibold text-white">My Profile</h1>
                 <FiEdit className="text-white text-2xl" />
             </div>
-            <div className="mt-5 flex items-center gap-96">
+            <div className="mt-5 flex items-center lg:gap-96">
                 <div>
                     <h3 className="text-lg font-lora font-medium text-white/60">Full Name</h3>
                     <h2 className=" text-xl text-white font-lora font-semibold">{user?.displayName}</h2>

@@ -9,42 +9,35 @@ const Footer = () => {
   return (
     <div>
       <div className="container mx-auto mt-10">
-
         <div className="flex flex-col lg:flex-row lg:gap-28">
-
           <div className="mb-5  lg:ml-0">
-
             <div className="flex items-center  ml-22 md:ml-5 lg:ml-0  mb-3">
-
               {/* lottie animation image start here*/}
-              <div className='w-20  ml-14 md:ml-0 lg:ml-0'>
+              <div className="md:ml-0 lg:ml-0">
                 <Player
                   className="w-16  "
                   autoplay
                   loop
                   src="https://lottie.host/f3cfffce-06c0-498f-92b2-3c564fb9f40f/DVZgFbgX9m.json"
                 ></Player>
-
               </div>
               {/* lottie animation image end here*/}
 
               {/* website name start here*/}
-             
-              <a className="w-64  text-xl text-white font-bold font-cinzel">BD Quick School</a>
+
+              <a className="w-64 text-xl text-white font-bold font-cinzel">BD Quick School</a>
 
               {/* website name end here*/}
-
             </div>
 
             {/* website description start here*/}
-            <p className="text-base text-white font-semibold w-[400px] md:w-full lg:w-[540px] mx-auto text-center md:text-start lg:mx-0 md:ml-5 md:pr-6  font-lora">
+            <p className="text-base text-white font-semibold  md:w-full lg:w-[540px] mx-auto px-2 text-justify  lg:mx-0 md:ml-5 md:pr-6  font-lora">
               Welcome to BD Quick School, your reliable destination for comprehensive educational
               support. We seamlessly integrate innovative learning methodologies with a nurturing
               approach to prioritize your academic success
             </p>
 
             {/* website description ends here*/}
-
 
             {/* social logo start here*/}
 
@@ -64,28 +57,29 @@ const Footer = () => {
             </div>
 
             {/* social logo start here*/}
-
           </div>
 
-          
-
           <div className="flex flex-col items-center justify-center md:flex-row gap-5 lg:gap-28 mt-5 mb-5">
-
-
             {/* our service and quick link hidden for large screen start */}
 
-            <div className='flex lg:hidden flex-row items-center justify-center '>
+            <div className="flex lg:hidden flex-row items-center justify-center ">
               {/* Our Services start here*/}
 
               <div className="mb-5 overflow-hidden ml-5 lg:ml-0">
-                <h2 className="text-base md:text-xl lg:2xl  text-white font-bold mb-5 font-cinzel">Our Services</h2>
+                <h2 className="text-base md:text-xl lg:2xl  text-white font-bold mb-5 font-cinzel">
+                  Our Services
+                </h2>
                 <div className="flex items-center gap-3 text-white mb-1 hover:text-[#ffbe0b] hover:translate-x-4 hover:ease-out hover:duration-1000">
                   <IoIosArrowForward />
-                  <span className="text-sm md:text-base lg:text-lg font-medium font-poppins">Career</span>
+                  <span className="text-sm md:text-base lg:text-lg font-medium font-poppins">
+                    Career
+                  </span>
                 </div>
                 <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                   <IoIosArrowForward />
-                  <span className="text-sm md:text-base lg:text-lg font-medium font-poppins">Join as a teacher</span>
+                  <span className="text-sm md:text-base lg:text-lg font-medium font-poppins">
+                    Join as a teacher
+                  </span>
                 </div>
                 <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                   <IoIosArrowForward />
@@ -95,11 +89,15 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                   <IoIosArrowForward />
-                  <span className="text-sm md:text-base lg:text-lg font-medium font-poppins">Refund Policy</span>
+                  <span className="text-sm md:text-base lg:text-lg font-medium font-poppins">
+                    Refund Policy
+                  </span>
                 </div>
                 <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                   <IoIosArrowForward />
-                  <span className="text-sm md:text-base lg:text-lg font-medium font-poppins">User Terms</span>
+                  <span className="text-sm md:text-base lg:text-lg font-medium font-poppins">
+                    User Terms
+                  </span>
                 </div>
               </div>
 
@@ -108,49 +106,63 @@ const Footer = () => {
               {/* Quick Links start here*/}
 
               <div className="mb-5 overflow-hidden ml-5 lg:ml-0">
-                <h2 className="text-base md:text-xl lg:2xl text-white font-bold mb-5 font-cinzel">Quick Links</h2>
+                <h2 className="text-base md:text-xl lg:2xl text-white font-bold mb-5 font-cinzel">
+                  Quick Links
+                </h2>
                 <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 hover:translate-x-4 hover:ease-out hover:duration-1000">
                   <IoIosArrowForward />
-                  <span className="text-sm md:text-base lg:text-lg font-medium font-poppins">Blog And Article</span>
+                  <span className="text-sm md:text-base lg:text-lg font-medium font-poppins">
+                    Blog And Article
+                  </span>
                 </div>
                 <div className="flex items-center gap-3 hover:text-[#ffbe0b] text-white mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                   <IoIosArrowForward />
-                  <span className="text-sm md:text-base lg:text-lg font-medium font-poppins">Notes and Guides</span>
+                  <span className="text-sm md:text-base lg:text-lg font-medium font-poppins">
+                    Notes and Guides
+                  </span>
                 </div>
                 <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                   <IoIosArrowForward />
-                  <span className="text-sm md:text-base lg:text-lg font-medium font-poppins">Book store</span>
+                  <span className="text-sm md:text-base lg:text-lg font-medium font-poppins">
+                    Book store
+                  </span>
                 </div>
                 <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                   <IoIosArrowForward />
-                  <span className="text-sm md:text-base lg:text-lg font-medium font-poppins">Integrations</span>
+                  <span className="text-sm md:text-base lg:text-lg font-medium font-poppins">
+                    Integrations
+                  </span>
                 </div>
                 <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                   <IoIosArrowForward />
-                  <span className="text-sm md:text-base lg:text-lg font-medium font-poppins">Free download</span>
+                  <span className="text-sm md:text-base lg:text-lg font-medium font-poppins">
+                    Free download
+                  </span>
                 </div>
               </div>
 
               {/* Quick Links end here*/}
-
             </div>
 
             {/* our service and quick link hidden for large screen end */}
-
 
             {/* our service and quick link hidden for medium and small screen */}
 
             {/* Our Services start here*/}
 
             <div className="hidden lg:block mb-5 overflow-hidden ml-5 lg:ml-0">
-              <h2 className="text-base md:text-2xl text-white font-bold mb-5 font-cinzel">Our Services</h2>
+              <h2 className="text-base md:text-2xl text-white font-bold mb-5 font-cinzel">
+                Our Services
+              </h2>
               <div className="flex items-center gap-3 text-white mb-1 hover:text-[#ffbe0b] hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
                 <span className="text-sm md:text-lg font-medium font-poppins">Career</span>
               </div>
               <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
-                <span className="text-sm md:text-lg font-medium font-poppins">Join as a teacher</span>
+                <span className="text-sm md:text-lg font-medium font-poppins">
+                  Join as a teacher
+                </span>
               </div>
               <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
@@ -173,14 +185,20 @@ const Footer = () => {
             {/* Quick Links start here*/}
 
             <div className="hidden lg:block mb-5 overflow-hidden ml-5 lg:ml-0">
-              <h2 className="text-base md:text-2xl text-white font-bold mb-5 font-cinzel">Quick Links</h2>
+              <h2 className="text-base md:text-2xl text-white font-bold mb-5 font-cinzel">
+                Quick Links
+              </h2>
               <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
-                <span className="text-sm md:text-lg font-medium font-poppins">Blog And Article</span>
+                <span className="text-sm md:text-lg font-medium font-poppins">
+                  Blog And Article
+                </span>
               </div>
               <div className="flex items-center gap-3 hover:text-[#ffbe0b] text-white mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
-                <span className="text-sm md:text-lg font-medium font-poppins">Notes and Guides</span>
+                <span className="text-sm md:text-lg font-medium font-poppins">
+                  Notes and Guides
+                </span>
               </div>
               <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
@@ -198,13 +216,12 @@ const Footer = () => {
 
             {/* Quick Links end here*/}
 
-
-
-
             {/* Gallary start here*/}
 
             <div className="mb-5 ml-5 lg:ml-0 md:mt-4 lg:mt-0">
-              <h2 className="text-2xl md:text-xl lg:text-2xl text-white font-bold mb-5 font-cinzel">Gallery</h2>
+              <h2 className="text-2xl md:text-xl lg:text-2xl text-white font-bold mb-5 font-cinzel">
+                Gallery
+              </h2>
               <div className="grid grid-cols-3 gap-3 ">
                 <img src="https://i.ibb.co/3Cfdnqz/thumb-1-1.png" alt="" />
                 <img className="rounded-md" src="https://i.ibb.co/TBr86s7/thumb-1-2.jpg" alt="" />
@@ -212,16 +229,13 @@ const Footer = () => {
                 <img className="rounded-md" src="https://i.ibb.co/6FNKX33/thumb-1-4.jpg" alt="" />
                 <img className="rounded-md" src="https://i.ibb.co/KFjsRck/thumb-1-5.jpg" alt="" />
                 <img className="rounded-md" src="https://i.ibb.co/34c6sD6/thumb-1-6.jpg" alt="" />
-               
               </div>
             </div>
-
 
             {/* Gallary end here */}
           </div>
         </div>
       </div>
-
 
       <hr className="pb-5" />
 

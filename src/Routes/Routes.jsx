@@ -9,6 +9,7 @@ import Services from '../Pages/Services/Services';
 import ServiceDetails from '../Pages/Services/ServiceDetails';
 import PaymentSuccses from '../Pages/Services/PaymentSuccses';
 import PaymentFailed from '../Pages/Services/PaymentFailed';
+import PayDataFrom from '../Pages/Services/PayDataFrom';
 
 const Router = createBrowserRouter([
   {
@@ -22,8 +23,9 @@ const Router = createBrowserRouter([
       { path: 'login', element: <Login /> },
       { path: 'services', element: <Services /> },
       { path: '/serviceDetails/:id', element: <ServiceDetails /> },
-      { path: '/payment/succsess/:tranID', element: <PaymentSuccses/> },
-      { path: '/payment/fail/:tranID', element: <PaymentFailed/> },
+      { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
+      { path: '/payment/succsess/:tranID', element: <PaymentSuccses /> },
+      { path: '/payment/fail/:tranID', element: <PaymentFailed /> },
     ],
   },
 ]);

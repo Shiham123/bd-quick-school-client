@@ -89,7 +89,7 @@ const Navbar = () => {
   return (
     <>
       <div className={`z-50 top-0 mx-auto pt-3  w-full text-white ${stickyClass}`}>
-        <div className={`navbar mx-auto flex justify-between items-center`}>
+        <div className={`navbar max-w-screen-2xl mx-auto flex justify-between items-center`}>
           {/* Nav Logo */}
           <div>
             <div className="dropdown">
@@ -113,7 +113,9 @@ const Navbar = () => {
                 src="https://lottie.host/f3cfffce-06c0-498f-92b2-3c564fb9f40f/DVZgFbgX9m.json"
               ></Player>
               <span className="text-white font-semibold hover:">
-                <span className="text-base md:text-lg lg:text-xl text-white font-bold font-cinzel">BD Quick School </span>
+                <span className="text-base md:text-lg lg:text-xl text-white font-bold font-cinzel">
+                  BD Quick School{' '}
+                </span>
               </span>
             </NavLink>
           </div>
@@ -158,7 +160,7 @@ const Navbar = () => {
             </>
           ) : (
             <div>
-              <NavLink to="/login" className="lg:pr-5">
+              <NavLink to="/login">
                 <button className="relative z-10 md:text-lg rounded-lg border border-white px-4 py-2 btn-outline text-white font-poppins">
                   Join Us
                 </button>

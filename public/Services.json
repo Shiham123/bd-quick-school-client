@@ -1,45 +1,111 @@
- [
-    {
-      "Id": "1ac400fd-98bd-46ee-b4e8-d2f983f2bbc2",
-      "price":20,
-      "title": "Video Lessons",
-      "description": "Access high-quality video lessons covering a wide range of subjects and topics.",
-      "image": "https://cdn.10minuteschool.com/md/images/thumbnails/skills/ghore-boshe-Spoken-English-course-thumbnail-by-Munzereen-Shahid-16x9.jpg"
-    },
-    {
-      "Id": "38332e95-7f66-45af-829b-c51b3d23caba",
-      "price":30,
-      "title": "Interactive Quizzes",
-      "description": "Engage in interactive quizzes to reinforce learning and test your knowledge.",
-      "image": "https://cdn.10minuteschool.com/md/images/Thumbnails/sohoje_spoken_arbi_16x9.jpg"
-    },
-    {
-      "Id": "39487b87-09e0-4e6c-acfa-6ac907e0742a",
-      "price":50,
-      "title": "Live Tutoring",
-      "description": "Connect with experienced tutors for live one-on-one or group tutoring sessions.",
-      "image": "https://cdn.10minuteschool.com/md/images/thumbnails/skills/microsoft-excel-course-thumbnail-by-abtahi-iptesam-16x9.jpg"
-    },
-    {
-      "Id": "a3ef9e36-c7ee-48c5-99e2-6f966157e116",
-      "price":60,
-      "title": "Practice Exams",
-      "description": "Take practice exams to prepare for upcoming tests and examinations.",
-      "image": "https://cdn.10minuteschool.com/md/images/thumbnails/skills/facebook-marketing-course-thumbnail-by-ayman-sadiq-sadman-sadik-16x9.jpg"
-    },
-    {
-      "Id": "1280cb1b-9115-45c5-babd-601febd462de",
-      "price":70,
-      "title": "Study Plans",
-      "description": "Get personalized study plans tailored to your academic goals and schedule.",
-      "image": "https://cdn.10minuteschool.com/md/images/skills/thumbnails/job-ready-academy-thumbnail-sqr.jpg"
-    },
-    {
-      "Id": "14f0a9d0-49f9-4020-a656-e23b7ac59216",
-      "price":80,
-      "title": "Progress Tracking",
-      "description": "Monitor your progress with detailed analytics and performance tracking tools.",
-      "image": "https://cdn.10minuteschool.com/md/images/images/skills/career-guidance-course-thumbnail-16-9.jpg"
-    }
-    
-  ]
+[
+  {
+    "Id": "1ac400fd-98bd-46ee-b4e8-d2f983f2bbc2",
+    "price": 20,
+    "techer": "Mr. Johan Doe",
+    "techEdu": "MSC (English) ,University of Oxford (UK),Phd (English) ,University of Oxford (UK) ",
+    "title": "Video Lessons",
+    "description": "Access high-quality video lessons covering a wide range of subjects and topics.",
+    "image": "https://cdn.10minuteschool.com/md/images/thumbnails/skills/ghore-boshe-Spoken-English-course-thumbnail-by-Munzereen-Shahid-16x9.jpg",
+    "outcome": [
+      "The necessary grammatical rules and explanations to write",
+      "Apply the grammar rules in appropriate contexts & situations",
+      "Situation-based easy grammar recall techniques",
+      "Different types of real-life examples and explanations of the same grammar topic",
+      "Grammar rules & examples relevant to the syllabus of the School, College and University",
+      "Mastering the simple and complex issues of English grammar via practice",
+      "Different types of real-life examples and explanations of the same grammar topic"
+    ],
+    "details": "English grammar is not an algebraic formula; it must be learned by comprehending rules through practical examples rather than memorization. This enables one to communicate correctly in various life contexts, from students to professionals. For this reason 'ঘরে বসে English Grammar' is a comprehensive course by Munzereen Shahid, offering easy-to-follow lessons covering everything from basic to advanced topics, such as Parts of Speech, Tense, Subject-Verb Agreement, Transformation, Voice, and Narration. So, enroll now in the 'ঘরে বসে English Grammar' course to learn English Grammar from A to Z."
+  },
+  {
+    "Id": "38332e95-7f66-45af-829b-c51b3d23caba",
+    "price": 30,
+    "title": "Interactive Quizzes",
+    "techer": "Mr. Johan Doe",
+    "techEdu": "MSC (English) ,University of Oxford (UK),Phd (English) ,University of Oxford (UK)",
+    "description": "Engage in interactive quizzes to reinforce learning and test your knowledge.",
+    "image": "https://cdn.10minuteschool.com/md/images/Thumbnails/sohoje_spoken_arbi_16x9.jpg",
+    "details": "Welcome to `Interactive Quiz Mastery,` the course that takes traditional quizzes to a whole new level! Immerse yourself in a hands-on exploration of interactive learning, where quizzes evolve from static assessments to engaging experiences. This course empowers you to seamlessly integrate multimedia elements, adding visuals, videos, and audio to create immersive assessments. Dive into the realm of gamification, where quizzes transform into thrilling adventures with scoring systems, badges, and leaderboards. Discover the magic of adaptive quizzing, tailoring questions to participant performance, and providing real-time feedback for an enriched learning journey. Join us to unlock the secrets of crafting interactive quizzes that captivate and educate!",
+    "outcome": [
+      "Understand and apply core principles with ease",
+      "Develop strong analytical and problem-solving abilities.",
+      "Enhance communication skills through interactive quizzes.",
+      "Apply theoretical knowledge to real-world scenarios.",
+      "Foster a mindset of lifelong learning and improvement.",
+      "Enhance communication skills through interactive quizzes."
+    ]
+  },
+  {
+    "Id": "39487b87-09e0-4e6c-acfa-6ac907e0742a",
+    "price": 50,
+    "techer": "Mr. Johan Doe",
+    "techEdu": "MSC (English) ,University of Oxford (UK),Phd (English) ,University of Oxford (UK)",
+    "title": "Live Tutoring",
+    "description": "Connect with experienced tutors for live one-on-one or group tutoring sessions.",
+    "image": "https://cdn.10minuteschool.com/md/images/thumbnails/skills/microsoft-excel-course-thumbnail-by-abtahi-iptesam-16x9.jpg",
+    "details": "Embark on an enriching educational journey with our live tutoring courses. Designed to provide personalized learning experiences, our courses offer real-time interaction with expert tutors. Whether you're seeking academic support, skill enhancement, or exam preparation, our live tutoring sessions cater to diverse learning needs. Engage in dynamic discussions, receive instant feedback, and benefit from one-on-one guidance to enhance your understanding of challenging topics. With the convenience of scheduling sessions at your own pace, our live tutoring courses empower you to achieve academic excellence while fostering a supportive and collaborative learning environment. Elevate your education with interactive, live tutoring experiences that make learning both effective and enjoyable.",
+    "outcome": [
+      "ailored sessions catered to individual learning styles and pace.",
+      "Engage in live discussions, ask questions, and receive instant feedback from experienced tutors.",
+      "Benefit from dedicated attention and targeted support for specific challenges or subjects.",
+      "Conveniently schedule sessions to fit your availability and learning needs.",
+      "Foster a supportive atmosphere, promoting active participation and shared knowledge.",
+      "Conveniently schedule sessions to fit your availability and learning needs."
+    ]
+  },
+  {
+    "Id": "a3ef9e36-c7ee-48c5-99e2-6f966157e116",
+    "price": 60,
+    "title": "Practice Exams",
+    "techer": "Mr. Johan Doe",
+    "techEdu": "MSC (English) ,University of Oxford (UK),Phd (English) ,University of Oxford (UK)",
+    "description": "Take practice exams to prepare for upcoming tests and examinations.",
+    "image": "https://cdn.10minuteschool.com/md/images/thumbnails/skills/facebook-marketing-course-thumbnail-by-ayman-sadiq-sadman-sadik-16x9.jpg",
+    "details": "Prepare for success with our Practice Exams courses designed to sharpen your skills and boost your confidence. Tailored to mirror the format and difficulty of actual exams, these courses provide a realistic testing environment. Dive into comprehensive question banks, covering key topics and challenging areas, to fortify your understanding. Receive detailed feedback and performance analytics to identify strengths and pinpoint areas for improvement. Our Practice Exams courses not only simulate the exam experience but also equip you with effective strategies to tackle various question types. Elevate your exam readiness and approach test day with assurance, knowing you've thoroughly practiced under exam-like conditions. Gain the competitive edge you need for success with our rigorous and results-driven Practice Exams courses.",
+    "outcome": [
+      "Experience the actual exam environment with practice tests mirroring format and difficulty.",
+      "ccess a diverse range of questions covering key topics and challenging areas.",
+      "Receive detailed feedback and analytics to understand strengths and areas for improvement.",
+      "Boost your confidence by familiarizing yourself with the exam format and improving your performance over time.",
+      "Develop effective strategies for approaching different question types and managing time during exams.",
+      "Receive detailed feedback and analytics to understand strengths and areas for improvement."
+    ]
+  },
+  {
+    "Id": "1280cb1b-9115-45c5-babd-601febd462de",
+    "price": 70,
+    "title": "Study Plans",
+    "techer": "Mr. Johan Doe",
+    "techEdu": "MSC (English) ,University of Oxford (UK),Phd (English) ,University of Oxford (UK)",
+    "description": "Get personalized study plans tailored to your academic goals and schedule.",
+    "image": "https://cdn.10minuteschool.com/md/images/skills/thumbnails/job-ready-academy-thumbnail-sqr.jpg",
+    "details": "Embark on a structured and effective learning journey with our Study Plans courses. These meticulously crafted programs provide a roadmap to academic success, offering a step-by-step guide for comprehensive subject mastery. Tailored to accommodate various learning styles and preferences, our Study Plans ensure a balanced approach to coursework, exam preparation, and skill development. Each plan is designed to optimize your study time, with well-defined milestones and achievable goals. Whether you're a student seeking to excel in exams or a professional aiming for skill enhancement, our Study Plans courses provide the structure and guidance needed for consistent progress. Elevate your learning experience, stay organized, and achieve your academic and professional aspirations with our thoughtfully curated Study Plans.",
+    "outcome": [
+      "Follow a well-organized roadmap designed for comprehensive subject mastery.",
+      "Adapt the study plan to accommodate your individual learning style, pace, and preferences.",
+      "Ensure a balanced focus on coursework, exam preparation, and skill development for holistic learning.",
+      "Maximize study efficiency with well-defined milestones and achievable goals.",
+      "tay on track with a systematic approach that facilitates continuous improvement.",
+      "Ensure a balanced focus on coursework, exam preparation, and skill development for holistic learning."
+    ]
+  },
+  {
+    "Id": "14f0a9d0-49f9-4020-a656-e23b7ac59216",
+    "price": 80,
+    "title": "Progress Tracking",
+    "techer": "Mr. Johan Doe",
+    "techEdu": "MSC (English) ,University of Oxford (UK),Phd (English) ,University of Oxford (UK)",
+    "description": "Monitor your progress with detailed analytics and performance tracking tools.",
+    "image": "https://cdn.10minuteschool.com/md/images/images/skills/career-guidance-course-thumbnail-16-9.jpg",
+    "details": "Monitor and enhance your academic or professional journey with our Progress Tracking feature. This tool empowers you to keep a close eye on your development by providing insightful analytics and feedback. Track your performance over time, identify areas of improvement, and celebrate your successes. Whether you're navigating coursework, exam preparation, or skill enhancement, Progress Tracking ensures transparency and accountability. Stay motivated with clear visual representations of your progress, set new goals, and make informed adjustments to your learning approach. Elevate your learning experience with a tool that transforms data into actionable insights, helping you reach your full potential.",
+    "outcome": [
+      "Gain a deeper understanding of your performance with detailed analytics and metrics.",
+      "Keep track of your progress over time, allowing for ongoing assessment and improvement.",
+      "Pinpoint specific areas that need improvement and tailor your focus accordingly.",
+      "Set realistic goals, track your achievements, and stay motivated throughout your learning journey.",
+      "Maintain transparency in your learning process, fostering a sense of accountability for your own progress.",
+      "Pinpoint specific areas that need improvement and tailor your focus accordingly."
+    ]
+  }
+]

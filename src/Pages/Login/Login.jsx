@@ -1,13 +1,89 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 import { MdOutlineEmail } from 'react-icons/md';
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { AiOutlineEye } from 'react-icons/ai';
+import { AiOutlineEyeInvisible } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 import { ImGithub } from 'react-icons/im';
 import { BsFacebook } from 'react-icons/bs';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from './../../Hooks/useAuth/useAuth';
+import toast, { Toaster } from 'react-hot-toast';
+import { useForm } from 'react-hook-form';
+import swal from 'sweetalert';
+import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { signIn, setLoading, signInWithGoogle, signInWithGithub } = useAuth();
+  const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
+
+  // form functionality
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+  // Handle Submit
+  const onSubmit = (data) => {
+    // Sign In User
+    signIn(data.email, data.password)
+      .then((result) => {
+        console.log('Navigating to:', location?.state ? location.state : '/');
+        navigate(location?.state ? location.state : '/');
+        swal('Good job!', 'User logged Successfully', 'success');
+      })
+      .catch((error) => {
+        const errorMSg = error.message;
+        toast.error(errorMSg);
+        setLoading(false);
+        e.target.reset();
+      });
+  };
+
+  // Google sign in
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+        const userInfo = {
+          name: result.user?.displayName,
+          email: result.user?.email,
+          photoURL: result.user?.photoURL,
+          role: 'user',
+        };
+        axiosPublic.post('/api/v1/users', userInfo).then((res) => {
+          console.log(res.data);
+          navigate(location?.state ? location.state : '/');
+          swal('Good job!', 'User logged Successfully', 'success');
+        });
+      })
+      .catch((error) => {
+        const errormsg = error.message;
+        toast.error(errormsg);
+      });
+  };
+
+  // Github sign in
+  const handleGithubSignIn = () => {
+    signInWithGithub().then((result) => {
+      console.log(result.user);
+      const userInfo = {
+        name: result.user?.displayName,
+        email: result.user?.email,
+        photoURL: result.user?.photoURL,
+        role: 'user',
+      };
+      axiosPublic.post('/api/v1/users', userInfo).then((res) => {
+        console.log(res.data);
+        navigate(location?.state ? location.state : '/');
+        swal('Good job!', 'User logged Successfully', 'success');
+      });
+    });
+  };
 
   return (
     <div>
@@ -20,20 +96,27 @@ const Login = () => {
         }}
       >
         <div className="max-w-md w-full mx-auto">
-          <form className="bg-opacity-70 bg-white rounded-2xl p-6 shadow-xl">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="bg-opacity-70 bg-white rounded-2xl p-6 shadow-xl"
+          >
             <div className="mb-10">
-              <h3 className="text-3xl font-extrabold">Sign in</h3>
+              <h3 className="text-3xl font-extrabold ">Sign in</h3>
             </div>
             {/* email  */}
             <div>
               <div className="relative flex items-center">
                 <MdOutlineEmail className="text-2xl absolute right-3 top-1/2 transform -translate-y-1/2" />
                 <input
+                  {...register('email', { required: true })}
                   type="email"
                   className="bg-transparent w-full text-sm border-b border-[#333] px-1 lg:px-2 py-3 outline-none placeholder:text-[#333]"
                   placeholder="Enter Email"
                 />
               </div>
+              {errors.email && (
+                <span className="text-red-500 font-medium">This field is required</span>
+              )}
             </div>
             {/* password */}
             <div className="mt-8">
@@ -51,11 +134,35 @@ const Login = () => {
                   )}
                 </span>
                 <input
+                  {...register('password', {
+                    required: true,
+                    minLength: 6,
+                    maxLength: 20,
+                    pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]+$/,
+                  })}
                   type={showPassword ? 'text' : 'password'}
                   className="bg-transparent w-full text-sm border-b border-[#333] px-1 lg:px-2 py-3 outline-none placeholder:text-[#333]"
                   placeholder="Enter Password"
                 />
               </div>
+              {errors.password?.type === 'required' && (
+                <span className="text-red-500 font-medium">This field is required</span>
+              )}
+              {errors.password?.type === 'minLength' && (
+                <span className="text-red-500 font-medium">
+                  Password Must be at least 6 character
+                </span>
+              )}
+              {errors.password?.type === 'maxLength' && (
+                <span className="text-red-500 font-medium">
+                  Password can`t be more than 20 character
+                </span>
+              )}
+              {errors.password?.type === 'pattern' && (
+                <span className="text-red-500 font-medium">
+                  Password have at least one lowercase,uppercase,special character and number
+                </span>
+              )}
             </div>
             {/* remember and forget password */}
             <div className="flex items-center justify-between gap-2 mt-6">
@@ -97,14 +204,14 @@ const Login = () => {
             {/* social button */}
             <div className="space-x-8 flex justify-center">
               <button
-                // onClick={() => handleSocialSignin(googleLogin)}
+                onClick={handleGoogleSignIn}
                 type="button"
                 className="border-none outline-none"
               >
                 <FcGoogle className="text-4xl"></FcGoogle>
               </button>
               <button
-                // onClick={() => handleSocialSignin(githubLogin)}
+                onClick={handleGithubSignIn}
                 type="button"
                 className="border-none outline-none"
               >
@@ -117,6 +224,7 @@ const Login = () => {
           </form>
         </div>
       </div>
+      <Toaster />
     </div>
   );
 };

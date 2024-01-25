@@ -3,10 +3,23 @@ import { IoMenuSharp } from 'react-icons/io5';
 import { useEffect, useState } from 'react';
 import NavPages from './PageLists.json';
 import { Player } from '@lottiefiles/react-lottie-player';
+import useAuth from './../../../Hooks/useAuth/useAuth';
 
 const Navbar = () => {
-  const user = false;
+  // const user = false;
   const [stickyClass, setStickyClass] = useState('');
+  const { user, logOut } = useAuth();
+
+  // Handle Logout Function to logout the User
+  const handleLogOut = () => {
+    logOut()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .then((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     window.addEventListener('scroll', stickNavbar);
@@ -24,7 +37,6 @@ const Navbar = () => {
     }
   };
 
-  //Navlik Active Class
   const activeRouteStyle = ({ isActive }) => {
     return {
       color: isActive ? '#C3FCF1' : '',
@@ -34,19 +46,19 @@ const Navbar = () => {
 
   const Navlinks = (
     <>
-      {NavPages.map((page) => {
+      {NavPages.map((page, index) => {
         return page.submenu ? (
-          <li>
+          <li key={index}>
             <details>
               <summary>{page?.page}</summary>
-              <ul className=" text-white ">
+              <ul className=" text-white z-10">
                 {page.submenu &&
                   page?.submenu.map((menu) => {
                     return (
                       <li key={menu?.id}>
                         <NavLink
                           style={activeRouteStyle}
-                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
+                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium "
                           to={menu?.href}
                         >
                           {menu?.page}
@@ -101,7 +113,7 @@ const Navbar = () => {
                 src="https://lottie.host/f3cfffce-06c0-498f-92b2-3c564fb9f40f/DVZgFbgX9m.json"
               ></Player>
               <span className="text-white font-semibold hover:">
-                <span className="text-xl text-white font-bold font-cinzel">BD Quick School </span>
+                <span className="text-base md:text-lg lg:text-xl text-white font-bold font-cinzel">BD Quick School </span>
               </span>
             </NavLink>
           </div>
@@ -116,20 +128,22 @@ const Navbar = () => {
           {/* Profile */}
           {user ? (
             <>
-              <div
-                className="dropdown dropdown-end tooltip tooltip-left"
-                data-tip={user?.displayName}
-              >
-                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                  <div className="w-10 rounded-full ">
-                    <img src={user?.photoURL} alt="userPhoto" />
+              <div className="dropdown dropdown-end tooltip tooltip-left">
+                <div className="flex items-center gap-3">
+                  <div className="hidden md:block">
+                    <h1 className="font-lora font-bold text-base">{user?.displayName}</h1>
                   </div>
-                </label>
+                  <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                    <div className="w-10 rounded-full ">
+                      <img src={user?.photoURL} alt="userPhoto" />
+                    </div>
+                  </label>
+                </div>
                 <ul
                   tabIndex={0}
-                  className=" menu-sm dropdown-content mt-3 z-[1] shadow rounded-lg w-52  text-white btn-toggle-style bg-green-500"
+                  className=" menu-sm dropdown-content mt-3 z-[1] shadow rounded-lg w-52  text-white btn-toggle-style bg-gradient-to-b from-[#42275a] to-[#734b6d]"
                 >
-                  <li className="hover:font-semibold py-2 border-b">User</li>
+                  <li className="hover:font-semibold py-2 border-b">{user?.displayName}</li>
                   <li className="hover:font-semibold  border-b py-2">
                     <button>
                       <Link to="/dashboard">Dashboard</Link>
@@ -137,17 +151,15 @@ const Navbar = () => {
                   </li>
 
                   <li className="hover:font-semibold py-2">
-                    <button>
-                      <Link>Logout</Link>
-                    </button>
+                    <button onClick={handleLogOut}>Logout</button>
                   </li>
                 </ul>
               </div>
             </>
           ) : (
             <div>
-              <NavLink to="/login" className="btn-gradent-swipe-r2l lg:pr-5">
-                <button className="relative z-10 text-lg btn btn-outline text-white font-poppins">
+              <NavLink to="/login" className="lg:pr-5">
+                <button className="relative z-10 md:text-lg rounded-lg border border-white px-4 py-2 btn-outline text-white font-poppins">
                   Join Us
                 </button>
               </NavLink>

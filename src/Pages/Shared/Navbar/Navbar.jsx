@@ -139,12 +139,13 @@ const Navbar = () => {
                     </div>
                   </label>
                 </div>
+                {/* Dropdown Menuj */}
                 <ul
                   tabIndex={0}
                   className=" menu-sm dropdown-content mt-3 z-[1] shadow border border-white rounded-lg w-80 px-10  text-white btn-toggle-style bg-gradient-to-b from-[#42275a] to-[#734b6d] overflow-hidden"
                 >
-                  <label tabIndex={0} className="btn btn-ghost btn-circle avatar mb-32 mt-5">
-                    <div className="w-24 rounded-full mb-3">
+                  <label tabIndex={0} className="btn btn-ghost btn-circle avatar mb-28 mt-5">
+                    <div className="w-24 rounded-full">
                       <img src={user?.photoURL} alt="userPhoto" />
                     </div>
                     <h1 className="font-lora font-bold text-base mb-2" style={{ whiteSpace: "nowrap" }}>{user?.displayName}</h1>

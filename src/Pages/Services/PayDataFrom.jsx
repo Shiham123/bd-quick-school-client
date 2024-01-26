@@ -4,32 +4,31 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Providers/Authprovider';
+import axios from 'axios';
 
 const PayDataFrom = ({ course, id }) => {
   const { register, handleSubmit } = useForm();
   const { user } = useContext(AuthContext);
   const onSubmit = async (data) => {
     data.productId = id;
-    fetch('http://localhost:5000/api/v1/order', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        window.location.replace(result.url);
-        console.log(result);
-      });
-    const servayIteam = {
-      Name: data.Name,
-      Subject: data.Subject,
-    };
+    data.name = user.name;
+    data.email = user.email;
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/v1/order', data);
+      const result = response.data;
+      window.location.replace(result.url);
+      console.log(result);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+ 
   };
   return (
     <>
       <div className=" max-w-screen-2xl mx-auto">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="form-control w-full ">
+          {/* <div className="form-control w-full ">
             <label className="label">
               <span className="label-text">Name</span>
             </label>
@@ -52,9 +51,12 @@ const PayDataFrom = ({ course, id }) => {
                 className="input input-bordered w-full "
               />
             </div>
-          </div>
+          </div> */}
 
-          <button type="submit" className="btn mt-5">
+          <button
+            type="submit"
+            className="w-full py-2.5 my-6  px-4 text-xl font-semibold rounded-full bg-yellow-600 focus:outline-none hover:bg-yellow-700 hover:text-gray-200"
+          >
             Pay
           </button>
         </form>

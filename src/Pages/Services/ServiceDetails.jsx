@@ -137,14 +137,8 @@ const ServiceDetails = () => {
             <p className="-mt-2">
               Promo Code Applied <span className="text-yellow-400 font-bold">MS1050</span>
             </p>
-            <Link to="/serviceDetails/payment/form">
-              <button
-                type="submit"
-                className="w-full py-2.5 my-6  px-4 text-xl font-semibold rounded-full bg-yellow-600 focus:outline-none hover:bg-yellow-700 hover:text-gray-200"
-              >
-                Enroll
-              </button>
-            </Link>
+           <PayDataFrom/> 
+
           </Box>
           {/* Icon Button and Details */}
           <Box className="my-12 border  border-sky-400 p-3 ">

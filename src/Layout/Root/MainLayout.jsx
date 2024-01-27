@@ -2,14 +2,16 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Footer from '../../Pages/Shared/Footer/Footer';
 import Navbar from '../../Pages/Shared/Navbar/Navbar';
 
-
 const MainLayout = () => {
-  const location = useLocation()
-  const noHeaderFooter = location.pathname.includes('/login') || location.pathname.includes('/register')
+  const location = useLocation();
+  const noHeaderFooter =
+    location.pathname.includes('/login') || location.pathname.includes('/register');
   return (
-    <div>
+    <div className="overflow-x-hidden">
       {noHeaderFooter || <Navbar />}
-      <Outlet />
+      <div className="min-h-screen">
+        <Outlet />
+      </div>
       {noHeaderFooter || <Footer />}
     </div>
   );

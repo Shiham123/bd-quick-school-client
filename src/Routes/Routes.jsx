@@ -6,6 +6,7 @@ import CourseDetails from '../Pages/Courses/CourseDetails';
 import Register from '../Pages/Register/Register';
 import Login from '../Pages/Login/Login';
 import Services from '../Pages/Services/Services';
+import MyProfile from '../Pages/UserProfile/MyProfile/MyProfile';
 import ServiceDetails from '../Pages/Services/ServiceDetails';
 import PaymentSuccses from '../Pages/Services/PaymentSuccses';
 import PaymentFailed from '../Pages/Services/PaymentFailed';
@@ -23,6 +24,7 @@ const Router = createBrowserRouter([
       { path: 'register', element: <Register /> },
       { path: 'login', element: <Login /> },
       { path: 'services', element: <Services /> },
+      { path: 'myprofile', element: <MyProfile /> },
       {
         path: '/serviceDetails/:id',
         element: (

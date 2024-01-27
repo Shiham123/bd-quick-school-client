@@ -22,7 +22,6 @@ const PayDataFrom = ({ course, id }) => {
     } catch (error) {
       console.error('Error:', error);
     }
-
   };
   return (
     <>

@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import PayDataFrom from './PayDataFrom';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
@@ -15,12 +14,15 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
+import QuizBtn from '../../quiz/QuizBtn';
 
 const ServiceDetails = () => {
   const { id } = useParams();
   const [course, setCourse] = useState(null);
+  const [switchQuiz, setSwitchQuiz] = useState(false);
+
   useEffect(() => {
-    fetch('/public/Services.json')
+    fetch('/Services.json')
       .then((response) => response.json())
       .then((data) => {
         const selectedCourse = data.find((c) => c.Id === id);
@@ -137,8 +139,18 @@ const ServiceDetails = () => {
             <p className="-mt-2">
               Promo Code Applied <span className="text-yellow-400 font-bold">MS1050</span>
             </p>
-           <PayDataFrom/>
 
+            {/* --------------------- */}
+
+            {switchQuiz ? (
+              <PayDataFrom />
+            ) : (
+              <Link to="/quiz">
+                <QuizBtn />
+              </Link>
+            )}
+
+            {/* --------------------- */}
           </Box>
           {/* Icon Button and Details */}
           <Box className="my-12 border  border-sky-400 p-3 ">

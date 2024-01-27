@@ -18,7 +18,8 @@ const MyProfile = () => {
     };
 
     return (
-        <div className="lg:max-w-6xl mx-auto mt-10 mb-10 p-5 bg-gradient-to-b from-[#42275a] to-[#734b6d] rounded-lg">
+        <div className="lg:max-w-5xl mx-auto mt-10 mb-10 p-5 bg-gradient-to-b from-[#42275a] to-[#734b6d] rounded-lg">
+            {/* My Profile */}
             <div className="flex items-center justify-between border-b-2 border-dashed pb-4">
                 <h1 className="text-2xl font-poppins font-semibold text-white">My Profile</h1>
                 <button onClick={handleEditClick}>
@@ -28,9 +29,6 @@ const MyProfile = () => {
             {isEditOpen ? (
                 // Edit profile form
                 <div className="edit-drawer">
-                    {/* <button className="close-button" onClick={handleCloseEdit}>
-                        &times;
-                    </button> */}
                     <EditUserProfile user={user} onClose={handleCloseEdit} />
                 </div>
             ) : (
@@ -58,6 +56,7 @@ const MyProfile = () => {
                     </div>
                 </div>
             )}
+            {/* Device Activity */}
             <div className="flex items-center justify-between border-b-2 border-dashed pb-4 mt-16 mb-10">
                 <h1 className="text-2xl font-poppins font-semibold text-white">Device Activity</h1>
             </div>

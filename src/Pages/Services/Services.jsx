@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import Services_banner from '../../Components/Services_Banner/Services_banner';
 import { Link } from 'react-router-dom';
 
-
 const Services = () => {
   const [services, setServices] = useState([]);
 
@@ -36,7 +35,6 @@ const Services = () => {
           ))}
         </div>
       </div>
-    
     </div>
   );
 };

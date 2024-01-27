@@ -22,8 +22,8 @@ const Router = createBrowserRouter([
       { path: 'login', element: <Login /> },
       { path: 'services', element: <Services /> },
       { path: '/serviceDetails/:id', element: <ServiceDetails /> },
-      { path: '/payment/succsess/:tranID', element: <PaymentSuccses/> },
-      { path: '/payment/fail/:tranID', element: <PaymentFailed/> },
+      { path: '/payment/succsess/:tranID', element: <PaymentSuccses /> },
+      { path: '/payment/fail/:tranID', element: <PaymentFailed /> },
     ],
   },
 ]);

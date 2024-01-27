@@ -1,45 +1,44 @@
- [
-    {
-      "Id": "1ac400fd-98bd-46ee-b4e8-d2f983f2bbc2",
-      "price":20,
-      "title": "Video Lessons",
-      "description": "Access high-quality video lessons covering a wide range of subjects and topics.",
-      "image": "https://cdn.10minuteschool.com/md/images/thumbnails/skills/ghore-boshe-Spoken-English-course-thumbnail-by-Munzereen-Shahid-16x9.jpg"
-    },
-    {
-      "Id": "38332e95-7f66-45af-829b-c51b3d23caba",
-      "price":30,
-      "title": "Interactive Quizzes",
-      "description": "Engage in interactive quizzes to reinforce learning and test your knowledge.",
-      "image": "https://cdn.10minuteschool.com/md/images/Thumbnails/sohoje_spoken_arbi_16x9.jpg"
-    },
-    {
-      "Id": "39487b87-09e0-4e6c-acfa-6ac907e0742a",
-      "price":50,
-      "title": "Live Tutoring",
-      "description": "Connect with experienced tutors for live one-on-one or group tutoring sessions.",
-      "image": "https://cdn.10minuteschool.com/md/images/thumbnails/skills/microsoft-excel-course-thumbnail-by-abtahi-iptesam-16x9.jpg"
-    },
-    {
-      "Id": "a3ef9e36-c7ee-48c5-99e2-6f966157e116",
-      "price":60,
-      "title": "Practice Exams",
-      "description": "Take practice exams to prepare for upcoming tests and examinations.",
-      "image": "https://cdn.10minuteschool.com/md/images/thumbnails/skills/facebook-marketing-course-thumbnail-by-ayman-sadiq-sadman-sadik-16x9.jpg"
-    },
-    {
-      "Id": "1280cb1b-9115-45c5-babd-601febd462de",
-      "price":70,
-      "title": "Study Plans",
-      "description": "Get personalized study plans tailored to your academic goals and schedule.",
-      "image": "https://cdn.10minuteschool.com/md/images/skills/thumbnails/job-ready-academy-thumbnail-sqr.jpg"
-    },
-    {
-      "Id": "14f0a9d0-49f9-4020-a656-e23b7ac59216",
-      "price":80,
-      "title": "Progress Tracking",
-      "description": "Monitor your progress with detailed analytics and performance tracking tools.",
-      "image": "https://cdn.10minuteschool.com/md/images/images/skills/career-guidance-course-thumbnail-16-9.jpg"
-    }
-    
-  ]
+[
+  {
+    "Id": "1ac400fd-98bd-46ee-b4e8-d2f983f2bbc2",
+    "price": 20,
+    "title": "Video Lessons",
+    "description": "Access high-quality video lessons covering a wide range of subjects and topics.",
+    "image": "https://cdn.10minuteschool.com/md/images/thumbnails/skills/ghore-boshe-Spoken-English-course-thumbnail-by-Munzereen-Shahid-16x9.jpg"
+  },
+  {
+    "Id": "38332e95-7f66-45af-829b-c51b3d23caba",
+    "price": 30,
+    "title": "Interactive Quizzes",
+    "description": "Engage in interactive quizzes to reinforce learning and test your knowledge.",
+    "image": "https://cdn.10minuteschool.com/md/images/Thumbnails/sohoje_spoken_arbi_16x9.jpg"
+  },
+  {
+    "Id": "39487b87-09e0-4e6c-acfa-6ac907e0742a",
+    "price": 50,
+    "title": "Live Tutoring",
+    "description": "Connect with experienced tutors for live one-on-one or group tutoring sessions.",
+    "image": "https://cdn.10minuteschool.com/md/images/thumbnails/skills/microsoft-excel-course-thumbnail-by-abtahi-iptesam-16x9.jpg"
+  },
+  {
+    "Id": "a3ef9e36-c7ee-48c5-99e2-6f966157e116",
+    "price": 60,
+    "title": "Practice Exams",
+    "description": "Take practice exams to prepare for upcoming tests and examinations.",
+    "image": "https://cdn.10minuteschool.com/md/images/thumbnails/skills/facebook-marketing-course-thumbnail-by-ayman-sadiq-sadman-sadik-16x9.jpg"
+  },
+  {
+    "Id": "1280cb1b-9115-45c5-babd-601febd462de",
+    "price": 70,
+    "title": "Study Plans",
+    "description": "Get personalized study plans tailored to your academic goals and schedule.",
+    "image": "https://cdn.10minuteschool.com/md/images/skills/thumbnails/job-ready-academy-thumbnail-sqr.jpg"
+  },
+  {
+    "Id": "14f0a9d0-49f9-4020-a656-e23b7ac59216",
+    "price": 80,
+    "title": "Progress Tracking",
+    "description": "Monitor your progress with detailed analytics and performance tracking tools.",
+    "image": "https://cdn.10minuteschool.com/md/images/images/skills/career-guidance-course-thumbnail-16-9.jpg"
+  }
+]

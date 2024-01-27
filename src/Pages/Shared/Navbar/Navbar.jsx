@@ -2,24 +2,25 @@ import { Link, NavLink } from 'react-router-dom';
 import { IoMenuSharp } from 'react-icons/io5';
 import { useEffect, useState } from 'react';
 import NavPages from './PageLists.json';
-import { Player } from '@lottiefiles/react-lottie-player';
+import { Player } from "@lottiefiles/react-lottie-player";
 import useAuth from './../../../Hooks/useAuth/useAuth';
 
 const Navbar = () => {
   // const user = false;
   const [stickyClass, setStickyClass] = useState('');
-  const { user, logOut } = useAuth();
+  const { user, logOut } = useAuth()
+
 
   // Handle Logout Function to logout the User
   const handleLogOut = () => {
     logOut()
-      .then((result) => {
-        console.log(result.user);
+      .then(result => {
+        console.log(result.user)
       })
-      .then((error) => {
-        console.log(error);
-      });
-  };
+      .then(error => {
+        console.log(error)
+      })
+  }
 
   useEffect(() => {
     window.addEventListener('scroll', stickNavbar);
@@ -51,14 +52,14 @@ const Navbar = () => {
           <li key={index}>
             <details>
               <summary>{page?.page}</summary>
-              <ul className=" text-white z-10">
+              <ul className=" text-white ">
                 {page.submenu &&
                   page?.submenu.map((menu) => {
                     return (
                       <li key={menu?.id}>
                         <NavLink
                           style={activeRouteStyle}
-                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium "
+                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
                           to={menu?.href}
                         >
                           {menu?.page}
@@ -89,7 +90,7 @@ const Navbar = () => {
   return (
     <>
       <div className={`z-50 top-0 mx-auto pt-3  w-full text-white ${stickyClass}`}>
-        <div className={`navbar max-w-screen-2xl mx-auto flex justify-between items-center`}>
+        <div className={`navbar mx-auto flex justify-between items-center`}>
           {/* Nav Logo */}
           <div>
             <div className="dropdown">
@@ -105,7 +106,7 @@ const Navbar = () => {
                 {Navlinks}
               </ul>
             </div>
-            <NavLink to="/" className="flex items-center justify-center normal-case lg:pl-5">
+            <NavLink to="/" className="flex items-center justify-center normal-case lg:pl-2">
               <Player
                 className="w-16"
                 autoplay
@@ -113,9 +114,7 @@ const Navbar = () => {
                 src="https://lottie.host/f3cfffce-06c0-498f-92b2-3c564fb9f40f/DVZgFbgX9m.json"
               ></Player>
               <span className="text-white font-semibold hover:">
-                <span className="text-base md:text-lg lg:text-xl text-white font-bold font-cinzel">
-                  BD Quick School{' '}
-                </span>
+                <span className="text-xl text-white font-bold font-cinzel">BD Quick School </span>
               </span>
             </NavLink>
           </div>
@@ -131,7 +130,7 @@ const Navbar = () => {
           {user ? (
             <>
               <div className="dropdown dropdown-end tooltip tooltip-left">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 lg:pr-1">
                   <div className="hidden md:block">
                     <h1 className="font-lora font-bold text-base">{user?.displayName}</h1>
                   </div>

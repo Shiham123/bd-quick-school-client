@@ -44,7 +44,7 @@ const MyProfile = () => {
                             <h2 className=" text-xl text-white font-lora font-semibold">{user?.email}</h2>
                         </div>
                     </div>
-                    <div className="mt-8 flex flex-col md:flex-row lg:items-center gap-8 md:gap-64 lg:gap-96">
+                    <div className="mt-8 flex flex-col md:flex-row lg:items-center gap-8 md:gap-64 lg:gap-[375px]">
                         <div>
                             <h3 className="text-lg font-lora font-medium text-white/60">Student ID</h3>
                             <h2 className=" text-xl text-white font-lora font-semibold">{user?.displayName}</h2>

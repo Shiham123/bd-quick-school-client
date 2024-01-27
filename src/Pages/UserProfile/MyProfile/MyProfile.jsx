@@ -2,6 +2,7 @@ import { FiEdit } from "react-icons/fi";
 import useAuth from './../../../Hooks/useAuth/useAuth';
 import { useState } from "react";
 import EditUserProfile from "../../EditUserProfile/EditUserProfile";
+import { CiLock } from "react-icons/ci";
 
 const MyProfile = () => {
     const { user } = useAuth()
@@ -20,7 +21,7 @@ const MyProfile = () => {
     return (
         <div className="lg:max-w-5xl mx-auto mt-10 mb-10 p-5 bg-gradient-to-b from-[#42275a] to-[#734b6d] rounded-lg">
             {/* My Profile */}
-            <div className="flex items-center justify-between border-b-2 border-dashed pb-4">
+            <div className="flex items-center justify-between border-b-2 border-dashed border-b-white/30 pb-4">
                 <h1 className="text-2xl font-poppins font-semibold text-white">My Profile</h1>
                 <button onClick={handleEditClick}>
                     <FiEdit className="text-white text-2xl" />
@@ -57,7 +58,7 @@ const MyProfile = () => {
                 </div>
             )}
             {/* Device Activity */}
-            <div className="flex items-center justify-between border-b-2 border-dashed pb-4 mt-16 mb-10">
+            <div className="flex items-center justify-between border-b-2 border-dashed border-b-white/30 pb-4 mt-16 mb-10">
                 <h1 className="text-2xl font-poppins font-semibold text-white">Device Activity</h1>
             </div>
         </div>

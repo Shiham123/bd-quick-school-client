@@ -40,6 +40,7 @@ const Register = () => {
       .then(result => {
         handleUpdateProfile(data.name, res.data.data.display_url)
           .then(() => {
+            console.log(result)
             // Create User Entry in the database
             const usersInfo = {
               name: data.name,

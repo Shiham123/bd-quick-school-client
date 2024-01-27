@@ -9,7 +9,7 @@ const MyProfile = () => {
                 <h1 className="text-2xl font-poppins font-semibold text-white">My Profile</h1>
                 <FiEdit className="text-white text-2xl" />
             </div>
-            <div className=" mt-8 lg:mt-5 flex flex-col md:flex-row lg:items-center gap-8 md:gap-64 lg:gap-96">
+            <div className=" mt-8 flex flex-col md:flex-row lg:items-center gap-8 md:gap-64 lg:gap-96">
                 <div>
                     <h3 className="text-lg font-lora font-medium text-white/60">Full Name</h3>
                     <h2 className=" text-xl text-white font-lora font-semibold">{user?.displayName}</h2>
@@ -19,9 +19,9 @@ const MyProfile = () => {
                     <h2 className=" text-xl text-white font-lora font-semibold">{user?.email}</h2>
                 </div>
             </div>
-            <div className="mt-8 md:mt-5 flex flex-col md:flex-row lg:items-center gap-8 md:gap-64 lg:gap-96">
+            <div className="mt-8 flex flex-col md:flex-row lg:items-center gap-8 md:gap-64 lg:gap-96">
                 <div>
-                    <h3 className="text-lg font-lora font-medium text-white/60">Full Name</h3>
+                    <h3 className="text-lg font-lora font-medium text-white/60">Student ID</h3>
                     <h2 className=" text-xl text-white font-lora font-semibold">{user?.displayName}</h2>
                 </div>
                 <div>

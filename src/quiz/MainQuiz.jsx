@@ -1,30 +1,39 @@
 import { useEffect, useState } from 'react';
 import StartQuiz from './components/StartQuiz';
 import QuizPage from './components/QuizPage';
+import axios from 'axios';
 
 const MainQuiz = () => {
   const [quiz, setQuiz] = useState([]);
 
   const [showStart, setShowStart] = useState(true);
   const [showQuiz, setShowQuiz] = useState(false);
+  const [question, setQuestion] = useState({});
+  const [questionIndex, setQuestionIndex] = useState(0);
 
   useEffect(() => {
-    fetch('/quiz.json')
-      .then((response) => response.json())
+    axios('/quiz.json')
       .then((data) => {
-        setQuiz(data);
+        setQuiz(data.data);
       })
       .catch((error) => console.log(error));
   }, []);
+
+  useEffect(() => {
+    if (quiz.length > questionIndex) {
+      setQuestion(quiz[questionIndex]);
+    }
+  }, [question, questionIndex, quiz]);
 
   const startQuiz = () => {
     setShowStart(false);
     setShowQuiz(true);
   };
+
   return (
     <>
       <StartQuiz startQuiz={startQuiz} showStart={showStart} />
-      <QuizPage showQuiz={showQuiz} quiz={quiz} />
+      <QuizPage showQuiz={showQuiz} quiz={quiz} question={question} />
     </>
   );
 };

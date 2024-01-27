@@ -19,6 +19,7 @@ import QuizBtn from '../../quiz/QuizBtn';
 const ServiceDetails = () => {
   const { id } = useParams();
   const [course, setCourse] = useState(null);
+
   const [switchQuiz, setSwitchQuiz] = useState(false);
 
   useEffect(() => {

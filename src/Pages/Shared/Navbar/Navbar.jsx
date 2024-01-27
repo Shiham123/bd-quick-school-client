@@ -2,24 +2,25 @@ import { Link, NavLink } from 'react-router-dom';
 import { IoMenuSharp } from 'react-icons/io5';
 import { useEffect, useState } from 'react';
 import NavPages from './PageLists.json';
-import { Player } from '@lottiefiles/react-lottie-player';
+import { Player } from "@lottiefiles/react-lottie-player";
 import useAuth from './../../../Hooks/useAuth/useAuth';
 
 const Navbar = () => {
   // const user = false;
   const [stickyClass, setStickyClass] = useState('');
-  const { user, logOut } = useAuth();
+  const { user, logOut } = useAuth()
+
 
   // Handle Logout Function to logout the User
   const handleLogOut = () => {
     logOut()
-      .then((result) => {
-        console.log(result.user);
+      .then(result => {
+        console.log(result.user)
       })
-      .then((error) => {
-        console.log(error);
-      });
-  };
+      .then(error => {
+        console.log(error)
+      })
+  }
 
   useEffect(() => {
     window.addEventListener('scroll', stickNavbar);
@@ -31,8 +32,8 @@ const Navbar = () => {
       // window height changed for the demo
       windowHeight > 50
         ? setStickyClass(
-            `fixed top-0 transition bg-gradient-to-b from-[#42275a] to-[#734b6d]  bg-opacity-100 duration-1000 ease-in-out`
-          )
+          `fixed top-0 transition bg-gradient-to-b from-[#42275a] to-[#734b6d]  bg-opacity-100 duration-1000 ease-in-out`
+        )
         : setStickyClass('');
     }
   };
@@ -105,7 +106,7 @@ const Navbar = () => {
                 {Navlinks}
               </ul>
             </div>
-            <NavLink to="/" className="flex items-center justify-center normal-case lg:pl-5">
+            <NavLink to="/" className="flex items-center justify-center normal-case lg:pl-2">
               <Player
                 className="w-16"
                 autoplay
@@ -129,7 +130,7 @@ const Navbar = () => {
           {user ? (
             <>
               <div className="dropdown dropdown-end tooltip tooltip-left">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 lg:pr-1">
                   <div className="hidden md:block">
                     <h1 className="font-lora font-bold text-base">{user?.displayName}</h1>
                   </div>
@@ -139,26 +140,46 @@ const Navbar = () => {
                     </div>
                   </label>
                 </div>
+                {/* Dropdown Menu */}
                 <ul
                   tabIndex={0}
-                  className=" menu-sm dropdown-content mt-3 z-[1] shadow rounded-lg w-52  text-white btn-toggle-style bg-gradient-to-b from-[#42275a] to-[#734b6d]"
+                  className=" menu-sm dropdown-content mt-3 z-[1] shadow border border-white rounded-lg w-80 px-10  text-white btn-toggle-style bg-gradient-to-b from-[#42275a] to-[#734b6d] overflow-hidden"
                 >
-                  <li className="hover:font-semibold py-2 border-b">{user?.displayName}</li>
-                  <li className="hover:font-semibold  border-b py-2">
-                    <button>
-                      <Link to="/dashboard">Dashboard</Link>
-                    </button>
-                  </li>
+                  <label tabIndex={0} className="btn btn-ghost btn-circle avatar mb-28 mt-5">
+                    <div className="w-24 rounded-full">
+                      <img src={user?.photoURL} alt="userPhoto" />
+                    </div>
+                    <h1 className="font-lora font-bold text-base mb-2" style={{ whiteSpace: "nowrap" }}>{user?.displayName}</h1>
+                    <Link to='/myprofile'><button className='btn btn-outline text-white' style={{ whiteSpace: "nowrap" }}>View Profile</button></Link>
+                  </label>
+                  <NavLink><li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">My Courses</li></NavLink>
+                  <hr />
+                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">Bookmark</li>
+                  <hr />
+                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">Certificate</li>
+                  <hr />
+                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">Payment History</li>
+                  <hr />
+                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">Payment Management</li>
+                  <hr />
+                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">Student Analytics</li>
+                  <hr />
+                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">Announcement</li>
+                  <hr />
+                  <NavLink to="/dashboard"><li className="hover:font-semibold  py-1 text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
+                    Dashboard
+                  </li></NavLink>
+                  <hr />
 
-                  <li className="hover:font-semibold py-2">
-                    <button onClick={handleLogOut}>Logout</button>
-                  </li>
+                  <div className="hover:font-semibold pt-2 pb-3 text-start font-lora font-medium ">
+                    <button onClick={handleLogOut} className='hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000'>Logout</button>
+                  </div>
                 </ul>
               </div>
             </>
           ) : (
             <div>
-              <NavLink to="/login" className="lg:pr-5">
+              <NavLink to="/login">
                 <button className="relative z-10 md:text-lg rounded-lg border border-white px-4 py-2 btn-outline text-white font-poppins">
                   Join Us
                 </button>

@@ -51,6 +51,7 @@ const Login = () => {
         console.log(result.user);
         const userInfo = {
           name: result.user?.displayName,
+          phone: result.user?.phoneNumber ? result.user.phoneNumber : 'N/A',
           email: result.user?.email,
           photoURL: result.user?.photoURL,
           role: 'user',
@@ -73,6 +74,7 @@ const Login = () => {
       console.log(result.user);
       const userInfo = {
         name: result.user?.displayName,
+        phone: result.user?.phoneNumber ? result.user.phoneNumber : 'N/A',
         email: result.user?.email,
         photoURL: result.user?.photoURL,
         role: 'user',

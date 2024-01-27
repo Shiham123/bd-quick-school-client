@@ -1,39 +1,42 @@
+/* eslint-disable react/prop-types */
+
+/* eslint-disable no-unused-vars */
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { AuthContext } from '../../Providers/Authprovider';
+import axios from 'axios';
 
 const PayDataFrom = ({ course, id }) => {
   const { register, handleSubmit } = useForm();
-
+  const { user } = useContext(AuthContext);
   const onSubmit = async (data) => {
-    console.log(data);
     data.productId = id;
+    data.name = user.name;
+    data.email = user.email;
 
-    fetch('http://localhost:5000/api/v1/order', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        window.location.replace(result.url);
-        console.log(result);
-      });
+    try {
+      const response = await axios.post('http://localhost:5000/api/v1/order', data);
+      const result = response.data;
+      window.location.replace(result.url);
+      console.log(result);
+    } catch (error) {
+      console.error('Error:', error);
+    }
 
-    const sarvayItem = { Name: data.Name, Subject: data.Subject };
-    console.log(sarvayItem);
   };
   return (
     <>
-      <div className="">
-        <form onSubmit={handleSubmit(onSubmit)} className="flex gap-4 flex-col">
-          <div className="w-full">
-            <label htmlFor="name" className="text-white font-poppins font-semibold text-2xl">
-              Name
+      <div className=" max-w-screen-2xl mx-auto">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {/* <div className="form-control w-full ">
+            <label className="label">
+              <span className="label-text">Name</span>
             </label>
             <input
               type="text"
-              placeholder="type your name"
-              className="w-full text-xl font-poppins text-black outline-none px-4 py-2 rounded-lg my-4"
+              placeholder="Name"
               {...register('Name', { required: true })}
+              className="input input-bordered w-full "
             />
           </div>
           <div className="flex gap-5">
@@ -44,15 +47,15 @@ const PayDataFrom = ({ course, id }) => {
               <input
                 type="text"
                 placeholder="Subject"
-                className="w-full text-xl font-poppins text-black outline-none px-4 py-2 rounded-lg my-4"
                 {...register('Subject', { required: true })}
+                className="input input-bordered w-full "
               />
             </div>
-          </div>
+          </div> */}
 
           <button
             type="submit"
-            className="bg-white py-4 rounded-lg text-2xl font-semibold font-poppins hover:bg-transparent border-[1px] border-white hover:text-white duration-200 transition-all"
+            className="w-full py-2.5 my-6  px-4 text-xl font-semibold rounded-full bg-yellow-600 focus:outline-none hover:bg-yellow-700 hover:text-gray-200"
           >
             Pay
           </button>

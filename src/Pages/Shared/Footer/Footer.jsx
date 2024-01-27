@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="container mx-auto mt-10">
         <div className="flex flex-col lg:flex-row lg:gap-28">
           <div className="mb-5  lg:ml-0">
-            <div className="flex items-center ml-28 md:ml-5 lg:ml-0 gap-5 md:gap-3 mb-3">
+            <div className="flex items-center ml-14 md:ml-5 lg:ml-0 gap-5 md:gap-3 mb-3">
               <Player
                 className="w-20"
                 autoplay

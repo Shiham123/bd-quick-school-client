@@ -38,7 +38,7 @@ const Courses = () => {
 
   return (
     <div>
-      <div className="px-20">
+      <div className=" lg:px-20">
         <div className="mt-16">
           <div className="container mx-auto">
             <h2 className="text-2xl lg:text-4xl text-center lg:text-start font-bold font-poppins text-white mb-5 ">
@@ -50,15 +50,15 @@ const Courses = () => {
             </p>
           </div>
         </div>
-        <div className="flex justify-between relative">
+        <div className="flex justify-between  items-center relative z-10 ">
           <button
-            className="custom-button prev rounded-full border max-w-full px-[2px] py-[2px] text-white lg:text-5xl md:text-3xl text-xl absolute lg:top-[12rem] lg:left-10 md:top-[21rem] md:left-10 top-[30rem] left-0"
+            className="custom-button lg:block hidden prev rounded-full border max-w-full px-[2px] py-[2px] text-white lg:text-5xl md:text-3xl text-xl absolute lg:top-[12rem] lg:left-10 md:top-[21rem] md:left-10 top-[30rem] left-0"
             onClick={goPrev}
           >
             <IoIosArrowBack></IoIosArrowBack>
           </button>
           <button
-            className="custom-button next rounded-full border max-w-full px-[2px] py-[2px] lg:text-5xl md:text-3xl text-xl text-white absolute lg:top-[12rem] lg:right-10 md:top-[21rem] md:right-10 top-[30rem] right-0"
+            className="custom-button lg:block hidden next rounded-full border max-w-full px-[2px] py-[2px] lg:text-5xl md:text-3xl text-xl text-white absolute lg:top-[12rem] lg:right-10 md:top-[21rem] md:right-10 top-[30rem] right-0"
             onClick={goNext}
           >
             <IoIosArrowForward></IoIosArrowForward>
@@ -67,7 +67,7 @@ const Courses = () => {
         <div className="mt-10">
           <Swiper
             slidesPerView={1}
-            spaceBetween={5}
+            spaceBetween={3}
             pagination={{ clickable: true }}
             breakpoints={{
               640: { slidesPerView: 2, spaceBetween: 10 },
@@ -79,7 +79,7 @@ const Courses = () => {
           >
             {posts.map((post) => (
               <SwiperSlide key={post.Id}>
-                <div className="flex justify-center items-center">
+                <div className="flex justify-center items-center ">
                   <img className="rounded-md" src={post.ImageUrl} alt={post.Name} />
                 </div>
               </SwiperSlide>
@@ -87,7 +87,7 @@ const Courses = () => {
           </Swiper>
 
           {/*  */}
-          <div className="lg:mt-20 md:mt-[15rem] mt-[10rem] text-textColorOne flex justify-center items-center">
+          <div className="lg:mt-20 md:mt-[15rem] mt-[5rem] text-textColorOne flex justify-center items-center">
             <p className="md:text-sm text-sm lg:text-xl font-medium font-poppins m-auto text-center flex  md:flex md:flex-col lg:flex lg:flex-row justify-center items-center">
               Click to Enroll in 30+ Free Courses
               <MdKeyboardArrowRight className="text-xl mt-1" />

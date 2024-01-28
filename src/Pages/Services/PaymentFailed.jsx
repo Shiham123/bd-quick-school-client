@@ -4,7 +4,7 @@ import React from 'react';
 const PaymentFailed = () => {
   return (
     <div>
-      <h2>Your payment Failed</h2>
+      <h2 className='text-center text-3xl text-white '>Your payment Failed</h2>
     </div>
   );
 };

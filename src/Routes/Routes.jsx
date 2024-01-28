@@ -10,7 +10,7 @@ import ServiceDetails from '../Pages/Services/ServiceDetails';
 import PaymentSuccses from '../Pages/Services/PaymentSuccses';
 import PaymentFailed from '../Pages/Services/PaymentFailed';
 import PayDataFrom from '../Pages/Services/PayDataFrom';
-import PrivateRoute from './PrivateRoute';
+// import PrivateRoute from './PrivateRoute';
 
 const Router = createBrowserRouter([
   {
@@ -24,12 +24,14 @@ const Router = createBrowserRouter([
       { path: 'login', element: <Login /> },
       { path: 'services', element: <Services /> },
       {
-        path: '/serviceDetails/:id',
-        element: (
-          <PrivateRoute>
-            <ServiceDetails />
-          </PrivateRoute>
-        ),
+        path: '/ServiceDetails/:id',
+        element: <ServiceDetails />,
+        // loader: async ({ params }) => {
+        //   const response = await fetch('/public/Services.json');
+        //   const data = await response.json();
+        //   const selectedService = data.find((service) => service.Id === params.id);
+        //   return selectedService;
+        // },
       },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
       { path: '/payment/succsess/:tranID', element: <PaymentSuccses /> },

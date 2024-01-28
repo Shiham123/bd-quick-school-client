@@ -17,6 +17,7 @@ const EditUserProfile = () => {
     const [currentPassword, setCurrentPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confirmNewPassword, setConfirmNewPassword] = useState("");
+    const [passwordError, setPasswordError] = useState(null);
 
 
     // Change password Function Call
@@ -38,10 +39,12 @@ const EditUserProfile = () => {
             setCurrentPassword("");
             setNewPassword("");
             setConfirmNewPassword("");
+            setPasswordError(null);
 
         } catch (error) {
             // Handle error (e.g., incorrect current password, Firebase Auth error)
             toast.error("Error changing password:", error.message);
+            setPasswordError("Current password is incorrect");
         }
     };
 
@@ -118,6 +121,11 @@ const EditUserProfile = () => {
                         </div>
                         <input className="py-2 w-96 md:w-[723px] lg:w-[981px] pl-3 rounded-lg outline-none border-[#eaaaff] text-[#eaaaff]" type="password" name="" id="" placeholder="Current Password" value={currentPassword}
                             onChange={(e) => setCurrentPassword(e.target.value)} />
+                        {passwordError && (
+                            <div className="text-red-500 mt-2">
+                                {passwordError}
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div className=" mt-8 flex flex-col md:flex-row items-center gap-5 lg:gap-10">

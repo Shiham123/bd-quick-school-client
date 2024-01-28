@@ -8,11 +8,11 @@ const QuizPage = (props) => {
     allQuestion,
     questionIndex,
     nextQuestion,
-    startOver,
     checkAnswer,
     buttonDisabled,
     correctAnswer,
     selectedAnswer,
+    showingResult,
   } = props;
 
   return (
@@ -59,7 +59,7 @@ const QuizPage = (props) => {
                 disabled={!selectedAnswer}
               />
             ) : (
-              <QuizButton btnText="start over" onClick={startOver} disabled={!selectedAnswer} />
+              <QuizButton btnText="start over" onClick={showingResult} disabled={!selectedAnswer} />
             )}
           </div>
         </div>

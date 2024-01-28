@@ -2,17 +2,18 @@ import { useEffect, useState } from 'react';
 import StartQuiz from './components/StartQuiz';
 import QuizPage from './components/QuizPage';
 import axios from 'axios';
+import QuizResult from './components/QuizResult';
 
 const MainQuiz = () => {
-  const [quiz, setQuiz] = useState([]);
-
-  const [showStart, setShowStart] = useState(true),
+  const [quiz, setQuiz] = useState([]),
+    [showStart, setShowStart] = useState(true),
     [showQuiz, setShowQuiz] = useState(false),
     [allQuestion, setAllQuestion] = useState({}),
     [questionIndex, setQuestionIndex] = useState(0),
     [selectedAnswer, setSelectedAnswer] = useState(''),
     [correctAnswer, setCorrectAnswer] = useState(''),
-    [buttonDisabled, setButtonDisabled] = useState(false);
+    [buttonDisabled, setButtonDisabled] = useState(false),
+    [showResult, setShowResult] = useState(false);
 
   useEffect(() => {
     axios('/quiz.json')
@@ -28,6 +29,10 @@ const MainQuiz = () => {
     }
   }, [allQuestion, questionIndex, quiz]);
 
+  const startQuiz = () => {
+    setShowStart(false), setShowQuiz(true);
+  };
+
   const checkAnswer = (event, selected) => {
     if (!selectedAnswer) {
       setCorrectAnswer(allQuestion.answer), setSelectedAnswer(selected), setButtonDisabled(true);
@@ -41,9 +46,7 @@ const MainQuiz = () => {
   };
 
   const nextQuestion = () => {
-    setSelectedAnswer('');
-    setCorrectAnswer('');
-    setButtonDisabled(false);
+    setSelectedAnswer(''), setCorrectAnswer(''), setButtonDisabled(false);
 
     const wrongBtn = document.querySelector('button.bg-error');
     wrongBtn?.classList.remove('bg-error');
@@ -55,10 +58,9 @@ const MainQuiz = () => {
   };
 
   const startOver = () => {
-    setSelectedAnswer('');
-    setCorrectAnswer('');
-    setButtonDisabled(false);
-    setQuestionIndex(0);
+    setShowStart(false), setShowResult(false), setShowQuiz(true);
+
+    setSelectedAnswer(''), setCorrectAnswer(''), setButtonDisabled(false), setQuestionIndex(0);
 
     const wrongBtn = document.querySelector('button.bg-error');
     wrongBtn?.classList.remove('bg-error');
@@ -67,9 +69,8 @@ const MainQuiz = () => {
     correctBtn?.classList.remove('bg-success');
   };
 
-  const startQuiz = () => {
-    setShowStart(false);
-    setShowQuiz(true);
+  const showingResult = () => {
+    setShowResult(true), setShowQuiz(false), setShowStart(false);
   };
 
   return (
@@ -85,8 +86,9 @@ const MainQuiz = () => {
         selectedAnswer={selectedAnswer}
         nextQuestion={nextQuestion}
         buttonDisabled={buttonDisabled}
-        startOver={startOver}
+        showingResult={showingResult}
       />
+      <QuizResult showResult={showResult} quiz={quiz} startOver={startOver} />
     </>
   );
 };

@@ -105,7 +105,7 @@ const EditUserProfile = () => {
                                 <img className="object-cover w-28 h-28 rounded-full" src={user?.photoURL} alt="" />
                             </div>
                             <div className="flex justify-end mt-4">
-                                <button className="border px-3 py-1 text-white rounded-md text-base disabled btn-grad ">Save Changes</button>
+                                <button className="border px-3 py-1 text-white rounded-md text-base btn-grad ">Save Changes</button>
                             </div>
                         </div>
 
@@ -116,6 +116,7 @@ const EditUserProfile = () => {
                 <div className="flex items-center justify-between border-b-2 border-dashed border-b-white/30 pb-4 mt-16 mb-10">
                     <h1 className="text-2xl font-poppins font-semibold text-white">Password</h1>
                 </div>
+                {/* Current Password */}
                 <div className=" mt-8 flex flex-col md:flex-row items-center gap-5 lg:gap-10">
                     <div>
                         <div className="flex items-center gap-1 mb-1 font-lora">
@@ -124,6 +125,7 @@ const EditUserProfile = () => {
                         </div>
                         <input className="py-2 w-96 md:w-[723px] lg:w-[981px] pl-3 rounded-lg outline-none border-[#eaaaff] text-[#eaaaff]" type="password" name="" id="" placeholder="Current Password" value={currentPassword}
                             onChange={(e) => setCurrentPassword(e.target.value)} />
+                        {/* Show Error Current Password Is wronf */}
                         {passwordError && (
                             <div className="text-red-500 mt-2">
                                 {passwordError}
@@ -131,6 +133,7 @@ const EditUserProfile = () => {
                         )}
                     </div>
                 </div>
+                {/* New Password */}
                 <div className=" mt-8 flex flex-col md:flex-row items-center gap-5 lg:gap-10">
                     <div>
                         <div className="flex items-center gap-1 mb-1 font-lora">
@@ -140,6 +143,7 @@ const EditUserProfile = () => {
                         <input className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none border-[#eaaaff] text-[#eaaaff]" type="password" name="" id="" placeholder="New Password" value={newPassword}
                             onChange={(e) => setNewPassword(e.target.value)} />
                     </div>
+                    {/* Retype New Password */}
                     <div>
                         <div className="flex items-center gap-1 mb-1 font-lora">
                             <CiLock className="text-xl text-white" />
@@ -147,6 +151,7 @@ const EditUserProfile = () => {
                         </div>
                         <input className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none border-[#eaaaff] text-[#eaaaff]" type="password" name="" id="" placeholder="Retype Password" value={confirmNewPassword}
                             onChange={(e) => setConfirmNewPassword(e.target.value)} />
+                        {/* Show Error The password and confirmation password do not match.*/}
                         {confirmationError && (
                             <div className="text-red-500 mt-2">
                                 {confirmationError}

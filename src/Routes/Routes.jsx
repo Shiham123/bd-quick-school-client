@@ -24,7 +24,7 @@ const Router = createBrowserRouter([
       { path: 'register', element: <Register /> },
       { path: 'login', element: <Login /> },
       { path: 'services', element: <Services /> },
-      { path: 'myprofile', element: <MyProfile /> },
+      { path: 'myprofile/:email', element: <MyProfile />, loader: ({ params }) => fetch(`http://localhost:5000/api/v1/useremail/${params.email}`) },
       {
         path: '/serviceDetails/:id',
         element: (

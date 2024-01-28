@@ -150,7 +150,7 @@ const Navbar = () => {
                       <img src={user?.photoURL} alt="userPhoto" />
                     </div>
                     <h1 className="font-lora font-bold text-base mb-2" style={{ whiteSpace: "nowrap" }}>{user?.displayName}</h1>
-                    <Link to='/myprofile'><button className='btn btn-outline text-white' style={{ whiteSpace: "nowrap" }}>View Profile</button></Link>
+                    <Link to={`myprofile/${user?.email}`}><button className='btn btn-outline text-white' style={{ whiteSpace: "nowrap" }}>View Profile</button></Link>
                   </label>
                   <NavLink><li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">My Courses</li></NavLink>
                   <hr />

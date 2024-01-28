@@ -9,16 +9,65 @@ import useAuth from "../../Hooks/useAuth/useAuth";
 import '../../Pages/EditUserProfile/edithover.css'
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { useLoaderData } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
 
+// image hosting api
+const image_Hosting_Key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_Hosting_Api = `https://api.imgbb.com/1/upload?key=${image_Hosting_Key}`
 
 const EditUserProfile = () => {
     const { user, changePassword } = useAuth()
+    const axiosPublic = useAxiosPublic()
+    const { register, handleSubmit, reset } = useForm()
+    const users = useLoaderData()
+    // console.log(users)
+    const { _id, name, phone, email, photoURL } = users[0]
+    // console.log(name)
     // managing State By UseState
     const [currentPassword, setCurrentPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confirmNewPassword, setConfirmNewPassword] = useState("");
     const [passwordError, setPasswordError] = useState(null);
     const [confirmationError, setConfirmationError] = useState(null);
+
+
+    const onSubmit = async (data) => {
+        let res
+        console.log(data)
+        if (data?.photoURL?.[0]) {
+            const imageFile = { image: data.photoURL[0] }
+            res = await axiosPublic.post(image_Hosting_Api, imageFile, {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                }
+            })
+        }
+
+        // console.log(res.data)
+
+
+        const Items = {
+            photoURL: res ? res.data.data.display_url : null,
+            name: data.name,
+            phone: data.phone,
+
+        }
+        console.log(Items)
+        if (!Items.photoURL) {
+            delete Items.photoURL
+        }
+        const itemRes = await axiosPublic.put(`/api/v1/useremail/${users[0].email}`, Items)
+        console.log(itemRes.data)
+        if (itemRes.data.modifiedCount > 0) {
+            toast.success('Your Profile have been updated')
+        }
+
+    }
+
+
+
 
 
     // Change password Function Call
@@ -55,63 +104,65 @@ const EditUserProfile = () => {
         <div>
             <div>
 
-                <div className=" mt-8 flex flex-col md:flex-row items-center gap-5 lg:gap-10">
-                    <div>
-                        <div className="flex items-center gap-1 mb-1 font-lora">
-                            <GoPerson className="text-xl text-white" />
-                            <h3 className="text-lg  font-medium text-white">Full Name</h3>
-                        </div>
-                        <input className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none" type="text" name="" id="" placeholder="Name Here" />
-                    </div>
-                    <div>
-                        <div className="flex items-center gap-1 mb-1 font-lora">
-                            <FiMail className="text-xl text-white" />
-                            <h3 className="text-lg  font-medium text-white">Email</h3>
-                        </div>
-                        <input className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none" type="text" name="" id="" />
-                    </div>
-
-                </div>
-                <div className=" mt-8 flex flex-col md:flex-row items-center gap-5 lg:gap-10">
-                    <div>
-                        <div className="flex items-center gap-1 mb-1 font-lora">
-                            <PiStudent className="text-xl text-white" />
-                            <h3 className="text-lg  font-medium text-white">Student ID</h3>
-                        </div>
-                        <input className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none" type="text" name="" id="" placeholder="Name Here" />
-                    </div>
-                    <div>
-                        <div className="flex items-center gap-1 mb-1 font-lora">
-                            <FaMobileAlt className="text-xl text-white" />
-                            <h3 className="text-lg  font-medium text-white">Mobile Number</h3>
-                        </div>
-                        <input className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none" type="text" name="" id="" />
-                    </div>
-                </div>
-                <div className=" mt-8  gap-5 lg:gap-10">
-                    <div>
-                        <div className="flex items-center gap-1 mb-1 font-lora">
-                            <BsCardImage className="text-xl text-white" />
-                            <h3 className="text-lg  font-medium text-white">Profile Image</h3>
-                        </div>
-
-                        <div className="font-lora">
-                            <label for="dropzone-file" className="flex items-center gap-1">
-                                <FiUpload className="text-lg text-white" />
-                                <h3 className="text-base  font-medium text-white">Change Profile Image</h3>
-                            </label>
-                            <input id="dropzone-file" type="file" className="hidden" />
-                            <div className="mt-2">
-                                <img className="object-cover w-28 h-28 rounded-full" src={user?.photoURL} alt="" />
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className=" mt-8 flex flex-col md:flex-row items-center gap-5 lg:gap-10">
+                        <div>
+                            <div className="flex items-center gap-1 mb-1 font-lora">
+                                <GoPerson className="text-xl text-white" />
+                                <h3 className="text-lg  font-medium text-white">Full Name</h3>
                             </div>
-                            <div className="flex justify-end mt-4">
-                                <button className="border px-3 py-1 text-white rounded-md text-base btn-grad ">Save Changes</button>
+                            <input {...register('name')} className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none" type="text" id="" placeholder="Name Here" defaultValue={name} />
+                        </div>
+                        <div>
+                            <div className="flex items-center gap-1 mb-1 font-lora">
+                                <FiMail className="text-xl text-white" />
+                                <h3 className="text-lg  font-medium text-white">Email</h3>
                             </div>
+                            <input className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none" type="text" id="" defaultValue={user?.email} readOnly />
                         </div>
 
                     </div>
+                    <div className=" mt-8 flex flex-col md:flex-row items-center gap-5 lg:gap-10">
+                        <div>
+                            <div className="flex items-center gap-1 mb-1 font-lora">
+                                <PiStudent className="text-xl text-white" />
+                                <h3 className="text-lg  font-medium text-white">Student ID</h3>
+                            </div>
+                            <input className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none" type="text" id="" placeholder="Name Here" />
+                        </div>
+                        <div>
+                            <div className="flex items-center gap-1 mb-1 font-lora">
+                                <FaMobileAlt className="text-xl text-white" />
+                                <h3 className="text-lg  font-medium text-white">Mobile Number</h3>
+                            </div>
+                            <input {...register('phone')} className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none" type="text" id="" defaultValue={phone} />
+                        </div>
+                    </div>
+                    <div className=" mt-8  gap-5 lg:gap-10">
+                        <div>
+                            <div className="flex items-center gap-1 mb-1 font-lora">
+                                <BsCardImage className="text-xl text-white" />
+                                <h3 className="text-lg  font-medium text-white">Profile Image</h3>
+                            </div>
 
-                </div>
+                            <div className="font-lora">
+                                <label for="dropzone-file" className="flex items-center gap-1">
+                                    <FiUpload className="text-lg text-white" />
+                                    <h3 className="text-base  font-medium text-white">Change Profile Image</h3>
+                                </label>
+                                <input {...register('photoURL')} id="dropzone-file" type="file" className="hidden" />
+                                <div className="mt-2">
+                                    <img className="object-cover w-28 h-28 rounded-full" src={user?.photoURL} alt="" />
+                                </div>
+                                <div className="flex justify-end mt-4">
+                                    <button className="border px-3 py-1 text-white rounded-md text-base btn-grad ">Save Changes</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </form>
                 {/* Password */}
                 <div className="flex items-center justify-between border-b-2 border-dashed border-b-white/30 pb-4 mt-16 mb-10">
                     <h1 className="text-2xl font-poppins font-semibold text-white">Password</h1>

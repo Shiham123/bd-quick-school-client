@@ -6,10 +6,13 @@ import axios from 'axios';
 const MainQuiz = () => {
   const [quiz, setQuiz] = useState([]);
 
-  const [showStart, setShowStart] = useState(true);
-  const [showQuiz, setShowQuiz] = useState(false);
-  const [question, setQuestion] = useState({});
-  const [questionIndex, setQuestionIndex] = useState(0);
+  const [showStart, setShowStart] = useState(true),
+    [showQuiz, setShowQuiz] = useState(false),
+    [allQuestion, setAllQuestion] = useState({}),
+    [questionIndex, setQuestionIndex] = useState(0),
+    [selectedAnswer, setSelectedAnswer] = useState(''),
+    [correctAnswer, setCorrectAnswer] = useState(''),
+    [buttonDisabled, setButtonDisabled] = useState(false);
 
   useEffect(() => {
     axios('/quiz.json')
@@ -21,9 +24,24 @@ const MainQuiz = () => {
 
   useEffect(() => {
     if (quiz.length > questionIndex) {
-      setQuestion(quiz[questionIndex]);
+      setAllQuestion(quiz[questionIndex]);
     }
-  }, [question, questionIndex, quiz]);
+  }, [allQuestion, questionIndex, quiz]);
+
+  const checkAnswer = (event, selected) => {
+    if (!selectedAnswer) {
+      setCorrectAnswer(allQuestion.answer), setSelectedAnswer(selected), setButtonDisabled(true);
+    }
+  };
+
+  const nextQuestion = () => {
+    console.log('object');
+    setQuestionIndex(questionIndex + 1);
+  };
+
+  const startOver = () => {
+    setQuestionIndex(0);
+  };
 
   const startQuiz = () => {
     setShowStart(false);
@@ -33,7 +51,17 @@ const MainQuiz = () => {
   return (
     <>
       <StartQuiz startQuiz={startQuiz} showStart={showStart} />
-      <QuizPage showQuiz={showQuiz} quiz={quiz} question={question} />
+      <QuizPage
+        showQuiz={showQuiz}
+        quiz={quiz}
+        allQuestion={allQuestion}
+        questionIndex={questionIndex}
+        checkAnswer={checkAnswer}
+        correctAnswer={correctAnswer}
+        nextQuestion={nextQuestion}
+        buttonDisabled={buttonDisabled}
+        startOver={startOver}
+      />
     </>
   );
 };

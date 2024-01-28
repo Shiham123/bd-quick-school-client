@@ -7,10 +7,40 @@ import { CiLock } from "react-icons/ci";
 import { FiUpload } from "react-icons/fi";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import '../../Pages/EditUserProfile/edithover.css'
+import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 
 const EditUserProfile = () => {
-    const { user } = useAuth()
+    const { user, changePassword } = useAuth()
+    // managing State By UseState
+    const [currentPassword, setCurrentPassword] = useState("");
+    const [newPassword, setNewPassword] = useState("");
+    const [confirmNewPassword, setConfirmNewPassword] = useState("");
+
+
+    // Change password Function Call
+    const handleChangePassword = async () => {
+        try {
+            if (newPassword !== confirmNewPassword) {
+                // Handle password mismatch
+                toast.error("New password and confirm password don't match");
+                return;
+            }
+
+            // Call the changePassword function from useAuth hook
+            await changePassword(currentPassword, newPassword);
+
+            // Password changed successfully
+            toast.success("Password changed successfully");
+
+
+            
+        } catch (error) {
+            // Handle error (e.g., incorrect current password, Firebase Auth error)
+            toast.error("Error changing password:", error.message);
+        }
+    };
 
     return (
         <div>
@@ -83,7 +113,8 @@ const EditUserProfile = () => {
                             <CiLock className="text-xl text-white" />
                             <h3 className="text-lg  font-medium text-white">Current Password</h3>
                         </div>
-                        <input className="py-2 w-96 md:w-[723px] lg:w-[981px] pl-3 rounded-lg outline-none border-[#eaaaff] text-[#eaaaff]" type="password" name="" id="" placeholder="Current Password" />
+                        <input className="py-2 w-96 md:w-[723px] lg:w-[981px] pl-3 rounded-lg outline-none border-[#eaaaff] text-[#eaaaff]" type="password" name="" id="" placeholder="Current Password" value={currentPassword}
+                            onChange={(e) => setCurrentPassword(e.target.value)} />
                     </div>
                 </div>
                 <div className=" mt-8 flex flex-col md:flex-row items-center gap-5 lg:gap-10">
@@ -92,21 +123,24 @@ const EditUserProfile = () => {
                             <CiLock className="text-xl text-white" />
                             <h3 className="text-lg  font-medium text-white">New Password</h3>
                         </div>
-                        <input className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none border-[#eaaaff] text-[#eaaaff]" type="password" name="" id="" placeholder="New Password" />
+                        <input className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none border-[#eaaaff] text-[#eaaaff]" type="password" name="" id="" placeholder="New Password" value={newPassword}
+                            onChange={(e) => setNewPassword(e.target.value)} />
                     </div>
                     <div>
                         <div className="flex items-center gap-1 mb-1 font-lora">
                             <CiLock className="text-xl text-white" />
                             <h3 className="text-lg  font-medium text-white">Confirm New Password</h3>
                         </div>
-                        <input className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none border-[#eaaaff] text-[#eaaaff]" type="password" name="" id="" placeholder="Retype Password" />
+                        <input className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none border-[#eaaaff] text-[#eaaaff]" type="password" name="" id="" placeholder="Retype Password" value={confirmNewPassword}
+                            onChange={(e) => setConfirmNewPassword(e.target.value)} />
                     </div>
                 </div>
                 <div className="flex justify-end mt-4">
-                    <button className="border px-3 py-1 text-white rounded-md text-base disabled btn-grad ">Change Password</button>
+                    <button onClick={handleChangePassword} type="submit" className="border px-3 py-1 text-white rounded-md text-base disabled btn-grad ">Change Password</button>
                 </div>
 
             </div>
+            <Toaster />
         </div>
     );
 };

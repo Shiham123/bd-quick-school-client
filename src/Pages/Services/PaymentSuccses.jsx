@@ -7,7 +7,7 @@ const PaymentSuccses = () => {
   const { tranID } = useParams();
   return (
     <div>
-      <h2 className="my-4 hidden text-white text-2xl">Paymenst Succsess {tranID} </h2>
+      <h2 className="my-4  text-white text-2xl">Paymenst Succsess {tranID} </h2>
       <div className="w-[50%] mx-auto py-6">
         <Video></Video>
       </div>

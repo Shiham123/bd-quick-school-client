@@ -34,8 +34,11 @@ const EditUserProfile = () => {
             // Password changed successfully
             toast.success("Password changed successfully");
 
+            // Reset the input fields
+            setCurrentPassword("");
+            setNewPassword("");
+            setConfirmNewPassword("");
 
-            
         } catch (error) {
             // Handle error (e.g., incorrect current password, Firebase Auth error)
             toast.error("Error changing password:", error.message);

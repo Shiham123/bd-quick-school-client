@@ -32,15 +32,39 @@ const MainQuiz = () => {
     if (!selectedAnswer) {
       setCorrectAnswer(allQuestion.answer), setSelectedAnswer(selected), setButtonDisabled(true);
     }
+
+    if (selected === allQuestion.answer) {
+      event.target.classList.add('bg-success');
+    } else {
+      event.target.classList.add('bg-error');
+    }
   };
 
   const nextQuestion = () => {
-    console.log('object');
+    setSelectedAnswer('');
+    setCorrectAnswer('');
+    setButtonDisabled(false);
+
+    const wrongBtn = document.querySelector('button.bg-error');
+    wrongBtn?.classList.remove('bg-error');
+
+    const correctBtn = document.querySelector('button.bg-success');
+    correctBtn?.classList.remove('bg-success');
+
     setQuestionIndex(questionIndex + 1);
   };
 
   const startOver = () => {
+    setSelectedAnswer('');
+    setCorrectAnswer('');
+    setButtonDisabled(false);
     setQuestionIndex(0);
+
+    const wrongBtn = document.querySelector('button.bg-error');
+    wrongBtn?.classList.remove('bg-error');
+
+    const correctBtn = document.querySelector('button.bg-success');
+    correctBtn?.classList.remove('bg-success');
   };
 
   const startQuiz = () => {
@@ -58,6 +82,7 @@ const MainQuiz = () => {
         questionIndex={questionIndex}
         checkAnswer={checkAnswer}
         correctAnswer={correctAnswer}
+        selectedAnswer={selectedAnswer}
         nextQuestion={nextQuestion}
         buttonDisabled={buttonDisabled}
         startOver={startOver}

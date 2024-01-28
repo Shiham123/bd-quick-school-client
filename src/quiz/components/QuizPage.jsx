@@ -12,6 +12,7 @@ const QuizPage = (props) => {
     checkAnswer,
     buttonDisabled,
     correctAnswer,
+    selectedAnswer,
   } = props;
 
   return (
@@ -37,7 +38,10 @@ const QuizPage = (props) => {
               return (
                 <button
                   onClick={(event) => checkAnswer(event, item)}
-                  className="flex text-white font-lora font-light text-xl border-[1px] w-full gap-4 my-4 px-8 py-6"
+                  className={`flex text-white font-lora font-light text-xl border-[1px] w-full gap-4 my-4 px-8 py-6 ${
+                    correctAnswer === item && 'bg-success'
+                  }`}
+                  disabled={buttonDisabled}
                   key={index}
                 >
                   {item}
@@ -49,9 +53,13 @@ const QuizPage = (props) => {
           {/* next question  */}
           <div>
             {questionIndex + 1 !== quiz.length ? (
-              <QuizButton btnText="next question" onClick={nextQuestion} />
+              <QuizButton
+                btnText="next question"
+                onClick={nextQuestion}
+                disabled={!selectedAnswer}
+              />
             ) : (
-              <QuizButton btnText="start over" onClick={startOver} />
+              <QuizButton btnText="start over" onClick={startOver} disabled={!selectedAnswer} />
             )}
           </div>
         </div>

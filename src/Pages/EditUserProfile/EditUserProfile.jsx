@@ -18,14 +18,18 @@ const EditUserProfile = () => {
     const [newPassword, setNewPassword] = useState("");
     const [confirmNewPassword, setConfirmNewPassword] = useState("");
     const [passwordError, setPasswordError] = useState(null);
+    const [confirmationError, setConfirmationError] = useState(null);
 
 
     // Change password Function Call
     const handleChangePassword = async () => {
         try {
+            setPasswordError(null);
+            setConfirmationError(null);
             if (newPassword !== confirmNewPassword) {
                 // Handle password mismatch
                 toast.error("New password and confirm password don't match");
+                setConfirmationError("New password and confirm password don't match");
                 return;
             }
 
@@ -39,7 +43,6 @@ const EditUserProfile = () => {
             setCurrentPassword("");
             setNewPassword("");
             setConfirmNewPassword("");
-            setPasswordError(null);
 
         } catch (error) {
             // Handle error (e.g., incorrect current password, Firebase Auth error)
@@ -144,6 +147,11 @@ const EditUserProfile = () => {
                         </div>
                         <input className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none border-[#eaaaff] text-[#eaaaff]" type="password" name="" id="" placeholder="Retype Password" value={confirmNewPassword}
                             onChange={(e) => setConfirmNewPassword(e.target.value)} />
+                        {confirmationError && (
+                            <div className="text-red-500 mt-2">
+                                {confirmationError}
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div className="flex justify-end mt-4">

@@ -151,13 +151,16 @@ const EditUserProfile = () => {
                         </div>
                         <input className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none border-[#eaaaff] text-[#eaaaff]" type="password" name="" id="" placeholder="Retype Password" value={confirmNewPassword}
                             onChange={(e) => setConfirmNewPassword(e.target.value)} />
-                        {/* Show Error The password and confirmation password do not match.*/}
-                        {confirmationError && (
-                            <div className="text-red-500 mt-2">
-                                {confirmationError}
-                            </div>
-                        )}
+
                     </div>
+                </div>
+                {/* Show Error The password and confirmation password do not match.*/}
+                <div className="text-center md:ml-[365px] lg:ml-[395px]">
+                    {confirmationError && (
+                        <div className="text-red-500 mt-2">
+                            {confirmationError}
+                        </div>
+                    )}
                 </div>
                 <div className="flex justify-end mt-4">
                     <button onClick={handleChangePassword} type="submit" className="border px-3 py-1 text-white rounded-md text-base disabled btn-grad ">Change Password</button>

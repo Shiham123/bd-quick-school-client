@@ -3,8 +3,11 @@ import StartQuiz from './components/StartQuiz';
 import QuizPage from './components/QuizPage';
 import axios from 'axios';
 import QuizResult from './components/QuizResult';
+import useLocationContext from '../context/useLocationContext';
 
 const MainQuiz = () => {
+  const { location } = useLocationContext();
+
   const [quiz, setQuiz] = useState([]),
     [showStart, setShowStart] = useState(true),
     [showQuiz, setShowQuiz] = useState(false),
@@ -92,7 +95,7 @@ const MainQuiz = () => {
         buttonDisabled={buttonDisabled}
         showingResult={showingResult}
       />
-      <QuizResult showResult={showResult} quiz={quiz} startOver={startOver} mark={mark} />
+      <QuizResult location={location} showResult={showResult} quiz={quiz} mark={mark} />
     </>
   );
 };

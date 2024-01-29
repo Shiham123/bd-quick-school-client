@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
 import QuizButton from '../shared/QuizButton';
 import QuizHeading from '../shared/QuizHeading';
 
 const QuizResult = (props) => {
-  const { showResult, quiz, startOver, mark } = props;
+  const { showResult, quiz, mark, location } = props;
   return (
     <section style={{ display: `${showResult ? 'block' : 'none'}` }}>
       <div className="flex flex-col justify-center items-center">
@@ -13,12 +14,14 @@ const QuizResult = (props) => {
             {mark > (quiz.length * 5) / 2 ? 'Awesome' : 'Not good'}
           </h1>
           <h2 className="font-lora text-2xl text-white">
-            Your score is <span className="font-semibold">{mark}</span> out of{' '}
+            Your score is <span className="font-semibold">{mark}</span> out of
             <span className="font-semibold">{quiz.length * 5}</span>
           </h2>
         </div>
 
-        <QuizButton btnText="Again start" onClick={startOver} />
+        <Link to={location.pathname}>
+          <QuizButton btnText="Back To the page" />
+        </Link>
       </div>
     </section>
   );

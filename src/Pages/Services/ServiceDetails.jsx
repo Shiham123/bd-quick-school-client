@@ -14,16 +14,20 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
-import QuizBtn from '../../quiz/QuizBtn';
-import ModalApp from '../../quiz/ModalApp';
 import QuizModal from '../../quiz/shared/QuizModal';
 
 const ServiceDetails = () => {
   const { id } = useParams();
   const [course, setCourse] = useState(null);
 
-  const [switchQuiz, setSwitchQuiz] = useState(false);
-  const [showModal, setShowModal] = useState(true);
+  // const [switchQuiz, setSwitchQuiz] = useState(false);
+  // const [showModal, setShowModal] = useState(true);
+
+  // !modal
+  const [isModalOpen, setIsModalOpen] = useState(true);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   useEffect(() => {
     fetch('/Services.json')
@@ -36,11 +40,7 @@ const ServiceDetails = () => {
   }, [id]);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setShowModal(false);
-    }, 10000);
-
-    return () => clearTimeout(timeout);
+    openModal();
   }, []);
 
   if (!course) {
@@ -151,9 +151,12 @@ const ServiceDetails = () => {
             <p className="-mt-2">
               Promo Code Applied <span className="text-yellow-400 font-bold">MS1050</span>
             </p>
-            {/* --------quiz button------------- */}
+            {/* -------- ! --- quiz button------------- */}
+
             <PayDataFrom />
-            {showModal && <ModalApp /> && <QuizModal />}
+            {isModalOpen && <QuizModal closeModal={closeModal} />}
+
+            {/* -------- ! --- quiz button------------- */}
           </Box>
           {/* Icon Button and Details */}
           <Box className="my-12 border  border-sky-400 p-3 ">

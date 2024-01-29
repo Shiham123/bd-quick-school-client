@@ -52,13 +52,13 @@ const Navbar = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const Navlinks = NavPages.map((page, index) => {
+  const Navlinks = NavPages.map((page) => {
     return page.submenu ? (
-      <li key={index}>
+      <li key={page?.id}>
         <details>
           <summary>{page?.page}</summary>
           <ul className=" text-white ">
-            {page.submenu &&
+            {page?.submenu &&
               page?.submenu.map((menu) => {
                 return (
                   <li key={menu?.id}>
@@ -76,17 +76,15 @@ const Navbar = () => {
         </details>
       </li>
     ) : (
-      <>
-        <li>
-          <NavLink
-            style={activeRouteStyle}
-            className=" hover:text-[#deb2ac] uppercase font-medium"
-            to={page.href}
-          >
-            {page?.page}
-          </NavLink>
-        </li>
-      </>
+      <li key={page?.id}>
+        <NavLink
+          style={activeRouteStyle}
+          className=" hover:text-[#deb2ac] uppercase font-medium"
+          to={page.href}
+        >
+          {page?.page}
+        </NavLink>
+      </li>
     );
   });
 

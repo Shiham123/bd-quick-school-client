@@ -43,8 +43,8 @@ const PayDataFrom = ({ course, id }) => {
           </div>
           <div className="flex gap-5">
             <div className="form-control w-full ">
-              <label className="label">
-                <span className="label-text">Subject</span>
+              <label htmlFor="subject" className="text-white font-poppins font-semibold text-2xl">
+                Subject
               </label>
               <input
                 type="text"

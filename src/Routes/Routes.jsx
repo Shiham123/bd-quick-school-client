@@ -11,7 +11,12 @@ import ServiceDetails from '../Pages/Services/ServiceDetails';
 import PaymentSuccses from '../Pages/Services/PaymentSuccses';
 import PaymentFailed from '../Pages/Services/PaymentFailed';
 import PayDataFrom from '../Pages/Services/PayDataFrom';
+<<<<<<< HEAD
+import PrivateRoute from './PrivateRoute';
+import MainQuiz from '../quiz/MainQuiz';
+=======
 // import PrivateRoute from './PrivateRoute';
+>>>>>>> c049f218cf01ba6716024413713047be01a524d5
 
 const Router = createBrowserRouter([
   {
@@ -38,6 +43,7 @@ const Router = createBrowserRouter([
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
       { path: '/payment/succsess/:tranID', element: <PaymentSuccses /> },
       { path: '/payment/fail/:tranID', element: <PaymentFailed /> },
+      { path: '/quiz', element: <MainQuiz /> },
     ],
   },
 ]);

@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import PayDataFrom from './PayDataFrom';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { Box, Grid, IconButton, Typography } from '@material-ui/core';
@@ -15,6 +14,8 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
+import QuizModal from '../../quiz/shared/QuizModal';
+import useLocationContext from '../../context/useLocationContext';
 import Video from './VideoStreming';
 import axios from 'axios';
 
@@ -23,21 +24,21 @@ const ServiceDetails = () => {
   console.log(id);
 
   const [course, setCourse] = useState(null);
+  const { isModalOpen } = useLocationContext();
+
   useEffect(() => {
-  
-    fetch("/Services.json") 
+    fetch('/Services.json')
       .then((response) => response.json())
       .then((data) => {
         const selectedCourse = data.find((c) => c.Id === id);
         setCourse(selectedCourse);
       })
-      .catch((error) => console.error("Error fetching data:", error));
+      .catch((error) => console.error('Error fetching data:', error));
   }, [id]);
   if (!course) {
     return <div>Loading...</div>;
   }
   return (
- 
     <Box className=" max-w-screen-2xl mx-auto text-white px-3 mt-4 pr-2">
       <Grid container spacing={8} columns={{ md: 12 }}>
         <Grid item md={8}>
@@ -142,9 +143,14 @@ const ServiceDetails = () => {
             <p className="-mt-2">
               Promo Code Applied <span className="text-yellow-400 font-bold">MS1050</span>
             </p>
-           <PayDataFrom/>
-           {/* <Video/> */}
+            {/* -------- ! --- quiz button------------- */}
+            <PayDataFrom />
+            {/* <Video/> */}
 
+            <PayDataFrom />
+            {isModalOpen && <QuizModal />}
+
+            {/* -------- ! --- quiz button------------- */}
           </Box>
           {/* Icon Button and Details */}
           <Box className="my-12 border  border-sky-400 p-3 ">

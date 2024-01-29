@@ -13,7 +13,8 @@ const MainQuiz = () => {
     [selectedAnswer, setSelectedAnswer] = useState(''),
     [correctAnswer, setCorrectAnswer] = useState(''),
     [buttonDisabled, setButtonDisabled] = useState(false),
-    [showResult, setShowResult] = useState(false);
+    [showResult, setShowResult] = useState(false),
+    [mark, setMark] = useState(0);
 
   useEffect(() => {
     axios('/quiz.json')
@@ -40,6 +41,7 @@ const MainQuiz = () => {
 
     if (selected === allQuestion.answer) {
       event.target.classList.add('bg-success');
+      setMark(mark + 5);
     } else {
       event.target.classList.add('bg-error');
     }
@@ -60,7 +62,11 @@ const MainQuiz = () => {
   const startOver = () => {
     setShowStart(false), setShowResult(false), setShowQuiz(true);
 
-    setSelectedAnswer(''), setCorrectAnswer(''), setButtonDisabled(false), setQuestionIndex(0);
+    setSelectedAnswer(''),
+      setCorrectAnswer(''),
+      setButtonDisabled(false),
+      setQuestionIndex(0),
+      setMark(0);
 
     const wrongBtn = document.querySelector('button.bg-error');
     wrongBtn?.classList.remove('bg-error');
@@ -88,7 +94,7 @@ const MainQuiz = () => {
         buttonDisabled={buttonDisabled}
         showingResult={showingResult}
       />
-      <QuizResult showResult={showResult} quiz={quiz} startOver={startOver} />
+      <QuizResult showResult={showResult} quiz={quiz} startOver={startOver} mark={mark} />
     </>
   );
 };

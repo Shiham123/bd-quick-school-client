@@ -18,7 +18,7 @@ const image_Hosting_Key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_Hosting_Api = `https://api.imgbb.com/1/upload?key=${image_Hosting_Key}`
 
 const EditUserProfile = () => {
-    const { user, changePassword } = useAuth()
+    const { user, setUser, changePassword, handleUpdateProfile } = useAuth()
     const axiosPublic = useAxiosPublic()
     const { register, handleSubmit, reset } = useForm()
     const users = useLoaderData()
@@ -58,9 +58,19 @@ const EditUserProfile = () => {
         if (!Items.photoURL) {
             delete Items.photoURL
         }
+
+
+        Object.keys(Items).forEach(
+            (key) => Items[key] == null && delete Items[key]
+        );
+
+        // Update Firebase user profile
+        await handleUpdateProfile(Items.name, Items.photoURL);
+
         const itemRes = await axiosPublic.put(`/api/v1/useremail/${users[0].email}`, Items)
         console.log(itemRes.data)
         if (itemRes.data.modifiedCount > 0) {
+            
             toast.success('Your Profile have been updated')
         }
 

@@ -22,9 +22,7 @@ const EditUserProfile = () => {
     const axiosPublic = useAxiosPublic()
     const { register, handleSubmit, reset } = useForm()
     const users = useLoaderData()
-    // console.log(users)
     const { _id, name, phone, email, photoURL } = users[0]
-    // console.log(name)
     // managing State By UseState
     const [currentPassword, setCurrentPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
@@ -70,7 +68,10 @@ const EditUserProfile = () => {
         const itemRes = await axiosPublic.put(`/api/v1/useremail/${users[0].email}`, Items)
         console.log(itemRes.data)
         if (itemRes.data.modifiedCount > 0) {
-            
+            setUser((prevUser) => ({
+                ...prevUser,
+                ...Items,
+            }));
             toast.success('Your Profile have been updated')
         }
 

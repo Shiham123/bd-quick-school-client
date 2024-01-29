@@ -16,12 +16,11 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import QuizModal from '../../quiz/shared/QuizModal';
 import useLocationContext from '../../context/useLocationContext';
-import Video from './VideoStreming';
-import axios from 'axios';
+// import Video from './VideoStreming';
+// import axios from 'axios';
 
 const ServiceDetails = () => {
   const { id } = useParams();
-  console.log(id);
 
   const [course, setCourse] = useState(null);
   const { isModalOpen } = useLocationContext();
@@ -147,7 +146,6 @@ const ServiceDetails = () => {
             <PayDataFrom />
             {/* <Video/> */}
 
-            <PayDataFrom />
             {isModalOpen && <QuizModal />}
 
             {/* -------- ! --- quiz button------------- */}

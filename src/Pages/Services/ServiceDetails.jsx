@@ -16,9 +16,13 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import QuizModal from '../../quiz/shared/QuizModal';
 import useLocationContext from '../../context/useLocationContext';
+import Video from './VideoStreming';
+import axios from 'axios';
 
 const ServiceDetails = () => {
   const { id } = useParams();
+  console.log(id);
+
   const [course, setCourse] = useState(null);
   const { isModalOpen } = useLocationContext();
 
@@ -31,7 +35,6 @@ const ServiceDetails = () => {
       })
       .catch((error) => console.error('Error fetching data:', error));
   }, [id]);
-
   if (!course) {
     return <div>Loading...</div>;
   }
@@ -141,6 +144,8 @@ const ServiceDetails = () => {
               Promo Code Applied <span className="text-yellow-400 font-bold">MS1050</span>
             </p>
             {/* -------- ! --- quiz button------------- */}
+            <PayDataFrom />
+            {/* <Video/> */}
 
             <PayDataFrom />
             {isModalOpen && <QuizModal />}

@@ -11,8 +11,12 @@ import ServiceDetails from '../Pages/Services/ServiceDetails';
 import PaymentSuccses from '../Pages/Services/PaymentSuccses';
 import PaymentFailed from '../Pages/Services/PaymentFailed';
 import PayDataFrom from '../Pages/Services/PayDataFrom';
+<<<<<<< HEAD
 import PrivateRoute from './PrivateRoute';
 import MainQuiz from '../quiz/MainQuiz';
+=======
+// import PrivateRoute from './PrivateRoute';
+>>>>>>> c049f218cf01ba6716024413713047be01a524d5
 
 const Router = createBrowserRouter([
   {
@@ -25,14 +29,16 @@ const Router = createBrowserRouter([
       { path: 'register', element: <Register /> },
       { path: 'login', element: <Login /> },
       { path: 'services', element: <Services /> },
-      { path: 'myprofile', element: <MyProfile /> },
+      { path: 'myprofile/:email', element: <MyProfile />, loader: ({ params }) => fetch(`http://localhost:5000/api/v1/useremail/${params.email}`) },
       {
-        path: '/serviceDetails/:id',
-        element: (
-          <PrivateRoute>
-            <ServiceDetails />
-          </PrivateRoute>
-        ),
+        path: '/ServiceDetails/:id',
+        element: <ServiceDetails />,
+        // loader: async ({ params }) => {
+        //   const response = await fetch('/public/Services.json');
+        //   const data = await response.json();
+        //   const selectedService = data.find((service) => service.Id === params.id);
+        //   return selectedService;
+        // },
       },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
       { path: '/payment/succsess/:tranID', element: <PaymentSuccses /> },

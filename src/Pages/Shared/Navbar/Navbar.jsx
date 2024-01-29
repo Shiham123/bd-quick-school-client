@@ -52,7 +52,7 @@ const Navbar = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const Navlinks = NavPages.map((page, index) => {
+  const Navlinks = NavPages?.map((page, index) => {
     return page.submenu ? (
       <li key={index}>
         <details>

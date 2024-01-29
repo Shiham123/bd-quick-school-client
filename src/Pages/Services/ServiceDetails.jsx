@@ -15,6 +15,7 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import QuizBtn from '../../quiz/QuizBtn';
+import ModalApp from '../../quiz/ModalApp';
 
 const ServiceDetails = () => {
   const { id } = useParams();
@@ -140,17 +141,12 @@ const ServiceDetails = () => {
             <p className="-mt-2">
               Promo Code Applied <span className="text-yellow-400 font-bold">MS1050</span>
             </p>
-
-            {/* --------------------- */}
-
-            {switchQuiz ? (
-              <PayDataFrom />
-            ) : (
-              <Link to="/quiz">
-                <QuizBtn />
-              </Link>
-            )}
-
+            {/* --------quiz button------------- */}
+            <PayDataFrom />
+            {/* <Link to="/quiz"> */}
+            {/* <QuizBtn /> */}
+            <ModalApp />
+            {/* </Link> */}
             {/* --------------------- */}
           </Box>
           {/* Icon Button and Details */}

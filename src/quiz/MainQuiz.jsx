@@ -18,9 +18,7 @@ const MainQuiz = () => {
 
   useEffect(() => {
     axios('/quiz.json')
-      .then((data) => {
-        setQuiz(data.data);
-      })
+      .then((data) => setQuiz(data.data))
       .catch((error) => console.log(error));
   }, []);
 

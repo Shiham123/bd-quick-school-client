@@ -174,7 +174,7 @@ const EditUserProfile = () => {
                                     <img className="object-cover w-28 h-28 rounded-full" src={user?.photoURL} alt="" />
                                 </div>
                                 <div className="flex justify-end mt-4">
-                                    <button type="submit" className="border px-3 py-1 text-white rounded-md text-base btn-grad ">Save Changes</button>
+                                    <button  className="border px-3 py-1 text-white rounded-md text-base btn-grad ">Save Changes</button>
                                 </div>
                             </div>
 

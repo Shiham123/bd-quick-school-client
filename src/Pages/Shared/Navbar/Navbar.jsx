@@ -1,26 +1,26 @@
 import { Link, NavLink } from 'react-router-dom';
 import { IoMenuSharp } from 'react-icons/io5';
 import { useEffect, useState } from 'react';
-import NavPages from './PageLists.json';
-import { Player } from "@lottiefiles/react-lottie-player";
+import { Player } from '@lottiefiles/react-lottie-player';
 import useAuth from './../../../Hooks/useAuth/useAuth';
+import axios from 'axios';
 
 const Navbar = () => {
   // const user = false;
   const [stickyClass, setStickyClass] = useState('');
-  const { user, logOut } = useAuth()
-
+  const { user, logOut } = useAuth();
+  const [NavPages, setNavPages] = useState([]);
 
   // Handle Logout Function to logout the User
   const handleLogOut = () => {
     logOut()
-      .then(result => {
-        console.log(result.user)
+      .then((result) => {
+        console.log(result.user);
       })
-      .then(error => {
-        console.log(error)
-      })
-  }
+      .then((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     window.addEventListener('scroll', stickNavbar);
@@ -32,8 +32,8 @@ const Navbar = () => {
       // window height changed for the demo
       windowHeight > 50
         ? setStickyClass(
-          `fixed top-0 transition bg-gradient-to-b from-[#42275a] to-[#734b6d]  bg-opacity-100 duration-1000 ease-in-out`
-        )
+            `fixed top-0 transition bg-gradient-to-b from-[#42275a] to-[#734b6d]  bg-opacity-100 duration-1000 ease-in-out`
+          )
         : setStickyClass('');
     }
   };
@@ -45,47 +45,50 @@ const Navbar = () => {
     };
   };
 
-  const Navlinks = (
-    <>
-      {NavPages.map((page, index) => {
-        return page.submenu ? (
-          <li key={index}>
-            <details>
-              <summary>{page?.page}</summary>
-              <ul className=" text-white ">
-                {page.submenu &&
-                  page?.submenu.map((menu) => {
-                    return (
-                      <li key={menu?.id}>
-                        <NavLink
-                          style={activeRouteStyle}
-                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                          to={menu?.href}
-                        >
-                          {menu?.page}
-                        </NavLink>
-                      </li>
-                    );
-                  })}
-              </ul>
-            </details>
-          </li>
-        ) : (
-          <>
-            <li>
-              <NavLink
-                style={activeRouteStyle}
-                className=" hover:text-[#deb2ac] uppercase font-medium"
-                to={page.href}
-              >
-                {page?.page}
-              </NavLink>
-            </li>
-          </>
-        );
-      })}
-    </>
-  );
+  useEffect(() => {
+    axios
+      .get('NavpageLists.json')
+      .then((res) => setNavPages(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const Navlinks = NavPages.map((page, index) => {
+    return page.submenu ? (
+      <li key={index}>
+        <details>
+          <summary>{page?.page}</summary>
+          <ul className=" text-white ">
+            {page.submenu &&
+              page?.submenu.map((menu) => {
+                return (
+                  <li key={menu?.id}>
+                    <NavLink
+                      style={activeRouteStyle}
+                      className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
+                      to={menu?.href}
+                    >
+                      {menu?.page}
+                    </NavLink>
+                  </li>
+                );
+              })}
+          </ul>
+        </details>
+      </li>
+    ) : (
+      <>
+        <li>
+          <NavLink
+            style={activeRouteStyle}
+            className=" hover:text-[#deb2ac] uppercase font-medium"
+            to={page.href}
+          >
+            {page?.page}
+          </NavLink>
+        </li>
+      </>
+    );
+  });
 
   return (
     <>
@@ -156,25 +159,44 @@ const Navbar = () => {
                   {/* Dropdown Nav Start Here */}
                   <NavLink><li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">My Courses</li></NavLink>
                   <hr />
-                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">Bookmark</li>
+                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
+                    Bookmark
+                  </li>
                   <hr />
-                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">Certificate</li>
+                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
+                    Certificate
+                  </li>
                   <hr />
-                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">Payment History</li>
+                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
+                    Payment History
+                  </li>
                   <hr />
-                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">Payment Management</li>
+                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
+                    Payment Management
+                  </li>
                   <hr />
-                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">Student Analytics</li>
+                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
+                    Student Analytics
+                  </li>
                   <hr />
-                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">Announcement</li>
+                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
+                    Announcement
+                  </li>
                   <hr />
-                  <NavLink to="/dashboard"><li className="hover:font-semibold  py-1 text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
-                    Dashboard
-                  </li></NavLink>
+                  <NavLink to="/dashboard">
+                    <li className="hover:font-semibold  py-1 text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
+                      Dashboard
+                    </li>
+                  </NavLink>
                   <hr />
 
                   <div className="hover:font-semibold pt-2 pb-3 text-start font-lora font-medium ">
-                    <button onClick={handleLogOut} className='hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000'>Logout</button>
+                    <button
+                      onClick={handleLogOut}
+                      className="hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000"
+                    >
+                      Logout
+                    </button>
                   </div>
                 </ul>
               </div>

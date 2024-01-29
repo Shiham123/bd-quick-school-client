@@ -20,9 +20,9 @@ const image_Hosting_Api = `https://api.imgbb.com/1/upload?key=${image_Hosting_Ke
 const EditUserProfile = () => {
   const { user, setUser, changePassword, handleUpdateProfile } = useAuth();
   const axiosPublic = useAxiosPublic();
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const users = useLoaderData();
-  const { _id, name, phone, email, photoURL } = users[0];
+  const { name, phone } = users[0];
   // managing State By UseState
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -182,7 +182,7 @@ const EditUserProfile = () => {
               </div>
 
               <div className="font-lora">
-                <label for="dropzone-file" className="flex items-center gap-1">
+                <label htmlFor="dropzone-file" className="flex items-center gap-1">
                   <FiUpload className="text-lg text-white" />
                   <h3 className="text-base  font-medium text-white">Change Profile Image</h3>
                 </label>

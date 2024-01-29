@@ -16,12 +16,14 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import QuizBtn from '../../quiz/QuizBtn';
 import ModalApp from '../../quiz/ModalApp';
+import QuizModal from '../../quiz/shared/QuizModal';
 
 const ServiceDetails = () => {
   const { id } = useParams();
   const [course, setCourse] = useState(null);
 
   const [switchQuiz, setSwitchQuiz] = useState(false);
+  const [showModal, setShowModal] = useState(true);
 
   useEffect(() => {
     fetch('/Services.json')
@@ -32,6 +34,14 @@ const ServiceDetails = () => {
       })
       .catch((error) => console.error('Error fetching data:', error));
   }, [id]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowModal(false);
+    }, 10000);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   if (!course) {
     return <div>Loading...</div>;
@@ -143,11 +153,7 @@ const ServiceDetails = () => {
             </p>
             {/* --------quiz button------------- */}
             <PayDataFrom />
-            {/* <Link to="/quiz"> */}
-            {/* <QuizBtn /> */}
-            <ModalApp />
-            {/* </Link> */}
-            {/* --------------------- */}
+            {showModal && <ModalApp /> && <QuizModal />}
           </Box>
           {/* Icon Button and Details */}
           <Box className="my-12 border  border-sky-400 p-3 ">

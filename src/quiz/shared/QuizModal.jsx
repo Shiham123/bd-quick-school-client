@@ -5,10 +5,9 @@ import QuizButton from './QuizButton';
 import { Link, useLocation } from 'react-router-dom';
 import useLocationContext from '../../context/useLocationContext';
 
-const QuizModal = (props) => {
+const QuizModal = () => {
   const location = useLocation();
-  const { closeModal } = props;
-  const { setGlobalLocation } = useLocationContext();
+  const { setGlobalLocation, closeModal } = useLocationContext();
 
   const [height, setHeight] = useState(400),
     [width, setWidth] = useState(400);

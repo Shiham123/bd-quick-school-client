@@ -3,14 +3,18 @@ import { createContext, useState } from 'react';
 const LocationContext = createContext();
 
 const LocationProvider = ({ children }) => {
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState(null),
+    [isModalOpen, setIsModalOpen] = useState(true);
 
-  const setGlobalLocation = (newLocation) => {
-    setLocation(newLocation);
-  };
+  const openModal = () => setIsModalOpen(true),
+    closeModal = () => setIsModalOpen(false);
+
+  const setGlobalLocation = (newLocation) => setLocation(newLocation);
 
   return (
-    <LocationContext.Provider value={{ location, setGlobalLocation }}>
+    <LocationContext.Provider
+      value={{ location, isModalOpen, setGlobalLocation, openModal, closeModal }}
+    >
       {children}
     </LocationContext.Provider>
   );

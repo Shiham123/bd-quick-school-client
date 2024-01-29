@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import PayDataFrom from './PayDataFrom';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { Box, Grid, IconButton, Typography } from '@material-ui/core';
@@ -15,19 +15,12 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import QuizModal from '../../quiz/shared/QuizModal';
+import useLocationContext from '../../context/useLocationContext';
 
 const ServiceDetails = () => {
   const { id } = useParams();
   const [course, setCourse] = useState(null);
-
-  // const [switchQuiz, setSwitchQuiz] = useState(false);
-  // const [showModal, setShowModal] = useState(true);
-
-  // !modal
-  const [isModalOpen, setIsModalOpen] = useState(true);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const { isModalOpen } = useLocationContext();
 
   useEffect(() => {
     fetch('/Services.json')
@@ -38,10 +31,6 @@ const ServiceDetails = () => {
       })
       .catch((error) => console.error('Error fetching data:', error));
   }, [id]);
-
-  useEffect(() => {
-    openModal();
-  }, []);
 
   if (!course) {
     return <div>Loading...</div>;
@@ -154,7 +143,7 @@ const ServiceDetails = () => {
             {/* -------- ! --- quiz button------------- */}
 
             <PayDataFrom />
-            {isModalOpen && <QuizModal closeModal={closeModal} />}
+            {isModalOpen && <QuizModal />}
 
             {/* -------- ! --- quiz button------------- */}
           </Box>

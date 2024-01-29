@@ -60,22 +60,6 @@ const MainQuiz = () => {
     setQuestionIndex(questionIndex + 1);
   };
 
-  const startOver = () => {
-    setShowStart(false), setShowResult(false), setShowQuiz(true);
-
-    setSelectedAnswer(''),
-      setCorrectAnswer(''),
-      setButtonDisabled(false),
-      setQuestionIndex(0),
-      setMark(0);
-
-    const wrongBtn = document.querySelector('button.bg-error');
-    wrongBtn?.classList.remove('bg-error');
-
-    const correctBtn = document.querySelector('button.bg-success');
-    correctBtn?.classList.remove('bg-success');
-  };
-
   const showingResult = () => {
     setShowResult(true), setShowQuiz(false), setShowStart(false);
   };

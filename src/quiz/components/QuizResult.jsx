@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import QuizButton from '../shared/QuizButton';
 import QuizHeading from '../shared/QuizHeading';
+import useLocationContext from '../../context/useLocationContext';
 
 const QuizResult = (props) => {
   const { showResult, quiz, mark, location } = props;
+  const { closeModal } = useLocationContext();
   return (
     <section style={{ display: `${showResult ? 'block' : 'none'}` }}>
       <div className="flex flex-col justify-center items-center">
@@ -20,7 +22,7 @@ const QuizResult = (props) => {
         </div>
 
         <Link to={location.pathname}>
-          <QuizButton btnText="Back To the page" />
+          <QuizButton btnText="Back To the page" onClick={closeModal} />
         </Link>
       </div>
     </section>

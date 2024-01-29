@@ -2,7 +2,6 @@ import { FiEdit } from "react-icons/fi";
 import useAuth from './../../../Hooks/useAuth/useAuth';
 import { useState } from "react";
 import EditUserProfile from "../../EditUserProfile/EditUserProfile";
-import { CiLock } from "react-icons/ci";
 
 const MyProfile = () => {
     const { user } = useAuth()
@@ -35,21 +34,27 @@ const MyProfile = () => {
             ) : (
                 // Profile information
                 <div>
+                    {/* 1st Line */}
                     <div className=" mt-8 flex flex-col md:flex-row lg:items-center gap-8 md:gap-64 lg:gap-96">
+                        {/* Full Name */}
                         <div>
                             <h3 className="text-lg font-lora font-medium text-white/60">Full Name</h3>
                             <h2 className=" text-xl text-white font-lora font-semibold">{user?.displayName}</h2>
                         </div>
+                        {/* Email */}
                         <div>
                             <h3 className="text-lg font-lora font-medium text-white/60">Email</h3>
                             <h2 className=" text-xl text-white font-lora font-semibold">{user?.email}</h2>
                         </div>
                     </div>
+                    {/* 2nd Line */}
                     <div className="mt-8 flex flex-col md:flex-row lg:items-center gap-8 md:gap-64 lg:gap-[375px]">
+                        {/* Student ID */}
                         <div>
                             <h3 className="text-lg font-lora font-medium text-white/60">Student ID</h3>
                             <h2 className=" text-xl text-white font-lora font-semibold">{user?.displayName}</h2>
                         </div>
+                        {/* Mobile Number */}
                         <div>
                             <h3 className="text-lg font-lora font-medium text-white/60">Mobile Number</h3>
                             <h2 className=" text-xl text-white font-lora font-semibold">{user?.phone}</h2>

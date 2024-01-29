@@ -30,10 +30,11 @@ const EditUserProfile = () => {
     const [passwordError, setPasswordError] = useState(null);
     const [confirmationError, setConfirmationError] = useState(null);
 
-
+    // Onsubmit Function Call
     const onSubmit = async (data) => {
         let res
-        console.log(data)
+        // console.log(data)
+        // Upload Photo By ImageBB and Using Post Method
         if (data?.photoURL?.[0]) {
             const imageFile = { image: data.photoURL[0] }
             res = await axiosPublic.post(image_Hosting_Api, imageFile, {
@@ -45,29 +46,31 @@ const EditUserProfile = () => {
 
         // console.log(res.data)
 
-
+        // Updated Items
         const Items = {
             photoURL: res ? res.data.data.display_url : null,
             name: data.name,
             phone: data.phone,
 
         }
-        console.log(Items)
+        // console.log(Items)
+        // PhotoURL condition
         if (!Items.photoURL) {
             delete Items.photoURL
         }
 
-
+        // Backend Data Update With Firebase Data Update delete previous Data
         Object.keys(Items).forEach(
             (key) => Items[key] == null && delete Items[key]
         );
 
         // Update Firebase user profile
         await handleUpdateProfile(Items.name, Items.photoURL);
-
+        // Using PUT Method With Axios Public
         const itemRes = await axiosPublic.put(`/api/v1/useremail/${users[0].email}`, Items)
         console.log(itemRes.data)
         if (itemRes.data.modifiedCount > 0) {
+            // Updated New data Auto loading
             setUser((prevUser) => ({
                 ...prevUser,
                 ...Items,
@@ -76,9 +79,6 @@ const EditUserProfile = () => {
         }
 
     }
-
-
-
 
 
     // Change password Function Call
@@ -105,7 +105,7 @@ const EditUserProfile = () => {
             setConfirmNewPassword("");
 
         } catch (error) {
-            // Handle error (e.g., incorrect current password, Firebase Auth error)
+            // Handle error (incorrect current password, Firebase Auth error)
             toast.error("Error changing password:", error.message);
             setPasswordError("Current password is incorrect");
         }
@@ -114,9 +114,11 @@ const EditUserProfile = () => {
     return (
         <div>
             <div>
-
+                {/* Form Start Here */}
                 <form onSubmit={handleSubmit(onSubmit)}>
+                    {/* 1st line*/}
                     <div className=" mt-8 flex flex-col md:flex-row items-center gap-5 lg:gap-10">
+                        {/* Full Name */}
                         <div>
                             <div className="flex items-center gap-1 mb-1 font-lora">
                                 <GoPerson className="text-xl text-white" />
@@ -124,6 +126,7 @@ const EditUserProfile = () => {
                             </div>
                             <input {...register('name')} className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none" type="text" id="" placeholder="Name Here" defaultValue={name} />
                         </div>
+                        {/* Email */}
                         <div>
                             <div className="flex items-center gap-1 mb-1 font-lora">
                                 <FiMail className="text-xl text-white" />
@@ -133,7 +136,9 @@ const EditUserProfile = () => {
                         </div>
 
                     </div>
+                    {/* 2nd line */}
                     <div className=" mt-8 flex flex-col md:flex-row items-center gap-5 lg:gap-10">
+                        {/* Student ID */}
                         <div>
                             <div className="flex items-center gap-1 mb-1 font-lora">
                                 <PiStudent className="text-xl text-white" />
@@ -141,6 +146,7 @@ const EditUserProfile = () => {
                             </div>
                             <input className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none" type="text" id="" placeholder="Name Here" />
                         </div>
+                        {/* Mobile Number */}
                         <div>
                             <div className="flex items-center gap-1 mb-1 font-lora">
                                 <FaMobileAlt className="text-xl text-white" />
@@ -149,7 +155,9 @@ const EditUserProfile = () => {
                             <input {...register('phone')} className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none" type="text" id="" defaultValue={phone} />
                         </div>
                     </div>
+                    {/* 3rd Line */}
                     <div className=" mt-8  gap-5 lg:gap-10">
+                        {/* Profile Image */}
                         <div>
                             <div className="flex items-center gap-1 mb-1 font-lora">
                                 <BsCardImage className="text-xl text-white" />
@@ -166,7 +174,7 @@ const EditUserProfile = () => {
                                     <img className="object-cover w-28 h-28 rounded-full" src={user?.photoURL} alt="" />
                                 </div>
                                 <div className="flex justify-end mt-4">
-                                    <button className="border px-3 py-1 text-white rounded-md text-base btn-grad ">Save Changes</button>
+                                    <button type="submit" className="border px-3 py-1 text-white rounded-md text-base btn-grad ">Save Changes</button>
                                 </div>
                             </div>
 

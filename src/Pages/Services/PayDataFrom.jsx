@@ -1,7 +1,4 @@
-/* eslint-disable react/prop-types */
-
-/* eslint-disable no-unused-vars */
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Providers/Authprovider';
 import axios from 'axios';
@@ -15,10 +12,7 @@ const PayDataFrom = ({ course, id }) => {
     data.email = user.email;
 
     try {
-      const response = await axios.post(
-        'https://bd-quick-school-server-ten.vercel.app/api/v1/order',
-        data
-      );
+      const response = await axios.post('http://localhost:5000/api/v1/order', data);
       const result = response.data;
       window.location.replace(result.url);
       console.log(result);

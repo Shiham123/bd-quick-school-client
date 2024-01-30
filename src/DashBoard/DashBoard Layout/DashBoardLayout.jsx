@@ -2,12 +2,14 @@ import { Link, Outlet } from "react-router-dom";
 
 import { useState } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
+import useAuth from "../../Hooks/useAuth/useAuth";
 
 
 
 const DashBoardLayout = () => {
     const [open, setOpen] = useState(true)
     const [dropdown, setDropdown] = useState(false)
+    const {user} = useAuth()
 
 
 
@@ -40,12 +42,28 @@ const DashBoardLayout = () => {
                                 </Link>
                             </div>
                             {/* user photo and name */}
-
+                            <div>
+                                <div className="overflow-hidden ">
+                                    <img src="https://i.postimg.cc/K8Rq5BCD/pexels-pavel-danilyuk-8381916.jpg" alt=""
+                                        className="object-cover object-top w-full h-32"/>
+                                </div>
+                                <div
+                                    className="relative w-32 h-32 mx-auto -mt-16 overflow-hidden border-4 border-white rounded-full">
+                                    <img src={user?.photoURL} alt=""
+                                        className="object-cover object-top w-full h-32 "/>
+                                </div>
+                                <div className="flex justify-center ">
+                                    <div>
+                                        <h2 className="text-xl font-semibold dark:text-gray-300 ">{user?.displayName}</h2>
+                                        <span className="text-sm font-medium text-gray-600">{user?.email}</span>
+                                    </div>
+                                </div>
+                            </div>
 
                             {/* routes */}
 
 
-                            <div className="divider divider-warning mt-8 px-6"></div>
+                            
                             {/* available all routes */}
 
                         </nav>

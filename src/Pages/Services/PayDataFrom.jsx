@@ -1,10 +1,10 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Providers/Authprovider';
 import axios from 'axios';
 
-const PayDataFrom = ({ course, id }) => {
-  const { register, handleSubmit } = useForm();
+const PayDataFrom = ({ id }) => {
+  const { handleSubmit } = useForm();
   const { user } = useContext(AuthContext);
   const onSubmit = async (data) => {
     data.productId = id;
@@ -24,31 +24,6 @@ const PayDataFrom = ({ course, id }) => {
     <>
       <div className=" max-w-screen-2xl mx-auto">
         <form onSubmit={handleSubmit(onSubmit)}>
-          {/* <div className="form-control w-full ">
-            <label className="label">
-              <span className="label-text">Name</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Name"
-              {...register('Name', { required: true })}
-              className="input input-bordered w-full "
-            />
-          </div>
-          <div className="flex gap-5">
-            <div className="form-control w-full ">
-              <label htmlFor="subject" className="text-white font-poppins font-semibold text-2xl">
-                Subject
-              </label>
-              <input
-                type="text"
-                placeholder="Subject"
-                {...register('Subject', { required: true })}
-                className="input input-bordered w-full "
-              />
-            </div>
-          </div> */}
-
           <button
             type="submit"
             className="w-full py-2.5 my-6  px-4 text-xl font-semibold rounded-full bg-yellow-600 focus:outline-none hover:bg-yellow-700 hover:text-gray-200"

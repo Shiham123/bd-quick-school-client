@@ -3,19 +3,20 @@ import { Link, Outlet } from "react-router-dom";
 import { useState } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
 import useAuth from "../../Hooks/useAuth/useAuth";
+import DashBoardNav from "../DashBoardNav/DashBoardNav";
 
 
 
 const DashBoardLayout = () => {
     const [open, setOpen] = useState(true)
     const [dropdown, setDropdown] = useState(false)
-    const {user} = useAuth()
+    const { user } = useAuth()
 
 
 
     return (
         <div className="  ">
-            <div className=" dark:bg-gray-800">
+            <div className=" bg-gray-100 dark:bg-gray-800">
                 <div className={`body-content ${open ? 'open' : ''}`}>
 
                     {/* navlink  */}
@@ -45,12 +46,12 @@ const DashBoardLayout = () => {
                             <div>
                                 <div className="overflow-hidden ">
                                     <img src="https://i.postimg.cc/K8Rq5BCD/pexels-pavel-danilyuk-8381916.jpg" alt=""
-                                        className="object-cover object-top w-full h-32"/>
+                                        className="object-cover object-top w-full h-32" />
                                 </div>
                                 <div
                                     className="relative w-32 h-32 mx-auto -mt-16 overflow-hidden border-4 border-white rounded-full">
                                     <img src={user?.photoURL} alt=""
-                                        className="object-cover object-top w-full h-32 "/>
+                                        className="object-cover object-top w-full h-32 " />
                                 </div>
                                 <div className="flex justify-center ">
                                     <div>
@@ -63,7 +64,7 @@ const DashBoardLayout = () => {
                             {/* routes */}
 
 
-                            
+
                             {/* available all routes */}
 
                         </nav>
@@ -72,7 +73,9 @@ const DashBoardLayout = () => {
                     {/* content side */}
                     <div className={`mx-auto  transition-all content-wrapper ${!open ? 'lg:ml-0' : 'lg:ml-[280px]'}`} id="dash">
                         {/* navbar */}
-
+                        <div>
+                            <DashBoardNav open={open} setOpen={setOpen} dropdown={dropdown} setDropdown={setDropdown}></DashBoardNav>
+                        </div>
                         <div className=" font-raleway ">
                             <Outlet></Outlet>
                         </div>

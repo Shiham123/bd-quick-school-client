@@ -7,7 +7,6 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import useAuth from "../../Hooks/useAuth/useAuth";
 
 
-
 const DashBoardNav = ({ open, setOpen, dropdown, setDropdown }) => {
     const { user, logOut } = useAuth();
 

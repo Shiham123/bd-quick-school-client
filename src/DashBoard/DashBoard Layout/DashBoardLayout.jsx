@@ -29,7 +29,7 @@ const DashBoardLayout = () => {
 
                             {/* website logo */}
                             <div
-                                className="flex items-center w-full px-2 pt-4 pb-4 mb-4 border-b border-black dark:border-gray-700">
+                                className="flex items-center w-full px-2 pt-2 pb-4 mb-4 border-b border-black dark:border-gray-700">
                                 <Link to="/" className="flex items-center justify-center normal-case">
                                     <Player
                                         className="w-14"

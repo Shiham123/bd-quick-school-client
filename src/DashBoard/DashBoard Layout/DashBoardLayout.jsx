@@ -34,7 +34,7 @@ const DashBoardLayout = () => {
                                         loop
                                         src="https://lottie.host/f3cfffce-06c0-498f-92b2-3c564fb9f40f/DVZgFbgX9m.json"
                                     ></Player>
-                                    <span className=" font-semibold hover:">
+                                    <span className=" font-semibold">
                                         <span className="text-xl text-black font-bold font-cinzel">BD Quick School </span>
                                     </span>
                                 </Link>

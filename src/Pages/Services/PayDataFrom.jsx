@@ -15,7 +15,6 @@ const PayDataFrom = ({ id }) => {
       const response = await axios.post('http://localhost:5000/api/v1/order', data);
       const result = response.data;
       window.location.replace(result.url);
-      console.log(result);
     } catch (error) {
       console.error('Error:', error);
     }

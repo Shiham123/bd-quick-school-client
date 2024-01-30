@@ -26,9 +26,10 @@ const DashBoardNav = ({ open, setOpen, dropdown, setDropdown }) => {
         <div>
             <section
                 className="sticky top-0 z-40 px-3 py-3   dark:text-gray-100 dark:bg-gray-900 lg:px-5">
-                    
+                {/* Nav Section */}
                 <nav className="relative">
                     <div className="flex items-center justify-between">
+                        {/* Mobile device */}
                         <div>
                             <button
                                 onClick={() => setOpen(!open)}
@@ -37,6 +38,7 @@ const DashBoardNav = ({ open, setOpen, dropdown, setDropdown }) => {
                                 <FaListUl className="text-2xl w-6" />
                             </button>
                         </div>
+                        {/* Dashboard Search Bar */}
                         <div className="justify-center hidden md:flex">
                             <div className=" xl:w-96">
                                 <div className="relative flex flex-wrap items-center w-full ">
@@ -52,6 +54,7 @@ const DashBoardNav = ({ open, setOpen, dropdown, setDropdown }) => {
                             </div>
                         </div>
                         <div className="flex items-center">
+                            {/* Message icon */}
                             <div className="relative mr-4 ">
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -63,6 +66,7 @@ const DashBoardNav = ({ open, setOpen, dropdown, setDropdown }) => {
                                     </svg>
                                 </span>
                             </div>
+                            {/* Notification */}
                             <div className="block mr-4 md:hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                     className="text-gray-400" viewBox="0 0 16 16">
@@ -81,6 +85,7 @@ const DashBoardNav = ({ open, setOpen, dropdown, setDropdown }) => {
                                     </svg>
                                 </span>
                             </div>
+                            {/* Dropdown Menu */}
                             <div className={`relative text-left lg:inline-block `} >
                                 <div className="lg:block" onClick={() => setDropdown(!dropdown)}>
                                     <button className="flex items-center">
@@ -99,6 +104,7 @@ const DashBoardNav = ({ open, setOpen, dropdown, setDropdown }) => {
                                         </span>
                                     </button>
                                 </div>
+                                {/* Dropdown Inside Menu */}
                                 <div
                                     style={{ display: dropdown ? 'block' : 'none' }}
                                     id="dropdown_profile"

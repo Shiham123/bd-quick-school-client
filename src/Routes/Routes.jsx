@@ -11,6 +11,7 @@ import ServiceDetails from '../Pages/Services/ServiceDetails';
 import PaymentSuccses from '../Pages/Services/PaymentSuccses';
 import PaymentFailed from '../Pages/Services/PaymentFailed';
 import PayDataFrom from '../Pages/Services/PayDataFrom';
+import DashBoardLayout from '../DashBoard/DashBoard Layout/DashBoardLayout';
 // import PrivateRoute from './PrivateRoute';
 
 const Router = createBrowserRouter([
@@ -40,6 +41,10 @@ const Router = createBrowserRouter([
       { path: '/payment/fail/:tranID', element: <PaymentFailed /> },
     ],
   },
+  {
+    path: '/dashboard',
+    element: <DashBoardLayout />
+  }
 ]);
 
 export default Router;

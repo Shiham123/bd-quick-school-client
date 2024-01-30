@@ -32,8 +32,8 @@ const Navbar = () => {
       // window height changed for the demo
       windowHeight > 50
         ? setStickyClass(
-            `fixed top-0 transition bg-gradient-to-b from-[#42275a] to-[#734b6d]  bg-opacity-100 duration-1000 ease-in-out`
-          )
+          `fixed top-0 transition bg-gradient-to-b from-[#42275a] to-[#734b6d]  bg-opacity-100 duration-1000 ease-in-out`
+        )
         : setStickyClass('');
     }
   };
@@ -47,7 +47,7 @@ const Navbar = () => {
 
   useEffect(() => {
     axios
-      .get('NavpageLists.json')
+      .get('/public/NavpageLists.json')
       .then((res) => setNavPages(res.data))
       .catch((err) => console.log(err));
   }, []);

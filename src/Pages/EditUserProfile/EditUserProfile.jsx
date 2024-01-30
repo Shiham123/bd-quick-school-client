@@ -22,7 +22,9 @@ const EditUserProfile = () => {
     const axiosPublic = useAxiosPublic()
     const { register, handleSubmit, reset } = useForm()
     const users = useLoaderData()
+    console.log(users);
     const { _id, name, phone, email, photoURL } = users[0]
+    console.log(_id);
     // managing State By UseState
     const [currentPassword, setCurrentPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");

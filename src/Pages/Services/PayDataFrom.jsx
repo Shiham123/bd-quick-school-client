@@ -16,7 +16,7 @@ const PayDataFrom = ({ course, id }) => {
 
     try {
       const response = await axios.post(
-        'https://bd-quick-school-server-ten.vercel.app/api/v1/order',
+        'http://localhost:5000/api/v1/order',
         data
       );
       const result = response.data;

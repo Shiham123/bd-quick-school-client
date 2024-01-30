@@ -47,7 +47,7 @@ const Navbar = () => {
 
   useEffect(() => {
     axios
-      .get('NavpageLists.json')
+      .get('/public/NavpageLists.json')
       .then((res) => setNavPages(res.data))
       .catch((err) => console.log(err));
   }, []);

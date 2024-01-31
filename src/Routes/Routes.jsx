@@ -13,6 +13,7 @@ import PaymentFailed from '../Pages/Services/PaymentFailed';
 import PayDataFrom from '../Pages/Services/PayDataFrom';
 // import PrivateRoute from './PrivateRoute';
 import MainQuiz from '../quiz/MainQuiz';
+// import Review from '../Pages/Review/Review';
 
 const Router = createBrowserRouter([
   {
@@ -44,6 +45,11 @@ const Router = createBrowserRouter([
       { path: '/payment/succsess/:tranID', element: <PaymentSuccses /> },
       { path: '/payment/fail/:tranID', element: <PaymentFailed /> },
       { path: '/quiz', element: <MainQuiz /> },
+      // {
+      //   path: '/review',
+      //   element: <Review />,
+      //   loader: () => fetch('../../public/Review.json'),
+      // }
     ],
   },
 ]);

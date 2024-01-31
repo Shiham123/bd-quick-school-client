@@ -40,3 +40,7 @@ body {
 
   /* background-color: #381d3f; */
 }
+
+.dark {
+  @apply bg-[#1A1B1F] text-white
+}

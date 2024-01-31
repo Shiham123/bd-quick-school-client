@@ -33,12 +33,6 @@ const Router = createBrowserRouter([
       {
         path: '/ServiceDetails/:id',
         element: <ServiceDetails />,
-        // loader: async ({ params }) => {
-        //   const response = await fetch('/public/Services.json');
-        //   const data = await response.json();
-        //   const selectedService = data.find((service) => service.Id === params.id);
-        //   return selectedService;
-        // },
       },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
       { path: '/payment/succsess/:tranID', element: <PaymentSuccses /> },

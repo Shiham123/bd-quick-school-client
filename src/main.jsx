@@ -5,13 +5,16 @@ import { RouterProvider } from 'react-router-dom';
 import Router from './Routes/Routes';
 import Authprovider from './Providers/Authprovider';
 import { LocationProvider } from './context/LocationContext';
+import { Darkmode } from './context/Darkmode';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Authprovider>
-      <LocationProvider>
-        <RouterProvider router={Router} />
-      </LocationProvider>
+      <Darkmode>
+        <LocationProvider>
+          <RouterProvider router={Router} />
+        </LocationProvider>
+      </Darkmode>
     </Authprovider>
   </React.StrictMode>
 );

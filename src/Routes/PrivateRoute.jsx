@@ -5,6 +5,7 @@ import { ThreeCircles } from 'react-loader-spinner';
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const location = useLocation();
+  const path = location.pathname;
 
   if (loading) {
     return (
@@ -25,10 +26,9 @@ const PrivateRoute = ({ children }) => {
     );
   }
 
-  if (user) {
-    return children;
-  }
-  return <Navigate state={location.pathname} to="/login"></Navigate>;
+  if (user) return children;
+
+  return <Navigate state={path} to="/login" />;
 };
 
 export default PrivateRoute;

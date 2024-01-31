@@ -11,8 +11,8 @@ import ServiceDetails from '../Pages/Services/ServiceDetails';
 import PaymentSuccses from '../Pages/Services/PaymentSuccses';
 import PaymentFailed from '../Pages/Services/PaymentFailed';
 import PayDataFrom from '../Pages/Services/PayDataFrom';
-// import PrivateRoute from './PrivateRoute';
 import MainQuiz from '../quiz/MainQuiz';
+import PrivateRoute from './PrivateRoute';
 
 const Router = createBrowserRouter([
   {
@@ -24,7 +24,14 @@ const Router = createBrowserRouter([
       { path: 'Couredetails', element: <CourseDetails /> },
       { path: 'register', element: <Register /> },
       { path: 'login', element: <Login /> },
-      { path: 'services', element: <Services /> },
+      {
+        path: 'services',
+        element: (
+          <PrivateRoute>
+            <Services />
+          </PrivateRoute>
+        ),
+      },
       {
         path: 'myprofile/:email',
         element: <MyProfile />,
@@ -43,7 +50,10 @@ const Router = createBrowserRouter([
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
       { path: '/payment/succsess/:tranID', element: <PaymentSuccses /> },
       { path: '/payment/fail/:tranID', element: <PaymentFailed /> },
-      { path: '/quiz', element: <MainQuiz /> },
+      {
+        path: '/quiz',
+        element: <MainQuiz />,
+      },
     ],
   },
 ]);

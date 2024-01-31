@@ -2,10 +2,34 @@ import { Link } from 'react-router-dom';
 import QuizButton from '../shared/QuizButton';
 import QuizHeading from '../shared/QuizHeading';
 import useLocationContext from '../../context/useLocationContext';
+import useAuth from '../../Hooks/useAuth/useAuth';
+import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 
 const QuizResult = (props) => {
+  const { user } = useAuth();
+  const servicesLocation = useLocationContext();
+  const axiosPublic = useAxiosPublic();
+
+  const loggedInUserName = user?.displayName,
+    loggedInUserEmail = user?.email,
+    servicesUrl = servicesLocation.location.pathname;
+
+  const twoPart = servicesUrl.slice(1).split('/');
+
+  const servicesName = twoPart[0],
+    servicesId = twoPart[1];
+
+  const postedData = { loggedInUserEmail, loggedInUserName, servicesId, servicesName };
+
+  const postData = () => {
+    axiosPublic
+      .post('/api/v2/quizUsers', postedData)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+  };
+
   const { showResult, quiz, mark, location } = props;
-  const { closeModal } = useLocationContext();
+  // const { closeModal } = useLocationContext();
   return (
     <section style={{ display: `${showResult ? 'block' : 'none'}` }}>
       <div className="flex flex-col justify-center items-center">
@@ -22,7 +46,7 @@ const QuizResult = (props) => {
         </div>
 
         <Link to={location.pathname}>
-          <QuizButton btnText="Back To the page" onClick={closeModal} />
+          <QuizButton btnText="Back To the page" onClick={postData} />
         </Link>
       </div>
     </section>

@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 import { MdOutlineEmail } from 'react-icons/md';
 import { AiOutlineEye } from 'react-icons/ai';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
@@ -7,7 +5,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { ImGithub } from 'react-icons/im';
 import { BsFacebook } from 'react-icons/bs';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from './../../Hooks/useAuth/useAuth';
 import toast, { Toaster } from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
@@ -18,6 +16,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { signIn, setLoading, signInWithGoogle, signInWithGithub } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const axiosPublic = useAxiosPublic();
 
   // form functionality
@@ -25,14 +24,13 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm();
   // Handle Submit
+
   const onSubmit = (data) => {
-    // Sign In User
     signIn(data.email, data.password)
       .then((result) => {
-        console.log(result)
+        console.log(result);
         console.log('Navigating to:', location?.state ? location.state : '/');
         navigate(location?.state ? location.state : '/');
         swal('Good job!', 'User logged Successfully', 'success');
@@ -41,7 +39,6 @@ const Login = () => {
         const errorMSg = error.message;
         toast.error(errorMSg);
         setLoading(false);
-        e.target.reset();
       });
   };
 

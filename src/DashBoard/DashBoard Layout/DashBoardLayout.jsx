@@ -5,6 +5,7 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import DashBoardNav from "../DashBoardNav/DashBoardNav";
 import UseAdmin from './../../Hooks/useAdmin/useAdmin';
+import DashBoardAdmin from "../DashBoardAdmin/DashBoardAdmin";
 
 
 
@@ -64,7 +65,9 @@ const DashBoardLayout = () => {
                                 </div>
 
                                 {/* routes */}
-
+                                <div className="pb-6 mt-4 overflow-x-hidden overflow-y-auto ">
+                                    <DashBoardAdmin />
+                                </div>
 
 
                                 {/* available all routes */}
@@ -83,10 +86,10 @@ const DashBoardLayout = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div >
             </>}
 
-        </div>
+        </div >
     )
 };
 

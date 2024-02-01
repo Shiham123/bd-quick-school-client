@@ -2,32 +2,34 @@ import { Link, useNavigate } from 'react-router-dom';
 import QuizButton from '../shared/QuizButton';
 import QuizHeading from '../shared/QuizHeading';
 import useLocationContext from '../../context/useLocationContext';
-import useAuth from '../../Hooks/useAuth/useAuth';
 import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
+import useAuth from '../../Hooks/useAuth/useAuth';
 
 const QuizResult = (props) => {
-  const { user } = useAuth();
   const servicesLocation = useLocationContext();
-  const axiosPublic = useAxiosPublic();
-
+  const { showResult, quiz, mark, location } = props;
+  const { closeModal } = useLocationContext();
   const servicesUrl = servicesLocation.location.pathname;
 
+  const axiosPublic = useAxiosPublic();
+  const { user } = useAuth();
   const navigate = useNavigate();
 
-  const postedData = { servicesUrl };
+  const splitId = servicesUrl.slice().split('/');
+  let servicesId = splitId[2];
 
   const postData = () => {
+    const submittedData = { submitQuiz: true };
+
     axiosPublic
-      .post(`/api/v2/quizUsers/${user.email}`, postedData)
+      .post(`/api/v2/quizUsers/${servicesId}/${user.email}`, submittedData)
       .then((response) => {
         console.log(response);
-        navigate('/services', { replace: true });
+        navigate(servicesUrl, { replace: true });
       })
       .catch((error) => console.log(error));
   };
 
-  const { showResult, quiz, mark, location } = props;
-  // const { closeModal } = useLocationContext();
   return (
     <section style={{ display: `${showResult ? 'block' : 'none'}` }}>
       <div className="flex flex-col justify-center items-center">
@@ -44,7 +46,8 @@ const QuizResult = (props) => {
         </div>
 
         <Link to={location.pathname}>
-          <QuizButton btnText="Back To the page" onClick={postData} />
+          <QuizButton btnText="Back To the page" onClick={closeModal} />
+          <QuizButton btnText="submit data" onClick={postData} />
         </Link>
       </div>
     </section>

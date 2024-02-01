@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import PayDataFrom from './PayDataFrom';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { Box, Grid, IconButton, Typography } from '@material-ui/core';
@@ -16,21 +16,23 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import QuizModal from '../../quiz/shared/QuizModal';
 import useLocationContext from '../../context/useLocationContext';
+import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
+import useAuth from '../../Hooks/useAuth/useAuth';
 // import Video from './VideoStreming';
 // import axios from 'axios';
 
 const ServiceDetails = () => {
   const { id } = useParams();
-  const location = useLocation();
-
   const [course, setCourse] = useState(null);
-  const { isModalOpen, servicesLocation, openModal, closeModal } = useLocationContext();
+  const { isModalOpen } = useLocationContext();
+  const axiosPublic = useAxiosPublic();
+  const { user } = useAuth();
 
-  if (location.pathname === servicesLocation) {
-    closeModal();
-  } else {
-    openModal();
-  }
+  // TODO:
+  axiosPublic
+    .get(`/api/v2/quizUsers/${id}/${user.email}`)
+    .then((response) => console.log(response.data))
+    .catch((error) => console.log(error));
 
   useEffect(() => {
     fetch('/Services.json')
@@ -41,6 +43,7 @@ const ServiceDetails = () => {
       })
       .catch((error) => console.error('Error fetching data:', error));
   }, [id]);
+
   if (!course) {
     return <div>Loading...</div>;
   }

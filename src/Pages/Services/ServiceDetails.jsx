@@ -18,11 +18,13 @@ import QuizModal from '../../quiz/shared/QuizModal';
 import useLocationContext from '../../context/useLocationContext';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
+import useAuth from '../../Hooks/useAuth/useAuth';
 // import Video from './VideoStreming';
 // import axios from 'axios';
 
 const ServiceDetails = () => {
   const { id } = useParams();
+  const { user } = useAuth();
   const location = useLocation();
 
   const [course, setCourse] = useState(null);
@@ -33,10 +35,12 @@ const ServiceDetails = () => {
   const { data: quizData } = useQuery({
     queryKey: ['quizData'],
     queryFn: async () => {
-      const response = await axiosPublic.get('/api/v2/quizUsers');
+      const response = await axiosPublic.get(`/api/v2/quizUsers/${user.email}`);
       return response.data;
     },
   });
+
+  console.log(quizData);
 
   useEffect(() => {
     fetch('/Services.json')

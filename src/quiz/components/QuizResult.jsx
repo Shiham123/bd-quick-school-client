@@ -10,15 +10,13 @@ const QuizResult = (props) => {
   const servicesLocation = useLocationContext();
   const axiosPublic = useAxiosPublic();
 
-  const loggedInUserName = user?.displayName;
-  const loggedInUserEmail = user?.email;
   const servicesUrl = servicesLocation.location.pathname;
 
-  const postedData = { loggedInUserEmail, loggedInUserName, servicesUrl };
+  const postedData = { servicesUrl };
 
   const postData = () => {
     axiosPublic
-      .post('/api/v2/quizUsers', postedData)
+      .post(`/api/v2/quizUsers/${user.email}`, postedData)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
   };

@@ -12,6 +12,7 @@ import PaymentSuccses from '../Pages/Services/PaymentSuccses';
 import PaymentFailed from '../Pages/Services/PaymentFailed';
 import PayDataFrom from '../Pages/Services/PayDataFrom';
 import DashBoardLayout from '../DashBoard/DashBoard Layout/DashBoardLayout';
+import AdminProfile from '../DashBoard/Admin Profile/AdminProfile';
 // import PrivateRoute from './PrivateRoute';
 
 const Router = createBrowserRouter([
@@ -43,7 +44,13 @@ const Router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <DashBoardLayout />
+    element: <DashBoardLayout />,
+    children: [
+      {
+        path: "adminprofile",
+        element: <AdminProfile/>
+      }
+    ]
   }
 ]);
 

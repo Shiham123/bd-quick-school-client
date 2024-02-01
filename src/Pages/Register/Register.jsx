@@ -4,6 +4,7 @@ import { MdOutlineEmail } from 'react-icons/md';
 import { AiOutlineEye } from 'react-icons/ai';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
 import { IoCloudUploadOutline } from "react-icons/io5";
+import { FaPhone } from "react-icons/fa";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from './../../Hooks/useAuth/useAuth';
@@ -39,9 +40,11 @@ const Register = () => {
       .then(result => {
         handleUpdateProfile(data.name, res.data.data.display_url)
           .then(() => {
+            console.log(result)
             // Create User Entry in the database
             const usersInfo = {
               name: data.name,
+              phone: data.phone,
               email: data.email,
               photoURL: res.data.data.display_url,
               role: 'user'
@@ -60,7 +63,7 @@ const Register = () => {
             toast.success('User Create Successfully')
           })
       })
-      // Catch Error 
+      // Catch Error
       .catch(error => {
         toast.error('Email Already In use try another one')
         setLoading(false)
@@ -103,6 +106,23 @@ const Register = () => {
                   <FaUserCheck className="text-2xl absolute right-3"></FaUserCheck>
                 </div>
                 {errors.name && <span className="text-red-500 font-medium">This field is required</span>}
+              </div>
+
+              {/* Phone Number */}
+              <div>
+                <label className="text-sm mb-2 block text-white/90 font-bold">Phone</label>
+                <div className="relative flex items-center">
+                  <input
+                    {...register("phone", {
+                      required: true,
+                      minLength: 11,
+
+                    })}
+                    name="phone" type="number" className="bg-white border border-dashed border-gray-300 w-[350px] md:w-full text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter Phone" />
+                  <FaPhone className="text-xl absolute right-3"></FaPhone>
+                </div>
+                {errors.phone?.type === "required" && <span className="text-red-500 font-medium">This field is required</span>}
+                {errors.phone?.type === "minLength" && <span className="text-red-500 font-medium">Phone number must be at least 11 characters</span>}
               </div>
 
               {/* email */}

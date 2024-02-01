@@ -2,14 +2,17 @@ import { createContext, useEffect, useState } from 'react';
 
 import auth from './../Firebase/firebase.config';
 import {
+  EmailAuthProvider,
   FacebookAuthProvider,
   GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  reauthenticateWithCredential,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updatePassword,
   updateProfile,
 } from 'firebase/auth';
 
@@ -61,6 +64,24 @@ const Authprovider = ({ children }) => {
     });
   };
 
+  // Change Password
+  const changePassword = (currentPassword, newPassword) => {
+    const user = auth.currentUser;
+
+    // Reauthenticate the user with the current password
+    const credential = EmailAuthProvider.credential(user.email, currentPassword);
+
+    return reauthenticateWithCredential(user, credential)
+      .then(() => {
+        // Change the password
+        return updatePassword(user, newPassword);
+      })
+      .catch((error) => {
+        // Handle re authentication or password update errors
+        throw error;
+      });
+  };
+
   // User LogOut
   const logOut = () => {
     setLoading(true);
@@ -92,6 +113,7 @@ const Authprovider = ({ children }) => {
   // Value
   const authInfo = {
     user,
+    setUser,
     loading,
     setLoading,
     createUser,
@@ -101,6 +123,7 @@ const Authprovider = ({ children }) => {
     signInWithFacebook,
     handleUpdateProfile,
     logOut,
+    changePassword,
   };
   return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;
 };

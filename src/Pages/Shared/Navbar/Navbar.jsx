@@ -1,16 +1,17 @@
 import { Link, NavLink } from 'react-router-dom';
 import { IoMenuSharp } from 'react-icons/io5';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
 import useAuth from './../../../Hooks/useAuth/useAuth';
 import axios from 'axios';
+import { ThemeContext } from '../../../context/Darkmode';
 
 const Navbar = () => {
   // const user = false;
   const [stickyClass, setStickyClass] = useState('');
   const { user, logOut } = useAuth();
   const [NavPages, setNavPages] = useState([]);
-
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
   // Handle Logout Function to logout the User
   const handleLogOut = () => {
     logOut()
@@ -124,6 +125,13 @@ const Navbar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu dropdown-content menu-horizontal px-1 justify-center items-center flex text-base font-poppins">
               {Navlinks}
+              <li onClick={() => setDarkMode((darkMode) => !darkMode)}>
+                {darkMode ? (
+                  <img className="w-16" src="/src/assets/sun.svg" alt="" />
+                ) : (
+                  <img className="w-16" src="/src/assets/moon.svg" alt="" />
+                )}
+              </li>
             </ul>
           </div>
 

@@ -6,6 +6,7 @@ import Router from './Routes/Routes';
 import Authprovider from './Providers/Authprovider';
 import { LocationProvider } from './context/LocationContext';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Darkmode } from './context/Darkmode';
 
 const queryClient = new QueryClient();
 
@@ -13,9 +14,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <Authprovider>
-        <LocationProvider>
-          <RouterProvider router={Router} />
-        </LocationProvider>
+        <Darkmode>
+          <LocationProvider>
+            <RouterProvider router={Router} />
+          </LocationProvider>
+        </Darkmode>
       </Authprovider>
     </QueryClientProvider>
   </React.StrictMode>

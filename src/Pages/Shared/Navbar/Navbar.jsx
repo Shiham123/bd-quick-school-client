@@ -2,6 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { IoMenuSharp } from 'react-icons/io5';
 import { useContext, useEffect, useState } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
+import { CiLight, CiDark } from 'react-icons/ci';
 import useAuth from './../../../Hooks/useAuth/useAuth';
 import axios from 'axios';
 import { ThemeContext } from '../../../context/Darkmode';
@@ -128,11 +129,7 @@ const Navbar = () => {
             <ul className="menu dropdown-content menu-horizontal px-1 justify-center items-center flex text-base font-poppins">
               {Navlinks}
               <li onClick={() => setDarkMode((darkMode) => !darkMode)}>
-                {darkMode ? (
-                  <img className="w-16" src="/src/assets/sun.png" alt="" />
-                ) : (
-                  <img className="w-16" src="/src/assets/moon.jpg" alt="" />
-                )}
+                {darkMode ? <CiLight size={70} /> : <CiDark size={70} />}
               </li>
             </ul>
           </div>

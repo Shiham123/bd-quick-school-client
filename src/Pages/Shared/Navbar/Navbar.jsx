@@ -1,16 +1,18 @@
 import { Link, NavLink } from 'react-router-dom';
 import { IoMenuSharp } from 'react-icons/io5';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
+import { CiLight, CiDark } from 'react-icons/ci';
 import useAuth from './../../../Hooks/useAuth/useAuth';
 import axios from 'axios';
+import { ThemeContext } from '../../../context/Darkmode';
 
 const Navbar = () => {
   // const user = false;
   const [stickyClass, setStickyClass] = useState('');
   const { user, logOut } = useAuth();
   const [NavPages, setNavPages] = useState([]);
-
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
   // Handle Logout Function to logout the User
   const handleLogOut = () => {
     logOut()
@@ -124,6 +126,9 @@ const Navbar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu dropdown-content menu-horizontal px-1 justify-center items-center flex text-base font-poppins">
               {Navlinks}
+              <li onClick={() => setDarkMode((darkMode) => !darkMode)}>
+                {darkMode ? <CiLight size={70} /> : <CiDark size={70} />}
+              </li>
             </ul>
           </div>
 
@@ -151,11 +156,27 @@ const Navbar = () => {
                       <img src={user?.photoURL} alt="userPhoto" />
                     </div>
                     {/* View Profile Button */}
-                    <h1 className="font-lora font-bold text-base mb-2" style={{ whiteSpace: "nowrap" }}>{user?.displayName}</h1>
-                    <Link to={`myprofile/${user?.email}`}><button className='btn btn-outline text-white' style={{ whiteSpace: "nowrap" }}>View Profile</button></Link>
+                    <h1
+                      className="font-lora font-bold text-base mb-2"
+                      style={{ whiteSpace: 'nowrap' }}
+                    >
+                      {user?.displayName}
+                    </h1>
+                    <Link to={`myprofile/${user?.email}`}>
+                      <button
+                        className="btn btn-outline text-white"
+                        style={{ whiteSpace: 'nowrap' }}
+                      >
+                        View Profile
+                      </button>
+                    </Link>
                   </label>
                   {/* Dropdown Nav Start Here */}
-                  <NavLink><li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">My Courses</li></NavLink>
+                  <NavLink>
+                    <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
+                      My Courses
+                    </li>
+                  </NavLink>
                   <hr />
                   <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                     Bookmark

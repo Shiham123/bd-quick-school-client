@@ -6,6 +6,8 @@ const Video = () => {
   const [videoPlaylist, setVideoPlaylist] = useState([]);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
+  console.log(videoPlaylist);
+
   useEffect(() => {
     // Fetch video playlist data from your API endpoint
     axios
@@ -30,32 +32,43 @@ const Video = () => {
     );
   };
 
-  console.log(videoPlaylist);
-
   return (
     <div className="app-container">
       {videoPlaylist.length > 0 && (
-        <>
-          <ReactPlayer
-            controls={true}
-            url={videoPlaylist[currentVideoIndex].videoUrl}
-            width="90%"
-            height="500px"
-          />
-          <div className="video-info">
-            <h2 className="my-4 text-white text-3xl font-bold">
-              {videoPlaylist[currentVideoIndex].title}
-            </h2>
-            <div className="flex gap-4">
-              <button className="btn" onClick={handlePrevVideo}>
-                Previous
-              </button>
-              <button className="btn" onClick={handleNextVideo}>
-                Next
-              </button>
+        <div className="flex items-center">
+          <div>
+            <ReactPlayer
+              controls={true}
+              url={videoPlaylist[currentVideoIndex].videoUrl}
+              width="90%"
+              height="500px"
+            />
+            <div className="video-info">
+              <h2 className="my-4 text-white text-3xl font-bold">
+                {videoPlaylist[currentVideoIndex].title}
+              </h2>
+              <div className="flex gap-4">
+                <button className="btn text-xl" onClick={handlePrevVideo}>
+                  Previous
+                </button>
+                <button className="btn text-xl" onClick={handleNextVideo}>
+                  Next
+                </button>
+              </div>
             </div>
           </div>
-        </>
+          {/* ############## */}
+          <div className="bg-transparent border-2 text-white rounded-xl">
+            {videoPlaylist.map((video, idx) => (
+              <h1
+                className="py-3 px-3 border bg-purple-950 my-2 mx-2 rounded-lg cursor-pointer"
+                key={idx}
+              >
+                {video.title}
+              </h1>
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );

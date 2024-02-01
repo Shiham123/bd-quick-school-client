@@ -10,7 +10,7 @@ const OurTeam = () => {
       </h1>
 
       <Marquee className="container mx-auto">
-        <div className="flex mt-24  mb-20 pb-20">
+        <div className="flex mt-24  mb-20 pb-20 dark:text-black">
 
           {/* shiham's information start*/}
           <div className="card card-compact w-80 bg-base-100  hover:bg-slate-200 shadow-xl m-5 pt-5 relative  ">

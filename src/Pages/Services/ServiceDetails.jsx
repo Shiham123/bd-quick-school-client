@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import PayDataFrom from './PayDataFrom';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { Box, Grid, IconButton, Typography } from '@material-ui/core';
@@ -15,29 +14,64 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
-import Video from './VideoStreming';
-import axios from 'axios';
+import QuizModal from '../../quiz/shared/QuizModal';
+import useLocationContext from '../../context/useLocationContext';
+import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
+import useAuth from '../../Hooks/useAuth/useAuth';
+// import { useQuery } from '@tanstack/react-query';
+// import Video from './VideoStreming';
 
 const ServiceDetails = () => {
   const { id } = useParams();
-  console.log(id);
-
   const [course, setCourse] = useState(null);
+  const { isModalOpen, closeModal, openModal } = useLocationContext();
+  const axiosPublic = useAxiosPublic();
+  const { user } = useAuth();
+
+  // TODO: here are alternative for get data
+  // const { data: quizData } = useQuery({
+  //   queryKey: ['quizData', user.email, id],
+  //   queryFn: async () => {
+  //     const response = await axiosPublic.get(`/api/v2/quizUsers/${id}/${user.email}`);
+  //     return response.data;
+  //   },
+  // });
+
+  // console.log(quizData.submitQuiz);
+
+  // if (quizData?.submitQuiz) {
+  //   closeModal();
+  // } else {
+  //   openModal();
+  // }
+
   useEffect(() => {
-  
-    fetch("/Services.json") 
+    fetch('/Services.json')
       .then((response) => response.json())
       .then((data) => {
         const selectedCourse = data.find((c) => c.Id === id);
         setCourse(selectedCourse);
       })
-      .catch((error) => console.error("Error fetching data:", error));
+      .catch((error) => console.error('Error fetching data:', error));
   }, [id]);
+
+  axiosPublic
+    .get(`/api/v2/quizUsers/${id}/${user?.email}`)
+    .then((response) => {
+      const submitQuiz = response.data?.submitQuiz;
+      if (submitQuiz) {
+        closeModal();
+      } else {
+        openModal();
+      }
+    })
+    .catch((error) => console.log(error));
+
   if (!course) {
     return <div>Loading...</div>;
   }
+
   return (
- 
     <Box className=" max-w-screen-2xl mx-auto text-white px-3 mt-4 pr-2">
       <Grid container spacing={8} columns={{ md: 12 }}>
         <Grid item md={8}>
@@ -142,9 +176,13 @@ const ServiceDetails = () => {
             <p className="-mt-2">
               Promo Code Applied <span className="text-yellow-400 font-bold">MS1050</span>
             </p>
-           <PayDataFrom/>
-           {/* <Video/> */}
+            {/* -------- ! --- quiz button------------- */}
+            <PayDataFrom />
+            {/* <Video/> */}
 
+            {isModalOpen && <QuizModal />}
+
+            {/* -------- ! --- quiz button------------- */}
           </Box>
           {/* Icon Button and Details */}
           <Box className="my-12 border  border-sky-400 p-3 ">

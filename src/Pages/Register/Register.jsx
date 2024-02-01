@@ -63,7 +63,7 @@ const Register = () => {
             toast.success('User Create Successfully')
           })
       })
-      // Catch Error 
+      // Catch Error
       .catch(error => {
         toast.error('Email Already In use try another one')
         setLoading(false)

@@ -16,31 +16,21 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import QuizModal from '../../quiz/shared/QuizModal';
 import useLocationContext from '../../context/useLocationContext';
-import { useQuery } from '@tanstack/react-query';
-import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
-import useAuth from '../../Hooks/useAuth/useAuth';
 // import Video from './VideoStreming';
 // import axios from 'axios';
 
 const ServiceDetails = () => {
   const { id } = useParams();
-  const { user } = useAuth();
   const location = useLocation();
 
   const [course, setCourse] = useState(null);
-  const { isModalOpen } = useLocationContext();
+  const { isModalOpen, servicesLocation, openModal, closeModal } = useLocationContext();
 
-  const axiosPublic = useAxiosPublic();
-
-  const { data: quizData } = useQuery({
-    queryKey: ['quizData'],
-    queryFn: async () => {
-      const response = await axiosPublic.get(`/api/v2/quizUsers/${user.email}`);
-      return response.data;
-    },
-  });
-
-  console.log(quizData);
+  if (location.pathname === servicesLocation) {
+    closeModal();
+  } else {
+    openModal();
+  }
 
   useEffect(() => {
     fetch('/Services.json')

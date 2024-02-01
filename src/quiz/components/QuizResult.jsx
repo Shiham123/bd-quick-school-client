@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import QuizButton from '../shared/QuizButton';
 import QuizHeading from '../shared/QuizHeading';
 import useLocationContext from '../../context/useLocationContext';
@@ -12,12 +12,17 @@ const QuizResult = (props) => {
 
   const servicesUrl = servicesLocation.location.pathname;
 
+  const navigate = useNavigate();
+
   const postedData = { servicesUrl };
 
   const postData = () => {
     axiosPublic
       .post(`/api/v2/quizUsers/${user.email}`, postedData)
-      .then((response) => console.log(response))
+      .then((response) => {
+        console.log(response);
+        navigate('/services', { replace: true });
+      })
       .catch((error) => console.log(error));
   };
 

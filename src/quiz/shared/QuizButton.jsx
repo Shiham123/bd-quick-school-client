@@ -1,5 +1,6 @@
 const QuizButton = (props) => {
   const { btnText, onClick, disabled } = props;
+
   return (
     <button
       onClick={onClick}

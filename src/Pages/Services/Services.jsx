@@ -6,10 +6,32 @@ import axios from 'axios';
 import { ThreeCircles } from 'react-loader-spinner';
 // import PayDataFrom from './PayDataFrom';
 import { Link } from 'react-router-dom';
+import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
+import useAuth from '../../Hooks/useAuth/useAuth';
+import useLocationContext from '../../context/useLocationContext';
 
 const Services = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { user } = useAuth();
+  const { databaseServicesLocation } = useLocationContext();
+
+  const axiosPublic = useAxiosPublic();
+
+  const { data: quizData } = useQuery({
+    queryKey: 'quizData',
+    queryFn: async () => {
+      const response = await axiosPublic.get(`/api/v2/quizUsers/${user.email}`);
+      return response.data;
+    },
+  });
+
+  quizData?.map((item) => {
+    const { servicesUrl } = item;
+    console.log(servicesUrl);
+    databaseServicesLocation(servicesUrl);
+  });
 
   useEffect(() => {
     axios

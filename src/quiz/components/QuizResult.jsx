@@ -8,7 +8,6 @@ import useAuth from '../../Hooks/useAuth/useAuth';
 const QuizResult = (props) => {
   const servicesLocation = useLocationContext();
   const { showResult, quiz, mark, location } = props;
-  const { closeModal } = useLocationContext();
   const servicesUrl = servicesLocation.location.pathname;
 
   const axiosPublic = useAxiosPublic();
@@ -36,18 +35,17 @@ const QuizResult = (props) => {
         <QuizHeading headingText="This is your result" />
 
         <div className="flex flex-col justify-center items-center">
-          <h1 className="font-lora text-2xl text-white">
+          <h1 className="font-lora text-xl md:text-2xl lg:text-3xl font-semibold text-white my-5">
             {mark > (quiz.length * 5) / 2 ? 'Awesome' : 'Not good'}
           </h1>
-          <h2 className="font-lora text-2xl text-white">
+          <h2 className="font-lora text-xl md:text-2xl lg:text-3xl font-semibold text-white my-5">
             Your score is <span className="font-semibold">{mark}</span> out of
             <span className="font-semibold">{quiz.length * 5}</span>
           </h2>
         </div>
 
         <Link to={location.pathname}>
-          <QuizButton btnText="Back To the page" onClick={closeModal} />
-          <QuizButton btnText="submit data" onClick={postData} />
+          <QuizButton btnText="Return course page" onClick={postData} />
         </Link>
       </div>
     </section>

@@ -7,7 +7,7 @@ import useLocationContext from '../../context/useLocationContext';
 
 const QuizModal = () => {
   const location = useLocation();
-  const { setGlobalLocation, closeModal } = useLocationContext();
+  const { setGlobalLocation } = useLocationContext();
 
   const [height, setHeight] = useState(400),
     [width, setWidth] = useState(400);
@@ -40,14 +40,13 @@ const QuizModal = () => {
 
   return (
     <div className="fixed right-0 left-0 top-0 bottom-0 px-2 py-4 overflow-scroll z-50 flex justify-center items-center bg-black/50 rounded-lg">
-      <div className="bg-gradient-to-tr from-[#8a2d48] via-[#413f43] to-[#172A3A] w-2/3 h-2/3 md:w-[60vw] md:h-[60vh] lg:w-[70vw] lg:h-[70vh] flex flex-col justify-center items-center rounded-lg shadow-2xl shadow-orange-500">
+      <div className="bg-gradient-to-tr from-[#8a2d48] via-[#413f43] to-[#172A3A] w-[70vw] h-[50vh] md:w-[60vw] md:h-[60vh] lg:w-[65vw] lg:h-[65vh] flex flex-col justify-center items-center rounded-lg shadow-2xl shadow-orange-500">
         <Lottie options={defaultOptions} height={height} width={width} />
-        <h1 className="text-white font-lora text-xl md:text-3xl lg:text-5xl font-semibold first-letter:uppercase">
+        <h1 className="text-white m-auto text-center font-cinzel text-xl md:text-3xl lg:text-5xl font-semibold first-letter:uppercase">
           This is a test quiz for your skill test
         </h1>
 
         <div className="flex gap-8 my-10">
-          <QuizButton btnText="Cancel Quiz" onClick={closeModal} />
           <Link to={{ pathname: '/quiz', state: location }} onClick={setGlobalLocationState}>
             <QuizButton btnText="Confirm Quiz" />
           </Link>

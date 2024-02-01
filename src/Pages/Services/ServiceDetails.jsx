@@ -61,7 +61,8 @@ const ServiceDetails = () => {
       const submitQuiz = response.data?.submitQuiz;
       if (submitQuiz) {
         closeModal();
-        return;
+      } else {
+        openModal();
       }
     })
     .catch((error) => console.log(error));

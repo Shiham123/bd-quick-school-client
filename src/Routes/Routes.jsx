@@ -13,6 +13,7 @@ import PaymentFailed from '../Pages/Services/PaymentFailed';
 import PayDataFrom from '../Pages/Services/PayDataFrom';
 import MainQuiz from '../quiz/MainQuiz';
 import PrivateRoute from './PrivateRoute';
+import useAxiosPublic from '../Hooks/useAxiosPublic/useAxiosPublic';
 
 const Router = createBrowserRouter([
   {
@@ -35,7 +36,8 @@ const Router = createBrowserRouter([
       {
         path: 'myprofile/:email',
         element: <MyProfile />,
-        loader: ({ params }) => fetch(`http://localhost:5000/api/v1/useremail/${params.email}`),
+        loader: ({ params }) =>
+          fetch(`https://bd-quick-school-server.vercel.app/api/v1/useremail/${params.email}`),
       },
       {
         path: '/ServiceDetails/:id',

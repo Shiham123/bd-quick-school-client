@@ -129,9 +129,9 @@ const Navbar = () => {
               {Navlinks}
               <li onClick={() => setDarkMode((darkMode) => !darkMode)}>
                 {darkMode ? (
-                  <img className="w-16" src="/src/assets/sun.svg" alt="" />
+                  <img className="w-16" src="/src/assets/sun.png" alt="" />
                 ) : (
-                  <img className="w-16" src="/src/assets/moon.svg" alt="" />
+                  <img className="w-16" src="/src/assets/moon.jpg" alt="" />
                 )}
               </li>
             </ul>

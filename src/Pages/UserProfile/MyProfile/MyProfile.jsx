@@ -18,7 +18,7 @@ const MyProfile = () => {
     };
 
     return (
-        <div className="lg:max-w-5xl mx-auto mt-10 mb-10 p-5 bg-gradient-to-b from-[#42275a] to-[#734b6d] rounded-lg">
+        <div className="lg:max-w-5xl dark:text-white dark:bg-[#1A1B1F]  mx-auto mt-10 mb-10 p-5 bg-gradient-to-b from-[#42275a] to-[#734b6d] rounded-lg">
             {/* My Profile */}
             <div className="flex items-center justify-between border-b-2 border-dashed border-b-white/30 pb-4">
                 <h1 className="text-2xl font-poppins font-semibold text-white">My Profile</h1>

@@ -18,6 +18,7 @@ const DashBoardLayout = () => {
 
     return (
         <div className="">
+            {/* isadmin Condition Added */}
             {isAdmin && <>
                 <div className=" bg-gray-100 dark:bg-gray-800">
                     <div className={`body-content ${open ? 'open' : ''}`}>
@@ -69,8 +70,10 @@ const DashBoardLayout = () => {
                                     <div className="pb-6 mt-4 overflow-x-hidden overflow-y-hidden ">
                                         <DashBoardAdmin />
                                     </div>
+
                                     {/* Divider */}
                                     <div className="divider divider-neutral mt-8 px-6"></div>
+
                                     {/* available all routes */}
                                     <div className="pb-6  ">
                                         <ul className=" list-none">
@@ -78,7 +81,6 @@ const DashBoardLayout = () => {
                                         </ul>
                                     </div>
                                 </div>
-
                             </nav>
                         </div>
 
@@ -88,6 +90,8 @@ const DashBoardLayout = () => {
                             <div>
                                 <DashBoardNav open={open} setOpen={setOpen} dropdown={dropdown} setDropdown={setDropdown}></DashBoardNav>
                             </div>
+                            
+                            {/* Outlet */}
                             <div className="font-lora">
                                 <Outlet></Outlet>
                             </div>

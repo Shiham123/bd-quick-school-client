@@ -46,7 +46,7 @@ const DashBoardLayout = () => {
                                     </Link>
                                 </div>
                                 {/* user photo and name */}
-                                <div>
+                                <div className="font-lora">
                                     <div className="overflow-hidden ">
                                         <img src="https://i.postimg.cc/K8Rq5BCD/pexels-pavel-danilyuk-8381916.jpg" alt=""
                                             className="object-cover object-top w-full h-32" />

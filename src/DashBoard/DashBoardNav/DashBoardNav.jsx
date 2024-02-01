@@ -24,7 +24,7 @@ const DashBoardNav = ({ open, setOpen, dropdown, setDropdown }) => {
     return (
         <div>
             <section
-                className="sticky top-0 z-40 px-3 py-3   dark:text-gray-100 dark:bg-gray-900 lg:px-5">
+                className="sticky top-0 z-40 px-3 py-3  font-lora dark:text-gray-100 dark:bg-gray-900 lg:px-5">
                 {/* Nav Section */}
                 <nav className="relative">
                     <div className="flex items-center justify-between">

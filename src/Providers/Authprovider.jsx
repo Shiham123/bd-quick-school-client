@@ -64,7 +64,6 @@ const Authprovider = ({ children }) => {
     });
   };
 
-
   // Change Password
   const changePassword = (currentPassword, newPassword) => {
     const user = auth.currentUser;
@@ -78,7 +77,7 @@ const Authprovider = ({ children }) => {
         return updatePassword(user, newPassword);
       })
       .catch((error) => {
-        // Handle reauthentication or password update errors
+        // Handle re authentication or password update errors
         throw error;
       });
   };
@@ -124,7 +123,7 @@ const Authprovider = ({ children }) => {
     signInWithFacebook,
     handleUpdateProfile,
     logOut,
-    changePassword
+    changePassword,
   };
   return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;
 };

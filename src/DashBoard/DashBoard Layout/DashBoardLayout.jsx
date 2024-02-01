@@ -1,11 +1,11 @@
 import { Link, Outlet } from "react-router-dom";
-
 import { useState } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import DashBoardNav from "../DashBoardNav/DashBoardNav";
 import UseAdmin from './../../Hooks/useAdmin/useAdmin';
 import DashBoardAdmin from "../DashBoardAdmin/DashBoardAdmin";
+import DashboardAvailable from "../DashboardAvailable/DashboardAvailable";
 
 
 
@@ -17,7 +17,7 @@ const DashBoardLayout = () => {
 
 
     return (
-        <div className="  ">
+        <div className="">
             {isAdmin && <>
                 <div className=" bg-gray-100 dark:bg-gray-800">
                     <div className={`body-content ${open ? 'open' : ''}`}>
@@ -46,31 +46,38 @@ const DashBoardLayout = () => {
                                     </Link>
                                 </div>
                                 {/* user photo and name */}
-                                <div className="font-lora">
-                                    <div className="overflow-hidden ">
-                                        <img src="https://i.postimg.cc/K8Rq5BCD/pexels-pavel-danilyuk-8381916.jpg" alt=""
-                                            className="object-cover object-top w-full h-32" />
-                                    </div>
-                                    <div
-                                        className="relative w-32 h-32 mx-auto -mt-16 overflow-hidden border-4 border-white rounded-full">
-                                        <img src={user?.photoURL} alt=""
-                                            className="object-cover object-top w-full h-32 " />
-                                    </div>
-                                    <div className="flex justify-center ">
-                                        <div>
-                                            <h2 className="text-xl font-semibold dark:text-gray-300 ">{user?.displayName}</h2>
-                                            <span className="text-sm font-medium text-gray-600">{user?.email}</span>
+                                <div className="overflow-y-auto">
+                                    <div className="font-lora">
+                                        <div className="overflow-hidden ">
+                                            <img src="https://i.postimg.cc/K8Rq5BCD/pexels-pavel-danilyuk-8381916.jpg" alt=""
+                                                className="object-cover object-top w-full h-32" />
+                                        </div>
+                                        <div
+                                            className="relative w-32 h-32 mx-auto -mt-16 overflow-hidden border-4 border-white rounded-full">
+                                            <img src={user?.photoURL} alt=""
+                                                className="object-cover object-top w-full h-32 " />
+                                        </div>
+                                        <div className="flex justify-center ">
+                                            <div>
+                                                <h2 className="text-xl text-center font-semibold dark:text-gray-300 ">{user?.displayName}</h2>
+                                                <span className="text-sm text-center font-medium text-gray-600">{user?.email}</span>
+                                            </div>
                                         </div>
                                     </div>
+
+                                    {/* routes */}
+                                    <div className="pb-6 mt-4 overflow-x-hidden overflow-y-hidden ">
+                                        <DashBoardAdmin />
+                                    </div>
+                                    {/* Divider */}
+                                    <div className="divider divider-neutral mt-8 px-6"></div>
+                                    {/* available all routes */}
+                                    <div className="pb-6  ">
+                                        <ul className=" list-none">
+                                            <DashboardAvailable />
+                                        </ul>
+                                    </div>
                                 </div>
-
-                                {/* routes */}
-                                <div className="pb-6 mt-4 overflow-x-hidden overflow-y-auto ">
-                                    <DashBoardAdmin />
-                                </div>
-
-
-                                {/* available all routes */}
 
                             </nav>
                         </div>
@@ -81,7 +88,7 @@ const DashBoardLayout = () => {
                             <div>
                                 <DashBoardNav open={open} setOpen={setOpen} dropdown={dropdown} setDropdown={setDropdown}></DashBoardNav>
                             </div>
-                            <div className="">
+                            <div className="font-lora">
                                 <Outlet></Outlet>
                             </div>
                         </div>

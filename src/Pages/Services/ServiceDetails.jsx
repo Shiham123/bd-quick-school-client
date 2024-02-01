@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import PayDataFrom from './PayDataFrom';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { Box, Grid, IconButton, Typography } from '@material-ui/core';
@@ -16,14 +16,27 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import QuizModal from '../../quiz/shared/QuizModal';
 import useLocationContext from '../../context/useLocationContext';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 // import Video from './VideoStreming';
 // import axios from 'axios';
 
 const ServiceDetails = () => {
   const { id } = useParams();
+  const location = useLocation();
 
   const [course, setCourse] = useState(null);
   const { isModalOpen } = useLocationContext();
+
+  const axiosPublic = useAxiosPublic();
+
+  const { data: quizData } = useQuery({
+    queryKey: ['quizData'],
+    queryFn: async () => {
+      const response = await axiosPublic.get('/api/v2/quizUsers');
+      return response.data;
+    },
+  });
 
   useEffect(() => {
     fetch('/Services.json')
@@ -37,6 +50,7 @@ const ServiceDetails = () => {
   if (!course) {
     return <div>Loading...</div>;
   }
+
   return (
     <Box className=" max-w-screen-2xl mx-auto text-white px-3 mt-4 pr-2">
       <Grid container spacing={8} columns={{ md: 12 }}>

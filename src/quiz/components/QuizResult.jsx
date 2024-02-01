@@ -10,16 +10,11 @@ const QuizResult = (props) => {
   const servicesLocation = useLocationContext();
   const axiosPublic = useAxiosPublic();
 
-  const loggedInUserName = user?.displayName,
-    loggedInUserEmail = user?.email,
-    servicesUrl = servicesLocation.location.pathname;
+  const loggedInUserName = user?.displayName;
+  const loggedInUserEmail = user?.email;
+  const servicesUrl = servicesLocation.location.pathname;
 
-  const twoPart = servicesUrl.slice(1).split('/');
-
-  const servicesName = twoPart[0],
-    servicesId = twoPart[1];
-
-  const postedData = { loggedInUserEmail, loggedInUserName, servicesId, servicesName };
+  const postedData = { loggedInUserEmail, loggedInUserName, servicesUrl };
 
   const postData = () => {
     axiosPublic

@@ -42,9 +42,9 @@ const Review = () => {
                 <div className="mt-16">
                     <div className="container mx-auto">
                         <h2 className="text-2xl lg:text-5xl text-center  font-bold font-poppins text-white mb-5 ">
-                            {/* Our students and parents review */}
+                            Our students and parents review
 
-                            Why we are the first choice of students and parents?
+                            
                         </h2>
                        
                     </div>
@@ -66,7 +66,7 @@ const Review = () => {
                 <div className="mt-10">
 
                     {/* swiper  */}
-                    
+
                     <Swiper
                         slidesPerView={1}
                         spaceBetween={3}

@@ -1,5 +1,6 @@
 import QuizButton from '../shared/QuizButton';
 import QuizHeading from '../shared/QuizHeading';
+import QuizPara from '../shared/QuizPara';
 
 const QuizPage = (props) => {
   const {
@@ -19,6 +20,7 @@ const QuizPage = (props) => {
     <section style={{ display: `${showQuiz ? 'block' : 'none'}` }}>
       <div className="flex flex-col justify-center items-center">
         <QuizHeading headingText="This is very basic quiz for admission" />
+        <QuizPara paraText="we show right answer and correct answer at the same time" />
 
         {/* all quiz */}
 
@@ -39,7 +41,7 @@ const QuizPage = (props) => {
                 <button
                   onClick={(event) => checkAnswer(event, item)}
                   className={`flex text-white font-lora font-light text-xl border-[1px] w-full gap-4 my-4 px-8 py-6 ${
-                    correctAnswer === item && 'bg-success'
+                    correctAnswer === item && 'bg-blue-500'
                   }`}
                   disabled={buttonDisabled}
                   key={index}
@@ -59,7 +61,11 @@ const QuizPage = (props) => {
                 disabled={!selectedAnswer}
               />
             ) : (
-              <QuizButton btnText="start over" onClick={showingResult} disabled={!selectedAnswer} />
+              <QuizButton
+                btnText="Last Question"
+                onClick={showingResult}
+                disabled={!selectedAnswer}
+              />
             )}
           </div>
         </div>

@@ -2,10 +2,14 @@ import { FiEdit } from "react-icons/fi";
 import useAuth from './../../../Hooks/useAuth/useAuth';
 import { useState } from "react";
 import EditUserProfile from "../../EditUserProfile/EditUserProfile";
+import { useLoaderData } from "react-router-dom";
 
 const MyProfile = () => {
     const { user } = useAuth()
     const [isEditOpen, setIsEditOpen] = useState(false);
+    const users = useLoaderData()
+    const { _id, name, phone, email, photoURL } = users[0]
+    console.log(email)
 
     // Function to handle edit button click
     const handleEditClick = () => {
@@ -48,7 +52,7 @@ const MyProfile = () => {
                         </div>
                     </div>
                     {/* 2nd Line */}
-                    <div className="mt-8 flex flex-col md:flex-row lg:items-center gap-8 md:gap-64 lg:gap-[375px]">
+                    <div className="mt-8 flex flex-col md:flex-row lg:items-center gap-8 md:gap-64 lg:gap-96">
                         {/* Student ID */}
                         <div>
                             <h3 className="text-lg font-lora font-medium text-white/60">Student ID</h3>
@@ -57,7 +61,7 @@ const MyProfile = () => {
                         {/* Mobile Number */}
                         <div>
                             <h3 className="text-lg font-lora font-medium text-white/60">Mobile Number</h3>
-                            <h2 className=" text-xl text-white font-lora font-semibold">{user?.phone}</h2>
+                            <h2 className=" text-xl text-white font-lora font-semibold">{phone}</h2>
                         </div>
                     </div>
                 </div>

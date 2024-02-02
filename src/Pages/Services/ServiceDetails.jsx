@@ -16,14 +16,34 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import QuizModal from '../../quiz/shared/QuizModal';
 import useLocationContext from '../../context/useLocationContext';
+import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
+import useAuth from '../../Hooks/useAuth/useAuth';
+// import { useQuery } from '@tanstack/react-query';
 // import Video from './VideoStreming';
-// import axios from 'axios';
 
 const ServiceDetails = () => {
   const { id } = useParams();
-
   const [course, setCourse] = useState(null);
-  const { isModalOpen } = useLocationContext();
+  const { isModalOpen, closeModal, openModal } = useLocationContext();
+  const axiosPublic = useAxiosPublic();
+  const { user } = useAuth();
+
+  // TODO: here are alternative for get data
+  // const { data: quizData } = useQuery({
+  //   queryKey: ['quizData', user.email, id],
+  //   queryFn: async () => {
+  //     const response = await axiosPublic.get(`/api/v2/quizUsers/${id}/${user.email}`);
+  //     return response.data;
+  //   },
+  // });
+
+  // console.log(quizData.submitQuiz);
+
+  // if (quizData?.submitQuiz) {
+  //   closeModal();
+  // } else {
+  //   openModal();
+  // }
 
   useEffect(() => {
     fetch('/Services.json')
@@ -34,9 +54,23 @@ const ServiceDetails = () => {
       })
       .catch((error) => console.error('Error fetching data:', error));
   }, [id]);
+
+  axiosPublic
+    .get(`/api/v2/quizUsers/${id}/${user?.email}`)
+    .then((response) => {
+      const submitQuiz = response.data?.submitQuiz;
+      if (submitQuiz) {
+        closeModal();
+      } else {
+        openModal();
+      }
+    })
+    .catch((error) => console.log(error));
+
   if (!course) {
     return <div>Loading...</div>;
   }
+
   return (
     <Box className=" max-w-screen-2xl mx-auto text-white px-3 mt-4 pr-2">
       <Grid container spacing={8} columns={{ md: 12 }}>

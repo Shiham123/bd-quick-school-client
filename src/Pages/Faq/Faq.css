@@ -1,0 +1,8 @@
+
+.shadow-all{
+    box-shadow: 
+        5px 0 10px rgba(0, 0, 0, 0.1) /* Left */,
+        0 -5px 10px rgba(0, 0, 0, 0.1) /* Top */,
+        -5px 0 10px rgba(0, 0, 0, 0.1) /* Right */,
+        0 5px 10px rgba(0, 0, 0, 0.1); /* Bottom */
+}

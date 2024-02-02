@@ -15,7 +15,11 @@ import DashBoardLayout from '../DashBoard/DashBoard Layout/DashBoardLayout';
 import AdminProfile from '../DashBoard/Admin Profile/AdminProfile';
 import AdminRoute from './AdminRoute';
 import MainQuiz from '../quiz/MainQuiz';
+<<<<<<< HEAD
+// import Review from '../Pages/Review/Review';
+=======
 import PrivateRoute from './PrivateRoute';
+>>>>>>> e924ceb9e49e3bd7263850f0e443c60d0108186b
 
 const Router = createBrowserRouter([
   {

@@ -11,6 +11,10 @@ import ServiceDetails from '../Pages/Services/ServiceDetails';
 import PaymentSuccses from '../Pages/Services/PaymentSuccses';
 import PaymentFailed from '../Pages/Services/PaymentFailed';
 import PayDataFrom from '../Pages/Services/PayDataFrom';
+import DashBoardLayout from '../DashBoard/DashBoard Layout/DashBoardLayout';
+import AdminProfile from '../DashBoard/Admin Profile/AdminProfile';
+// import PrivateRoute from './PrivateRoute';
+import AdminRoute from './AdminRoute';
 import MainQuiz from '../quiz/MainQuiz';
 import PrivateRoute from './PrivateRoute';
 
@@ -51,6 +55,16 @@ const Router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: '/dashboard',
+    element: <AdminRoute><DashBoardLayout /></AdminRoute>,
+    children: [
+      {
+        path: "adminprofile",
+        element: <AdminProfile />
+      }
+    ]
+  }
 ]);
 
 export default Router;

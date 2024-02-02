@@ -12,10 +12,10 @@ const Navbar = () => {
   // const user = false;
   const [stickyClass, setStickyClass] = useState('');
   const { user, logOut } = useAuth();
-  const [isAdmin] = UseAdmin()
+  const [isAdmin] = UseAdmin();
   const [NavPages, setNavPages] = useState([]);
   const { darkMode, setDarkMode } = useContext(ThemeContext);
-  // Handle Logout Function to logout the User
+
   const handleLogOut = () => {
     logOut()
       .then((result) => {
@@ -36,8 +36,8 @@ const Navbar = () => {
       // window height changed for the demo
       windowHeight > 50
         ? setStickyClass(
-          `fixed top-0 transition bg-gradient-to-b from-[#42275a] to-[#734b6d]  bg-opacity-100 duration-1000 ease-in-out`
-        )
+            `fixed top-0 transition bg-gradient-to-b from-[#42275a] to-[#734b6d]  bg-opacity-100 duration-1000 ease-in-out`
+          )
         : setStickyClass('');
     }
   };
@@ -51,7 +51,7 @@ const Navbar = () => {
 
   useEffect(() => {
     axios
-      .get('/public/NavpageLists.json')
+      .get('/NavpageLists.json')
       .then((res) => setNavPages(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -204,15 +204,15 @@ const Navbar = () => {
                     Announcement
                   </li>
                   <hr />
-                  {
-                    isAdmin && (<>
+                  {isAdmin && (
+                    <>
                       <NavLink to="/dashboard">
                         <li className="hover:font-semibold  py-1 text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                           Dashboard
                         </li>
                       </NavLink>
                     </>
-                    )}
+                  )}
                   <hr />
 
                   <div className="hover:font-semibold pt-2 pb-3 text-start font-lora font-medium ">

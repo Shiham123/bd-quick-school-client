@@ -13,7 +13,6 @@ import PaymentFailed from '../Pages/Services/PaymentFailed';
 import PayDataFrom from '../Pages/Services/PayDataFrom';
 import DashBoardLayout from '../DashBoard/DashBoard Layout/DashBoardLayout';
 import AdminProfile from '../DashBoard/Admin Profile/AdminProfile';
-// import PrivateRoute from './PrivateRoute';
 import AdminRoute from './AdminRoute';
 import MainQuiz from '../quiz/MainQuiz';
 import PrivateRoute from './PrivateRoute';
@@ -42,10 +41,7 @@ const Router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`https://bd-quick-school-server.vercel.app/api/v1/useremail/${params.email}`),
       },
-      {
-        path: '/ServiceDetails/:id',
-        element: <ServiceDetails />,
-      },
+      { path: '/ServiceDetails/:id', element: <ServiceDetails /> },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
       { path: '/payment/succsess/:tranID', element: <PaymentSuccses /> },
       { path: '/payment/fail/:tranID', element: <PaymentFailed /> },
@@ -57,14 +53,13 @@ const Router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <AdminRoute><DashBoardLayout /></AdminRoute>,
-    children: [
-      {
-        path: "adminprofile",
-        element: <AdminProfile />
-      }
-    ]
-  }
+    element: (
+      <AdminRoute>
+        <DashBoardLayout />
+      </AdminRoute>
+    ),
+    children: [{ path: 'adminprofile', element: <AdminProfile /> }],
+  },
 ]);
 
 export default Router;

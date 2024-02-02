@@ -14,11 +14,11 @@ const DashBoardNav = ({ open, setOpen, dropdown, setDropdown }) => {
     const handleLogOut = () => {
         logOut()
             .then((result) => {
-                console.log(result.user);
+                console.log(result.user); 
             })
             .then((error) => {
                 console.log(error);
-            });
+            }); 
     };
 
     return (

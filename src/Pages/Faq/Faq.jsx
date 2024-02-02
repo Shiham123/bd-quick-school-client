@@ -1,30 +1,42 @@
 /* Import needed files and folder */
+import * as React from 'react';
 import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import './Faq.css';
 
 /* FAQ section */
 const Faq = () => {
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
   return (
     <div className="py-10 rounded-2xl ">
       {/* FAQ Header  */}
-      <h2 className="text-center text-2xl md:text-4xl lg:text-5xl font-extrabold mb-20 text-white font-cinzel">
+      <h2 className="text-center text-2xl md:text-4xl lg:text-5xl font-extrabold mb-12 text-white font-cinzel">
         Frequently Asked Questions
       </h2>
       {/* FAQ Body */}
-      <div className="w-[85%] bg-purple-800 mx-auto bg-transparent py-14 rounded-2xl border-2 mb-20 pb-10 shadow-2xl shadow-[#2980b9]">
+      <div className="w-[80%] rounded-sm bg-purple-800 mx-auto bg-transparent py-12  mb-20 shadow-all">
         {/* FAQ Content */}
-        <div className="w-[90%]  mx-auto flex flex-col gap-y-4">
-          <Accordion>
+        <div className="w-[90%] mx-auto flex flex-col gap-4 ">
+          <Accordion
+            expanded={expanded === 'panel1'}
+            onChange={handleChange('panel1')}
+            className="py-2"
+          >
             <AccordionSummary
-              expandIcon={<ArrowDownwardIcon />}
-              aria-controls="panel1-content"
-              id="panel1-header"
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1bh-content"
+              id="panel1bh-header"
             >
-              <Typography>What is BD Quick School about?</Typography>
+              <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                What is BD Quick School about?
+              </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -35,14 +47,19 @@ const Faq = () => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          {/* ############# */}
-          <Accordion>
+          <Accordion
+            expanded={expanded === 'panel2'}
+            onChange={handleChange('panel2')}
+            className="py-2"
+          >
             <AccordionSummary
-              expandIcon={<ArrowDropDownIcon />}
-              aria-controls="panel2-content"
-              id="panel2-header"
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2bh-content"
+              id="panel2bh-header"
             >
-              <Typography>How can I access the content on Bd Quick School?</Typography>
+              <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                How can I access the content on Bd Quick School?
+              </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -52,15 +69,19 @@ const Faq = () => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          {/* ############# */}
-          {/* ############# */}
-          <Accordion>
+          <Accordion
+            expanded={expanded === 'panel3'}
+            onChange={handleChange('panel3')}
+            className="py-2"
+          >
             <AccordionSummary
-              expandIcon={<ArrowDropDownIcon />}
-              aria-controls="panel2-content"
-              id="panel2-header"
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel3bh-content"
+              id="panel3bh-header"
             >
-              <Typography>Is there a cost to use BD Quick School?</Typography>
+              <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                Is there a cost to use BD Quick School?
+              </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -71,15 +92,19 @@ const Faq = () => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          {/* ############# */}
-          
-          <Accordion>
+          <Accordion
+            expanded={expanded === 'panel4'}
+            onChange={handleChange('panel4')}
+            className="py-2"
+          >
             <AccordionSummary
-              expandIcon={<ArrowDropDownIcon />}
-              aria-controls="panel2-content"
-              id="panel2-header"
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel4bh-content"
+              id="panel4bh-header"
             >
-              <Typography>How often is the content updated on BD Quick Schools?</Typography>
+              <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                How often is the content updated on BD Quick Schools?
+              </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -90,15 +115,17 @@ const Faq = () => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          {/* ############# */}
-          {/* ############# */}
-          <Accordion>
+          <Accordion
+            expanded={expanded === 'panel5'}
+            onChange={handleChange('panel5')}
+            className="py-2"
+          >
             <AccordionSummary
-              expandIcon={<ArrowDropDownIcon />}
-              aria-controls="panel2-content"
-              id="panel2-header"
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel5bh-content"
+              id="panel5bh-header"
             >
-              <Typography>
+              <Typography sx={{ width: '33%', flexShrink: 0 }}>
                 Do I need to create an account to access the resources on BD Quick Schools?
               </Typography>
             </AccordionSummary>
@@ -110,14 +137,19 @@ const Faq = () => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          {/* ############# */}
-          <Accordion>
+          <Accordion
+            expanded={expanded === 'panel6'}
+            onChange={handleChange('panel6')}
+            className="py-2"
+          >
             <AccordionSummary
-              expandIcon={<ArrowDropDownIcon />}
-              aria-controls="panel2-content"
-              id="panel2-header"
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel6bh-content"
+              id="panel6bh-header"
             >
-              <Typography>Is there a progress tracking feature on BD Quick Schools?</Typography>
+              <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                Is there a progress tracking feature on BD Quick Schools?
+              </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -125,60 +157,6 @@ const Faq = () => {
                 help you monitor your performance, identify areas for improvement, and set
                 personalized learning goals. We believe in empowering our users to track their
                 educational journey effectively.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-          {/* ############# */}
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ArrowDropDownIcon />}
-              aria-controls="panel2-content"
-              id="panel2-header"
-            >
-              <Typography>What subjects or topics are covered on BD Quick Schools?</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                BD Quick Schools covers a wide range of subjects including [list of subjects]. Our
-                goal is to provide comprehensive educational content that caters to students across
-                different grades and disciplines.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-          {/* ############# */}
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ArrowDropDownIcon />}
-              aria-controls="panel2-content"
-              id="panel2-header"
-            >
-              <Typography>Can I use BD Quick Schools on my mobile device?</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                Yes, BD Quick Schools is designed to be mobile-friendly. You can access our platform
-                on your smartphone or tablet through a web browser. Additionally, we have a
-                convenient mobile app available for download on both Android and iOS devices.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-          {/* ############# */}
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ArrowDropDownIcon />}
-              aria-controls="panel2-content"
-              id="panel2-header"
-            >
-              <Typography>
-                How does BD Quick Schools ensure the quality of educational content?
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                Quality is our top priority at BD Quick Schools. Our content is developed and
-                reviewed by experienced educators and experts in each subject area. We continuously
-                monitor user feedback and update our materials to ensure they meet the highest
-                educational standards.
               </Typography>
             </AccordionDetails>
           </Accordion>

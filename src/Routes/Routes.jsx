@@ -11,9 +11,16 @@ import ServiceDetails from '../Pages/Services/ServiceDetails';
 import PaymentSuccses from '../Pages/Services/PaymentSuccses';
 import PaymentFailed from '../Pages/Services/PaymentFailed';
 import PayDataFrom from '../Pages/Services/PayDataFrom';
+import DashBoardLayout from '../DashBoard/DashBoard Layout/DashBoardLayout';
+import AdminProfile from '../DashBoard/Admin Profile/AdminProfile';
 // import PrivateRoute from './PrivateRoute';
+import AdminRoute from './AdminRoute';
 import MainQuiz from '../quiz/MainQuiz';
+<<<<<<< HEAD
 // import Review from '../Pages/Review/Review';
+=======
+import PrivateRoute from './PrivateRoute';
+>>>>>>> e924ceb9e49e3bd7263850f0e443c60d0108186b
 
 const Router = createBrowserRouter([
   {
@@ -25,33 +32,43 @@ const Router = createBrowserRouter([
       { path: 'Couredetails', element: <CourseDetails /> },
       { path: 'register', element: <Register /> },
       { path: 'login', element: <Login /> },
-      { path: 'services', element: <Services /> },
+      {
+        path: 'services',
+        element: (
+          <PrivateRoute>
+            <Services />
+          </PrivateRoute>
+        ),
+      },
       {
         path: 'myprofile/:email',
         element: <MyProfile />,
-        loader: ({ params }) => fetch(`http://localhost:5000/api/v1/useremail/${params.email}`),
+        loader: ({ params }) =>
+          fetch(`https://bd-quick-school-server.vercel.app/api/v1/useremail/${params.email}`),
       },
       {
         path: '/ServiceDetails/:id',
         element: <ServiceDetails />,
-        // loader: async ({ params }) => {
-        //   const response = await fetch('/public/Services.json');
-        //   const data = await response.json();
-        //   const selectedService = data.find((service) => service.Id === params.id);
-        //   return selectedService;
-        // },
       },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
       { path: '/payment/succsess/:tranID', element: <PaymentSuccses /> },
       { path: '/payment/fail/:tranID', element: <PaymentFailed /> },
-      { path: '/quiz', element: <MainQuiz /> },
-      // {
-      //   path: '/review',
-      //   element: <Review />,
-      //   loader: () => fetch('../../public/Review.json'),
-      // }
+      {
+        path: '/quiz',
+        element: <MainQuiz />,
+      },
     ],
   },
+  {
+    path: '/dashboard',
+    element: <AdminRoute><DashBoardLayout /></AdminRoute>,
+    children: [
+      {
+        path: "adminprofile",
+        element: <AdminProfile />
+      }
+    ]
+  }
 ]);
 
 export default Router;

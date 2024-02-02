@@ -7,7 +7,7 @@ import { CiLock } from 'react-icons/ci';
 import { FiUpload } from 'react-icons/fi';
 import useAuth from '../../Hooks/useAuth/useAuth';
 import '../../Pages/EditUserProfile/edithover.css';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -18,6 +18,7 @@ const image_Hosting_Key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_Hosting_Api = `https://api.imgbb.com/1/upload?key=${image_Hosting_Key}`;
 
 const EditUserProfile = () => {
+   useRef()
   const { user, setUser, changePassword, handleUpdateProfile } = useAuth();
   const axiosPublic = useAxiosPublic();
   const { register, handleSubmit } = useForm();

@@ -1,16 +1,20 @@
 import { Link, NavLink } from 'react-router-dom';
 import { IoMenuSharp } from 'react-icons/io5';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
+import { CiLight, CiDark } from 'react-icons/ci';
 import useAuth from './../../../Hooks/useAuth/useAuth';
 import axios from 'axios';
+import { ThemeContext } from '../../../context/Darkmode';
+import UseAdmin from '../../../Hooks/useAdmin/useAdmin';
 
 const Navbar = () => {
   // const user = false;
   const [stickyClass, setStickyClass] = useState('');
   const { user, logOut } = useAuth();
+  const [isAdmin] = UseAdmin()
   const [NavPages, setNavPages] = useState([]);
-
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
   // Handle Logout Function to logout the User
   const handleLogOut = () => {
     logOut()
@@ -32,8 +36,8 @@ const Navbar = () => {
       // window height changed for the demo
       windowHeight > 50
         ? setStickyClass(
-            `fixed top-0 transition bg-gradient-to-b from-[#42275a] to-[#734b6d]  bg-opacity-100 duration-1000 ease-in-out`
-          )
+          `fixed top-0 transition bg-gradient-to-b from-[#42275a] to-[#734b6d]  bg-opacity-100 duration-1000 ease-in-out`
+        )
         : setStickyClass('');
     }
   };
@@ -124,6 +128,9 @@ const Navbar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu dropdown-content menu-horizontal px-1 justify-center items-center flex text-base font-poppins">
               {Navlinks}
+              <li onClick={() => setDarkMode((darkMode) => !darkMode)}>
+                {darkMode ? <CiLight size={70} /> : <CiDark size={70} />}
+              </li>
             </ul>
           </div>
 
@@ -197,11 +204,15 @@ const Navbar = () => {
                     Announcement
                   </li>
                   <hr />
-                  <NavLink to="/dashboard">
-                    <li className="hover:font-semibold  py-1 text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
-                      Dashboard
-                    </li>
-                  </NavLink>
+                  {
+                    isAdmin && (<>
+                      <NavLink to="/dashboard">
+                        <li className="hover:font-semibold  py-1 text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
+                          Dashboard
+                        </li>
+                      </NavLink>
+                    </>
+                    )}
                   <hr />
 
                   <div className="hover:font-semibold pt-2 pb-3 text-start font-lora font-medium ">

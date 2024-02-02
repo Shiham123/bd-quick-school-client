@@ -4,7 +4,7 @@ import Courses from '../Courses/Courses';
 import Faq from '../Faq/Faq';
 import OurTeam from '../OurTeam/OurTeam';
 import Review from '../Review/Review';
-import ReviewCheck from '../Review/ReviewCheck';
+
 
 import './hover.css';
 
@@ -16,8 +16,7 @@ const Home = () => {
       <OurTeam />
       <Faq />
       <Review />
-      <ReviewCheck></ReviewCheck>
-  
+     
       <ChatBoat/>
     </div>
   );

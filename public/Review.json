@@ -2,31 +2,41 @@
     {
         "Profile_img": "https://i.ibb.co/PhWPVvK/painting-mountain-lake-with-mountain-background-188544-9126.jpg",
         "Date": "12/12/22",
-        "Star": 2,
-        "textfield": "Student"
+        "Star": 5,
+        "textfield": "I had an online page but could not understand anything about how to move forward with the page. By doing the course, I learned how to give a basic post, how to use it, how to contact.And it is useful for me ",
+        "Name": "Nayan Tara",
+        "Designation": "Online Business Owner"
     },
     {
         "Profile_img": "https://i.ibb.co/PhWPVvK/painting-mountain-lake-with-mountain-background-188544-9126.jpg",
         "Date": "20/12/22",
-        "Star": 4,
-        "textfield": "Student"
+        "Star": 5,
+        "textfield": "There was no time to learn offline so opt for online courses. In the course, the font Tanveen Maad has been taught very beautifully. I was able to master Shuddha Tilawat very quickly by practicing every day very easily.",
+        "Name": "Shawon Shen",
+        "Designation": "Online Business Owner"
     },
     {
         "Profile_img": "https://i.ibb.co/PhWPVvK/painting-mountain-lake-with-mountain-background-188544-9126.jpg",
         "Date": "18/12/22",
-        "Star": 5,
-        "textfield": "Student"
+        "Star": 3,
+        "textfield": "Each section of the course had clear instructions. Especially, the “Reading” and “Writing” sections were so informative which made the Mock Test and Real Exam easy for me. I like the “Writing Part” the most.",
+        "Name": "Tahiya Faiza",
+        "Designation": "Teaching Assistant, Brac University"
     },
     {
         "Profile_img": "https://i.ibb.co/PhWPVvK/painting-mountain-lake-with-mountain-background-188544-9126.jpg",
         "Date": "13/12/22",
-        "Star": 1,
-        "textfield": "Student"
+        "Star": 4,
+        "textfield": "I got 90+ marks in English subject after doing English classes in online batch of Ten Minute School. Also BD Quick School's live chat features are excellent which have helped us to constantly increase our interest learning.",
+        "Name": "Mushfik Jaman" ,
+        "Designation": "Class 8"
     },
     {
         "Profile_img": "https://i.ibb.co/PhWPVvK/painting-mountain-lake-with-mountain-background-188544-9126.jpg",
         "Date": "15/12/22",
         "Star": 3,
-        "textfield": "Student"
+        "textfield": "The best thing about online batch classes is the class teaching technique. Every teacher conducts the classes with such care that my child enjoys the classes very much. Learning should be fun! ",
+        "Name": "Miftahul Jannat",
+        "Designation": "Class 7"
     }
 ]

@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from '../useAuth/useAuth';
 
 const axiosSecure = axios.create({
-  baseURL: 'https://bd-quick-school-server.vercel.app',
-  // baseURL: 'http://localhost:5000',
+  // baseURL: 'https://bd-quick-school-server.vercel.app',
+  baseURL: 'http://localhost:5000',
 });
 
 const UseAxiosSecure = () => {

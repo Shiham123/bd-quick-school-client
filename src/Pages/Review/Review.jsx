@@ -42,6 +42,8 @@ const Review = () => {
                 <div className="mt-16">
                     <div className="container mx-auto">
                         <h2 className="text-2xl lg:text-5xl text-center  font-bold font-poppins text-white mb-5 ">
+                            {/* Our students and parents review */}
+
                             Why we are the first choice of students and parents?
                         </h2>
                        
@@ -62,6 +64,9 @@ const Review = () => {
                     </button>
                 </div>
                 <div className="mt-10">
+
+                    {/* swiper  */}
+                    
                     <Swiper
                         slidesPerView={1}
                         spaceBetween={3}
@@ -119,6 +124,7 @@ const Review = () => {
                     
                 </div>
             </div>
+            {/* for horizontal line */}
             <hr className="w-[400px] mx-auto my-32 border-2" />
         </div>
     );

@@ -1,12 +1,13 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth/useAuth';
-import UseAdmin from '../Hooks/useAdmin/useAdmin';
 import { ThreeCircles } from 'react-loader-spinner';
+import VerifyAdmin from '../Hooks/useAdmin/useAdmin';
 
 const AdminRoute = ({ children }) => {
   const { user, loading } = useAuth();
-  const [isAdmin, isAdminLoading] = UseAdmin();
+  const [isAdmin, isAdminLoading] = VerifyAdmin();
   const location = useLocation();
+
   if (loading || isAdminLoading) {
     return (
       <h2 className="flex justify-center items-center min-h-[60vh]">
@@ -29,7 +30,7 @@ const AdminRoute = ({ children }) => {
   if (user && isAdmin) {
     return children;
   }
-  return <Navigate state={location.pathname} to="/"></Navigate>;
+  return <Navigate state={location.pathname} to="/" />;
 };
 
 export default AdminRoute;

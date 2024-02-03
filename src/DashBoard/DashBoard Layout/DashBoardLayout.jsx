@@ -1,17 +1,15 @@
 import { Link, Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
-import useAuth from '../../Hooks/useAuth/useAuth';
 import DashBoardNav from '../DashBoardNav/DashBoardNav';
-import UseAdmin from './../../Hooks/useAdmin/useAdmin';
 import DashBoardAdmin from '../DashBoardAdmin/DashBoardAdmin';
 import DashboardAvailable from '../DashboardAvailable/DashboardAvailable';
+import VerifyAdmin from '../../Hooks/useAdmin/useAdmin';
 
 const DashBoardLayout = () => {
   const [open, setOpen] = useState(true);
   const [dropdown, setDropdown] = useState(false);
-  const { user } = useAuth();
-  const [isAdmin] = UseAdmin();
+  const [isAdmin] = VerifyAdmin();
 
   return (
     <div>

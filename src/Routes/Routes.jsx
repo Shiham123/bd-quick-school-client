@@ -13,9 +13,9 @@ import PaymentFailed from '../Pages/Services/PaymentFailed';
 import PayDataFrom from '../Pages/Services/PayDataFrom';
 import DashBoardLayout from '../DashBoard/DashBoard Layout/DashBoardLayout';
 import AdminProfile from '../DashBoard/Admin Profile/AdminProfile';
-import AdminRoute from './AdminRoute';
 import MainQuiz from '../quiz/MainQuiz';
 import PrivateRoute from './PrivateRoute';
+import AdminRoute from './AdminRoute';
 
 const Router = createBrowserRouter([
   {
@@ -39,7 +39,7 @@ const Router = createBrowserRouter([
         path: 'myprofile/:email',
         element: <MyProfile />,
         loader: ({ params }) =>
-          fetch(`https://bd-quick-school-server.vercel.app/api/v1/useremail/${params.email}`),
+          fetch(`https://quiz-school-server.vercel.app/api/v1/useremail/${params.email}`),
       },
       { path: '/ServiceDetails/:id', element: <ServiceDetails /> },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },

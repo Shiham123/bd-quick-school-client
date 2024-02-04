@@ -6,15 +6,14 @@ import { CiLight, CiDark } from 'react-icons/ci';
 import useAuth from './../../../Hooks/useAuth/useAuth';
 import axios from 'axios';
 import { ThemeContext } from '../../../context/Darkmode';
-import UseAdmin from '../../../Hooks/useAdmin/useAdmin';
+import VerifyAdmin from '../../../Hooks/useAdmin/useAdmin';
 
 const Navbar = () => {
-  // const user = false;
   const [stickyClass, setStickyClass] = useState('');
   const { user, logOut } = useAuth();
-  const [isAdmin] = UseAdmin();
   const [NavPages, setNavPages] = useState([]);
   const { darkMode, setDarkMode } = useContext(ThemeContext);
+  const [isAdmin] = VerifyAdmin();
 
   const handleLogOut = () => {
     logOut()

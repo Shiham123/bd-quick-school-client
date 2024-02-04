@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const axiosSecure = axios.create({
-  // baseURL: 'https://quiz-school-server.vercel.app',
-  baseURL: 'http://localhost:5000',
+  baseURL: 'https://quiz-school-server.vercel.app',
+  // baseURL: 'http://localhost:5000',
 });
 
 const useAxiosSecure = () => {
@@ -20,7 +20,6 @@ const useAxiosSecure = () => {
   );
   axiosSecure.interceptors.response.use(
     (response) => {
-      console.log(response);
       return response;
     },
     (error) => {

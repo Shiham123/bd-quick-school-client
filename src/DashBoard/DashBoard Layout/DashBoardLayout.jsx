@@ -16,7 +16,7 @@ const DashBoardLayout = () => {
   return (
     <div>
       {/* isAdmin Condition Added */}
-      {isAdmin && (
+     
         <>
           <div className=" bg-gray-100 dark:bg-gray-800">
             <div className={`body-content ${open ? 'open' : ''}`}>
@@ -115,7 +115,7 @@ const DashBoardLayout = () => {
             </div>
           </div>
         </>
-      )}
+    
     </div>
   );
 };

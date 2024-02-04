@@ -12,6 +12,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
+import { useTranslation } from 'react-i18next';
 
 // image hosting api
 const image_Hosting_Key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -30,7 +31,7 @@ const EditUserProfile = () => {
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
   const [passwordError, setPasswordError] = useState(null);
   const [confirmationError, setConfirmationError] = useState(null);
-
+  const { t, i18n } = useTranslation();
   // Onsubmit Function Call
   const onSubmit = async (data) => {
     let res;
@@ -117,7 +118,7 @@ const EditUserProfile = () => {
             <div>
               <div className="flex items-center gap-1 mb-1 font-lora">
                 <GoPerson className="text-xl text-white" />
-                <h3 className="text-lg  font-medium text-white">Full Name</h3>
+                <h3 className="text-lg  font-medium text-white">{t('FullName')}</h3>
               </div>
               <input
                 {...register('name')}
@@ -132,7 +133,7 @@ const EditUserProfile = () => {
             <div>
               <div className="flex items-center gap-1 mb-1 font-lora">
                 <FiMail className="text-xl text-white" />
-                <h3 className="text-lg  font-medium text-white">Email</h3>
+                <h3 className="text-lg  font-medium text-white">{t('Email')}</h3>
               </div>
               <input
                 className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none"
@@ -149,7 +150,7 @@ const EditUserProfile = () => {
             <div>
               <div className="flex items-center gap-1 mb-1 font-lora">
                 <PiStudent className="text-xl text-white" />
-                <h3 className="text-lg  font-medium text-white">Student ID</h3>
+                <h3 className="text-lg  font-medium text-white">{t('StudentID')}</h3>
               </div>
               <input
                 className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none"
@@ -162,7 +163,7 @@ const EditUserProfile = () => {
             <div>
               <div className="flex items-center gap-1 mb-1 font-lora">
                 <FaMobileAlt className="text-xl text-white" />
-                <h3 className="text-lg  font-medium text-white">Mobile Number</h3>
+                <h3 className="text-lg  font-medium text-white">{t('MobileNumber')}</h3>
               </div>
               <input
                 {...register('phone')}
@@ -179,13 +180,13 @@ const EditUserProfile = () => {
             <div>
               <div className="flex items-center gap-1 mb-1 font-lora">
                 <BsCardImage className="text-xl text-white" />
-                <h3 className="text-lg  font-medium text-white">Profile Image</h3>
+                <h3 className="text-lg  font-medium text-white">{t('ProfileImage')}</h3>
               </div>
 
               <div className="font-lora">
                 <label htmlFor="dropzone-file" className="flex items-center gap-1">
                   <FiUpload className="text-lg text-white" />
-                  <h3 className="text-base  font-medium text-white">Change Profile Image</h3>
+                  <h3 className="text-base  font-medium text-white">{t('ChangeProfileImage')}</h3>
                 </label>
                 <input
                   {...register('photoURL')}
@@ -211,14 +212,14 @@ const EditUserProfile = () => {
         </form>
         {/* Password */}
         <div className="flex items-center justify-between border-b-2 border-dashed border-b-white/30 pb-4 mt-16 mb-10">
-          <h1 className="text-2xl font-poppins font-semibold text-white">Password</h1>
+          <h1 className="text-2xl font-poppins font-semibold text-white">{t('Password')}</h1>
         </div>
         {/* Current Password */}
         <div className=" mt-8 flex flex-col md:flex-row items-center gap-5 lg:gap-10">
           <div>
             <div className="flex items-center gap-1 mb-1 font-lora">
               <CiLock className="text-xl text-white" />
-              <h3 className="text-lg  font-medium text-white">Current Password</h3>
+              <h3 className="text-lg  font-medium text-white">{t('CurrentPassword')}</h3>
             </div>
             <input
               className="py-2 w-96 md:w-[723px] lg:w-[981px] pl-3 rounded-lg outline-none border-[#eaaaff] text-[#eaaaff]"
@@ -238,7 +239,7 @@ const EditUserProfile = () => {
           <div>
             <div className="flex items-center gap-1 mb-1 font-lora">
               <CiLock className="text-xl text-white" />
-              <h3 className="text-lg  font-medium text-white">New Password</h3>
+              <h3 className="text-lg  font-medium text-white">{t('NewPassword')}</h3>
             </div>
             <input
               className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none border-[#eaaaff] text-[#eaaaff]"
@@ -254,7 +255,7 @@ const EditUserProfile = () => {
           <div>
             <div className="flex items-center gap-1 mb-1 font-lora">
               <CiLock className="text-xl text-white" />
-              <h3 className="text-lg  font-medium text-white">Confirm New Password</h3>
+              <h3 className="text-lg  font-medium text-white">{t('ConfirmNewPassword')}</h3>
             </div>
             <input
               className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none border-[#eaaaff] text-[#eaaaff]"

@@ -7,7 +7,7 @@ import Authprovider from './Providers/Authprovider';
 import { LocationProvider } from './context/LocationContext';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Darkmode } from './context/Darkmode';
-
+import './TransletLanguage/18next'
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(

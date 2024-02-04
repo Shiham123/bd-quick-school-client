@@ -5,10 +5,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { useTranslation } from 'react-i18next';
 
 const Review = () => {
   const [posts, setPosts] = useState([]);
   const [swiper, setSwiper] = useState(null);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +43,7 @@ const Review = () => {
         <div className="mt-16">
           <div className="container mx-auto">
             <h2 className="text-2xl font-cinzel lg:text-5xl text-center  font-bold  text-white mb-5 ">
-              Our students and parents review
+              {t('review1')} <br /> <br /> {t('review2')}
             </h2>
           </div>
         </div>

@@ -18,7 +18,7 @@ const image_Hosting_Key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_Hosting_Api = `https://api.imgbb.com/1/upload?key=${image_Hosting_Key}`;
 
 const EditUserProfile = () => {
-   useRef()
+  useRef();
   const { user, setUser, changePassword, handleUpdateProfile } = useAuth();
   const axiosPublic = useAxiosPublic();
   const { register, handleSubmit } = useForm();

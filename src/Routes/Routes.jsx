@@ -38,7 +38,8 @@ const Router = createBrowserRouter([
       {
         path: 'myprofile/:email',
         element: <MyProfile />,
-        loader: ({ params }) => fetch(`http://localhost:5000/api/v1/useremail/${params.email}`),
+        loader: ({ params }) =>
+          fetch(`https://quiz-school-server.vercel.app/api/v1/useremail/${params.email}`),
       },
       { path: '/ServiceDetails/:id', element: <ServiceDetails /> },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },

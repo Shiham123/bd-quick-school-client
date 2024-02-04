@@ -2,7 +2,10 @@ import axios from 'axios';
 import useAuth from '../useAuth/useAuth';
 import { useNavigate } from 'react-router-dom';
 
-const axiosSecure = axios.create({ baseURL: 'http://localhost:5000' });
+const axiosSecure = axios.create({
+  // baseURL: 'https://quiz-school-server.vercel.app',
+  baseURL: 'http://localhost:5000',
+});
 
 const useAxiosSecure = () => {
   const { logOut } = useAuth();
@@ -17,13 +20,13 @@ const useAxiosSecure = () => {
       return Promise.reject(error);
     }
   );
-  axiosSecure.interceptors.request.use(
+  axiosSecure.interceptors.response.use(
     (response) => {
       return response;
     },
     async (error) => {
       const status = error.response.status;
-
+      console.log(status);
       if (status === 401 || status === 403) {
         await logOut();
         navigate('/login');

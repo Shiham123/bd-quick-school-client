@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
 import useAuth from '../../Hooks/useAuth/useAuth';
 import DashBoardNav from '../DashBoardNav/DashBoardNav';
-import UseAdmin from './../../Hooks/useAdmin/useAdmin';
+// import UseAdmin from './../../Hooks/useAdmin/useAdmin';
 import DashBoardAdmin from '../DashBoardAdmin/DashBoardAdmin';
 import DashboardAvailable from '../DashboardAvailable/DashboardAvailable';
 
@@ -11,12 +11,12 @@ const DashBoardLayout = () => {
   const [open, setOpen] = useState(true);
   const [dropdown, setDropdown] = useState(false);
   const { user } = useAuth();
-  const [isAdmin] = UseAdmin();
+  // const [isAdmin] = UseAdmin();
 
   return (
     <div>
       {/* isAdmin Condition Added */}
-      {isAdmin && (
+     
         <>
           <div className=" bg-gray-100 dark:bg-gray-800">
             <div className={`body-content ${open ? 'open' : ''}`}>
@@ -116,7 +116,7 @@ const DashBoardLayout = () => {
             </div>
           </div>
         </>
-      )}
+    
     </div>
   );
 };

@@ -6,15 +6,17 @@ import { CiLight, CiDark } from 'react-icons/ci';
 import useAuth from './../../../Hooks/useAuth/useAuth';
 import axios from 'axios';
 import { ThemeContext } from '../../../context/Darkmode';
-import UseAdmin from '../../../Hooks/useAdmin/useAdmin';
+// import UseAdmin from '../../../Hooks/useAdmin/useAdmin';
+import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
   // const user = false;
   const [stickyClass, setStickyClass] = useState('');
   const { user, logOut } = useAuth();
-  const [isAdmin] = UseAdmin();
+  // const [isAdmin] = UseAdmin();
   const [NavPages, setNavPages] = useState([]);
   const { darkMode, setDarkMode } = useContext(ThemeContext);
+  const { t, i18n } = useTranslation();
 
   const handleLogOut = () => {
     logOut()
@@ -36,7 +38,7 @@ const Navbar = () => {
       // window height changed for the demo
       windowHeight > 50
         ? setStickyClass(
-            `fixed top-0 transition bg-gradient-to-b from-[#42275a] to-[#734b6d]  bg-opacity-100 duration-1000 ease-in-out`
+            `fixed top-0 transition  bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:from-[#1A1B1F] dark:via-[#1A1B1F] dark:to-[#1A1B1F]   bg-opacity-100 duration-1000 ease-in-out`
           )
         : setStickyClass('');
     }
@@ -92,6 +94,12 @@ const Navbar = () => {
     );
   });
 
+  // transletor handelr
+  const handelChangeLng = (lng) => {
+    i18n.changeLanguage(lng);
+    localStorage.setItem('lng', lng);
+  };
+
   return (
     <>
       <div className={`z-50 top-0 mx-auto pt-3  w-full text-white ${stickyClass}`}>
@@ -128,10 +136,16 @@ const Navbar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu dropdown-content menu-horizontal px-1 justify-center items-center flex text-base font-poppins">
               {Navlinks}
+              {/* dak lite  */}
               <li onClick={() => setDarkMode((darkMode) => !darkMode)}>
                 {darkMode ? <CiLight size={70} /> : <CiDark size={70} />}
               </li>
+              {/* translet  */}
             </ul>
+            <li className="flex justify-between gap-3 border p-2 ">
+              <button onClick={() => handelChangeLng('en')}> En </button>
+              <button onClick={() => handelChangeLng('bn')}> বাং</button>
+            </li>
           </div>
 
           {/* Profile */}
@@ -204,15 +218,15 @@ const Navbar = () => {
                     Announcement
                   </li>
                   <hr />
-                  {isAdmin && (
-                    <>
-                      <NavLink to="/dashboard">
-                        <li className="hover:font-semibold  py-1 text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
-                          Dashboard
-                        </li>
-                      </NavLink>
-                    </>
-                  )}
+
+                  <>
+                    <NavLink to="/dashboard">
+                      <li className="hover:font-semibold  py-1 text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
+                        Dashboard
+                      </li>
+                    </NavLink>
+                  </>
+
                   <hr />
 
                   <div className="hover:font-semibold pt-2 pb-3 text-start font-lora font-medium ">

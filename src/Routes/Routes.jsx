@@ -39,7 +39,7 @@ const Router = createBrowserRouter([
         path: 'myprofile/:email',
         element: <MyProfile />,
         loader: ({ params }) =>
-          fetch(`https://bd-quick-school-server.vercel.app/api/v1/useremail/${params.email}`),
+          fetch(`https://bd-quick-school-server-plum.vercel.app/api/v1/useremail/${params.email}`),
       },
       { path: '/ServiceDetails/:id', element: <ServiceDetails /> },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
@@ -54,9 +54,9 @@ const Router = createBrowserRouter([
   {
     path: '/dashboard',
     element: (
-      <AdminRoute>
+   
         <DashBoardLayout />
-      </AdminRoute>
+      
     ),
     children: [{ path: 'adminprofile', element: <AdminProfile /> }],
   },

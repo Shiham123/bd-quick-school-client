@@ -1,4 +1,6 @@
 import axios from 'axios';
+import useAuth from '../useAuth/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const axiosSecure = axios.create({
   baseURL: 'https://quiz-school-server.vercel.app',
@@ -6,10 +8,11 @@ const axiosSecure = axios.create({
 });
 
 const useAxiosSecure = () => {
+  const { logOut } = useAuth();
+  const navigate = useNavigate();
   axiosSecure.interceptors.request.use(
     (config) => {
       const token = localStorage.getItem('access-token');
-      console.log(token);
       config.headers.authorization = `Bearer ${token}`;
       return config;
     },
@@ -20,9 +23,15 @@ const useAxiosSecure = () => {
   );
   axiosSecure.interceptors.response.use(
     (response) => {
+      console.log(response);
       return response;
     },
-    (error) => {
+    async (error) => {
+      const status = error.response.status;
+      if (status === 401 || status === 402) {
+        await logOut();
+        navigate('/login');
+      }
       return Promise.reject(error);
     }
   );

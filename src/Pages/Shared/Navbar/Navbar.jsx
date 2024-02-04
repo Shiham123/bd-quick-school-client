@@ -6,19 +6,15 @@ import { CiLight, CiDark } from 'react-icons/ci';
 import useAuth from './../../../Hooks/useAuth/useAuth';
 import axios from 'axios';
 import { ThemeContext } from '../../../context/Darkmode';
-// import UseAdmin from '../../../Hooks/useAdmin/useAdmin';
 import { useTranslation } from 'react-i18next';
 import VerifyAdmin from '../../../Hooks/useAdmin/useAdmin';
 
 const Navbar = () => {
   const [stickyClass, setStickyClass] = useState('');
   const { user, logOut } = useAuth();
-  // const [isAdmin] = UseAdmin();
   const [NavPages, setNavPages] = useState([]);
   const { darkMode, setDarkMode } = useContext(ThemeContext);
   const { t, i18n } = useTranslation();
-  const [NavPages, setNavPages] = useState([]);
-  const { darkMode, setDarkMode } = useContext(ThemeContext);
   const [isAdmin] = VerifyAdmin();
 
   const handleLogOut = () => {
@@ -222,13 +218,15 @@ const Navbar = () => {
                   </li>
                   <hr />
 
-                  <>
-                    <NavLink to="/dashboard">
-                      <li className="hover:font-semibold  py-1 text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
-                        Dashboard
-                      </li>
-                    </NavLink>
-                  </>
+                  {isAdmin && (
+                    <>
+                      <NavLink to="/dashboard">
+                        <li className="hover:font-semibold  py-1 text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
+                          Dashboard
+                        </li>
+                      </NavLink>
+                    </>
+                  )}
 
                   <hr />
 

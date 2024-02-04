@@ -2,6 +2,7 @@ import { FaGraduationCap } from "react-icons/fa";
 import { FaBook } from "react-icons/fa";
 import { FaIdCard } from "react-icons/fa";
 import { TbAdjustmentsHorizontal } from "react-icons/tb";
+import { GiTeacher } from "react-icons/gi";
 
 const ChooseUs = () => {
     return (
@@ -42,6 +43,15 @@ const ChooseUs = () => {
                     <div className="lg:w-72">
                         <h3 className="text-white text-2xl mb-5">Wide range of Courses</h3>
                         <p className="text-white text-base">Instantly see which answers you get correct. When you miss a challenge, we’ll quickly show you how to improve. Start with Professionals.</p>
+                    </div>
+                </div>
+                <div className="flex items-start gap-4">
+                    <div className=" py-5 px-5 border rounded-full bg-[#F98F27]">
+                        <GiTeacher className="text-4xl text-white" />
+                    </div>
+                    <div className="lg:w-72">
+                        <h3 className="text-white text-2xl mb-5">Communicative Method</h3>
+                        <p className="text-white text-base">The world’s most popular language learning platform is now available for the classroom. Thousands of teachers are already using it to enhance their lessons.</p>
                     </div>
                 </div>
             </div>

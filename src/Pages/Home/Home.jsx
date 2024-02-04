@@ -7,18 +7,20 @@ import Review from '../Review/Review';
 import Counter from "../Counter/Counter";
 
 import './hover.css';
+import Work from '../How It Works/Work';
 
 const Home = () => {
   return (
     <div>
       <Banner />
       <Courses />
+      <Work />
       <OurTeam />
       <Faq />
-      <Counter/>
+      <Counter />
       <Review />
-     
-      <ChatBoat/>
+
+      <ChatBoat />
     </div>
   );
 };

@@ -15,7 +15,7 @@ const Review = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('Review.json');
+        const response = await axios.get('/Review.json');
         setPosts(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);

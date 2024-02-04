@@ -31,7 +31,6 @@ const Login = () => {
     signIn(data.email, data.password)
       .then((result) => {
         console.log(result);
-        console.log('Navigating to:', location?.state ? location.state : '/');
         navigate(location?.state ? location.state : '/');
         swal('Good job!', 'User logged Successfully', 'success');
       })

@@ -45,10 +45,7 @@ const Router = createBrowserRouter([
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
       { path: '/payment/succsess/:tranID', element: <PaymentSuccses /> },
       { path: '/payment/fail/:tranID', element: <PaymentFailed /> },
-      {
-        path: '/quiz',
-        element: <MainQuiz />,
-      },
+      { path: '/quiz', element: <MainQuiz /> },
     ],
   },
   {

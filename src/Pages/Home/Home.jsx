@@ -8,6 +8,7 @@ import Counter from "../Counter/Counter";
 
 import './hover.css';
 import Work from '../How It Works/Work';
+import ChooseUs from '../Why Choose Us/ChooseUs';
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <Banner />
       <Courses />
       <Work />
+      <ChooseUs />
       <OurTeam />
       <Faq />
       <Counter />

@@ -16,6 +16,13 @@ import AdminProfile from '../DashBoard/Admin Profile/AdminProfile';
 import MainQuiz from '../quiz/MainQuiz';
 import PrivateRoute from './PrivateRoute';
 import AdminRoute from './AdminRoute';
+import AddCourses from '../DashBoard/Add Courses/AddCourses';
+import UploadContent from '../DashBoard/Upload Content/UploadContent';
+import SoldCourses from '../DashBoard/Sold Courses/SoldCourses';
+import ManagePayment from '../DashBoard/Manage Payment/ManagePayment';
+import ManageUsers from '../DashBoard/Manage Users/ManageUsers';
+import ManageReviews from '../DashBoard/Manage Reviews/ManageReviews';
+import DashBoardCharts from '../DashBoard/DashBoard Charts/DashBoardCharts';
 
 const Router = createBrowserRouter([
   {
@@ -55,7 +62,16 @@ const Router = createBrowserRouter([
         <DashBoardLayout />
       </AdminRoute>
     ),
-    children: [{ path: 'adminprofile', element: <AdminProfile /> }],
+    children: [
+      { path: 'charts', element: <DashBoardCharts /> },
+      { path: 'adminprofile', element: <AdminProfile /> },
+      { path: 'addcourses', element: <AddCourses /> },
+      { path: 'uploadcontent', element: <UploadContent /> },
+      { path: 'soldcourses', element: <SoldCourses /> },
+      { path: 'managepayment', element: <ManagePayment /> },
+      { path: 'manageusers', element: <ManageUsers /> },
+      { path: 'managereviews', element: <ManageReviews /> },
+    ],
   },
 ]);
 

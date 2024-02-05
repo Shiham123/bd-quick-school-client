@@ -2,29 +2,30 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 const bgGradientImg = [
-  'bg-img-one',
-  'bg-img-two',
-  'bg-img-three',
-  'bg-img-four',
-  'bg-img-five',
-  'bg-img-six',
-  'bg-img-seven',
+  'gradient-one',
+  'gradient-two',
+  'gradient-three',
+  'gradient-four',
+  'gradient-five',
+  'gradient-six',
+  'gradient-seven',
 ];
 
 const UseBgGradient = () => {
-  const [gradient, setGradient] = useState('bg-img-one');
+  const [gradient, setGradient] = useState('gradient-one');
   const htmlBody = document.body;
 
   const changeGradient = () => {
-    const currentIndex = bgGradientImg.indexOf(gradient),
-      nextIndex = currentIndex + (1 % bgGradientImg.length),
-      nextGradient = bgGradientImg[nextIndex];
+    const currentIndex = bgGradientImg.indexOf(gradient);
+    const nextIndex = (currentIndex + 1) % bgGradientImg.length;
+    const nextGradient = bgGradientImg[nextIndex];
 
     htmlBody.classList.remove(gradient);
     htmlBody.classList.add(nextGradient);
     setGradient(nextGradient);
     localStorage.setItem('theme', nextGradient);
   };
+
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme'),
       initialTheme = savedTheme || bgGradientImg[0];
@@ -33,7 +34,7 @@ const UseBgGradient = () => {
     setGradient(initialTheme);
   }, [htmlBody.classList]);
 
-  return { changeGradient, gradient };
+  return { changeGradient, gradient, bgGradientImg };
 };
 
 export default UseBgGradient;

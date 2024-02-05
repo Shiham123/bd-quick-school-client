@@ -4,7 +4,8 @@ import Courses from '../Courses/Courses';
 import Faq from '../Faq/Faq';
 import OurTeam from '../OurTeam/OurTeam';
 import Review from '../Review/Review';
-import Counter from "../Counter/Counter";
+import Counter from '../Counter/Counter';
+import ChangeBackground from '../../Components/ChangeBackground/ChangeBackground';
 
 import './hover.css';
 import Work from '../How It Works/Work';
@@ -21,6 +22,7 @@ const Home = () => {
       <Faq />
       <Counter />
       <Review />
+      <ChangeBackground />
 
       <ChatBoat />
     </div>

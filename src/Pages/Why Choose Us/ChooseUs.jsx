@@ -7,9 +7,10 @@ import { TfiLocationPin } from "react-icons/tfi";
 
 const ChooseUs = () => {
     return (
-        <div className="max-w-7xl mx-auto mb-20">
+        <div className="max-w-7xl mx-auto mb-28">
             <h1 className="text-4xl font-cinzel font-bold text-white text-center mb-20">Why choose us</h1>
             <div className="font-lora grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 md:gap-5 lg:gap-16 md:ml-3">
+                {/* 1st Step */}
                 <div className="flex items-start justify-center md:justify-start gap-4">
                     <div className=" py-4 px-4 lg:py-5 lg:px-5 border rounded-full bg-[#DD9933]">
                         <FaGraduationCap className="text-4xl text-white" />
@@ -19,6 +20,7 @@ const ChooseUs = () => {
                         <p className="text-white lg:text-base">Each lesson includes a variety of speaking, listening, translation and multiple choice challenge.</p>
                     </div>
                 </div>
+                {/* 2nd Step */}
                 <div className="flex items-start justify-center md:justify-start gap-4">
                     <div className=" py-4 px-4 lg:py-5 lg:px-5 border rounded-full bg-[#18BC6D]">
                         <FaBook className="text-4xl text-white" />
@@ -28,6 +30,7 @@ const ChooseUs = () => {
                         <p className="text-white lg:text-base">BD Quick School motivates you to stay on track by recording how many days in a row you spend learning a language.</p>
                     </div>
                 </div>
+                {/* 3rd Step */}
                 <div className="flex items-start justify-center md:justify-start gap-4">
                     <div className=" py-4 px-4 lg:py-5 lg:px-5 border rounded-full bg-[#FFCC51]">
                         <FaIdCard className="text-4xl text-white" />
@@ -37,6 +40,7 @@ const ChooseUs = () => {
                         <p className="text-white lg:text-base">Learning with BD Quick School is fun and addictive. Earn points for correct answers, race against the clock.</p>
                     </div>
                 </div>
+                {/* 4th Step */}
                 <div className="flex items-start justify-center md:justify-start gap-4">
                     <div className="py-4 px-4 lg:py-5 lg:px-5 border rounded-full bg-[#0F78EF]">
                         <TbAdjustmentsHorizontal className="text-4xl text-white" />
@@ -46,6 +50,7 @@ const ChooseUs = () => {
                         <p className="text-white lg:text-base">Instantly see which answers you get correct. When you miss a challenge, we’ll quickly show you how to improve. Start with Professionals.</p>
                     </div>
                 </div>
+                {/* 5th Step */}
                 <div className="flex items-start justify-center md:justify-start gap-4">
                     <div className=" py-4 px-4 lg:py-5 lg:px-5 border rounded-full bg-[#F98F27]">
                         <GiTeacher className="text-4xl text-white" />
@@ -55,6 +60,7 @@ const ChooseUs = () => {
                         <p className="text-white lg:text-base">The world’s most popular language learning platform is now available for the classroom. Thousands of teachers are already using it to enhance their lessons.</p>
                     </div>
                 </div>
+                {/* 6th Step */}
                 <div className="flex items-start justify-center md:justify-start gap-4">
                     <div className=" py-4 px-4 lg:py-5 lg:px-5 border rounded-full bg-[#0FB1B3]">
                         <TfiLocationPin className="text-4xl text-white" />
@@ -65,6 +71,7 @@ const ChooseUs = () => {
                     </div>
                 </div>
             </div>
+            <hr className="w-[400px] mx-auto mt-32 mb-10 border-2" />
         </div>
     );
 };

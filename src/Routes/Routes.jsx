@@ -16,6 +16,9 @@ import AdminProfile from '../DashBoard/Admin Profile/AdminProfile';
 import MainQuiz from '../quiz/MainQuiz';
 import PrivateRoute from './PrivateRoute';
 import AdminRoute from './AdminRoute';
+import AddMissionTest from '../Pages/AddmissionTest/AddmissionTest';
+import JobPreparation from '../Pages/JobPreparation/JobPreparation';
+import OnlineBatch from '../Pages/OnlineBatch/OnlineBatch';
 
 const Router = createBrowserRouter([
   {
@@ -25,6 +28,9 @@ const Router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: 'Couredetails', element: <CourseDetails /> },
+      { path: 'addMissionTest', element: <AddMissionTest /> },
+      { path: 'jobPreparation', element: <JobPreparation /> },
+      { path: 'onlineBatch', element: <OnlineBatch /> },
       { path: 'register', element: <Register /> },
       { path: 'login', element: <Login /> },
       {
@@ -45,10 +51,7 @@ const Router = createBrowserRouter([
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
       { path: '/payment/succsess/:tranID', element: <PaymentSuccses /> },
       { path: '/payment/fail/:tranID', element: <PaymentFailed /> },
-      {
-        path: '/quiz',
-        element: <MainQuiz />,
-      },
+      { path: '/quiz', element: <MainQuiz /> },
     ],
   },
   {

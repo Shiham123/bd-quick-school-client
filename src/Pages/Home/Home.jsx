@@ -9,6 +9,7 @@ import Counter from "../Counter/Counter";
 import './hover.css';
 import Work from '../How It Works/Work';
 import ChooseUs from '../Why Choose Us/ChooseUs';
+import CoursesType from '../Courses_Type/CoursesType';
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <Courses />
       <Work />
       <ChooseUs />
+      <CoursesType />
       <OurTeam />
       <Faq />
       <Counter />

@@ -10,6 +10,7 @@ import { Darkmode } from './context/Darkmode';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
+import './TransletLanguage/18next'
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(

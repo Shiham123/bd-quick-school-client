@@ -6,11 +6,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 
-
-
 const Courses = () => {
   const [posts, setPosts] = useState([]);
-  const [swiperRef, setSwiperRef] = useState(null);
+  // const [swiperRef, setSwiperRef] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,8 +22,6 @@ const Courses = () => {
 
     fetchData();
   }, []);
-
-
 
   return (
     <div>
@@ -44,9 +40,8 @@ const Courses = () => {
 
         <div className="mt-10">
           <Swiper
-            onSwiper={setSwiperRef}
+            // onSwiper={setSwiperRef}
             slidesPerView={4}
-            centeredSlides={true}
             spaceBetween={30}
             pagination={{
               type: 'fraction',

@@ -16,6 +16,7 @@ import AdminProfile from '../DashBoard/Admin Profile/AdminProfile';
 import AdminRoute from './AdminRoute';
 import MainQuiz from '../quiz/MainQuiz';
 import PrivateRoute from './PrivateRoute';
+import AddServices from '../Components/AddServicesForm/AddServices';
 
 const Router = createBrowserRouter([
   {
@@ -39,7 +40,7 @@ const Router = createBrowserRouter([
         path: 'myprofile/:email',
         element: <MyProfile />,
         loader: ({ params }) =>
-          fetch(`https://bd-quick-school-server.vercel.app/api/v1/useremail/${params.email}`),
+          fetch(`https://bd-quick-school-server-plum.vercel.app//api/v1/useremail/${params.email}`),
       },
       { path: '/ServiceDetails/:id', element: <ServiceDetails /> },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
@@ -58,7 +59,10 @@ const Router = createBrowserRouter([
         <DashBoardLayout />
       </AdminRoute>
     ),
-    children: [{ path: 'adminprofile', element: <AdminProfile /> }],
+    children: [
+      { path: 'adminprofile', element: <AdminProfile /> },
+      { path: '/dashboard/add/services', element: <AddServices /> },
+    ],
   },
 ]);
 

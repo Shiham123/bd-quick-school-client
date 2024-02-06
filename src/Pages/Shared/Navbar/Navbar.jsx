@@ -4,17 +4,17 @@ import { useContext, useEffect, useState } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { CiLight, CiDark } from 'react-icons/ci';
 import useAuth from './../../../Hooks/useAuth/useAuth';
-import axios from 'axios';
 import { ThemeContext } from '../../../context/Darkmode';
-import UseAdmin from '../../../Hooks/useAdmin/useAdmin';
+import { useTranslation } from 'react-i18next';
+import VerifyAdmin from '../../../Hooks/useAdmin/useAdmin';
+import NavbarBgChange from './NavbarBgChange';
 
 const Navbar = () => {
-  // const user = false;
   const [stickyClass, setStickyClass] = useState('');
   const { user, logOut } = useAuth();
-  const [isAdmin] = UseAdmin();
-  const [NavPages, setNavPages] = useState([]);
   const { darkMode, setDarkMode } = useContext(ThemeContext);
+  const { t, i18n } = useTranslation();
+  const [isAdmin] = VerifyAdmin();
 
   const handleLogOut = () => {
     logOut()
@@ -36,12 +36,13 @@ const Navbar = () => {
       // window height changed for the demo
       windowHeight > 50
         ? setStickyClass(
-            `fixed top-0 transition bg-gradient-to-b from-[#42275a] to-[#734b6d]  bg-opacity-100 duration-1000 ease-in-out`
+            `fixed top-0 transition  bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:from-[#1A1B1F] dark:via-[#1A1B1F] dark:to-[#1A1B1F]   bg-opacity-100 duration-1000 ease-in-out`
           )
         : setStickyClass('');
     }
   };
 
+  // active route style
   const activeRouteStyle = ({ isActive }) => {
     return {
       color: isActive ? '#C3FCF1' : '',
@@ -49,48 +50,55 @@ const Navbar = () => {
     };
   };
 
-  useEffect(() => {
-    axios
-      .get('/NavpageLists.json')
-      .then((res) => setNavPages(res.data))
-      .catch((err) => console.log(err));
-  }, []);
+  // navbar json file come
+  // useEffect(() => {
+  //   axios
+  //     .get('/NavpageLists.json')
+  //     .then((res) => setNavPages(res.data))
+  //     .catch((err) => console.log(err));
+  // }, []);
 
-  const Navlinks = NavPages.map((page) => {
-    return page.submenu ? (
-      <li key={page?.id}>
-        <details>
-          <summary>{page?.page}</summary>
-          <ul className=" text-white ">
-            {page?.submenu &&
-              page?.submenu.map((menu) => {
-                return (
-                  <li key={menu?.id}>
-                    <NavLink
-                      style={activeRouteStyle}
-                      className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                      to={menu?.href}
-                    >
-                      {menu?.page}
-                    </NavLink>
-                  </li>
-                );
-              })}
-          </ul>
-        </details>
-      </li>
-    ) : (
-      <li key={page?.id}>
-        <NavLink
-          style={activeRouteStyle}
-          className=" hover:text-[#deb2ac] uppercase font-medium"
-          to={page.href}
-        >
-          {page?.page}
-        </NavLink>
-      </li>
-    );
-  });
+  // const Navlinks = NavPages.map((page) => {
+  //   return page.submenu ? (
+  //     <li key={page?.id}>
+  //       <details>
+  //         <summary>{page?.page}</summary>
+  //         <ul className="text-white">
+  //           {page?.submenu &&
+  //             page?.submenu.map((menu) => {
+  //               return (
+  //                 <li key={menu?.id}>
+  //                   <NavLink
+  //                     style={activeRouteStyle}
+  //                     className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
+  //                     to={menu?.href}
+  //                   >
+  //                     {menu?.page}
+  //                   </NavLink>
+  //                 </li>
+  //               );
+  //             })}
+  //         </ul>
+  //       </details>
+  //     </li>
+  //   ) : (
+  //     <li key={page?.id}>
+  //       <NavLink
+  //         style={activeRouteStyle}
+  //         className=" hover:text-[#deb2ac] uppercase font-medium"
+  //         to={page.href}
+  //       >
+  //         {page?.page}
+  //       </NavLink>
+  //     </li>
+  //   );
+  // });
+
+  // transletor handelr
+  const handelChangeLng = (lng) => {
+    i18n.changeLanguage(lng);
+    localStorage.setItem('lng', lng);
+  };
 
   return (
     <>
@@ -108,7 +116,91 @@ const Navbar = () => {
                 tabIndex={0}
                 className="menu  menu-sm bg-gradient-to-b from-[#42275a] to-[#734b6d] dropdown-content mt-3 z-[1] font-poppins space-y-4 shadow rounded-box w-52"
               >
-                {Navlinks}
+                {/* this is dropdown navbar in responsive ------------------- */}
+
+                <li>
+                  <details>
+                    <summary>Skills</summary>
+                    <ul className="text-white">
+                      <li>
+                        <NavLink
+                          to={'/Photoshop'}
+                          style={activeRouteStyle}
+                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
+                        >
+                          Photoshop
+                        </NavLink>
+                        <NavLink
+                          to={'/JavaScript'}
+                          style={activeRouteStyle}
+                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
+                        >
+                          JavaScript
+                        </NavLink>
+                        <NavLink
+                          to={'/HTML'}
+                          style={activeRouteStyle}
+                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
+                        >
+                          HTML
+                        </NavLink>
+                        <NavLink
+                          to={'/CSS3'}
+                          style={activeRouteStyle}
+                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
+                        >
+                          CSS3
+                        </NavLink>
+                        <NavLink
+                          to={'/React'}
+                          style={activeRouteStyle}
+                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
+                        >
+                          React
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </details>
+                </li>
+
+                <li>
+                  <NavLink
+                    style={activeRouteStyle}
+                    className=" hover:text-[#deb2ac] uppercase font-medium"
+                    to={'/admission-test'}
+                  >
+                    Admission test
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    style={activeRouteStyle}
+                    className=" hover:text-[#deb2ac] uppercase font-medium"
+                    to={'/job-Preparation'}
+                  >
+                    Job-Preparation
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    style={activeRouteStyle}
+                    className=" hover:text-[#deb2ac] uppercase font-medium"
+                    to={'/online-batch'}
+                  >
+                    Online batch
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    style={activeRouteStyle}
+                    className=" hover:text-[#deb2ac] uppercase font-medium"
+                    to={'/services'}
+                  >
+                    Our Services
+                  </NavLink>
+                </li>
+
+                {/* this is dropdown navbar in responsive end here ------------------- */}
               </ul>
             </div>
             <NavLink to="/" className="flex items-center justify-center normal-case lg:pl-2">
@@ -127,12 +219,107 @@ const Navbar = () => {
           {/* NavLink */}
           <div className="navbar-center hidden lg:flex">
             <ul className="menu dropdown-content menu-horizontal px-1 justify-center items-center flex text-base font-poppins">
-              {Navlinks}
+              {/* ---------- navbar route without dropdown------------ */}
+
+              <li>
+                <details>
+                  <summary>Skills</summary>
+                  <ul className="text-white">
+                    <li>
+                      <NavLink
+                        to={'/Photoshop'}
+                        style={activeRouteStyle}
+                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
+                      >
+                        Photoshop
+                      </NavLink>
+                      <NavLink
+                        to={'/JavaScript'}
+                        style={activeRouteStyle}
+                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
+                      >
+                        JavaScript
+                      </NavLink>
+                      <NavLink
+                        to={'/HTML'}
+                        style={activeRouteStyle}
+                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
+                      >
+                        HTML
+                      </NavLink>
+                      <NavLink
+                        to={'/CSS3'}
+                        style={activeRouteStyle}
+                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
+                      >
+                        CSS3
+                      </NavLink>
+                      <NavLink
+                        to={'/React'}
+                        style={activeRouteStyle}
+                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
+                      >
+                        React
+                      </NavLink>
+                    </li>
+                  </ul>
+                </details>
+              </li>
+
+              {/* this is not drop down */}
+              <li>
+                <NavLink
+                  style={activeRouteStyle}
+                  className=" hover:text-[#deb2ac] uppercase font-medium"
+                  to={'/admission-test'}
+                >
+                  Admission test
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  style={activeRouteStyle}
+                  className=" hover:text-[#deb2ac] uppercase font-medium"
+                  to={'/job-Preparation'}
+                >
+                  Job-Preparation
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  style={activeRouteStyle}
+                  className=" hover:text-[#deb2ac] uppercase font-medium"
+                  to={'/online-batch'}
+                >
+                  Online batch
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  style={activeRouteStyle}
+                  className=" hover:text-[#deb2ac] uppercase font-medium"
+                  to={'/services'}
+                >
+                  Our Services
+                </NavLink>
+              </li>
+
+              {/* -------end here navbar without drop down */}
+              {/* dak lite  */}
               <li onClick={() => setDarkMode((darkMode) => !darkMode)}>
                 {darkMode ? <CiLight size={70} /> : <CiDark size={70} />}
               </li>
+              {/* translet  */}
             </ul>
+            <li className="flex justify-between gap-3 border p-2 ">
+              <button onClick={() => handelChangeLng('en')}> En </button>
+              <button onClick={() => handelChangeLng('bn')}> বাং</button>
+            </li>
+
+            <NavbarBgChange />
           </div>
+
+          {/* background color change */}
 
           {/* Profile */}
           {user ? (
@@ -204,6 +391,7 @@ const Navbar = () => {
                     Announcement
                   </li>
                   <hr />
+
                   {isAdmin && (
                     <>
                       <NavLink to="/dashboard">
@@ -213,6 +401,7 @@ const Navbar = () => {
                       </NavLink>
                     </>
                   )}
+
                   <hr />
 
                   <div className="hover:font-semibold pt-2 pb-3 text-start font-lora font-medium ">

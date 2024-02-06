@@ -5,10 +5,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
+import { useTranslation } from 'react-i18next';
 
 const Courses = () => {
   const [posts, setPosts] = useState([]);
   // const [swiperRef, setSwiperRef] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,11 +31,10 @@ const Courses = () => {
         <div className="mt-16">
           <div className="container mx-auto">
             <h2 className="text-2xl lg:text-4xl text-center lg:text-start font-bold font-poppins text-white mb-5 ">
-              Great discounts on select skill development courses!
+              {t('coursehead1')}
             </h2>
             <p className="text-base lg:text-lg text-center lg:text-start font-poppins text-white/70 mb-5 lg:mb-0 md:px-5 lg:px-0">
-              Get selected BD Quick School courses at special prices throughout the month. Start
-              learning now with BD Quick School!
+              {t('coursehead2')}
             </p>
           </div>
         </div>
@@ -61,7 +62,7 @@ const Courses = () => {
 
           <div className="lg:mt-20 md:mt-[15rem] mt-[5rem] text-textColorOne flex justify-center items-center">
             <p className="md:text-sm text-sm lg:text-xl font-medium font-poppins m-auto text-center flex md:flex md:flex-col lg:flex lg:flex-row justify-center items-center">
-              Click to Enroll in 30+ Free Courses
+              {t('coursehead3')}
             </p>
           </div>
         </div>

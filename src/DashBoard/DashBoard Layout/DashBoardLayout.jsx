@@ -1,26 +1,25 @@
 import { Link, Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
-import useAuth from '../../Hooks/useAuth/useAuth';
 import DashBoardNav from '../DashBoardNav/DashBoardNav';
-import UseAdmin from './../../Hooks/useAdmin/useAdmin';
 import DashBoardAdmin from '../DashBoardAdmin/DashBoardAdmin';
 import DashboardAvailable from '../DashboardAvailable/DashboardAvailable';
+import VerifyAdmin from '../../Hooks/useAdmin/useAdmin';
+import useAuth from '../../Hooks/useAuth/useAuth';
 
 const DashBoardLayout = () => {
   const [open, setOpen] = useState(true);
   const [dropdown, setDropdown] = useState(false);
+  const [isAdmin] = VerifyAdmin();
   const { user } = useAuth();
-  const [isAdmin] = UseAdmin();
 
   return (
     <div>
       {/* isAdmin Condition Added */}
-      {isAdmin && (
+     
         <>
           <div className=" bg-gray-100 dark:bg-gray-800">
             <div className={`body-content ${open ? 'open' : ''}`}>
-              {/* navlink  */}
               <div className="relative lg:block navbar-menu">
                 <nav
                   className={`fixed top-0  transition-all lg:mt-0 z-40 mt-16 left-0 dark:bg-gray-900 bottom-0 flex flex-col ${
@@ -116,7 +115,7 @@ const DashBoardLayout = () => {
             </div>
           </div>
         </>
-      )}
+    
     </div>
   );
 };

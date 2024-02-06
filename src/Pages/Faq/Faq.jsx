@@ -6,10 +6,12 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import './Faq.css';
+import { useTranslation } from 'react-i18next';
 
 /* FAQ section */
 const Faq = () => {
   const [expanded, setExpanded] = React.useState(false);
+  const { t, i18n } = useTranslation();
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -18,7 +20,7 @@ const Faq = () => {
     <div className="py-10 rounded-2xl ">
       {/* FAQ Header  */}
       <h2 className="text-center text-2xl md:text-4xl lg:text-5xl font-extrabold mb-12 text-white font-cinzel">
-        Frequently Asked Questions
+        {t('faqhead')}
       </h2>
       {/* FAQ Body */}
       <div className="w-[80%] rounded-sm bg-purple-800 mx-auto bg-transparent py-12  mb-20 shadow-all">

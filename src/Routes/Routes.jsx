@@ -35,11 +35,7 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: 'myprofile/:email',
-        element: <MyProfile />,
-        loader: ({ params }) => fetch(`http://localhost:5000/api/v1/useremail/${params.email}`),
-      },
+      { path: 'myprofile', element: <MyProfile /> },
       { path: '/ServiceDetails/:id', element: <ServiceDetails /> },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
       { path: '/payment/succsess/:tranID', element: <PaymentSuccses /> },

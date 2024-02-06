@@ -24,7 +24,7 @@ const EditUserProfile = () => {
   const axiosPublic = useAxiosPublic();
   const { register, handleSubmit } = useForm();
   const users = useLoaderData();
-  const { name, phone } = users[0];
+  const { name, phone } = users;
   // managing State By UseState
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -66,7 +66,7 @@ const EditUserProfile = () => {
     // Update Firebase user profile
     await handleUpdateProfile(Items.name, Items.photoURL);
     // Using PUT Method With Axios Public
-    const itemRes = await axiosPublic.put(`/api/v1/useremail/${users[0].email}`, Items);
+    const itemRes = await axiosPublic.put(`/api/v1/useremail/${users.email}`, Items);
     console.log(itemRes.data);
     if (itemRes.data.modifiedCount > 0) {
       // Updated New data Auto loading

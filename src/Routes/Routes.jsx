@@ -15,8 +15,9 @@ import DashBoardLayout from '../DashBoard/DashBoard Layout/DashBoardLayout';
 import AdminProfile from '../DashBoard/Admin Profile/AdminProfile';
 import MainQuiz from '../quiz/MainQuiz';
 import PrivateRoute from './PrivateRoute';
+import AddServices from '../Components/AddServicesForm/AddServices';
 import AdminRoute from './AdminRoute';
-import AddCourses from '../DashBoard/Add Courses/AddCourses';
+
 import UploadContent from '../DashBoard/Upload Content/UploadContent';
 import SoldCourses from '../DashBoard/Sold Courses/SoldCourses';
 import ManagePayment from '../DashBoard/Manage Payment/ManagePayment';
@@ -46,7 +47,7 @@ const Router = createBrowserRouter([
         path: 'myprofile/:email',
         element: <MyProfile />,
         loader: ({ params }) =>
-          fetch(`https://quiz-school-server.vercel.app/api/v1/useremail/${params.email}`),
+          fetch(`https://bd-quick-school-server-plum.vercel.app//api/v1/useremail/${params.email}`),
       },
       { path: '/ServiceDetails/:id', element: <ServiceDetails /> },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
@@ -63,9 +64,10 @@ const Router = createBrowserRouter([
       </AdminRoute>
     ),
     children: [
+      { path: 'adminprofile', element: <AdminProfile /> },
       { path: 'charts', element: <DashBoardCharts /> },
       { path: 'adminprofile', element: <AdminProfile /> },
-      { path: 'addcourses', element: <AddCourses /> },
+      { path: 'add/services', element: <AddServices /> },
       { path: 'uploadcontent', element: <UploadContent /> },
       { path: 'soldcourses', element: <SoldCourses /> },
       { path: 'managepayment', element: <ManagePayment /> },

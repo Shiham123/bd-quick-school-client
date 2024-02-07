@@ -79,7 +79,7 @@ const Review = () => {
             {posts.map((post) => (
               <SwiperSlide key={post.Id}>
                 <div className="flex justify-center items-center gap-10 p-2 md:p-1 lg:p-0">
-                  {/* <img className="rounded-md" src={post.Profile_img} alt={post.Date} /> */}
+                  
 
                   <div className="   bg-base-100 dark:text-black hover:bg-slate-200 shadow-xl mt-5 pt-1 relative  border-2  border-gray-500 rounded-2xl md:h-[280px] lg:h-[260px]">
                     <div className="absolute h-[150px] w-[150px]  mx-auto rounded-full -left-5 -top-4 -right-62 avatar flex justify-center ">

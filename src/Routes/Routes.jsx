@@ -35,6 +35,15 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      
+      {
+        path: '/availablfoods',
+        element: <AvailableFoods></AvailableFoods>,
+        loader: () => fetch('https://assignment-11-server-smoky-mu.vercel.app/allfood'),
+      },
+
+
+
       {
         path: 'myprofile/:email',
         element: <MyProfile />,

@@ -15,7 +15,7 @@ const Review = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/Review.json');
+        const response = await axios.get('/public/Review.json');
         setPosts(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -81,7 +81,7 @@ const Review = () => {
                 <div className="flex justify-center items-center gap-10 p-2 md:p-1 lg:p-0">
                   
 
-                  <div className="   bg-base-100 dark:text-black hover:bg-slate-200 shadow-xl mt-5 pt-1 relative  border-2  border-gray-500 rounded-2xl md:h-[280px] lg:h-[260px]">
+                  <div className="   bg-base-100 dark:text-black hover:bg-slate-200 shadow-xl mt-5 pt-1 relative  border-2  border-gray-500 rounded-2xl md:h-[280px] lg:h-[270px] ">
                     <div className="absolute h-[150px] w-[150px]  mx-auto rounded-full -left-5 -top-4 -right-62 avatar flex justify-center ">
                       <div className="w-8 h-8 rounded-full ">
                         <img
@@ -91,16 +91,18 @@ const Review = () => {
                       </div>
                     </div>
 
+                   {/* rating,status */}
+
                     <div className="card-body  p-6">
                       <p className="w-full text-start mx-auto text-base font-lora">
-                        {post.textfield}
+                        {post.textarea}
                       </p>
 
                       <p className="w-full text-start mx-auto text-base font-lora mt-10 leading-none">
-                        {post.Name}
+                        {post.fullname}
                       </p>
-                      <p className="w-full text-start mx-auto text-base font-lora leading-none">
-                        {post.Designation}
+                      <p className="w-full text-start mx-auto text-base font-lora leading-none ">
+                        {post.designation}
                       </p>
                     </div>
                   </div>

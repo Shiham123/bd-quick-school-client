@@ -8,8 +8,8 @@ import { useTranslation } from "react-i18next";
 const MyProfile = () => {
     const { user } = useAuth()
     const [isEditOpen, setIsEditOpen] = useState(false);
-    const users = useLoaderData()
-    const { _id, name, phone, email, photoURL } = users[0]
+    const users = useLoaderData() || {}
+    const { _id, name, phone, email, photoURL } = users;
     const { t, i18n } = useTranslation();
     console.log(email)
 

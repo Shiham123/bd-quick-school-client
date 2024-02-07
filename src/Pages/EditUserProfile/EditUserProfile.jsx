@@ -23,8 +23,8 @@ const EditUserProfile = () => {
   const { user, setUser, changePassword, handleUpdateProfile } = useAuth();
   const axiosPublic = useAxiosPublic();
   const { register, handleSubmit } = useForm();
-  const users = useLoaderData();
-  const { name, phone } = users[0];
+  const users = useLoaderData() || {};
+  const { name, phone } = users;
   // managing State By UseState
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');

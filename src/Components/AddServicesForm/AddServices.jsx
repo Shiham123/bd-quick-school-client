@@ -96,7 +96,16 @@ const AddServices = () => {
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Course Details <span className="text-red-700">*</span></h2>
                 <input className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded" type="text" name="details" {...register("details")} placeholder="Enter Course Details Here" id="" />
               </div>
-              
+              <div className="col-span-full">
+                <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Course Outcome <span className="text-red-700">*</span></h2>
+                <ReactQuill
+                  modules={modules}
+                  className="h-32 mb-12"
+                  value={outcome}
+                  onChange={setOutcome}
+                  theme="snow"
+                />
+              </div>
 
 
 

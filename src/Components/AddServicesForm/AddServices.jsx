@@ -58,10 +58,13 @@ const AddServices = () => {
 
       <section className='lg:p-16'>
         <form onSubmit={handleSubmit(onSubmit)} className="container flex flex-col mx-auto space-y-12">
+          {/* Divider */}
           <div className="my-8">
             <Divider className=" text-2xl font-bold">Course Information</Divider>
           </div>
+          {/* Course Information Data */}
           <fieldset className="grid grid-cols-4 gap-6   dark:bg-gray-900">
+            {/* Upload Image */}
             <div className="space-y-2 col-span-full lg:col-span-1">
               <div>
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Upload Course Image <span className="text-red-700">*</span></h2>
@@ -74,28 +77,33 @@ const AddServices = () => {
                       <p className="mb-2 text-sm text-black"><span className="font-semibold">Click to upload</span> or drag and drop</p>
                       <p className="text-xs text-black">SVG, PNG, JPG or GIF </p>
                     </div>
-                    <input id="dropzone-file" type="file" className='pl-28' {...register('imageFile', { required: true })} name='courseimage' />
+                    <input id="dropzone-file" type="file"  {...register('imageFile', { required: true })} name='courseimage' />
                   </label>
                 </div>
               </div>
             </div>
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
+              {/* Course Title */}
               <div className="col-span-full lg:col-span-3">
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Course Title <span className="text-red-700">*</span></h2>
                 <input className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded" type="text" name="title" {...register('title', { required: true })} placeholder="Enter Course Title Here" id="" />
               </div>
+              {/* Short Description */}
               <div className="col-span-full lg:col-span-3">
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Short Description <span className="text-red-700">*</span></h2>
                 <input className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded" type="text" name="shortdescription" {...register('shortdescription', { required: true })} placeholder="Enter Course Description Here" id="" />
               </div>
+              {/* Course Price */}
               <div className="col-span-full lg:col-span-3">
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Course Price <span className="text-red-700">*</span></h2>
                 <input className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded" type="text" name="price" {...register("price")} placeholder="Enter Course Price Here" id="" />
               </div>
+              {/* Course Details */}
               <div className="col-span-full lg:col-span-3">
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Course Details <span className="text-red-700">*</span></h2>
                 <input className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded" type="text" name="details" {...register("details")} placeholder="Enter Course Details Here" id="" />
               </div>
+              {/* Course Outcome */}
               <div className="col-span-full">
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Course Outcome <span className="text-red-700">*</span></h2>
                 <ReactQuill
@@ -106,16 +114,15 @@ const AddServices = () => {
                   theme="snow"
                 />
               </div>
-
-
             </div>
-
           </fieldset>
+          {/* Divider */}
           <div className="my-8">
             <Divider className=" text-2xl font-bold">Teacher Information</Divider>
           </div>
-
+          {/* Teacher Information Input */}
           <fieldset className="grid grid-cols-4 gap-6   dark:bg-gray-900">
+            {/* Upload Teacher Image */}
             <div className="space-y-2 col-span-full lg:col-span-1">
               <div>
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Upload Teacher Image <span className="text-red-700">*</span></h2>
@@ -134,18 +141,22 @@ const AddServices = () => {
               </div>
             </div>
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
+              {/* Teacher Name */}
               <div className="col-span-full lg:col-span-3">
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Teacher Name<span className="text-red-700">*</span></h2>
                 <input className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded" type="text" name="teachername" {...register('teachername', { required: true })} placeholder="Enter Teacher Name Here" id="" />
               </div>
+              {/* Teacher Qualification(Graduation) */}
               <div className="col-span-full lg:col-span-3">
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Teacher Qualification(Graduation)<span className="text-red-700">*</span></h2>
                 <input className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded" type="text" name="graduation" {...register('graduation', { required: true })} placeholder="Enter Teacher Name Here" id="" />
               </div>
+              {/* Teacher Qualification(Post Graduation) */}
               <div className="col-span-full lg:col-span-3">
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Teacher Qualification(Post Graduation)<span className="text-red-700">*</span></h2>
                 <input className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded" type="text" name="postgraduation" {...register('postgraduation', { required: true })} placeholder="Enter Teacher Name Here" id="" />
               </div>
+              {/* Teacher Designation */}
               <div className="col-span-full lg:col-span-3">
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Teacher Designation<span className="text-red-700">*</span></h2>
                 <input className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded" type="text" name="designation" {...register('designation', { required: true })} placeholder="Enter Teacher Name Here" id="" />

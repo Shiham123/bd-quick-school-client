@@ -43,6 +43,10 @@ const MyProfile = () => {
     setIsEditModal(true);
   };
 
+  const handleEditClose = () => {
+    setIsEditModal(false);
+  };
+
   return (
     <div className="lg:max-w-5xl dark:text-white dark:bg-[#1A1B1F]  mx-auto mt-10 mb-10 p-5 bg-gradient-to-b from-[#42275a] to-[#734b6d] rounded-lg">
       {/* My Profile */}
@@ -55,7 +59,15 @@ const MyProfile = () => {
 
       {isEditModal ? (
         <div className="edit-drawer">
-          <EditUserProfile />
+          <EditUserProfile
+            id={id}
+            name={name}
+            email={email}
+            photoURL={photoUrl}
+            phone={phone}
+            role={role}
+            handleEditClose={handleEditClose}
+          />
         </div>
       ) : (
         <div>

@@ -35,7 +35,8 @@ i18next.use(initReactI18next).init({
         ProfileImage: 'Profile Image',
         ChangeProfileImage: 'Change Profile Image',
         servie1: 'Explore Our Services !',
-        servie2: 'At BD Quick School, we pride ourselves on delivering exceptional solutions tailored to meet your unique needs. Our diverse range of services is designed to elevate your experience and drive success in todays dynamic business landscape. Explore our offerings below !',
+        servie2:
+          'At BD Quick School, we pride ourselves on delivering exceptional solutions tailored to meet your unique needs. Our diverse range of services is designed to elevate your experience and drive success in todays dynamic business landscape. Explore our offerings below !',
       },
     },
     bn: {
@@ -70,7 +71,8 @@ i18next.use(initReactI18next).init({
         ProfileImage: 'প্রোফাইল ছবি',
         ChangeProfileImage: 'প্রোফাইল ইমেজ পরিবর্তন করুন',
         servie1: 'আমাদের সেবা সমূহ',
-        servie2: 'বিডি কুইক স্কুলে, আমরা আপনার অনন্য চাহিদা পূরণের জন্য তৈরি ব্যতিক্রমী সমাধান সরবরাহ করার জন্য নিজেদেরকে গর্বিত করি। আমাদের বিভিন্ন পরিসরের পরিষেবাগুলি আপনার অভিজ্ঞতাকে উন্নত করতে এবং আজকের গতিশীল ব্যবসায়িক ল্যান্ডস্কেপে সাফল্য চালনার জন্য ডিজাইন করা হয়েছে। নীচে আমাদের অফার অন্বেষণ!',
+        servie2:
+          'বিডি কুইক স্কুলে, আমরা আপনার অনন্য চাহিদা পূরণের জন্য তৈরি ব্যতিক্রমী সমাধান সরবরাহ করার জন্য নিজেদেরকে গর্বিত করি। আমাদের বিভিন্ন পরিসরের পরিষেবাগুলি আপনার অভিজ্ঞতাকে উন্নত করতে এবং আজকের গতিশীল ব্যবসায়িক ল্যান্ডস্কেপে সাফল্য চালনার জন্য ডিজাইন করা হয়েছে। নীচে আমাদের অফার অন্বেষণ!',
       },
     },
   },

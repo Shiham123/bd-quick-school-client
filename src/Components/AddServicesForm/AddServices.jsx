@@ -79,7 +79,19 @@ const AddServices = () => {
                 </div>
               </div>
             </div>
-            
+            <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
+              <div className="col-span-full lg:col-span-3">
+                <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Course Title <span className="text-red-700">*</span></h2>
+                <input className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded" type="text" name="title" {...register('title', { required: true })} placeholder="Enter Course Title Here" id="" />
+              </div>
+              
+
+
+
+              <div className="col-span-full mt-5">
+                <input type="submit" value="Submit Courses" className="btn btn-block bg-[#4357AD] text-lg text-[#fff] hover:bg-[#154360] " />
+              </div>
+            </div>
           </fieldset>
         </form>
       </section>

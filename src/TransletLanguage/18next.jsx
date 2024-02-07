@@ -37,6 +37,7 @@ i18next.use(initReactI18next).init({
         servie1: 'Explore Our Services !',
         servie2:
           'At BD Quick School, we pride ourselves on delivering exceptional solutions tailored to meet your unique needs. Our diverse range of services is designed to elevate your experience and drive success in todays dynamic business landscape. Explore our offerings below !',
+<<<<<<< HEAD
         Nav1: 'Skills',
         skill1: 'Photoshop',
         skill2: 'JavaScript',
@@ -53,6 +54,8 @@ i18next.use(initReactI18next).init({
         Blog:"Blog",
         Support:"Support"
 
+=======
+>>>>>>> 0391f476c16e87439711ffaa3a558b11bebfea08
       },
     },
     bn: {

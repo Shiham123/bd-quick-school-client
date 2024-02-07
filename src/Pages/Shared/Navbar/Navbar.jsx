@@ -7,6 +7,7 @@ import useAuth from './../../../Hooks/useAuth/useAuth';
 import { ThemeContext } from '../../../context/Darkmode';
 import { useTranslation } from 'react-i18next';
 import VerifyAdmin from '../../../Hooks/useAdmin/useAdmin';
+import NavbarBgChange from './NavbarBgChange';
 
 const Navbar = () => {
   const [stickyClass, setStickyClass] = useState('');
@@ -287,7 +288,11 @@ const Navbar = () => {
               <button onClick={() => handelChangeLng('en')}> En </button>
               <button onClick={() => handelChangeLng('bn')}> বাং</button>
             </li>
+
+            <NavbarBgChange />
           </div>
+
+          {/* background color change */}
 
           {/* Profile */}
           {user ? (
@@ -319,7 +324,7 @@ const Navbar = () => {
                     >
                       {user?.displayName}
                     </h1>
-                    <Link to={`myprofile/${user?.email}`}>
+                    <Link to={`/myprofile`}>
                       <button
                         className="btn btn-outline text-white"
                         style={{ whiteSpace: 'nowrap' }}

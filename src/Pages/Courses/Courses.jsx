@@ -9,8 +9,8 @@ import { useTranslation } from 'react-i18next';
 
 const Courses = () => {
   const [posts, setPosts] = useState([]);
-  const [swiperRef, setSwiperRef] = useState(null);
-  const { t, i18n } = useTranslation();
+  // const [swiperRef, setSwiperRef] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,9 +41,8 @@ const Courses = () => {
 
         <div className="mt-10">
           <Swiper
-            onSwiper={setSwiperRef}
+            // onSwiper={setSwiperRef}
             slidesPerView={4}
-            centeredSlides={true}
             spaceBetween={30}
             pagination={{
               type: 'fraction',

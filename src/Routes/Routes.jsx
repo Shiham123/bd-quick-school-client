@@ -15,6 +15,7 @@ import DashBoardLayout from '../DashBoard/DashBoard Layout/DashBoardLayout';
 import AdminProfile from '../DashBoard/Admin Profile/AdminProfile';
 import MainQuiz from '../quiz/MainQuiz';
 import PrivateRoute from './PrivateRoute';
+import AddServices from '../Components/AddServicesForm/AddServices';
 import AdminRoute from './AdminRoute';
 import UserDashbordlayout from '../UserDashbord/UserDashbordlayout';
 import ImportantNotice from '../UserDashbord/ImportantNotice';
@@ -24,6 +25,13 @@ import Support from '../UserDashbord/Support';
 import SupportSteap from '../UserDashbord/SupportSteap';
 import Video from '../Pages/Services/VideoStreming';
 import Outline from '../UserDashbord/Outline';
+
+import UploadContent from '../DashBoard/Upload Content/UploadContent';
+import SoldCourses from '../DashBoard/Sold Courses/SoldCourses';
+import ManagePayment from '../DashBoard/Manage Payment/ManagePayment';
+import ManageUsers from '../DashBoard/Manage Users/ManageUsers';
+import ManageReviews from '../DashBoard/Manage Reviews/ManageReviews';
+import DashBoardCharts from '../DashBoard/DashBoard Charts/DashBoardCharts';
 
 const Router = createBrowserRouter([
   {
@@ -43,12 +51,7 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: 'myprofile/:email',
-        element: <MyProfile />,
-        loader: ({ params }) =>
-          fetch(`https://quiz-school-server.vercel.app/api/v1/useremail/${params.email}`),
-      },
+      { path: 'myprofile', element: <MyProfile /> },
       { path: '/ServiceDetails/:id', element: <ServiceDetails /> },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
       { path: '/payment/succsess/:tranID', element: <PaymentSuccses /> },
@@ -97,7 +100,17 @@ const Router = createBrowserRouter([
         <DashBoardLayout />
       </AdminRoute>
     ),
-    children: [{ path: 'adminprofile', element: <AdminProfile /> }],
+    children: [
+      { path: 'adminprofile', element: <AdminProfile /> },
+      { path: 'charts', element: <DashBoardCharts /> },
+      { path: 'adminprofile', element: <AdminProfile /> },
+      { path: 'add/services', element: <AddServices /> },
+      { path: 'uploadcontent', element: <UploadContent /> },
+      { path: 'soldcourses', element: <SoldCourses /> },
+      { path: 'managepayment', element: <ManagePayment /> },
+      { path: 'manageusers', element: <ManageUsers /> },
+      { path: 'managereviews', element: <ManageReviews /> },
+    ],
   },
 ]);
 

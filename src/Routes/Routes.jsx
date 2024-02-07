@@ -17,6 +17,14 @@ import MainQuiz from '../quiz/MainQuiz';
 import PrivateRoute from './PrivateRoute';
 import AddServices from '../Components/AddServicesForm/AddServices';
 import AdminRoute from './AdminRoute';
+import UserDashbordlayout from '../UserDashbord/UserDashbordlayout';
+import ImportantNotice from '../UserDashbord/ImportantNotice';
+import UserHome from '../UserDashbord/UserHome';
+import UserSupport from '../UserDashbord/UserSupport';
+import Support from '../UserDashbord/Support';
+import SupportSteap from '../UserDashbord/SupportSteap';
+import Video from '../Pages/Services/VideoStreming';
+import Outline from '../UserDashbord/Outline';
 
 import UploadContent from '../DashBoard/Upload Content/UploadContent';
 import SoldCourses from '../DashBoard/Sold Courses/SoldCourses';
@@ -49,6 +57,40 @@ const Router = createBrowserRouter([
       { path: '/payment/succsess/:tranID', element: <PaymentSuccses /> },
       { path: '/payment/fail/:tranID', element: <PaymentFailed /> },
       { path: '/quiz', element: <MainQuiz /> },
+    ],
+  },
+  {
+    path: '/MyCourses',
+    element: <UserDashbordlayout />,
+    children: [
+      {
+        index: true,
+        element: <UserHome />,
+      },
+      {
+        path: 'next-step',
+        element: <ImportantNotice />,
+      },
+      {
+        path: 'support',
+        element: <UserSupport />,
+      },
+      {
+        path: 'room/:roomId',
+        element: <Support />,
+      },
+      {
+        path: 'supportSteap',
+        element: <SupportSteap />,
+      },
+      {
+        path: 'Video',
+        element: <Video />,
+      },
+      {
+        path: 'outline',
+        element: <Outline />,
+      },
     ],
   },
   {

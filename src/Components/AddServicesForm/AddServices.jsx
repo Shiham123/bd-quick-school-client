@@ -46,7 +46,6 @@ const AddServices = () => {
 
     // form Data value
     const formData = {
-      // image: res?.data?.data?.display_url,
       image: courseImageUrl,
       title: data?.title,
       shortdescription: data?.shortdescription,
@@ -69,18 +68,18 @@ const AddServices = () => {
   };
   return (
     <div className=" mx-auto px-4">
-      <h1 className="uppercase text-center font-bold text-violet-600 mt-6 text-2xl">
-        Add course Services
+      <h1 className="uppercase text-center font-cinzel font-bold text-violet-600 mt-6 mb-5 lg:mb-0 text-2xl">
+        Add Courses
       </h1>
 
       <section className='lg:p-16'>
         <form onSubmit={handleSubmit(onSubmit)} className="container flex flex-col mx-auto space-y-12">
           {/* Divider */}
-          <div className="my-8">
-            <Divider className=" text-2xl font-bold">Course Information</Divider>
+          <div className="mb-8">
+            <Divider className=" text-2xl font-bold font-cinzel">Course Information</Divider>
           </div>
           {/* Course Information Data */}
-          <fieldset className="grid grid-cols-4 gap-6   dark:bg-gray-900">
+          <fieldset className="grid grid-cols-4 gap-6  font-lora dark:bg-gray-900">
             {/* Upload Image */}
             <div className="space-y-2 col-span-full lg:col-span-1">
               <div>
@@ -135,10 +134,10 @@ const AddServices = () => {
           </fieldset>
           {/* Divider */}
           <div className="my-8">
-            <Divider className=" text-2xl font-bold">Teacher Information</Divider>
+            <Divider className=" text-2xl font-bold font-cinzel">Teacher Information</Divider>
           </div>
           {/* Teacher Information Input */}
-          <fieldset className="grid grid-cols-4 gap-6   dark:bg-gray-900">
+          <fieldset className="grid grid-cols-4 gap-6 font-lora  dark:bg-gray-900">
             {/* Upload Teacher Image */}
             <div className="space-y-2 col-span-full lg:col-span-1">
               <div>
@@ -178,114 +177,15 @@ const AddServices = () => {
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Teacher Designation<span className="text-red-700">*</span></h2>
                 <input className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded" type="text" name="designation" {...register('designation', { required: true })} placeholder="Enter Teacher Name Here" id="" />
               </div>
-
-
-
-
             </div>
-
           </fieldset>
 
+          {/* Button */}
           <div className="col-span-full mt-5">
             <input type="submit" value="Submit Courses" className="btn btn-block bg-[#4357AD] text-lg text-[#fff] hover:bg-[#154360] " />
           </div>
         </form>
       </section>
-      {/* <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="my-8">
-          <Divider className=" text-2xl font-bold">Course Information</Divider>
-        </div>
-        <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
-            Course Title
-          </label>
-          <input
-            {...register('title', { required: true })}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Enter Course title"
-          />
-        </div>
-        <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
-            Course Description
-          </label>
-          <input
-            {...register('description', { required: true })}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Enter Course description"
-          />
-        </div>
-        <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
-            Course Details
-          </label>
-          <input
-            {...register('details', { required: true })}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Enter Course details"
-          />
-        </div>
-        <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
-            Course Outcome
-          </label>
-          <ReactQuill
-            modules={modules}
-            className="h-32 mb-12"
-            value={outcome}
-            onChange={setOutcome}
-            theme="snow"
-          />
-        </div>
-        <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
-            Course Price
-          </label>
-          <input
-            {...register('price', { required: true })}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Enter Course price"
-          />
-        </div>
-        <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
-            Course Image
-          </label>
-          <input
-            type="file"
-            {...register('imageFile', { required: true })}
-            className="file-input file-input-bordered w-full"
-          />
-        </div>
-        <div className="my-8">
-          <Divider className=" text-2xl font-bold">Teacher Information</Divider>
-        </div>
-        <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
-            Teacher Name
-          </label>
-          <input
-            {...register('techer', { required: true })}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Enter Course Teacher Name"
-          />
-        </div>
-        <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
-            Teacher Education Info
-          </label>
-          <input
-            {...register('techEdu', { required: true })}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Enter Course Teacher Education Info"
-          />
-        </div>
-
-        <input
-          type="submit"
-          className="w-full py-2.5 my-6  px-4 text-xl font-semibold rounded-full bg-yellow-600 focus:outline-none hover:bg-yellow-700 hover:text-gray-200"
-        />
-      </form> */}
     </div>
   );
 };

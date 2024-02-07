@@ -74,7 +74,7 @@ const AddServices = () => {
                       <p className="mb-2 text-sm text-black"><span className="font-semibold">Click to upload</span> or drag and drop</p>
                       <p className="text-xs text-black">SVG, PNG, JPG or GIF </p>
                     </div>
-                    <input id="dropzone-file" type="file" {...register('imageFile', { required: true })} name='courseimage' />
+                    <input id="dropzone-file" type="file" className='pl-28' {...register('imageFile', { required: true })} name='courseimage' />
                   </label>
                 </div>
               </div>
@@ -128,7 +128,7 @@ const AddServices = () => {
                       <p className="mb-2 text-sm text-black"><span className="font-semibold">Click to upload</span> or drag and drop</p>
                       <p className="text-xs text-black">SVG, PNG, JPG or GIF </p>
                     </div>
-                    <input id="dropzone-file" type="file" {...register('imageFile', { required: true })} name='courseimage' />
+                    <input id="dropzone-file" type="file" className='pl-28' {...register('imageFile', { required: true })} name='courseimage' />
                   </label>
                 </div>
               </div>
@@ -139,16 +139,16 @@ const AddServices = () => {
                 <input className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded" type="text" name="teachername" {...register('teachername', { required: true })} placeholder="Enter Teacher Name Here" id="" />
               </div>
               <div className="col-span-full lg:col-span-3">
-                <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Graduation<span className="text-red-700">*</span></h2>
+                <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Teacher Qualification(Graduation)<span className="text-red-700">*</span></h2>
                 <input className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded" type="text" name="graduation" {...register('graduation', { required: true })} placeholder="Enter Teacher Name Here" id="" />
               </div>
               <div className="col-span-full lg:col-span-3">
-                <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Post Graduation<span className="text-red-700">*</span></h2>
+                <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Teacher Qualification(Post Graduation)<span className="text-red-700">*</span></h2>
                 <input className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded" type="text" name="postgraduation" {...register('postgraduation', { required: true })} placeholder="Enter Teacher Name Here" id="" />
               </div>
               <div className="col-span-full lg:col-span-3">
-                <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Job Description<span className="text-red-700">*</span></h2>
-                <input className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded" type="text" name="jobdescription" {...register('jobdescription', { required: true })} placeholder="Enter Teacher Name Here" id="" />
+                <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">Teacher Designation<span className="text-red-700">*</span></h2>
+                <input className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded" type="text" name="designation" {...register('designation', { required: true })} placeholder="Enter Teacher Name Here" id="" />
               </div>
 
 

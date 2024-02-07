@@ -9,16 +9,18 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import useAuth from '../../Hooks/useAuth/useAuth';
+import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 
 // image hosting api
 const image_Hosting_Key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_Hosting_Api = `https://api.imgbb.com/1/upload?key=${image_Hosting_Key}`;
 
 const EditUserProfile = (props) => {
-  const { name, phone, photoURL, email } = props;
+  const { id, name, phone, photoURL, email } = props;
   const { register, handleSubmit } = useForm();
   const { t } = useTranslation();
-  const { changePassword } = useAuth();
+  const { user, changePassword, handleUpdateProfile, setUser } = useAuth();
+  const axiosPublic = useAxiosPublic();
 
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -27,7 +29,42 @@ const EditUserProfile = (props) => {
   const [confirmationError, setConfirmationError] = useState(null);
 
   const onSubmit = async (data) => {
-    console.log(data);
+    let res;
+    if (data?.photoURL?.[0]) {
+      const imageFile = { image: data.photoURL[0] };
+      res = await axiosPublic.post(image_Hosting_Api, imageFile, {
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
+      });
+    }
+
+    // Updated Items
+    const Items = {
+      photoURL: res ? res.data.data.display_url : null,
+      name: data.name,
+      phone: data.phone,
+    };
+
+    if (!Items.photoURL) {
+      delete Items.photoURL;
+    }
+
+    // Backend Data Update With Firebase Data Update delete previous Data
+    Object.keys(Items).forEach((key) => Items[key] == null && delete Items[key]);
+
+    // Update Firebase user profile
+    await handleUpdateProfile(Items.name, Items.photoURL);
+    // Using PUT Method With Axios Public
+    const itemRes = await axiosPublic.put(`/api/v1/useremail/${user.email}`, Items);
+    console.log(itemRes.data);
+    if (itemRes.data.modifiedCount > 0) {
+      setUser((prevUser) => ({
+        ...prevUser,
+        ...Items,
+      }));
+      toast.success('Your Profile have been updated');
+    }
   };
 
   // Change password Function Call
@@ -107,6 +144,8 @@ const EditUserProfile = (props) => {
               type="text"
               id=""
               placeholder="Name Here"
+              defaultValue={id}
+              readOnly
             />
           </div>
           {/* Mobile Number */}

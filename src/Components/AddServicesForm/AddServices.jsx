@@ -6,6 +6,7 @@ import 'react-quill/dist/quill.snow.css';
 import { useAddServicesMutation } from '../../redux/services/ServicesApiSlice';
 import Swal from 'sweetalert2';
 import { useState } from 'react';
+
 const AddServices = () => {
   const { register, handleSubmit, reset } = useForm();
   const [outcome, setOutcome] = useState('');
@@ -19,28 +20,44 @@ const AddServices = () => {
   //
   const onSubmit = async (data) => {
     //image send to the hosting site
-    const { imageFile } = data;
-    const imageData = { image: imageFile[0] };
-    const res = await axios.post(
-      `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_HOSTING_KEY}`,
-      imageData,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      }
-    );
+    const { imageFile, teacherImageFile } = data;
+    // Function to upload an image and return the URL
+    const uploadImage = async (file) => {
+      const imageData = new FormData();
+      imageData.append('image', file[0]);
+      const response = await axios.post(
+        `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_HOSTING_KEY}`,
+        imageData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+
+      return response.data.data.display_url;
+    };
+
+    // Upload both images concurrently
+    const [courseImageUrl, teacherImageUrl] = await Promise.all([
+      uploadImage(imageFile),
+      uploadImage(teacherImageFile),
+    ]);
 
     // form Data value
     const formData = {
+      // image: res?.data?.data?.display_url,
+      image: courseImageUrl,
       title: data?.title,
-      description: data?.description,
-      image: res?.data?.data?.display_url,
+      shortdescription: data?.shortdescription,
+      price: data?.price,
       details: data?.details,
       outcome,
-      techer: data?.techer,
-      techEdu: data?.techEdu,
-      price: data?.price,
+      teacherImage: teacherImageUrl,
+      teachername: data?.teachername,
+      graduation: data?.graduation,
+      postgraduation: data?.postgraduation,
+      designation: data?.designation,
     };
     AddServices(formData)
       .unwrap()
@@ -77,7 +94,7 @@ const AddServices = () => {
                       <p className="mb-2 text-sm text-black"><span className="font-semibold">Click to upload</span> or drag and drop</p>
                       <p className="text-xs text-black">SVG, PNG, JPG or GIF </p>
                     </div>
-                    <input id="dropzone-file" type="file"  {...register('imageFile', { required: true })} name='courseimage' />
+                    <input id="dropzone-file" type="file"  {...register('imageFile', { required: true })} name='imageFile' />
                   </label>
                 </div>
               </div>
@@ -135,7 +152,7 @@ const AddServices = () => {
                       <p className="mb-2 text-sm text-black"><span className="font-semibold">Click to upload</span> or drag and drop</p>
                       <p className="text-xs text-black">SVG, PNG, JPG or GIF </p>
                     </div>
-                    <input id="dropzone-file" type="file" className='pl-28' {...register('imageFile', { required: true })} name='courseimage' />
+                    <input id="dropzone-file" type="file" className='pl-28' {...register('teacherImageFile', { required: true })} name='teacherImageFile' />
                   </label>
                 </div>
               </div>

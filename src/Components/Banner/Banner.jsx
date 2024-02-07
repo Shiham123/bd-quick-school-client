@@ -3,7 +3,7 @@ import BannerCard from './BannerCard';
 import { Player } from '@lottiefiles/react-lottie-player';
 
 const Banner = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <section className="container  mx-auto mt-20 ">
       <div className="flex flex-col justify-center items-center gap-5 md:flex md:flex-col md:justify-center md:items-center lg:flex lg:flex-row lg:justify-between">

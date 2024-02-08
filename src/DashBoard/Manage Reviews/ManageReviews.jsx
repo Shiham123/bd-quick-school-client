@@ -57,7 +57,11 @@ const ManageReviews = () => {
                     </thead>
                     {/* Table Heading End Here */}
                     {/* Table Data Fetching */}
-                    
+                    <tbody className="font-lora">
+                        {
+                            reviews.map((review, index) => <ManageReviewsTable key={review._id} review={review} index={index} refetch={refetch} />)
+                        }
+                    </tbody>
                 </table>
             </div>
 

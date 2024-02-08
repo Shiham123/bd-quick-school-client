@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "name": "John Doe",
+        "university": "Example University",
+        "live": "City A",
+        "price": 12000,
+        "duration": 4,
+        "image": "https://cdn.10minuteschool.com/images/quiz/course_thumbnail/admission_23/medical_unit_admission_2023_thumb.jpg?w=272&h=152",
+        "year": 2024
+    },
+    {
+        "id": 2,
+        "name": "Jane Smith",
+        "university": "Another University",
+        "live": "City B",
+        "price": 15000,
+        "duration": 3,
+        "image": "https://cdn.10minuteschool.com/images/quiz/course_thumbnail/admission_23/a_unit_admission_23_thumb.jpg?w=272&h=152",
+        "year": 2024
+    },
+    {
+        "id": 3,
+        "name": "Alex Johnson",
+        "university": "Another University",
+        "live": "City C",
+        "price": 10000,
+        "duration": 5,
+        "image": "https://cdn.10minuteschool.com/images/quiz/course_thumbnail/admission_23/b_unit_admission_23_thumb.jpg?w=272&h=152",
+        "year": 2024
+    },
+    {
+        "id": 4,
+        "name": "Emily White",
+        "university": "New University",
+        "live": "City D",
+        "price": 18000,
+        "duration": 4,
+        "image": "https://cdn.10minuteschool.com/images/admissions/thumbnails/c-unit-university-and-cluster-admission-course-thumbnail.jpg?w=272&h=152",
+        "year": 2024
+    },
+    {
+        "id": 5,
+        "name": "Michael Brown",
+        "university": "City University",
+        "live": "City E",
+        "price": 13000,
+        "duration": 3,
+        "image": "https://cdn.10minuteschool.com/images/quiz/course_thumbnail/medical-admission-exam-batch-online-thumbnail.jpg?w=272&h=152",
+        "year": 2024
+    },
+    {
+        "id": 6,
+        "name": "Sophia Miller",
+        "university": "University X",
+        "live": "City F",
+        "price": 16000,
+        "duration": 6,
+        "image": "https://cdn.10minuteschool.com/images/du_a_qs_up2.jpg?w=272&h=152",
+        "year": 2024
+    },
+    {
+        "id": 7,
+        "name": "Daniel Wilson",
+        "university": "City College",
+        "live": "City G",
+        "price": 11000,
+        "duration": 4,
+        "image": "https://cdn.10minuteschool.com/images/k-12-courses/adm_medicalqs_v4.jpeg?w=272&h=152",
+        "year": 2024
+    },
+    {
+        "id": 8,
+        "name": "Olivia Davis",
+        "university": "Central University",
+        "live": "City H",
+        "price": 14000,
+        "duration": 3,
+        "image": "https://cdn.10minuteschool.com/images/k-12-courses/buet_adm_ques_solve.jpeg?w=272&h=152",
+        "year": 2024
+    },
+    {
+        "id": 9,
+        "name": "William Turner",
+        "university": "Tech Institute",
+        "live": "City I",
+        "price": 12000,
+        "duration": 5,
+        "image": "https://cdn.10minuteschool.com/images/quiz/course_thumbnail/admission_23/medical_unit_admission_2023_thumb.jpg?w=272&h=152",
+        "year": 2024
+    },
+    {
+        "id": 10,
+        "name": "Emma Harris",
+        "university": "Arts College",
+        "live": "City J",
+        "price": 17000,
+        "duration": 4,
+        "image": "https://cdn.10minuteschool.com/images/du_a_qs_up2.jpg?w=272&h=152",
+        "year": 2024
+    }
+]

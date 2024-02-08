@@ -11,6 +11,7 @@ import './hover.css';
 import Work from '../How It Works/Work';
 import ChooseUs from '../Why Choose Us/ChooseUs';
 import CoursesType from '../Courses_Type/CoursesType';
+import ReviewForm from '../Review/ReviewForm';
 
 const Home = () => {
   return (
@@ -24,6 +25,7 @@ const Home = () => {
       <Faq />
       <Counter />
       <Review />
+      <ReviewForm></ReviewForm>
       <ChangeBackground />
 
       <ChatBoat />

@@ -37,25 +37,6 @@ i18next.use(initReactI18next).init({
         servie1: 'Explore Our Services !',
         servie2:
           'At BD Quick School, we pride ourselves on delivering exceptional solutions tailored to meet your unique needs. Our diverse range of services is designed to elevate your experience and drive success in todays dynamic business landscape. Explore our offerings below !',
-<<<<<<< HEAD
-        Nav1: 'Skills',
-        skill1: 'Photoshop',
-        skill2: 'JavaScript',
-        skill3: 'HTML',
-        skill4: 'CSS3',
-        skill5: 'React',
-        Nav2: ' Admission test',
-        Nav3: ' Job-Preparation',
-        Nav4: ' Online batch',
-        Nav5: ' Our Services',
-        Nav6: 'Skills',
-        MyCourses: 'My Courses ',
-        Home:"Home",
-        Blog:"Blog",
-        Support:"Support"
-
-=======
->>>>>>> 0391f476c16e87439711ffaa3a558b11bebfea08
       },
     },
     bn: {
@@ -103,9 +84,9 @@ i18next.use(initReactI18next).init({
         Nav4: 'অনলাইন ব্যাচ',
         Nav5: ' আমাদের সেবা সমূহ',
         MyCourses: 'আমার কোস ',
-        Home:"হোম",
-        Blog:"ব্লগ",
-        Support:"সাপোট"
+        Home: 'হোম',
+        Blog: 'ব্লগ',
+        Support: 'সাপোট',
       },
     },
   },

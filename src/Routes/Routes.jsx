@@ -16,7 +16,7 @@ import AdminProfile from '../DashBoard/Admin Profile/AdminProfile';
 import MainQuiz from '../quiz/MainQuiz';
 import PrivateRoute from './PrivateRoute';
 import AdminRoute from './AdminRoute';
-import Review from '../Pages/Review/Review';
+
 
 const Router = createBrowserRouter([
   {

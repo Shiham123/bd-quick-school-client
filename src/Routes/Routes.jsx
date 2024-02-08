@@ -37,11 +37,11 @@ const Router = createBrowserRouter([
         ),
       },
       
-      {
-        path: '/reviewSection',
-        element: <Review></Review>,
-        loader: () => fetch('http://localhost:5000/api/v2/reviewget'),
-      },
+      // {
+      //   path: '/reviewSection',
+      //   element: <Review></Review>,
+      //   loader: () => fetch('http://localhost:5000/api/v2/reviewget'),
+      // },
 
 
 

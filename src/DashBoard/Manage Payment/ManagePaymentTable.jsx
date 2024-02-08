@@ -1,4 +1,4 @@
-
+import { FcPaid } from "react-icons/fc";
 
 const ManagePaymentTable = ({ payment, index }) => {
     return (
@@ -25,8 +25,8 @@ const ManagePaymentTable = ({ payment, index }) => {
             <td className="px-6 py-4">
                 {payment.time}
             </td>
-            <td className="px-6 py-4">
-                {payment.paidStatus}
+            <td className="px-6 py-4 flex items-center gap-1">
+                <span>Paid</span> <span><FcPaid className="text-2xl"/></span>
             </td>
 
         </tr>

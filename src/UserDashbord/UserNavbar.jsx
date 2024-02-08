@@ -57,7 +57,7 @@ const UserNavbar = () => {
 
   return (
     <>
-      <div className={`z-50 top-0 mx-auto pt-3  w-full text-white ${stickyClass}`}>
+      <div className={`z-50 top-0 mx-auto pt-3  w-full text-white `}>
         <div className={`navbar mx-auto flex justify-between items-center`}>
           {/* Nav Logo */}
           <div>

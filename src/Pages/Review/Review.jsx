@@ -27,7 +27,7 @@ const Review = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosPublic.get('/api/v2/update/status/:id');
+        const response = await axiosPublic.get('/api/v2/reviewget');
         setPosts(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -64,6 +64,7 @@ const Review = () => {
             className="custom-button lg:block hidden prev rounded-full border max-w-full px-[2px] py-[2px] text-white lg:text-4xl md:text-3xl text-xl absolute lg:top-[12rem] lg:left-16 md:top-[21rem] md:left-10 top-[30rem] left-0"
             onClick={goPrev}
           >
+            
             <IoIosArrowBack></IoIosArrowBack>
           </button>
           <button

@@ -44,13 +44,14 @@ const Review = () => {
       swiper.slideNext();
     }
   };
-  
+
 
   const goPrev = () => {
     if (swiper) {
       swiper.slidePrev();
     }
   };
+  
 
   return (
     <div>

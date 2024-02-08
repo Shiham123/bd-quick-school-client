@@ -113,7 +113,7 @@ const ManageUsers = () => {
                     {/* Table Data Fetching */}
                     <tbody>
                         {
-                            filteredData.map((user, index) => <ManageUserTable key={user._id} user={user} index={index} />)
+                            filteredData.map((user, index) => <ManageUserTable key={user._id} user={user} index={index} refetch={refetch} />)
                         }
                     </tbody>
                 </table>

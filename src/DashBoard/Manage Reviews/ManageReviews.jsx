@@ -17,7 +17,7 @@ const ManageReviews = () => {
     const { data: reviews = [], refetch } = useQuery({
         queryKey: ['reviews'],
         queryFn: async () => {
-            const res = await axiosSecure.get('/api/v1/admin/reviews')
+            const res = await axiosSecure.get('/api/v2/admin/reviews')
             return res.data
         }
     })
@@ -49,9 +49,8 @@ const ManageReviews = () => {
                             <th scope="col" className="px-6 py-3">
                                 Reviewer Rating
                             </th>
-
                             <th scope="col" className="px-6 py-3">
-                                Action
+                                Status
                             </th>
                         </tr>
                     </thead>

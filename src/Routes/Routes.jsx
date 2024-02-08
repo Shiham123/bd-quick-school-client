@@ -16,6 +16,7 @@ import AdminProfile from '../DashBoard/Admin Profile/AdminProfile';
 import MainQuiz from '../quiz/MainQuiz';
 import PrivateRoute from './PrivateRoute';
 import AdminRoute from './AdminRoute';
+import Review from '../Pages/Review/Review';
 
 const Router = createBrowserRouter([
   {
@@ -37,9 +38,9 @@ const Router = createBrowserRouter([
       },
       
       {
-        path: '/availablfoods',
-        element: <AvailableFoods></AvailableFoods>,
-        loader: () => fetch('https://assignment-11-server-smoky-mu.vercel.app/allfood'),
+        path: '/reviewSection',
+        element: <Review></Review>,
+        loader: () => fetch('http://localhost:5000/api/v2/reviewget'),
       },
 
 

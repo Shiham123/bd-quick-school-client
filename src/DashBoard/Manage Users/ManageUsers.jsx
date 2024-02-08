@@ -7,6 +7,7 @@ import ManageUserTable from "./ManageUserTable";
 
 const ManageUsers = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [searchTerm, setSearchTerm] = useState("")
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
@@ -20,6 +21,15 @@ const ManageUsers = () => {
             return res.data
         }
     })
+
+
+    const filteredData = users?.filter((item) => {
+        if (item && item.name) {
+            return item.name.toLowerCase().includes(searchTerm.toLowerCase());
+        }
+
+        return false;
+    });
 
 
 
@@ -56,7 +66,7 @@ const ManageUsers = () => {
                             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                         </svg>
                     </div>
-                    <input type="text" id="table-search-users" className="block py-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for users" />
+                    <input value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} type="text" id="table-search-users" className="block py-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for users" />
                 </div>
             </div>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -92,7 +102,7 @@ const ManageUsers = () => {
                     </thead>
                     <tbody>
                         {
-                            users.map((user, index) => <ManageUserTable key={user._id} user={user} index={index} />)
+                            filteredData.map((user, index) => <ManageUserTable key={user._id} user={user} index={index} />)
                         }
                     </tbody>
                 </table>

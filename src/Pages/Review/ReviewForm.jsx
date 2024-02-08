@@ -3,8 +3,8 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
 import { useRef, useState } from "react";
 import Select from 'react-select';
 
-
-const options1 = [
+// react select options
+const Rating = [
     { value: '1', label: '1' },
     { value: '2', label: '2' },
     { value: '3', label: '3' },
@@ -101,7 +101,7 @@ const ReviewForm = () => {
                                     <Select
                                         defaultValue={selectedOption}
                                         onChange={setSelectedOption}
-                                        options={options1}
+                                        options={Rating}
                                         //for color
                                         theme={(theme) => ({
                                             ...theme,
@@ -111,10 +111,11 @@ const ReviewForm = () => {
                                                 text: 'black',
                                                 primary25: '#B75CFF',
                                                 primary: '#8F00FF ',
+                                                font:'extrabold'
                                                 //  #A32EFF
                                             },
                                         })}
-                                        name="Rating-Number"
+                                        name="rating"
 
                                     />
                                     {/* <input type="number" placeholder="Rating" name="rating" className="input input-bordered" required /> */}

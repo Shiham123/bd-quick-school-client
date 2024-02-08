@@ -44,6 +44,7 @@ const Review = () => {
       swiper.slideNext();
     }
   };
+  
 
   const goPrev = () => {
     if (swiper) {

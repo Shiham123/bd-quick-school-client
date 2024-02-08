@@ -1,12 +1,29 @@
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import Select from 'react-select';
+
+
+const options1 = [
+    { value: '1', label: '1' },
+    { value: '2', label: '2' },
+    { value: '3', label: '3' },
+    { value: '4', label: '4' },
+    { value: '5', label: '5' },
+
+];
 
 const ReviewForm = () => {
+
+    //from react selector
+    const [selectedOption, setSelectedOption] = useState(null);
+
     const formRef =useRef()
     const axiosPublic = useAxiosPublic();
 
     const handleAddReview = event => {
+        
+
         event.preventDefault();
         const form = event.target;
 
@@ -67,12 +84,36 @@ const ReviewForm = () => {
                                     </label>
                                     <input type="text" placeholder="Designation" name="designation" className="input input-bordered" required />
                                 </div>
+
+                                {/* rating */}
+
                                 <div className="form-control w-full">
                                     <label className="label">
                                         <span className="label-text text-xl font-bold font-lora">Rating</span>
                                     </label>
-                                    <input type="number" placeholder="Rating" name="rating" className="input input-bordered" required />
+                                    <Select
+                                        defaultValue={selectedOption}
+                                        onChange={setSelectedOption}
+                                        options={options1}
+                                        //for color
+                                        theme={(theme) => ({
+                                            ...theme,
+                                            borderRadius: 0,
+                                            colors: {
+                                                ...theme.colors,
+                                                text: 'black',
+                                                primary25: '#B75CFF',
+                                                primary: '#8F00FF ',
+                                                //  #A32EFF
+                                            },
+                                        })}
+                                        name="Rating-Number"
+
+                                    />
+                                    {/* <input type="number" placeholder="Rating" name="rating" className="input input-bordered" required /> */}
                                 </div>
+
+                                {/* feedback */}
                                 <label className="form-control w-full">
                                     <div className="label">
                                         <span className="label-text text-xl font-bold font-lora">Share Your Feedback</span>

@@ -7,7 +7,14 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 const ManageUsers = () => {
 
 
-    
+    const axiosSecure = useAxiosSecure()
+    const { data: users = [], refetch } = useQuery({
+        queryKey: ['users'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/api/v1/users')
+            return res.data
+        }
+    })
 
 
 

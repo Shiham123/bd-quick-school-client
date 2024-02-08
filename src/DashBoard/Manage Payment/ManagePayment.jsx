@@ -1,10 +1,28 @@
 
 
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../Hooks/UseAxiosSecure/UseAxiosSecure";
 
+import { useState } from "react";
+
+import ManagePaymentTable from "./ManagePaymentTable";
 
 
 const ManageUsers = () => {
     
+
+
+    // User Data fetching By tanstack query
+    const axiosSecure = useAxiosSecure()
+    const { data: payments = [], refetch } = useQuery({
+        queryKey: ['payments'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/payment')
+            return res.data
+        }
+    })
+
+
 
 
 
@@ -12,7 +30,7 @@ const ManageUsers = () => {
         <div className="lg:p-16 min-h-screen">
             <h1 className="text-4xl text-center font-cinzel">Manage Users</h1>
             <hr className="mb-5 border-2 mt-2 border-black w-[280px] mx-auto" />
-            
+
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
 
                 <table className="w-full text-sm text-left rtl:text-right text-blue-100 dark:text-blue-100">
@@ -22,30 +40,37 @@ const ManageUsers = () => {
                             <th scope="col" className="px-6 py-3">
                                 Number
                             </th>
+
                             <th scope="col" className="px-6 py-3">
-                                User Photo
+                                Customer Name
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                User Name
+                                Customer Email
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                User Email
+                                Tranjaction Id
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                User Phone
+                                Amont
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Role
+                                Course Name
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Banned
+                                Pay Time
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Action
+                                Status
                             </th>
                         </tr>
                     </thead>
-                    
+                    {/* Table Heading End Here */}
+                    {/* Table Data Fetching */}
+                    <tbody className="font-lora">
+                        {
+                            payments.map((payment, index) => <ManagePaymentTable key={payment._id} payment={payment} index={index} refetch={refetch} />)
+                        }
+                    </tbody>
                 </table>
             </div>
 

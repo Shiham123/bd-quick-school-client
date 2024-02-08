@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useAddServicesMutation } from '../../redux/services/ServicesApiSlice';
-import Swal from 'sweetalert2';
 import { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
 const AddServices = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -61,7 +61,7 @@ const AddServices = () => {
     AddServices(formData)
       .unwrap()
       .then(() => {
-        Swal.fire('Services Add SuccessFully');
+        toast.success('Services Add SuccessFully');
         reset();
         setOutcome(null);
       });
@@ -186,6 +186,7 @@ const AddServices = () => {
           </div>
         </form>
       </section>
+      <Toaster />
     </div>
   );
 };

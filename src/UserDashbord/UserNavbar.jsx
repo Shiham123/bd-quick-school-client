@@ -218,7 +218,7 @@ const UserNavbar = () => {
                     >
                       {user?.displayName}
                     </h1>
-                    <Link to={`myprofile/${user?.email}`}>
+                    <Link to={`/myprofile`}>
                       <button
                         className="btn btn-outline text-white"
                         style={{ whiteSpace: 'nowrap' }}

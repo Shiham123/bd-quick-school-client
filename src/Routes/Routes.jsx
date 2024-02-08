@@ -8,7 +8,6 @@ import Login from '../Pages/Login/Login';
 import Services from '../Pages/Services/Services';
 import MyProfile from '../Pages/UserProfile/MyProfile/MyProfile';
 import ServiceDetails from '../Pages/Services/ServiceDetails';
-import PaymentSuccses from '../Pages/Services/PaymentSuccses';
 import PaymentFailed from '../Pages/Services/PaymentFailed';
 import PayDataFrom from '../Pages/Services/PayDataFrom';
 import DashBoardLayout from '../DashBoard/DashBoard Layout/DashBoardLayout';
@@ -32,6 +31,7 @@ import ManagePayment from '../DashBoard/Manage Payment/ManagePayment';
 import ManageUsers from '../DashBoard/Manage Users/ManageUsers';
 import ManageReviews from '../DashBoard/Manage Reviews/ManageReviews';
 import DashBoardCharts from '../DashBoard/DashBoard Charts/DashBoardCharts';
+import UserCOurse from '../UserDashbord/UserCOurse';
 
 const Router = createBrowserRouter([
   {
@@ -54,7 +54,7 @@ const Router = createBrowserRouter([
       { path: 'myprofile', element: <MyProfile /> },
       { path: '/ServiceDetails/:id', element: <ServiceDetails /> },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
-      { path: '/payment/succsess/:tranID', element: <PaymentSuccses /> },
+      { path: '/MyCourses/:tranID', element: <UserCOurse/> },
       { path: '/payment/fail/:tranID', element: <PaymentFailed /> },
       { path: '/quiz', element: <MainQuiz /> },
     ],

@@ -4,11 +4,13 @@ import { FaIdCard } from "react-icons/fa";
 import { TbAdjustmentsHorizontal } from "react-icons/tb";
 import { GiTeacher } from "react-icons/gi";
 import { TfiLocationPin } from "react-icons/tfi";
+import { useTranslation } from "react-i18next";
 
 const ChooseUs = () => {
+    const { t } = useTranslation();
     return (
         <div className="max-w-7xl mx-auto mb-28">
-            <h1 className="text-4xl font-cinzel font-bold text-white text-center mb-20">Why choose us</h1>
+            <h1 className="text-4xl font-cinzel font-bold text-white text-center mb-20"> {t('Whychooseus')}</h1>
             <div className="font-lora grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 md:gap-5 lg:gap-16 md:ml-3">
                 {/* 1st Step */}
                 <div className="flex items-start justify-center md:justify-start gap-4">
@@ -16,7 +18,7 @@ const ChooseUs = () => {
                         <FaGraduationCap className="text-4xl text-white" />
                     </div>
                     <div className="w-72 md:w-64 lg:w-72">
-                        <h3 className="text-white text-xl lg:text-2xl mb-5">Professional choice</h3>
+                        <h3 className="text-white text-xl lg:text-2xl mb-5"> {t('Professionalchoice')}</h3>
                         <p className="text-white lg:text-base">Each lesson includes a variety of speaking, listening, translation and multiple choice challenge.</p>
                     </div>
                 </div>

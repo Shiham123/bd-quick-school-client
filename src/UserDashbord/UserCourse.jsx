@@ -6,23 +6,27 @@ import axios from 'axios';
 import { ThreeCircles } from 'react-loader-spinner';
 // import PayDataFrom from './PayDataFrom';
 import { Link } from 'react-router-dom';
+import useAuth from '../Hooks/useAuth/useAuth';
 
 const UserCOurse = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { user } = useAuth();
 
+  console.log(user);
   useEffect(() => {
     axios
-      .get('Services.json')
+      .get(`http://localhost:5000/payment/user/${user?.email}`)
       .then((response) => {
         setServices(response.data);
         setLoading(false);
+        console.log('for response', response);
       })
       .catch((error) => {
         console.error('Error fetching services:', error);
         setLoading(false);
       });
-  }, []);
+  }, [user?.email]);
 
   return (
     <div>
@@ -47,10 +51,10 @@ const UserCOurse = () => {
             {services?.map((service) => (
               <div key={service.Id} className="card md:card-side p-2 border shadow-xl">
                 <figure>
-                  <img className="rounded-xl" src={service.image} alt="Movie" />
+                  <img className="rounded-xl" src={service?.course_photo} alt="course" />
                 </figure>
                 <div className="card-body text-white">
-                  <h2 className="card-title">{service.title}</h2>
+                  <h2 className="card-title">{service.product_name}</h2>
                   <p>{service.techer}</p>
                   <div className=" flex gap-4 md:flex-row flex-col  justify-between">
                     <Link to={`Video`}>

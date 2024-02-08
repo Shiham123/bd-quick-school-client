@@ -97,7 +97,7 @@ const EditUserProfile = (props) => {
   };
 
   return (
-    <div className="relative">
+    <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* 1st line*/}
         <div className=" mt-8 flex flex-col md:flex-row items-center gap-5 lg:gap-10">

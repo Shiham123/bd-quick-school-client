@@ -50,7 +50,6 @@ const Navbar = () => {
     };
   };
 
-  
   // transletor handelr
   const handelChangeLng = (lng) => {
     i18n.changeLanguage(lng);

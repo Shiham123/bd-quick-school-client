@@ -151,7 +151,7 @@ const AddServices = () => {
                       <p className="mb-2 text-sm text-black"><span className="font-semibold">Click to upload</span> or drag and drop</p>
                       <p className="text-xs text-black">SVG, PNG, JPG or GIF </p>
                     </div>
-                    <input id="dropzone-file" type="file" className='pl-28' {...register('teacherImageFile', { required: true })} name='teacherImageFile' />
+                    <input id="dropzone-file" type="file"  {...register('teacherImageFile', { required: true })} name='teacherImageFile' />
                   </label>
                 </div>
               </div>

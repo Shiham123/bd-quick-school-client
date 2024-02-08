@@ -13,6 +13,8 @@ import PaymentFailed from '../Pages/Services/PaymentFailed';
 import PayDataFrom from '../Pages/Services/PayDataFrom';
 import MainQuiz from '../quiz/MainQuiz';
 import PrivateRoute from './PrivateRoute';
+import AdmissionTest from '../Pages/Courses/AdmissionTest';
+import JobPreparation from '../Pages/Courses/JobPreparation';
 
 const Router = createBrowserRouter([
   {
@@ -37,6 +39,14 @@ const Router = createBrowserRouter([
         element: <MyProfile />,
         loader: ({ params }) =>
           fetch(`https://bd-quick-school-server.vercel.app/api/v1/useremail/${params.email}`),
+      },
+      {
+        path: '/admissionTest',
+        element: <AdmissionTest />,
+      },
+      {
+        path: '/jobPreparation',
+        element: <JobPreparation />,
       },
       {
         path: '/ServiceDetails/:id',

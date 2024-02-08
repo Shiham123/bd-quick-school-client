@@ -71,13 +71,20 @@ const ReviewForm = () => {
                 <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                     <div className="modal-box ">
                         <div className="modal-action mx-0">
+
+                            {/* form start here */}
+
                             <form onSubmit={handleAddReview} ref={formRef} className="card-body pt-0 w-[360px] md:w-[450px] mx-auto ">
+
+                                {/* Full name */}
                                 <div className="form-control w-full">
                                     <label className="label w-full">
                                         <span className="label-text text-xl font-bold font-lora">Enter Your Full Name</span>
                                     </label>
                                     <input type="text" placeholder="Full Name" name="fullname" className="input input-bordered" required />
                                 </div>
+
+                               {/* Designation */}
                                 <div className="form-control w-full">
                                     <label className="label">
                                         <span className="label-text text-xl font-bold font-lora">Enter Your Designation</span>
@@ -120,6 +127,8 @@ const ReviewForm = () => {
                                     </div>
                                     <textarea className="textarea textarea-bordered h-24" name="textarea" placeholder="Bio (Less than 50 words)" required></textarea>
                                 </label>
+
+                                {/* close the form */}
                                 <div className="form-control mt-6">
                                     <button onClick={() => document.getElementById('my_modal_5').close()} type="submit" className="btn bg-violet-600 text-xl font-bold font-lora  text-white">Submit</button>
                                     

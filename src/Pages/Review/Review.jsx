@@ -75,7 +75,7 @@ const Review = () => {
           </button>
         </div>
 
-        
+
         <div className="mt-10">
           {/* swiper  */}
 
@@ -137,6 +137,7 @@ const Review = () => {
           </Swiper>
         </div>
       </div>
+      
       {/* for horizontal line */}
       <hr className="w-[400px] mx-auto my-32 border-2" />
     </div>

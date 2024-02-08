@@ -3,8 +3,8 @@ import useAuth from '../useAuth/useAuth';
 import { useNavigate } from 'react-router-dom';
 
 const axiosSecure = axios.create({
-  baseURL: 'https://quiz-school-server.vercel.app',
-  // baseURL: 'http://localhost:5000',
+  // baseURL: 'https://quiz-school-server.vercel.app',
+  baseURL: 'http://localhost:5000',
 });
 
 const useAxiosSecure = () => {
@@ -23,7 +23,6 @@ const useAxiosSecure = () => {
   );
   axiosSecure.interceptors.response.use(
     (response) => {
-      console.log(response);
       return response;
     },
     async (error) => {

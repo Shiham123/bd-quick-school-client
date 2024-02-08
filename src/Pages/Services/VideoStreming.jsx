@@ -35,8 +35,11 @@ const Video = () => {
   return (
     <div className="app-container">
       {videoPlaylist.length > 0 && (
-        <div className="flex items-center">
+        <div className="flex gap-8 items-center mx-auto max-w-7xl ">
           <div>
+            <h2 className=" text-white text-3xl font-bold">
+              {videoPlaylist[currentVideoIndex].title}
+            </h2>
             <ReactPlayer
               controls={true}
               url={videoPlaylist[currentVideoIndex].videoUrl}
@@ -44,10 +47,7 @@ const Video = () => {
               height="500px"
             />
             <div className="video-info">
-              <h2 className="my-4 text-white text-3xl font-bold">
-                {videoPlaylist[currentVideoIndex].title}
-              </h2>
-              <div className="flex gap-4">
+              <div className="flex gap-4 justify-evenly py-5">
                 <button className="btn text-xl" onClick={handlePrevVideo}>
                   Previous
                 </button>

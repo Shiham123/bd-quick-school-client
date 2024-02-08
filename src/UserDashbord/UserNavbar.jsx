@@ -1,20 +1,19 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useParams } from 'react-router-dom';
 import { IoMenuSharp } from 'react-icons/io5';
 import { useContext, useEffect, useState } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { CiLight, CiDark } from 'react-icons/ci';
-import useAuth from './../../../Hooks/useAuth/useAuth';
-import { ThemeContext } from '../../../context/Darkmode';
-import { useTranslation } from 'react-i18next';
-import VerifyAdmin from '../../../Hooks/useAdmin/useAdmin';
-import NavbarBgChange from './NavbarBgChange';
 
-const Navbar = () => {
+import { useTranslation } from 'react-i18next';
+import useAuth from '../Hooks/useAuth/useAuth';
+import { ThemeContext } from '../context/Darkmode';
+
+const UserNavbar = () => {
   const [stickyClass, setStickyClass] = useState('');
   const { user, logOut } = useAuth();
   const { darkMode, setDarkMode } = useContext(ThemeContext);
   const { t, i18n } = useTranslation();
-  const [isAdmin] = VerifyAdmin();
+  const { roomId } = useParams();
 
   const handleLogOut = () => {
     logOut()
@@ -50,7 +49,6 @@ const Navbar = () => {
     };
   };
 
-  
   // transletor handelr
   const handelChangeLng = (lng) => {
     i18n.changeLanguage(lng);
@@ -76,57 +74,12 @@ const Navbar = () => {
                 {/* this is dropdown navbar in responsive ------------------- */}
 
                 <li>
-                  <details>
-                    <summary> {t('Nav1')}</summary>
-                    <ul className="text-white">
-                      <li>
-                        <NavLink
-                          to={'/Photoshop'}
-                          style={activeRouteStyle}
-                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                        >
-                          {t('skill1')}
-                        </NavLink>
-                        <NavLink
-                          to={'/JavaScript'}
-                          style={activeRouteStyle}
-                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                        >
-                          {t('skill2')}
-                        </NavLink>
-                        <NavLink
-                          to={'/HTML'}
-                          style={activeRouteStyle}
-                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                        >
-                          {t('skill3')}
-                        </NavLink>
-                        <NavLink
-                          to={'/CSS3'}
-                          style={activeRouteStyle}
-                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                        >
-                          {t('skill4')}
-                        </NavLink>
-                        <NavLink
-                          to={'/React'}
-                          style={activeRouteStyle}
-                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                        >
-                          {t('skill5')}
-                        </NavLink>
-                      </li>
-                    </ul>
-                  </details>
-                </li>
-
-                <li>
                   <NavLink
                     style={activeRouteStyle}
                     className=" hover:text-[#deb2ac] uppercase font-medium"
-                    to={'/admission-test'}
+                    to={'/'}
                   >
-                    {t('Nav2')}
+                    {t('Home')}
                   </NavLink>
                 </li>
                 <li>
@@ -135,18 +88,18 @@ const Navbar = () => {
                     className=" hover:text-[#deb2ac] uppercase font-medium"
                     to={'/job-Preparation'}
                   >
-                    {t('Nav3')}
+                    {t('Blog')}
                   </NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink
                     style={activeRouteStyle}
                     className=" hover:text-[#deb2ac] uppercase font-medium"
-                    to={'/online-batch'}
+                    to={'/MyCourses/support'}
                   >
-                    {t('Nav4')}
+                    {t('Support')}
                   </NavLink>
-                </li>
+                </li> */}
                 <li>
                   <NavLink
                     style={activeRouteStyle}
@@ -183,61 +136,14 @@ const Navbar = () => {
           {/* NavLink */}
           <div className="navbar-center hidden lg:flex">
             <ul className="menu dropdown-content menu-horizontal px-1 justify-center items-center flex text-base font-poppins">
-              {/* ---------- navbar route without dropdown------------ */}
-
-              <li>
-                <details>
-                  <summary> {t('Nav1')} </summary>
-                  <ul className="text-white">
-                    <li>
-                      <NavLink
-                        to={'/Photoshop'}
-                        style={activeRouteStyle}
-                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                      >
-                        {t('skill1')}
-                      </NavLink>
-                      <NavLink
-                        to={'/JavaScript'}
-                        style={activeRouteStyle}
-                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                      >
-                        {t('skill2')}
-                      </NavLink>
-                      <NavLink
-                        to={'/HTML'}
-                        style={activeRouteStyle}
-                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                      >
-                        {t('skill3')}
-                      </NavLink>
-                      <NavLink
-                        to={'/CSS3'}
-                        style={activeRouteStyle}
-                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                      >
-                        {t('skill4')}
-                      </NavLink>
-                      <NavLink
-                        to={'/React'}
-                        style={activeRouteStyle}
-                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                      >
-                        {t('skill5')}
-                      </NavLink>
-                    </li>
-                  </ul>
-                </details>
-              </li>
-
               {/* this is not drop down */}
               <li>
                 <NavLink
                   style={activeRouteStyle}
                   className=" hover:text-[#deb2ac] uppercase font-medium"
-                  to={'/admission-test'}
+                  to={'/'}
                 >
-                  {t('Nav2')}
+                  {t('Home')}
                 </NavLink>
               </li>
               <li>
@@ -246,27 +152,19 @@ const Navbar = () => {
                   className=" hover:text-[#deb2ac] uppercase font-medium"
                   to={'/job-Preparation'}
                 >
-                  {t('Nav3')}
+                  {t('Blog')}
                 </NavLink>
               </li>
               <li>
                 <NavLink
                   style={activeRouteStyle}
                   className=" hover:text-[#deb2ac] uppercase font-medium"
-                  to={'/online-batch'}
+                  to={`support`}
                 >
-                  {t('Nav4')}
+                  {t('Support')}
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  style={activeRouteStyle}
-                  className=" hover:text-[#deb2ac] uppercase font-medium"
-                  to={'/services'}
-                >
-                  {t('Nav5')}
-                </NavLink>
-              </li>
+
               <li>
                 <NavLink
                   style={activeRouteStyle}
@@ -288,11 +186,7 @@ const Navbar = () => {
               <button onClick={() => handelChangeLng('en')}> En </button>
               <button onClick={() => handelChangeLng('bn')}> বাং</button>
             </li>
-
-            <NavbarBgChange />
           </div>
-
-          {/* background color change */}
 
           {/* Profile */}
           {user ? (
@@ -324,7 +218,7 @@ const Navbar = () => {
                     >
                       {user?.displayName}
                     </h1>
-                    <Link to={`/myprofile`}>
+                    <Link to={`myprofile/${user?.email}`}>
                       <button
                         className="btn btn-outline text-white"
                         style={{ whiteSpace: 'nowrap' }}
@@ -365,16 +259,6 @@ const Navbar = () => {
                   </li>
                   <hr />
 
-                  {isAdmin && (
-                    <>
-                      <NavLink to="/dashboard">
-                        <li className="hover:font-semibold  py-1 text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
-                          Dashboard
-                        </li>
-                      </NavLink>
-                    </>
-                  )}
-
                   <hr />
 
                   <div className="hover:font-semibold pt-2 pb-3 text-start font-lora font-medium ">
@@ -403,4 +287,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default UserNavbar;

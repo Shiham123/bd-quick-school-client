@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Providers/Authprovider';
-import axios from 'axios';
 import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 
 const PayDataFrom = ({ id }) => {
@@ -14,7 +13,7 @@ const PayDataFrom = ({ id }) => {
     data.email = user.email;
 
     try {
-      const response = await axiosPublic(`/api/v1/order`, data); // TODO: here changed
+      const response = await axiosPublic.post(`/api/v1/order`, data); // TODO: here changed
       const result = response.data;
       window.location.replace(result.url);
     } catch (error) {

@@ -1,0 +1,33 @@
+const data = [
+    {
+      "id": 2001,
+      "page": "Class 5-12",
+      "href": "/all-class",
+      "submenu": [
+        { "id": 1001, "page": "HSC", "href": "/hsc", "icon": "" },
+        { "id": 1002, "page": "SSC", "href": "/ssc", "icon": "" },
+        { "id": 1003, "page": "Ten", "href": "/class-ten", "icon": "" },
+        { "id": 1004, "page": "Nine", "href": "/class-nine", "icon": "" },
+        { "id": 1005, "page": "Eight", "href": "/class-eight", "icon": "" }
+      ]
+    },
+    {
+      "id": 2002,
+      "page": "Skills",
+      "href": "/all-skill",
+      "submenu": [
+        { "id": 1006, "page": "Photoshop", "href": "/Photoshop", "icon": "" },
+        { "id": 1007, "page": "JavaScript", "href": "/JavaScript", "icon": "" },
+        { "id": 1008, "page": "HTML", "href": "/HTML", "icon": "" },
+        { "id": 1009, "page": "CSS3", "href": "/CSS3", "icon": "" },
+        { "id": 1010, "page": "React", "href": "/React", "icon": "" }
+      ]
+    },
+    { "id": 2003, "page": "Admission test", "href": "/admission-test" },
+    { "id": 2004, "page": "Job-Preparation", "href": "/job-Preparation" },
+    { "id": 2005, "page": "Online batch", "href": "/online-batch" },
+    { "id": 2006, "page": "Our Services", "href": "/services" }
+  ];
+  
+  export default data;
+  

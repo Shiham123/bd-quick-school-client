@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PayDataFrom from './PayDataFrom';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { Box, Grid, IconButton, Typography } from '@material-ui/core';
 import { Stack } from '@mui/material';
-import CheckIcon from '@mui/icons-material/Check';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import SlowMotionVideoIcon from '@mui/icons-material/SlowMotionVideo';
@@ -18,16 +16,16 @@ import QuizModal from '../../quiz/shared/QuizModal';
 import useLocationContext from '../../context/useLocationContext';
 import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 import useAuth from '../../Hooks/useAuth/useAuth';
+import { useGetIdBasedServicesQuery } from '../../redux/services/ServicesApiSlice';
 // import { useQuery } from '@tanstack/react-query';
 // import Video from './VideoStreming';
 
 const ServiceDetails = () => {
   const { id } = useParams();
-  const [course, setCourse] = useState(null);
   const { isModalOpen, closeModal, openModal } = useLocationContext();
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
-
+  const { data, isLoading } = useGetIdBasedServicesQuery(id);
   // TODO: here are alternative for get data
   // const { data: quizData } = useQuery({
   //   queryKey: ['quizData', user.email, id],
@@ -45,16 +43,6 @@ const ServiceDetails = () => {
   //   openModal();
   // }
 
-  useEffect(() => {
-    fetch('/Services.json')
-      .then((response) => response.json())
-      .then((data) => {
-        const selectedCourse = data.find((c) => c.Id === id);
-        setCourse(selectedCourse);
-      })
-      .catch((error) => console.error('Error fetching data:', error));
-  }, [id]);
-
   axiosPublic
     .get(`/api/v2/quizUsers/${id}/${user?.email}`)
     .then((response) => {
@@ -67,10 +55,9 @@ const ServiceDetails = () => {
     })
     .catch((error) => console.log(error));
 
-  if (!course) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
-
   return (
     <Box className=" max-w-screen-2xl mx-auto text-white px-3 mt-4 pr-2">
       <Grid container spacing={8} columns={{ md: 12 }}>
@@ -78,10 +65,10 @@ const ServiceDetails = () => {
           <Box>
             <Box className=" text-white space-y-6">
               <Typography variant="h4" className="text-xl font-bold text-yellow-400">
-                {course?.title}
+                {data?.title}
               </Typography>
               <Typography variant="h6" className="text-sm font-bold text-justify">
-                {course?.details}
+                {data?.details}
               </Typography>
             </Box>
             {/* Course instructor */}
@@ -99,17 +86,17 @@ const ServiceDetails = () => {
               >
                 <Box>
                   <img
-                    src={course?.image}
+                    src={data?.image}
                     alt=""
                     className="rounded-sm shadow-md shadow-yellow-400"
                   />
                 </Box>
                 <Box className="space-y-2">
                   <Typography variant="h5" className="font-bold text-yellow-200">
-                    {course?.techer}
+                    {data?.techer}
                   </Typography>
                   <Typography variant="h6" className="md:w-2/3">
-                    {course?.techEdu}
+                    {data?.techEdu}
                   </Typography>
                 </Box>
               </Stack>
@@ -121,26 +108,27 @@ const ServiceDetails = () => {
                   What you will learn by doing the course
                 </Typography>
               </Box>
-              <Grid
+              {/* <Grid
                 container
                 spacing={4}
                 columns={{ md: 12 }}
                 justifyContent="center"
                 alignItems="center"
-              >
-                {course?.outcome.map((data, idx) => {
-                  return (
-                    <Grid item md={6} key={idx}>
-                      <p className="flex gap-x-2 items-baseline text-xl">
-                        <IconButton>
-                          <CheckIcon className="text-yellow-400" />
-                        </IconButton>
-                        {data}
-                      </p>
-                    </Grid>
-                  );
-                })}
-              </Grid>
+              > */}
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: ` ${data?.outcome}`,
+                }}
+                className="text-xl font-bold max-w-3xl space-y-3 text-justify px-2"
+              ></div>
+              {/* <Grid item md={6}>
+                  <p className="flex gap-x-2 items-baseline text-xl">
+                    <IconButton>
+                      <CheckIcon className="text-yellow-400" />
+                    </IconButton>
+                  </p>
+                </Grid> */}
+              {/* </Grid> */}
             </Box>
           </Box>
         </Grid>
@@ -149,7 +137,7 @@ const ServiceDetails = () => {
         <Grid item md={4} className="relative">
           <Box className="mt-6">
             <img
-              src={course?.image}
+              src={data?.image}
               alt=""
               className="border-2 rounded-md border-yellow-400 w-full"
             />
@@ -163,13 +151,13 @@ const ServiceDetails = () => {
               <IconButton>
                 <AttachMoneyIcon className="text-yellow-400" />
                 <Typography variant="h5" className="text-yellow-400">
-                  {course.price}{' '}
+                  {data.price}{' '}
                 </Typography>
               </IconButton>
               {/* Discount Price */}
               <del className="text-gray-200 flex items-center">
                 <Typography variant="h6" className="text-white">
-                  {Number(course.price + 7)}
+                  {Number(Number(data.price) + 7)}
                 </Typography>
               </del>
             </Box>

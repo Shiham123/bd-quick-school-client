@@ -7,19 +7,24 @@ import Authprovider from './Providers/Authprovider';
 import { LocationProvider } from './context/LocationContext';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Darkmode } from './context/Darkmode';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
+import './TransletLanguage/18next'
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <Authprovider>
-        <Darkmode>
-          <LocationProvider>
-            <RouterProvider router={Router} />
-          </LocationProvider>
-        </Darkmode>
-      </Authprovider>
-    </QueryClientProvider>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <Authprovider>
+          <Darkmode>
+            <LocationProvider>
+              <RouterProvider router={Router} />
+            </LocationProvider>
+          </Darkmode>
+        </Authprovider>
+      </QueryClientProvider>
+    </Provider>
   </React.StrictMode>
 );

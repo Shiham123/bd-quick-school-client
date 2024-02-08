@@ -8,6 +8,7 @@ import ManageUserTable from "./ManageUserTable";
 const ManageUsers = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState("")
+    const axiosSecure = useAxiosSecure()
 
 
     // Toggle Function
@@ -16,7 +17,6 @@ const ManageUsers = () => {
     };
 
     // User Data fetching By tanstack query
-    const axiosSecure = useAxiosSecure()
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {

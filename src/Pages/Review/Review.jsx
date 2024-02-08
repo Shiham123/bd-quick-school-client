@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -11,7 +11,9 @@ import '@smastrom/react-rating/style.css'
 import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 
 
+
 const Review = () => {
+ 
   const [posts, setPosts] = useState([]);
   const [swiper, setSwiper] = useState(null);
   const { t, i18n } = useTranslation();
@@ -43,11 +45,13 @@ const Review = () => {
     }
   };
 
+
   const goPrev = () => {
     if (swiper) {
       swiper.slidePrev();
     }
   };
+  
 
   return (
     <div>
@@ -126,6 +130,8 @@ const Review = () => {
                           value={post.rating}
                           readOnly
                         />
+
+                       
                       </p>
 
                       
@@ -137,7 +143,7 @@ const Review = () => {
           </Swiper>
         </div>
       </div>
-      
+
       {/* for horizontal line */}
       <hr className="w-[400px] mx-auto my-32 border-2" />
     </div>

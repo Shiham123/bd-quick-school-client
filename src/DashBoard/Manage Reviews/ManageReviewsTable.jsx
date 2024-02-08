@@ -1,4 +1,5 @@
-
+import { MdVerified } from "react-icons/md";
+import { MdOutlineCancel } from 'react-icons/md';
 
 const ManageReviewsTable = ({ review, index }) => {
     return (
@@ -16,6 +17,18 @@ const ManageReviewsTable = ({ review, index }) => {
             <td className="px-6 py-4">
                 {review.rating}
             </td>
+            <tr>
+                <td className="px-6 py-4">
+                    <button className="mr-4 btn ">
+                        <MdVerified className="text-2xl text-green-600"></MdVerified>
+                    </button>
+                </td>
+                <td className="px-6 py-4">
+                    <button className="mr-4 btn">
+                        <MdOutlineCancel className="text-2xl text-red-600 font-bold "></MdOutlineCancel>
+                    </button>
+                </td>
+            </tr>
 
         </tr>
     );

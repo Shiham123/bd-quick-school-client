@@ -1,0 +1,42 @@
+[
+  {
+      "id": 1,
+      "course": "Full Stack Web Development Bootcamp",
+      "provider": "TechSkills Institute",
+      "technology": ["HTML", "CSS", "JavaScript", "Node.js", "React"],
+      "duration": "12 weeks",
+      "certification": "Full Stack Developer Certificate",
+      "image": "https://cdn.10minuteschool.com/images/thumbnails/bank_jobs_question_solve_course_model_test.jpg?w=272&h=152",
+      "price": 1200.00
+  },
+  {
+      "id": 2,
+      "course": "Data Science Fundamentals",
+      "provider": "DataX Academy",
+      "technology": ["Python", "Pandas", "NumPy", "Matplotlib", "Scikit-learn"],
+      "duration": "8 weeks",
+      "certification": "Data Science Essentials Certificate",
+      "image": "https://cdn.10minuteschool.com/images/skills/Updated_Thumbnail_v3/BCS_preli.jpg?w=272&h=152data_science_fundamentals.jpg",
+      "price": 800.00
+  },
+  {
+      "id": 3,
+      "course": "Mobile App Development with Flutter",
+      "provider": "AppCrafters Academy",
+      "technology": ["Dart", "Flutter", "Firebase"],
+      "duration": "10 weeks",
+      "certification": "Mobile App Developer Certificate",
+      "image": "https://cdn.10minuteschool.com/images/skills/Updated_Thumbnail_v3/bcs_qs_thumbnail.jpg?w=272&h=152",
+      "price": 1000.00
+  },
+  {
+      "id": 4,
+      "course": "Cybersecurity Fundamentals",
+      "provider": "SecureTech Education",
+      "technology": ["Network Security", "Ethical Hacking", "Cryptography"],
+      "duration": "6 weeks",
+      "certification": "Cybersecurity Basics Certificate",
+      "image": "https://cdn.10minuteschool.com/images/thumbnails/ministry-jobs-question-solve-model-test-thumbnail.jpg?w=272&h=152",
+      "price": 600.00
+  }
+]

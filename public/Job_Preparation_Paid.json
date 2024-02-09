@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "course": "Full Stack Web Development Bootcamp",
+        "provider": "TechSkills Institute",
+        "technology": ["HTML", "CSS", "JavaScript", "Node.js", "React"],
+        "duration": "12 weeks",
+        "certification": "Full Stack Developer Certificate",
+        "image": "https://cdn.10minuteschool.com/images/thumbnails/bcs_preli/bcs-preli-course-name-16x9.jpg?w=272&h=152",
+        "price": 1200.00
+    },
+    {
+        "id": 2,
+        "course": "Data Science Fundamentals",
+        "provider": "DataX Academy",
+        "technology": ["Python", "Pandas", "NumPy", "Matplotlib", "Scikit-learn"],
+        "duration": "8 weeks",
+        "certification": "Data Science Essentials Certificate",
+        "image": "https://cdn.10minuteschool.com/images/skills/Updated_Thumbnail_v3/BankJ.jpg?w=272&h=152",
+        "price": 800.00
+    },
+    {
+        "id": 3,
+        "course": "Mobile App Development with Flutter",
+        "provider": "AppCrafters Academy",
+        "technology": ["Dart", "Flutter", "Firebase"],
+        "duration": "10 weeks",
+        "certification": "Mobile App Developer Certificate",
+        "image": "https://cdn.10minuteschool.com/images/thumbnails/PATR23/PATR_updated_thumbnail_May_2023.jpg?w=272&h=152",
+        "price": 1000.00
+    },
+    {
+        "id": 4,
+        "course": "Cybersecurity Fundamentals",
+        "provider": "SecureTech Education",
+        "technology": ["Network Security", "Ethical Hacking", "Cryptography"],
+        "duration": "6 weeks",
+        "certification": "Cybersecurity Basics Certificate",
+        "image": "https://cdn.10minuteschool.com/images/skills/Updated_Thumbnail_v3/shorkari_chakri_prostuti_rac.jpg?w=272&h=152",
+        "price": 600.00
+    },
+    {
+        "id": 5,
+        "course": "Machine Learning Essentials",
+        "provider": "AI Academy",
+        "technology": ["Python", "TensorFlow", "Scikit-learn", "Machine Learning Algorithms"],
+        "duration": "8 weeks",
+        "certification": "Machine Learning Fundamentals Certificate",
+        "image": "https://cdn.10minuteschool.com/images/thumbnails/english-for-govt-jobs-16x9-updated.jpg?w=272&h=152",
+        "price": 800.00
+    },
+    {
+        "id": 6,
+        "course": "Cloud Computing Fundamentals",
+        "provider": "CloudTech Institute",
+        "technology": ["AWS", "Azure", "Google Cloud"],
+        "duration": "10 weeks",
+        "certification": "Cloud Computing Basics Certificate",
+        "image": "https://cdn.10minuteschool.com/images/thumbnails/gk-course-for-govt-jobs-thumbnail.jpg?w=272&h=152",
+        "price": 1000.00
+    }
+]

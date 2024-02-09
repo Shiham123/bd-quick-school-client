@@ -1,6 +1,6 @@
+import React, { useState, useRef } from 'react';
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
-import { useRef, useState } from "react";
 import Select from 'react-select';
 
 // react select options
@@ -10,37 +10,27 @@ const Rating = [
     { value: '3', label: '3' },
     { value: '4', label: '4' },
     { value: '5', label: '5' },
-
 ];
 
 const ReviewForm = () => {
-
-    //from react selector
     const [selectedOption, setSelectedOption] = useState(null);
-
-    const formRef =useRef()
+    const formRef = useRef();
     const axiosPublic = useAxiosPublic();
 
     const handleAddReview = event => {
-        
-
         event.preventDefault();
-        const form = event.target;
+        const form = formRef.current;
 
         const fullname = form.fullname.value;
         const designation = form.designation.value;
-        const rating = form.rating.value;
+        const rating = selectedOption ? selectedOption.value : null; // Get selected rating value
         const textarea = form.textarea.value;
         const ReviewForm = { fullname, designation, rating, textarea, status: 'pending' };
-
-        console.log(ReviewForm);
-
-        //send data to the server 
 
         axiosPublic.post('/api/v2/reviewpost', ReviewForm)
             .then(res => {
                 console.log(res.data);
-                formRef.current.reset();
+                form.reset();
                 if (res.data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
@@ -48,8 +38,6 @@ const ReviewForm = () => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     });
-
-                    // Close the modal after successful submission
                     document.getElementById('my_modal_5').close();
                 }
             })
@@ -62,6 +50,13 @@ const ReviewForm = () => {
                     confirmButtonText: 'Ok'
                 });
             });
+    };
+
+    const handleCancel = () => {
+        // Reset the form
+        formRef.current.reset();
+        // Close the modal
+        document.getElementById('my_modal_5').close();
     };
 
     return (
@@ -84,7 +79,7 @@ const ReviewForm = () => {
                                     <input type="text" placeholder="Full Name" name="fullname" className="input input-bordered" required />
                                 </div>
 
-                               {/* Designation */}
+                                {/* Designation */}
                                 <div className="form-control w-full">
                                     <label className="label">
                                         <span className="label-text text-xl font-bold font-lora">Enter Your Designation</span>
@@ -93,7 +88,6 @@ const ReviewForm = () => {
                                 </div>
 
                                 {/* rating */}
-
                                 <div className="form-control w-full">
                                     <label className="label">
                                         <span className="label-text text-xl font-bold font-lora">Rating</span>
@@ -111,14 +105,10 @@ const ReviewForm = () => {
                                                 text: 'black',
                                                 primary25: '#B75CFF',
                                                 primary: '#8F00FF ',
-                                                font:'extrabold'
-                                                //  #A32EFF
+                                                font: 'extrabold'
                                             },
                                         })}
-                                        name="rating"
-
                                     />
-                                    {/* <input type="number" placeholder="Rating" name="rating" className="input input-bordered" required /> */}
                                 </div>
 
                                 {/* feedback */}
@@ -129,10 +119,10 @@ const ReviewForm = () => {
                                     <textarea className="textarea textarea-bordered h-24" name="textarea" placeholder="Bio (Less than 50 words)" required></textarea>
                                 </label>
 
-                                {/* close the form */}
+                                {/* submit and cancel the form */}
                                 <div className="form-control mt-6">
-                                    <button onClick={() => document.getElementById('my_modal_5').close()} type="submit" className="btn bg-violet-600 text-xl font-bold font-lora  text-white">Submit</button>
-                                    
+                                    <button type="submit" className="btn bg-violet-600 text-xl font-bold font-lora  text-white">Submit</button>
+                                    <button type="button" onClick={handleCancel} className="btn bg-violet-600 text-xl font-bold font-lora  text-white">Cancel</button>
                                 </div>
                             </form>
                         </div>

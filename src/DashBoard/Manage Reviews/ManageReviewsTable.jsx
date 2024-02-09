@@ -1,21 +1,44 @@
 import { MdVerified } from "react-icons/md";
 import { MdOutlineCancel } from 'react-icons/md';
-import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
 
-const ManageReviewsTable = ({ review, index }) => {
-    const axiosPublic = useAxiosPublic()
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/UseAxiosSecure/UseAxiosSecure";
+
+const ManageReviewsTable = ({ review, index, refetch }) => {
+    const axiosSecure = useAxiosSecure()
 
 
     const handleAcceptReject = (text, id) => {
-        console.log(`/update/status/${id}`)
-        const updatedStatus = {
-            status: text
-        }
-        // console.log(updatedStatus)
-        axiosPublic.patch(`/api/v2/update/status/${id}`, updatedStatus)
-            .then(res => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, accepted it!",
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const updatedStatus = {
+                    status: text
+                }
+                const res = await axiosSecure.patch(`/api/v2/update/status/${id}`, updatedStatus)
                 console.log(res.data)
-            })
+                if (res.data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: "Updated!",
+                        text: "Review has been Updated",
+                        icon: "success"
+                    });
+                    refetch()
+                }
+            }
+        });
+
+
+
+
+
     }
 
 

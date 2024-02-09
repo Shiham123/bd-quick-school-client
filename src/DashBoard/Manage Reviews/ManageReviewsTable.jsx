@@ -5,6 +5,7 @@ import useAxiosSecure from "../../Hooks/UseAxiosSecure/UseAxiosSecure";
 
 const ManageReviewsTable = ({ review, index, refetch }) => {
     const axiosSecure = useAxiosSecure()
+    // Handle Accept Reject function
     const handleAcceptReject = (text, id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -16,9 +17,11 @@ const ManageReviewsTable = ({ review, index, refetch }) => {
             confirmButtonText: `Yes, ${text} it!`,
         }).then(async (result) => {
             if (result.isConfirmed) {
+                // Updated Status
                 const updatedStatus = {
                     status: text
                 }
+                // Patch Method
                 const res = await axiosSecure.patch(`/api/v2/update/status/${id}`, updatedStatus)
                 console.log(res.data)
                 if (res.data.modifiedCount > 0) {

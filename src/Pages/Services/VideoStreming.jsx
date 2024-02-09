@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player';
 import axios from 'axios';
+import { Player } from '@lottiefiles/react-lottie-player';
 
 const Video = () => {
   const [videoPlaylist, setVideoPlaylist] = useState([]);
@@ -8,19 +9,15 @@ const Video = () => {
   const [isOffline, setIsOffline] = useState(false);
 
   useEffect(() => {
-    // Function to handle online/offline status change
     const handleOnlineStatusChange = () => {
-      setIsOffline(!navigator.onLine); // Update isOffline state based on online/offline status
+      setIsOffline(!navigator.onLine);
     };
 
-    // Event listener for online/offline status change
     window.addEventListener('online', handleOnlineStatusChange);
     window.addEventListener('offline', handleOnlineStatusChange);
 
-    // Initial check for online/offline status
     setIsOffline(!navigator.onLine);
 
-    // Fetch video playlist data from your API endpoint if online
     if (navigator.onLine) {
       axios
         .get(
@@ -34,7 +31,6 @@ const Video = () => {
         });
     }
 
-    // Cleanup function
     return () => {
       window.removeEventListener('online', handleOnlineStatusChange);
       window.removeEventListener('offline', handleOnlineStatusChange);
@@ -52,15 +48,15 @@ const Video = () => {
   };
 
   return (
-    <div className={`app-container ${isOffline ? 'offline' : ''} relative`}>
-      {/* Show offline modal when user is offline */}
+    <div className={`app-container ${isOffline ? 'offline' : ''}`}>
       {isOffline && (
-        <div className="offline-modal absolute top-0 bg-base-500">
-          <h2>You are currently offline</h2>
-          <p>Please check your internet connection and try again.</p>
+        <div className="offline-modal text-center text-white">
+          <h2 className="text-4xl">You are currently offline</h2>
+          <p className="text-3xl">Please check your internet connection and try again.</p>
+          <Player className="" autoplay loop src="/public/JWpqkpQcm6.json"></Player>
         </div>
       )}
-      {videoPlaylist.length > 0 && (
+      {videoPlaylist.length > 0 && !isOffline && (
         <div className="flex gap-8 items-center mx-auto max-w-7xl ">
           <div>
             <h2 className="text-white text-3xl font-bold">
@@ -83,12 +79,7 @@ const Video = () => {
               </div>
             </div>
           </div>
-          {/* ############## */}
-          <div
-            className={`bg-transparent border-2 text-white rounded-xl ${
-              isOffline ? 'offline-bg' : ''
-            }`}
-          >
+          <div className="bg-transparent border-2 text-white rounded-xl">
             {videoPlaylist.map((video, idx) => (
               <h1
                 className="py-3 px-3 border bg-purple-950 my-2 mx-2 rounded-lg cursor-pointer"

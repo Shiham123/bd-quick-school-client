@@ -1,13 +1,10 @@
 import { MdVerified } from "react-icons/md";
 import { MdOutlineCancel } from 'react-icons/md';
-
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/UseAxiosSecure/UseAxiosSecure";
 
 const ManageReviewsTable = ({ review, index, refetch }) => {
     const axiosSecure = useAxiosSecure()
-
-
     const handleAcceptReject = (text, id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -16,7 +13,7 @@ const ManageReviewsTable = ({ review, index, refetch }) => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, accepted it!",
+            confirmButtonText: `Yes, ${text} it!`,
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const updatedStatus = {
@@ -27,22 +24,14 @@ const ManageReviewsTable = ({ review, index, refetch }) => {
                 if (res.data.modifiedCount > 0) {
                     Swal.fire({
                         title: "Updated!",
-                        text: "Review has been Updated",
+                        text: `Review has been ${text}`,
                         icon: "success"
                     });
                     refetch()
                 }
             }
         });
-
-
-
-
-
     }
-
-
-
 
     return (
         <tr className="bg-blue-600 border-b border-blue-400 hover:bg-blue-500">
@@ -63,16 +52,24 @@ const ManageReviewsTable = ({ review, index, refetch }) => {
                 {review.textarea}
             </td>
             <tr>
-                <td className="px-6 py-4">
-                    <button onClick={() => handleAcceptReject('accept', review._id)} className="mr-4 btn ">
-                        <MdVerified className="text-2xl text-green-600"></MdVerified>
-                    </button>
-                </td>
-                <td className="px-6 py-4">
-                    <button onClick={() => handleAcceptReject('reject', review._id)} className="mr-4 btn">
-                        <MdOutlineCancel className="text-2xl text-red-600 font-bold "></MdOutlineCancel>
-                    </button>
-                </td>
+                {
+                    review?.status === "accepted" || review?.status === "rejected" ? (
+                        <td className="px-6 py-4 text-white">{review?.status}</td>
+                    ) : (
+                        <>
+                            <td className="px-6 py-4">
+                                <button onClick={() => handleAcceptReject('accepted', review._id)} className="mr-4 btn ">
+                                    <MdVerified className="text-2xl text-green-600"></MdVerified>
+                                </button>
+                            </td>
+                            <td className="px-6 py-4">
+                                <button onClick={() => handleAcceptReject('rejected', review._id)} className="mr-4 btn">
+                                    <MdOutlineCancel className="text-2xl text-red-600 font-bold "></MdOutlineCancel>
+                                </button>
+                            </td>
+                        </>
+                    )
+                }
             </tr>
 
         </tr>

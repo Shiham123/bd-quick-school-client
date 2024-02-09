@@ -68,9 +68,8 @@ const AddServices = () => {
   };
   return (
     <div className=" mx-auto px-4">
-      <h1 className="uppercase text-center font-cinzel font-bold text-violet-600 mt-6 mb-5 lg:mb-0 text-2xl">
-        Add Courses
-      </h1>
+      <h1 className="text-4xl text-center font-cinzel mt-5">Add Courses</h1>
+      <hr className="mb-5 border-2 mt-2 border-black w-[260px] mx-auto" />
 
       <section className='lg:p-16'>
         <form onSubmit={handleSubmit(onSubmit)} className="container flex flex-col mx-auto space-y-12">

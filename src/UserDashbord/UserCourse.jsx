@@ -51,11 +51,11 @@ const UserCOurse = () => {
             {services?.map((service) => (
               <div key={service.Id} className="card md:card-side p-2 border shadow-xl">
                 <figure>
-                  <img className="rounded-xl" src={service?.course_photo} alt="course" />
+                  <img className="rounded-xl" src={service?.product?.image} alt="course" />
                 </figure>
                 <div className="card-body text-white">
-                  <h2 className="card-title">{service.product_name}</h2>
-                  <p>{service.techer}</p>
+                  <h2 className="card-title">{service?.product?.title}</h2>
+                  <p>{service?.product?.techer}</p>
                   <div className=" flex gap-4 md:flex-row flex-col  justify-between">
                     <Link to={`Video`}>
                       <button className="btn ">Continue Course</button>

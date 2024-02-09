@@ -4,7 +4,7 @@ import { AuthContext } from '../../Providers/Authprovider';
 import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 import { useParams } from 'react-router-dom';
 
-const PayDataFrom = ({image}) => {
+const PayDataFrom = ({ image }) => {
   const { handleSubmit } = useForm();
   const { id } = useParams();
   const { user } = useContext(AuthContext);
@@ -18,14 +18,13 @@ const PayDataFrom = ({image}) => {
     const year = currentDate.getFullYear();
     return `${month} ${day}, ${year}`;
   };
- console.log(user);
+  console.log(user);
   const onSubmit = async (data) => {
     data.productId = id;
     data.name = user.displayName;
     data.email = user.email;
-    data.dateTime = formatDate(); 
+    data.dateTime = formatDate();
     data.photo = user.photoURL;
-    image
     try {
       const response = await axiosPublic.post(`/api/v1/order`, data);
       const result = response.data;

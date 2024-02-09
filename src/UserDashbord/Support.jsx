@@ -7,9 +7,9 @@ const Support = () => {
   const { user } = useAuth();
   const { roomId } = useParams();
   const myMetting = async (element) => {
-    const appID = 2089442467
-    const name = user.displayName
-    const serverSecret = '68df809278e343d787ff0cbdbf89d943'
+    const appID = 2089442467;
+    const name = user.displayName;
+    const serverSecret = '68df809278e343d787ff0cbdbf89d943';
     const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
       appID,
       serverSecret,
@@ -34,7 +34,7 @@ const Support = () => {
   };
   return (
     <div>
-      <dev    ref={myMetting} />
+      <dev ref={myMetting} />
     </div>
   );
 };

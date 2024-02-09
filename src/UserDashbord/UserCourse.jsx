@@ -16,7 +16,7 @@ const UserCOurse = () => {
   console.log(user);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/payment/user/${user?.email}`)
+      .get(`https://quiz-school-server.vercel.app/payment/user/${user?.email}`)
       .then((response) => {
         setServices(response.data);
         setLoading(false);

@@ -11,7 +11,7 @@
   },
   {
       "id": 2,
-      "course": "Data Science Fundamentals",
+      "course": "Data Science Fundamentals And Advanced",
       "provider": "DataX Academy",
       "technology": ["Python", "Pandas", "NumPy", "Matplotlib", "Scikit-learn"],
       "duration": "8 weeks",

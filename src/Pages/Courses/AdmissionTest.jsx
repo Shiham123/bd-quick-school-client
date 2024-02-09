@@ -50,7 +50,7 @@ const AdmissionTest = () => {
           {admissionTest.map((admission, idx) => (
             <div
               key={idx}
-              className="bg-white cursor-pointer rounded-lg shadow-2xl border transition duration-600 ease-in-out hover:scale-105 hover:border-[#1CAB55]"
+              className="text-white cursor-pointer rounded-lg shadow-2xl shadow-green-900 border transition duration-600 ease-in-out hover:scale-105 hover:border-[#1CAB55]"
             >
               <img className="w-[100%] rounded-t-lg" src={admission.image} alt="" />
               <div className="px-4">
@@ -58,7 +58,7 @@ const AdmissionTest = () => {
                 <h2 className="text-xl">Course: {admission.year}</h2>
                 <h2 className="text-[17px] py-3">University: {admission.university}</h2>
                 <h2 className="text-xl">Price: $ {admission.price}</h2>
-                <button className="bg-servicesBg text-white font-bold py-1 px-3 border-b-4 border-borderColorOne hover:border-black rounded my-4">
+                <button className="bg-white text-black font-bold py-1 px-3 border-b-4 border-borderColorOne hover:border-black rounded my-4">
                   Purchase
                 </button>
               </div>

@@ -123,7 +123,7 @@ const Navbar = () => {
                   <NavLink
                     style={activeRouteStyle}
                     className=" hover:text-[#deb2ac] uppercase font-medium"
-                    to={'/admission-test'}
+                    to={'/addmissionTest'}
                   >
                     {t('Nav2')}
                   </NavLink>
@@ -132,7 +132,7 @@ const Navbar = () => {
                   <NavLink
                     style={activeRouteStyle}
                     className=" hover:text-[#deb2ac] uppercase font-medium"
-                    to={'/job-Preparation'}
+                    to={'/jobPreparation'}
                   >
                     {t('Nav3')}
                   </NavLink>
@@ -234,7 +234,7 @@ const Navbar = () => {
                 <NavLink
                   style={activeRouteStyle}
                   className=" hover:text-[#deb2ac] uppercase font-medium"
-                  to={'/admission-test'}
+                  to={'/addmissionTest'}
                 >
                   {t('Nav2')}
                 </NavLink>
@@ -243,7 +243,7 @@ const Navbar = () => {
                 <NavLink
                   style={activeRouteStyle}
                   className=" hover:text-[#deb2ac] uppercase font-medium"
-                  to={'/job-Preparation'}
+                  to={'/jobPreparation'}
                 >
                   {t('Nav3')}
                 </NavLink>

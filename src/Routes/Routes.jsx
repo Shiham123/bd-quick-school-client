@@ -31,8 +31,9 @@ import ManagePayment from '../DashBoard/Manage Payment/ManagePayment';
 import ManageUsers from '../DashBoard/Manage Users/ManageUsers';
 import ManageReviews from '../DashBoard/Manage Reviews/ManageReviews';
 import DashBoardCharts from '../DashBoard/DashBoard Charts/DashBoardCharts';
+import AdmissionTest from '../Pages/Courses/AdmissionTest';
+import JobPreparation from '../Pages/Courses/JobPreparation';
 import UserCOurse from '../UserDashbord/UserCOurse';
-
 
 const Router = createBrowserRouter([
   {
@@ -44,6 +45,8 @@ const Router = createBrowserRouter([
       { path: 'Couredetails', element: <CourseDetails /> },
       { path: 'register', element: <Register /> },
       { path: 'login', element: <Login /> },
+      { path: 'addmissionTest', element: <AdmissionTest /> },
+      { path: 'jobPreparation', element: <JobPreparation /> },
       {
         path: 'services',
         element: (
@@ -55,7 +58,7 @@ const Router = createBrowserRouter([
       { path: 'myprofile', element: <MyProfile /> },
       { path: '/ServiceDetails/:id', element: <ServiceDetails /> },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
-      { path: '/MyCourses/:tranID', element: <UserCOurse/> },
+      { path: '/MyCourses', element: <UserCOurse /> },
       { path: '/payment/fail/:tranID', element: <PaymentFailed /> },
       { path: '/quiz', element: <MainQuiz /> },
     ],

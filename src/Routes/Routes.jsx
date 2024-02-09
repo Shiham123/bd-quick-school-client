@@ -55,7 +55,7 @@ const Router = createBrowserRouter([
       { path: 'myprofile', element: <MyProfile /> },
       { path: '/ServiceDetails/:id', element: <ServiceDetails /> },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
-      { path: '/MyCourses/:tranID', element: <UserCOurse/> },
+      { path: '/MyCourses', element: <UserCOurse/> },
       { path: '/payment/fail/:tranID', element: <PaymentFailed /> },
       { path: '/quiz', element: <MainQuiz /> },
     ],

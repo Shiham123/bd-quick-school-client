@@ -22,6 +22,7 @@ import { useGetIdBasedServicesQuery } from '../../redux/services/ServicesApiSlic
 
 const ServiceDetails = () => {
   const { id } = useParams();
+  console.log(id);
   const { isModalOpen, closeModal, openModal } = useLocationContext();
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
@@ -165,7 +166,7 @@ const ServiceDetails = () => {
               Promo Code Applied <span className="text-yellow-400 font-bold">MS1050</span>
             </p>
             {/* -------- ! --- quiz button------------- */}
-            <PayDataFrom />
+            <PayDataFrom image={data.image} />
             {/* <Video/> */}
 
             {isModalOpen && <QuizModal />}

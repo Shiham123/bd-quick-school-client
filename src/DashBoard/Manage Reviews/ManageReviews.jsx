@@ -25,6 +25,12 @@ const ManageReviews = () => {
         }
     })
 
+
+    
+
+
+
+
     // Search Functionality By users
     const filteredData = reviews?.filter((item) => {
         if (item && item.fullname) {
@@ -57,13 +63,10 @@ const ManageReviews = () => {
                     <div id="dropdownAction" className={`z-10 ${isOpen ? '' : 'hidden'} bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}>
                         <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownActionButton">
                             <li>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Admin</a>
+                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Accept</a>
                             </li>
                             <li>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">User</a>
-                            </li>
-                            <li>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Banned User</a>
+                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reject</a>
                             </li>
                         </ul>
                     </div>
@@ -98,6 +101,9 @@ const ManageReviews = () => {
                             </th>
                             <th scope="col" className="px-6 py-3">
                                 Reviewer Rating
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                Reviewer Text
                             </th>
                             <th scope="col" className="px-6 py-3">
                                 Status

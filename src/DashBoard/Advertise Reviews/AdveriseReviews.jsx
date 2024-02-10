@@ -3,6 +3,7 @@ import { useState } from 'react';
 import useAxiosPublic from './../../Hooks/useAxiosPublic/useAxiosPublic';
 import useAxiosSecure from './../../Hooks/UseAxiosSecure/UseAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import AdvertiseReviewsTable from './AdvertiseReviewsTable';
 
 const AdveriseReviews = () => {
     const axiosPublic = useAxiosPublic()
@@ -54,7 +55,11 @@ const AdveriseReviews = () => {
                     </thead>
                     {/* Table Heading End Here */}
                     {/* Table Data Fetching */}
-
+                    <tbody className="font-lora">
+                        {
+                            advertisement.map((advertise, index) => <AdvertiseReviewsTable key={advertise._id} review={advertise} index={index} refetch={refetch} />)
+                        }
+                    </tbody>
                 </table>
             </div>
 

@@ -34,6 +34,7 @@ import DashBoardCharts from '../DashBoard/DashBoard Charts/DashBoardCharts';
 import AdmissionTest from '../Pages/Courses/AdmissionTest';
 import JobPreparation from '../Pages/Courses/JobPreparation';
 import UserCOurse from '../UserDashbord/UserCOurse';
+import MainQuizSecond from '../2edQuiz/MainQuizSecond';
 
 const Router = createBrowserRouter([
   {
@@ -61,6 +62,7 @@ const Router = createBrowserRouter([
       { path: '/MyCourses', element: <UserCOurse /> },
       { path: '/payment/fail/:tranID', element: <PaymentFailed /> },
       { path: '/quiz', element: <MainQuiz /> },
+      { path: '/second-quiz', element: <MainQuizSecond /> },
     ],
   },
   {

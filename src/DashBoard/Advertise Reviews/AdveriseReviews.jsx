@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useAxiosPublic from './../../Hooks/useAxiosPublic/useAxiosPublic';
 import useAxiosSecure from './../../Hooks/UseAxiosSecure/UseAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
@@ -10,7 +10,7 @@ const AdveriseReviews = () => {
     const axiosSecure = useAxiosSecure()
     const [isOpen, setIsOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState("")
-    const [ads, SetAds] = useState([])
+    const [ads, setAds] = useState([])
 
     // Toggle Function
     const toggleDropdown = () => {
@@ -27,6 +27,18 @@ const AdveriseReviews = () => {
         }
     })
     // console.log(advertisement)
+
+    useEffect(() => {
+        axiosPublic("/api/v2/admin/advertise/reviews")
+            .then((res) => {
+                // console.log(res);
+                const findTotalAds = res.data.filter((one) => (one.accepted = true));
+                setAds(findTotalAds);
+            });
+    }, [advertisement, axiosPublic]);
+
+
+
 
     // Search Functionality By users
     const filteredData = advertisement?.filter((item) => {

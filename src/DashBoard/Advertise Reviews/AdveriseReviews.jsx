@@ -22,7 +22,7 @@ const AdveriseReviews = () => {
     const { data: advertisement = [], refetch } = useQuery({
         queryKey: ["advertisement"],
         queryFn: async () => {
-            const res = await axiosSecure.get('/api/v2/admin/advertise/reviews');
+            const res = await axiosSecure.get('/api/v2/admin/advertisement/reviews');
             return res.data
         }
     })
@@ -110,7 +110,7 @@ const AdveriseReviews = () => {
                     {/* Table Data Fetching */}
                     <tbody className="font-lora">
                         {
-                            filteredData.map((advertise, index) => <AdvertiseReviewsTable key={advertise._id} review={advertise} index={index} refetch={refetch} />)
+                            filteredData.map((advertise, index) => <AdvertiseReviewsTable key={advertise._id} advertise={advertise} index={index} refetch={refetch} />)
                         }
                     </tbody>
                 </table>

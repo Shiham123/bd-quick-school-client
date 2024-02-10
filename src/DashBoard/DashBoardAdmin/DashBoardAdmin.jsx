@@ -4,6 +4,7 @@ import { GrDashboard } from 'react-icons/gr';
 import { MdReviews } from 'react-icons/md';
 import { IoBookOutline } from 'react-icons/io5';
 import { FaCcMastercard } from 'react-icons/fa';
+import { RiAdvertisementLine } from "react-icons/ri";
 import { NavLink } from 'react-router-dom';
 
 const DashBoardAdmin = () => {
@@ -83,6 +84,16 @@ const DashBoardAdmin = () => {
           >
             <MdReviews className="text-xl" />
             <span className="text-base font-semibold"> Manage Reviews </span>
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink
+            to="/dashboard/advertisereviews"
+            className="flex items-center gap-[14px] px-8 py-4 group dark:text-gray-400 dark:hover:bg-gray-700 hover:bg-gray-100"
+          >
+            <RiAdvertisementLine className="text-xl" />
+            <span className="text-base font-semibold"> Advertise Reviews </span>
           </NavLink>
         </li>
       </ul>

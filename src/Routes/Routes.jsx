@@ -34,6 +34,7 @@ import DashBoardCharts from '../DashBoard/DashBoard Charts/DashBoardCharts';
 import AdmissionTest from '../Pages/Courses/AdmissionTest';
 import JobPreparation from '../Pages/Courses/JobPreparation';
 import UserCOurse from '../UserDashbord/UserCOurse';
+import AdveriseReviews from '../DashBoard/Advertise Reviews/AdveriseReviews';
 
 const Router = createBrowserRouter([
   {
@@ -114,6 +115,7 @@ const Router = createBrowserRouter([
       { path: 'managepayment', element: <ManagePayment /> },
       { path: 'manageusers', element: <ManageUsers /> },
       { path: 'managereviews', element: <ManageReviews /> },
+      { path: 'advertisereviews', element: <AdveriseReviews /> },
     ],
   },
 ]);

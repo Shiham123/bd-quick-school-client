@@ -13,7 +13,7 @@ const UserCOurse = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/payment/user/${user?.email}`)
+      .get(`https://quiz-school-server.vercel.app/payment/user/${user?.email}`)
       .then((response) => {
         console.log(response);
         const filteredServices = response.data.filter((service) => service.paidStatus === true);
@@ -41,7 +41,7 @@ const UserCOurse = () => {
           </h2>
         ) : services.length === 0 ? (
           <div className="flex justify-center items-center min-h-[60vh]">
-            <Player className="" autoplay loop src="/public/JWpqkpQcm6.json"></Player>
+            <Player className="" autoplay loop src="/JWpqkpQcm6.json"></Player>
           </div>
         ) : (
           <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-2 gap-x-10 gap-y-10 py-10">

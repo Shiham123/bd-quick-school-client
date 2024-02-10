@@ -39,12 +39,8 @@ const MyProfile = () => {
     }
   }, [profileData]);
 
-  const handleEditOpen = () => {
-    setIsEditModal(true);
-  };
-
-  const handleEditClose = () => {
-    setIsEditModal(false);
+  const handleEditToggle = () => {
+    setIsEditModal((prevIsEditModal) => !prevIsEditModal);
   };
 
   return (
@@ -52,7 +48,7 @@ const MyProfile = () => {
       {/* My Profile */}
       <div className="flex items-center justify-between border-b-2 border-dashed border-b-white/30 pb-4">
         {/* <h1 className="text-2xl font-poppins font-semibold text-white"> {t('myprofile')}</h1> */}
-        <button onClick={handleEditOpen}>
+        <button onClick={handleEditToggle}>
           <FiEdit className="text-white text-2xl" />
         </button>
       </div>
@@ -66,7 +62,6 @@ const MyProfile = () => {
             photoURL={photoUrl}
             phone={phone}
             role={role}
-            handleEditClose={handleEditClose}
           />
         </div>
       ) : (

@@ -9,7 +9,7 @@ const AdminProfile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/public/Admin_Profile.json');
+        const response = await axios.get('/Admin_Profile.json');
         setTeam(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);

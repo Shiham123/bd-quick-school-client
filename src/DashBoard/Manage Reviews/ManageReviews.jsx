@@ -9,6 +9,7 @@ import { useState } from "react";
 const ManageReviews = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState("")
+    const [reviewType, setReviewType] = useState("");
     const axiosSecure = useAxiosSecure()
 
     // Toggle Function
@@ -16,18 +17,25 @@ const ManageReviews = () => {
         setIsOpen(!isOpen);
     };
 
+    // Function to handle dropdown selection
+    const handleDropdownSelection = (type) => {
+        setReviewType(type === 'default' ? '' : type);
+        setIsOpen(false);
+        // Close dropdown after selection
+    };
+
     // User Data fetching By tanstack query
     const { data: reviews = [], refetch } = useQuery({
-        queryKey: ['reviews'],
+        queryKey: ['reviews', reviewType],
         queryFn: async () => {
-            const res = await axiosSecure.get('/api/v2/admin/reviews')
+            let url = '/api/v2/admin/reviews';
+            if (reviewType) {
+                url += `?type=${reviewType}`; // Add type to the URL if userType is provided
+            }
+            const res = await axiosSecure.get(url)
             return res.data
         }
     })
-
-
-    
-
 
 
 
@@ -63,10 +71,13 @@ const ManageReviews = () => {
                     <div id="dropdownAction" className={`z-10 ${isOpen ? '' : 'hidden'} bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}>
                         <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownActionButton">
                             <li>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Accept</a>
+                                <button onClick={() => handleDropdownSelection('default')} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Default</button>
                             </li>
                             <li>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reject</a>
+                                <button onClick={() => handleDropdownSelection('Accept')} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Accept</button>
+                            </li>
+                            <li>
+                                <button onClick={() => handleDropdownSelection('Reject')} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reject</button>
                             </li>
                         </ul>
                     </div>

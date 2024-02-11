@@ -1,4 +1,5 @@
 import Checkbox from './Checkbox';
+import Question from './Question';
 
 const Answers = () => {
   const checkedValue = (value) => {
@@ -6,16 +7,19 @@ const Answers = () => {
   };
 
   return (
-    <div className="flex">
-      <div className="flex flex-col w-1/2 m-8">
-        <Checkbox checkedValue={checkedValue} checkboxText="option-one" />
-        <Checkbox checkedValue={checkedValue} checkboxText="option-two" />
+    <>
+      <Question questionText="Which is the right answer ? " />
+      <div className="flex">
+        <div className="flex flex-col w-1/2 m-8">
+          <Checkbox checkedValue={checkedValue} checkboxText="option-one" />
+          <Checkbox checkedValue={checkedValue} checkboxText="option-two" />
+        </div>
+        <div className="flex flex-col w-1/2 m-8">
+          <Checkbox checkedValue={checkedValue} checkboxText="option-three" />
+          <Checkbox checkedValue={checkedValue} checkboxText="option-four" />
+        </div>
       </div>
-      <div className="flex flex-col w-1/2 m-8">
-        <Checkbox checkedValue={checkedValue} checkboxText="option-three" />
-        <Checkbox checkedValue={checkedValue} checkboxText="option-four" />
-      </div>
-    </div>
+    </>
   );
 };
 

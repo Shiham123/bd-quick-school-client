@@ -4,12 +4,11 @@ import { AuthContext } from '../../Providers/Authprovider';
 import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 import { useParams } from 'react-router-dom';
 
-const PayDataFrom = ({ image }) => {
+const PayDataFrom = () => {
   const { handleSubmit } = useForm();
   const { id } = useParams();
   const { user } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
-
   // Function to format the date and time
   const formatDate = () => {
     const currentDate = new Date();
@@ -18,7 +17,6 @@ const PayDataFrom = ({ image }) => {
     const year = currentDate.getFullYear();
     return `${month} ${day}, ${year}`;
   };
-  console.log(user);
   const onSubmit = async (data) => {
     data.productId = id;
     data.name = user.displayName;
@@ -34,7 +32,6 @@ const PayDataFrom = ({ image }) => {
     }
   };
 
-  console.log('This is time', formatDate);
   return (
     <>
       <div className=" max-w-screen-2xl mx-auto">

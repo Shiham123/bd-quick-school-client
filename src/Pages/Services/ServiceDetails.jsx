@@ -22,7 +22,6 @@ import { useGetIdBasedServicesQuery } from '../../redux/services/ServicesApiSlic
 
 const ServiceDetails = () => {
   const { id } = useParams();
-  console.log(id);
   const { isModalOpen, closeModal, openModal } = useLocationContext();
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();

@@ -1,6 +1,7 @@
 import Answers from './components/Answers';
 import Hints from './components/Hints';
 import ProgressBar from './components/ProgressBar';
+import Result from './pages/Result';
 
 const MainQuizSecond = () => {
   return (
@@ -16,6 +17,7 @@ const MainQuizSecond = () => {
       <Answers />
       <ProgressBar />
       <Hints />
+      <Result />
     </div>
   );
 };

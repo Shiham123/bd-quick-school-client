@@ -1,11 +1,16 @@
 import Analysis from '../components/Analysis';
 import Summary from '../components/Summary';
 
-const Result = () => {
+const Result = (props) => {
+  const { showResult, setShowQuiz, setShowResult } = props;
   return (
     <div>
-      <Summary />
-      <Analysis />
+      {showResult && (
+        <>
+          <Summary />
+          <Analysis setShowQuiz={setShowQuiz} setShowResult={setShowResult} />
+        </>
+      )}
     </div>
   );
 };

@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import Answers from './components/Answers';
 import Hints from './components/Hints';
 import ProgressBar from './components/ProgressBar';
 import Result from './pages/Result';
 
 const MainQuizSecond = () => {
+  const [showResult, setShowResult] = useState(false);
+  const [showQuiz, setShowQuiz] = useState(true);
+
   return (
     <div className="flex flex-col">
       <div className="flex flex-col justify-center items-center py-8 px-4">
@@ -14,10 +18,10 @@ const MainQuizSecond = () => {
           question can have multiple answers
         </p>
       </div>
-      <Answers />
-      <ProgressBar />
+      <Answers showQuiz={showQuiz} />
+      <ProgressBar setShowResult={setShowResult} setShowQuiz={setShowQuiz} showQuiz={showQuiz} />
       <Hints />
-      <Result />
+      <Result showResult={showResult} setShowResult={setShowResult} setShowQuiz={setShowQuiz} />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import useAxiosPublic from './../../Hooks/useAxiosPublic/useAxiosPublic';
 import useAxiosSecure from './../../Hooks/UseAxiosSecure/UseAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import AdvertiseReviewsTable from './AdvertiseReviewsTable';
+import toast, { Toaster } from 'react-hot-toast';
 
 const AdveriseReviews = () => {
     const axiosPublic = useAxiosPublic()
@@ -29,15 +30,27 @@ const AdveriseReviews = () => {
     // console.log(advertisement)
 
     useEffect(() => {
-        axiosPublic("/api/v2/admin/advertise/reviews")
+        axiosPublic("api/v2/admin/advertise/reviews")
             .then((res) => {
-                // console.log(res);
-                const findTotalAds = res.data.filter((one) => (one.accepted = true));
+                console.log(res.data);
+                const findTotalAds = res.data.filter((one) => (one.advertise = true));
                 setAds(findTotalAds);
             });
     }, [advertisement, axiosPublic]);
 
-
+    //  add advertisement
+    const handleAdvertisement = (reviews) => {
+        if (ads.length >= 6) {
+            return toast.error('you cannot add More then 6 Reviews')
+        }
+        axiosSecure.patch(`/advertise/${properties._id}`).then((res) => {
+            console.log(res.data);
+            if (res.data.modifiedCount > 0) {
+                refetch();
+                toast.success(`${properties.propertyname} Have Been Added`)
+            }
+        });
+    };
 
 
     // Search Functionality By users
@@ -127,7 +140,7 @@ const AdveriseReviews = () => {
                     </tbody>
                 </table>
             </div>
-
+            <Toaster />
         </div>
     );
 };

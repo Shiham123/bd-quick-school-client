@@ -6,6 +6,8 @@ import { IoBookOutline } from 'react-icons/io5';
 import { FaCcMastercard } from 'react-icons/fa';
 import { RiAdvertisementLine } from "react-icons/ri";
 import { NavLink } from 'react-router-dom';
+import { MdOutlineManageSearch } from 'react-icons/md';
+import { MdManageAccounts } from 'react-icons/md';
 
 const DashBoardAdmin = () => {
   return (
@@ -28,6 +30,15 @@ const DashBoardAdmin = () => {
           >
             <ImProfile className="text-xl" />
             <span className="text-base font-semibold"> Admin Profile </span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/dashboard/manage/courses"
+            className="flex items-center gap-[14px] px-8 py-4 group dark:text-gray-400 dark:hover:bg-gray-700 hover:bg-gray-100"
+          >
+            <MdOutlineManageSearch className="text-xl" />
+            <span className="text-base font-semibold">Manage Courses </span>
           </NavLink>
         </li>
         <li>
@@ -86,7 +97,6 @@ const DashBoardAdmin = () => {
             <span className="text-base font-semibold"> Manage Reviews </span>
           </NavLink>
         </li>
-
         <li>
           <NavLink
             to="/dashboard/advertisereviews"
@@ -94,6 +104,15 @@ const DashBoardAdmin = () => {
           >
             <RiAdvertisementLine className="text-xl" />
             <span className="text-base font-semibold"> Advertise Reviews </span>
+          </NavLink >
+        </li>
+        <li>
+          <NavLink
+            to="/dashboard/manage/quize/users"
+            className="flex items-center gap-[14px] px-8 py-4 group dark:text-gray-400 dark:hover:bg-gray-700 hover:bg-gray-100"
+          >
+            <MdManageAccounts className="text-xl" />
+            <span className="text-base font-semibold"> Manage Quize User </span>
           </NavLink>
         </li>
       </ul>

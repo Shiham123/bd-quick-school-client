@@ -86,18 +86,26 @@ const ServiceDetails = () => {
               >
                 <Box>
                   <img
-                    src={data?.image}
+                    src={data?.teacherImage}
                     alt=""
-                    className="rounded-sm shadow-md shadow-yellow-400"
+                    className="h-[150px] w-[250px] rounded-sm shadow-md shadow-yellow-400 "
                   />
+
                 </Box>
                 <Box className="space-y-2">
-                  <Typography variant="h5" className="font-bold text-yellow-200">
-                    {data?.techer}
+                  <Typography variant="h5" className="font-bold text-yellow-200 uppercase">
+                    {data?.teachername}
                   </Typography>
-                  <Typography variant="h6" className="md:w-2/3">
-                    {data?.techEdu}
+                  <Typography variant="h6" className="md:w-2/3 lg:w-[650px]">
+                    {data?.designation}
                   </Typography>
+                  <Typography variant="h6" className="md:w-2/3 lg:w-[650px]">
+                    {data?.graduation}
+                  </Typography>
+                  <Typography variant="h6" className="md:w-2/3 lg:w-[650px]">
+                    {data?.postgraduation}
+                  </Typography>
+
                 </Box>
               </Stack>
             </Box>

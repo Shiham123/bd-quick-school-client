@@ -1,11 +1,13 @@
-import { useGetAllOrdersQuery } from '../../redux/services/OrderApiSlice';
-import SoldCourseTable from './SoldCoursesTable';
+// import ManageUserTable from './ManageUserTable';
 
-const SoldCourses = () => {
-  const { data } = useGetAllOrdersQuery();
+import { useGetAllQUizeUsersQuery } from '../../redux/services/QuizeApiSlice';
+import ManageQuizeTable from './ManageQuizeUserTable';
+
+const ManageQuizeUser = () => {
+  const { data } = useGetAllQUizeUsersQuery();
   return (
     <div className="lg:p-16 min-h-screen">
-      <h1 className="text-4xl text-center font-cinzel">Sold Courses</h1>
+      <h1 className="text-4xl text-center font-cinzel">Manage Quize Users</h1>
       <hr className="mb-5 border-2 mt-2 border-black w-[280px] mx-auto" />
 
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -21,41 +23,24 @@ const SoldCourses = () => {
                 className="px-6 py-3 border border-gray-400 border-collapse"
                 colSpan={3}
               >
-                Course Title
+                User Email
               </th>
               <th
                 scope="col"
                 className="px-6 py-3 border border-gray-400 border-collapse"
-                colSpan={3}
+                colSpan={2}
               >
-                Order user Email
-              </th>
-              <th
-                scope="col"
-                className="px-6 py-3 border border-gray-400 border-collapse"
-                colSpan={4}
-              >
-                Date
-              </th>
-              <th
-                scope="col"
-                className="px-6 py-3 border border-gray-400 border-collapse"
-                colSpan={4}
-              >
-                Txd Id
+                User Name
               </th>
               <th scope="col" className="px-6 py-3 border border-gray-400 border-collapse">
-                Price
-              </th>
-              <th scope="col" className="px-6 py-3 border border-gray-400 border-collapse">
-                Paid Status
+                Result
               </th>
             </tr>
           </thead>
           {/* Table Heading End Here */}
           <tbody className="font-lora">
-            {data?.map((soldData, index) => (
-              <SoldCourseTable key={soldData._id} soldData={soldData} index={index} />
+            {data?.map((quizeUser, index) => (
+              <ManageQuizeTable key={quizeUser._id} quizeUser={quizeUser} index={index} />
             ))}
           </tbody>
         </table>
@@ -64,4 +49,4 @@ const SoldCourses = () => {
   );
 };
 
-export default SoldCourses;
+export default ManageQuizeUser;

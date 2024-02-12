@@ -165,7 +165,7 @@ const ServiceDetails = () => {
               Promo Code Applied <span className="text-yellow-400 font-bold">MS1050</span>
             </p>
             {/* -------- ! --- quiz button------------- */}
-            <PayDataFrom />
+            <PayDataFrom image={data.image} />
             {/* <Video/> */}
 
             {isModalOpen && <QuizModal />}

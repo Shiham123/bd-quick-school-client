@@ -37,6 +37,50 @@ i18next.use(initReactI18next).init({
         servie1: 'Explore Our Services !',
         servie2:
           'At BD Quick School, we pride ourselves on delivering exceptional solutions tailored to meet your unique needs. Our diverse range of services is designed to elevate your experience and drive success in todays dynamic business landscape. Explore our offerings below !',
+        Nav1: 'Skills',
+        skill1: 'Photoshop',
+        skill2: 'JavaScript',
+        skill3: 'HTML',
+        skill4: 'CSS3',
+        skill5: 'React',
+        Nav2: ' Admission test',
+        Nav3: ' Job-Preparation',
+        Nav4: ' Online batch',
+        Nav5: ' Our Services',
+        Nav6: 'Skills',
+        MyCourses: 'My Courses ',
+        Home: 'Home',
+        Blog: 'Blog',
+        Support: 'Support',
+        HowItWork: 'How it works?',
+        Signup: 'Sign up',
+        Signup1:
+          'Our services and collections adhere to cutting-edge solutions in the design world.',
+        Selectcourse: 'Select course',
+        Selectcourse1:
+          'We have everything for effective learning and delivery of assignments by students.',
+        StartLearning: 'Start Learning',
+        StartLearning1:
+          'After completing the course, you will receive a certificate confirming your knowledge.',
+        Whychooseus: 'Why choose us',
+        Professionalchoice: 'Professional choice',
+        Professionalchoice1:
+          'Each lesson includes a variety of speaking, listening, translation and multiple choice challenge.',
+        Qualitycontrol: 'Quality control',
+        Qualitycontrol1:
+          'BD Quick School motivates you to stay on track by recording how many days in a row you spend learning a language.',
+        Hearts: 'Hearts',
+        Hearts1:
+          'Learning with BD Quick School is fun and addictive. Earn points for correct answers, race against the clock.',
+        WiderangeofCourses: 'Wide range of Courses',
+        WiderangeofCourses1:
+          'Instantly see which answers you get correct. When you miss a challenge, we’ll quickly show you how to improve. Start with Professionals.',
+        CommunicativeMethod: 'Communicative Method',
+        CommunicativeMethod1:
+          'The world’s most popular language learning platform is now available for the classroom. Thousands of teachers are already using it to enhance their lessons.',
+        CentralLocation: 'Central Location',
+        CentralLocation1:
+          'Hearts keep your lessons alive! You lose them when you answer incorrectly. When you’re out of hearts, start over and try again.',
       },
     },
     bn: {
@@ -87,6 +131,33 @@ i18next.use(initReactI18next).init({
         Home: 'হোম',
         Blog: 'ব্লগ',
         Support: 'সাপোট',
+        HowItWork: 'এটি কিভাবে কাজ করে ',
+        Signup: 'সাইন আপ',
+        Signup1: 'আমাদের পরিষেবা এবং সংগ্রহগুলি ডিজাইনের জগতে অত্যাধুনিক সমাধানগুলি মেনে চলে৷',
+        Selectcourse: 'সিলেক্ট কোস',
+        Selectcourse1:
+          'কার্যকরী শেখার জন্য এবং শিক্ষার্থীদের দ্বারা অ্যাসাইনমেন্ট প্রদানের জন্য আমাদের কাছে সবকিছু রয়েছে।',
+        StartLearning: 'শেখা শুরু করো',
+        StartLearning1: 'কোর্স শেষ করার পরে, আপনি আপনার জ্ঞান নিশ্চিত করে একটি শংসাপত্র পাবেন।',
+        Whychooseus: 'কেন আমাদের চয়েজ করবেন',
+        Professionalchoice: 'প্রোফেশনাল চয়েজ',
+        Professionalchoice1:
+          'প্রতিটি পাঠে বিভিন্ন ধরনের কথা বলা, শোনা, অনুবাদ এবং একাধিক পছন্দের চ্যালেঞ্জ অন্তর্ভুক্ত থাকে।',
+        Qualitycontrol: 'মান নিয়ন্ত্রণ',
+        Qualitycontrol1:
+          'বিডি কুইক স্কুল আপনাকে একটি ভাষা শেখার জন্য পরপর কত দিন ব্যয় করেছে তা রেকর্ড করে ট্র্যাকে থাকতে অনুপ্রাণিত করে।',
+        Hearts: 'হার্টস',
+        Hearts1:
+          'বিডি কুইক স্কুলের সাথে শেখা মজাদার এবং আসক্তিপূর্ণ। সঠিক উত্তরের জন্য পয়েন্ট অর্জন করুন, ঘড়ির বিপরীতে দৌড়।',
+        WiderangeofCourses: 'কোর্সের বিস্তৃত পরিসর',
+        WiderangeofCourses1:
+          'Iঅবিলম্বে আপনি সঠিক উত্তর পেতে দেখুন. আপনি যখন কোনো চ্যালেঞ্জ মিস করেন, আমরা দ্রুত আপনাকে দেখাব কীভাবে উন্নতি করা যায়। পেশাদারদের সাথে শুরু করুন।',
+        CommunicativeMethod: 'যোগাযোগ পদ্ধতি',
+        CommunicativeMethod1:
+          'বিশ্বের সবচেয়ে জনপ্রিয় ভাষা শেখার প্ল্যাটফর্ম এখন ক্লাসরুমের জন্য উপলব্ধ। হাজার হাজার শিক্ষক ইতিমধ্যেই তাদের পাঠ বাড়াতে এটি ব্যবহার করছেন।',
+        CentralLocation: 'কেন্দ্রিয় অবস্থানে',
+        CentralLocation1:
+          'হৃদয় আপনার পাঠ জীবিত রাখা! আপনি ভুল উত্তর দিলে আপনি সেগুলি হারাবেন। যখন আপনি হৃদয়ের বাইরে থাকবেন, আবার শুরু করুন এবং আবার চেষ্টা করুন।',
       },
     },
   },

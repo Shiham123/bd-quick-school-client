@@ -8,7 +8,6 @@ import Login from '../Pages/Login/Login';
 import Services from '../Pages/Services/Services';
 import MyProfile from '../Pages/UserProfile/MyProfile/MyProfile';
 import ServiceDetails from '../Pages/Services/ServiceDetails';
-import PaymentSuccses from '../Pages/Services/PaymentSuccses';
 import PaymentFailed from '../Pages/Services/PaymentFailed';
 import PayDataFrom from '../Pages/Services/PayDataFrom';
 import DashBoardLayout from '../DashBoard/DashBoard Layout/DashBoardLayout';
@@ -32,7 +31,12 @@ import ManagePayment from '../DashBoard/Manage Payment/ManagePayment';
 import ManageUsers from '../DashBoard/Manage Users/ManageUsers';
 import ManageReviews from '../DashBoard/Manage Reviews/ManageReviews';
 import DashBoardCharts from '../DashBoard/DashBoard Charts/DashBoardCharts';
-
+import AdmissionTest from '../Pages/Courses/AdmissionTest';
+import JobPreparation from '../Pages/Courses/JobPreparation';
+import UserCOurse from '../UserDashbord/UserCOurse';
+import ManageCourses from '../DashBoard/ManageCourses/ManageCourses';
+import UpdateCourses from '../DashBoard/ManageCourses/UpdateCourses';
+import ManageQuizeUser from '../DashBoard/ManageReviewUser/ManageReviewUser';
 
 const Router = createBrowserRouter([
   {
@@ -44,6 +48,8 @@ const Router = createBrowserRouter([
       { path: 'Couredetails', element: <CourseDetails /> },
       { path: 'register', element: <Register /> },
       { path: 'login', element: <Login /> },
+      { path: 'addmissionTest', element: <AdmissionTest /> },
+      { path: 'jobPreparation', element: <JobPreparation /> },
       {
         path: 'services',
         element: (
@@ -55,7 +61,7 @@ const Router = createBrowserRouter([
       { path: 'myprofile', element: <MyProfile /> },
       { path: '/ServiceDetails/:id', element: <ServiceDetails /> },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
-      { path: '/payment/succsess/:tranID', element: <PaymentSuccses /> },
+      { path: '/MyCourses', element: <UserCOurse /> },
       { path: '/payment/fail/:tranID', element: <PaymentFailed /> },
       { path: '/quiz', element: <MainQuiz /> },
     ],
@@ -105,12 +111,15 @@ const Router = createBrowserRouter([
       { path: 'adminprofile', element: <AdminProfile /> },
       { path: 'charts', element: <DashBoardCharts /> },
       { path: 'adminprofile', element: <AdminProfile /> },
+      { path: 'manage/courses', element: <ManageCourses /> },
       { path: 'add/services', element: <AddServices /> },
+      { path: 'update/courses', element: <UpdateCourses /> },
       { path: 'uploadcontent', element: <UploadContent /> },
       { path: 'soldcourses', element: <SoldCourses /> },
       { path: 'managepayment', element: <ManagePayment /> },
       { path: 'manageusers', element: <ManageUsers /> },
       { path: 'managereviews', element: <ManageReviews /> },
+      { path: '/dashboard/manage/quize/users', element: <ManageQuizeUser /> },
     ],
   },
 ]);

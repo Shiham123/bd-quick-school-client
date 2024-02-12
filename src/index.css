@@ -25,9 +25,9 @@
 
 /* Apply Css For body Section */
 
-/* body {
+body {
   background-image: linear-gradient(to right, #42275a, #724a6c);
-} */
+}
 
 .gradient-one {
   background-image: linear-gradient(to right, #42275a, #724a6c);

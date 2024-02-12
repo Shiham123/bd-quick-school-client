@@ -4,13 +4,13 @@ import { Player } from '@lottiefiles/react-lottie-player';
 import DashBoardNav from '../DashBoardNav/DashBoardNav';
 import DashBoardAdmin from '../DashBoardAdmin/DashBoardAdmin';
 import DashboardAvailable from '../DashboardAvailable/DashboardAvailable';
-import VerifyAdmin from '../../Hooks/useAdmin/useAdmin';
+// import VerifyAdmin from '../../Hooks/useAdmin/useAdmin';
 import useAuth from '../../Hooks/useAuth/useAuth';
 
 const DashBoardLayout = () => {
   const [open, setOpen] = useState(true);
   const [dropdown, setDropdown] = useState(false);
-  const [isAdmin] = VerifyAdmin();
+  // const [isAdmin] = VerifyAdmin();
   const { user } = useAuth();
 
   return (

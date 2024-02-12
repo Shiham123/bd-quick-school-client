@@ -34,6 +34,10 @@ import DashBoardCharts from '../DashBoard/DashBoard Charts/DashBoardCharts';
 import AdmissionTest from '../Pages/Courses/AdmissionTest';
 import JobPreparation from '../Pages/Courses/JobPreparation';
 import UserCOurse from '../UserDashbord/UserCOurse';
+import AdveriseReviews from '../DashBoard/Advertise Reviews/AdveriseReviews';
+import ManageCourses from '../DashBoard/ManageCourses/ManageCourses';
+import UpdateCourses from '../DashBoard/ManageCourses/UpdateCourses';
+import ManageQuizeUser from '../DashBoard/ManageReviewUser/ManageReviewUser';
 import MainQuizSecond from '../2edQuiz/MainQuizSecond';
 
 const Router = createBrowserRouter([
@@ -59,7 +63,7 @@ const Router = createBrowserRouter([
       { path: 'myprofile', element: <MyProfile /> },
       { path: '/ServiceDetails/:id', element: <ServiceDetails /> },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
-      { path: '/MyCourses', element: <UserCOurse /> },
+      { path: '/MyCourses/:tranID', element: <UserCOurse /> },
       { path: '/payment/fail/:tranID', element: <PaymentFailed /> },
       { path: '/quiz', element: <MainQuiz /> },
       { path: '/second-quiz', element: <MainQuizSecond /> },
@@ -89,12 +93,16 @@ const Router = createBrowserRouter([
       { path: 'adminprofile', element: <AdminProfile /> },
       { path: 'charts', element: <DashBoardCharts /> },
       { path: 'adminprofile', element: <AdminProfile /> },
+      { path: 'manage/courses', element: <ManageCourses /> },
       { path: 'add/services', element: <AddServices /> },
+      { path: 'update/courses', element: <UpdateCourses /> },
       { path: 'uploadcontent', element: <UploadContent /> },
       { path: 'soldcourses', element: <SoldCourses /> },
       { path: 'managepayment', element: <ManagePayment /> },
       { path: 'manageusers', element: <ManageUsers /> },
       { path: 'managereviews', element: <ManageReviews /> },
+      { path: 'advertisereviews', element: <AdveriseReviews /> },
+      { path: '/dashboard/manage/quize/users', element: <ManageQuizeUser /> },
     ],
   },
 ]);

@@ -1,3 +1,4 @@
+import useQuiz from '../../Hooks/useFirebaseDB.js/useQuiz';
 import Checkbox from './Checkbox';
 import Question from './Question';
 
@@ -6,6 +7,9 @@ const Answers = (props) => {
   const checkedValue = (value) => {
     console.log(value);
   };
+
+  const { isLoading, isError, quiz } = useQuiz();
+  console.log(quiz);
 
   return (
     <>

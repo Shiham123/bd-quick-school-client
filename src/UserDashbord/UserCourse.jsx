@@ -13,7 +13,7 @@ const UserCOurse = () => {
 
   useEffect(() => {
     axios
-      .get(`https://quiz-school-server.vercel.app/payment/user/${user?.email}`)
+      .get(`https://bd-quick-school-server-plum.vercel.app/payment/user/${user?.email}`)
       .then((response) => {
         console.log(response);
         const filteredServices = response.data.filter((service) => service.paidStatus === true);
@@ -52,7 +52,7 @@ const UserCOurse = () => {
                 </figure>
                 <div className="card-body text-white">
                   <h2 className="card-title">{service?.product?.title}</h2>
-                  <p>{service?.product?.techer}</p>
+                  <p>{service?.product?.teachername}</p>
                   <div className=" flex gap-4 md:flex-row flex-col  justify-between">
                     <Link to={`Video`}>
                       <button className="btn ">Continue Course</button>

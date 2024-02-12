@@ -3,14 +3,34 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { useAddServicesMutation } from '../../redux/services/ServicesApiSlice';
+import { useUpdateServicesMutation } from '../../redux/services/ServicesApiSlice';
 import { useState } from 'react';
+
+import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const AddServices = () => {
-  const { register, handleSubmit, reset } = useForm();
-  const [outcome, setOutcome] = useState('');
-  const [AddServices] = useAddServicesMutation();
+const UpdateCourses = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const {
+    _id,
+    designation,
+    details,
+    graduation,
+    image,
+    outcome,
+    postgraduation,
+    price,
+    shortdescription,
+    teacherImage,
+    teachername,
+    title,
+  } = location.state;
+  const { register, handleSubmit } = useForm();
+  //Update Api Fetching
+  const [UpdateCourse] = useUpdateServicesMutation();
+  const [outcomeFormValue, setOutcome] = useState(outcome);
+  const [imageLink, setImageLink] = useState({});
 
   //React quil Modules Design
   const modules = {
@@ -21,54 +41,63 @@ const AddServices = () => {
   const onSubmit = async (data) => {
     //image send to the hosting site
     const { imageFile, teacherImageFile } = data;
-    // Function to upload an image and return the URL
-    const uploadImage = async (file) => {
-      const imageData = new FormData();
-      imageData.append('image', file[0]);
-      const response = await axios.post(
-        `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_HOSTING_KEY}`,
-        imageData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        }
-      );
+    if (imageFile.length > 0 && teacherImageFile.length > 0) {
+      // Function to upload an image and return the URL
+      const uploadImage = async (file) => {
+        const imageData = new FormData();
+        imageData.append('image', file[0]);
 
-      return response.data.data.display_url;
-    };
+        const response = await axios.post(
+          `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_HOSTING_KEY}`,
+          imageData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+        );
 
-    // Upload both images concurrently
-    const [courseImageUrl, teacherImageUrl] = await Promise.all([
-      uploadImage(imageFile),
-      uploadImage(teacherImageFile),
-    ]);
+        return response.data.data.display_url;
+      };
+
+      // Upload both images concurrently
+      const [courseImageUrl, teacherImageUrl] = await Promise.all([
+        uploadImage(imageFile),
+        uploadImage(teacherImageFile),
+      ]);
+      setImageLink({
+        teacherImageUrl,
+        courseImageUrl,
+      });
+    }
 
     // form Data value
     const formData = {
-      image: courseImageUrl,
+      id: _id,
+      image: imageLink?.courseImageUrl || image,
       title: data?.title,
       shortdescription: data?.shortdescription,
       price: data?.price,
       details: data?.details,
-      outcome,
-      teacherImage: teacherImageUrl,
+      outcome: outcomeFormValue,
+      teacherImage: imageLink?.teacherImageUrl || teacherImage,
       teachername: data?.teachername,
       graduation: data?.graduation,
       postgraduation: data?.postgraduation,
       designation: data?.designation,
     };
-    AddServices(formData)
+
+    //Update
+    UpdateCourse(formData)
       .unwrap()
       .then(() => {
-        Swal.fire('Services Add SuccessFully');
-        reset();
-        setOutcome(null);
+        Swal.fire('Updated Successfully');
+        navigate('/dashboard/manage/courses');
       });
   };
   return (
     <div className=" mx-auto px-4">
-      <h1 className="text-4xl text-center font-cinzel mt-5">Add Courses</h1>
+      <h1 className="text-4xl text-center font-cinzel mt-5">Update Course</h1>
       <hr className="mb-5 border-2 mt-2 border-black w-[260px] mx-auto" />
 
       <section className="lg:p-16">
@@ -86,11 +115,12 @@ const AddServices = () => {
             <div className="space-y-2 col-span-full lg:col-span-1">
               <div>
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">
-                  Upload Course Image <span className="text-red-700">*</span>
+                  Update Course Image <span className="text-red-700">*</span>
                 </h2>
                 <div className="flex items-center justify-center w-full">
                   <label className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer  dark:hover:bg-bray-800 dark:bg-gray-700  dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                     <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                      <img src={image} alt="teacher image" className="w-1/2 h-12 mb-2" />
                       <svg
                         className="w-8 h-8 mb-4 text-black"
                         aria-hidden="true"
@@ -114,7 +144,7 @@ const AddServices = () => {
                     <input
                       id="dropzone-file"
                       type="file"
-                      {...register('imageFile', { required: true })}
+                      {...register('imageFile')}
                       name="imageFile"
                     />
                   </label>
@@ -133,7 +163,7 @@ const AddServices = () => {
                   name="title"
                   {...register('title', { required: true })}
                   placeholder="Enter Course Title Here"
-                  id=""
+                  defaultValue={title}
                 />
               </div>
               {/* Short Description */}
@@ -147,7 +177,7 @@ const AddServices = () => {
                   name="shortdescription"
                   {...register('shortdescription', { required: true })}
                   placeholder="Enter Course Description Here"
-                  id=""
+                  defaultValue={shortdescription}
                 />
               </div>
               {/* Course Price */}
@@ -161,7 +191,7 @@ const AddServices = () => {
                   name="price"
                   {...register('price')}
                   placeholder="Enter Course Price Here"
-                  id=""
+                  defaultValue={price}
                 />
               </div>
               {/* Course Details */}
@@ -175,7 +205,7 @@ const AddServices = () => {
                   name="details"
                   {...register('details')}
                   placeholder="Enter Course Details Here"
-                  id=""
+                  defaultValue={details}
                 />
               </div>
               {/* Course Outcome */}
@@ -186,7 +216,7 @@ const AddServices = () => {
                 <ReactQuill
                   modules={modules}
                   className="h-32 mb-12"
-                  value={outcome}
+                  value={outcomeFormValue}
                   onChange={setOutcome}
                   theme="snow"
                 />
@@ -203,11 +233,12 @@ const AddServices = () => {
             <div className="space-y-2 col-span-full lg:col-span-1">
               <div>
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">
-                  Upload Teacher Image <span className="text-red-700">*</span>
+                  Update Teacher Image <span className="text-red-700">*</span>
                 </h2>
                 <div className="flex items-center justify-center w-full">
                   <label className="flex flex-col items-center justify-center w-full h-56 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer  dark:hover:bg-bray-800 dark:bg-gray-700  dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                    <div className="flex flex-col items-center justify-center pt-5 pb-6 rounded-lg px-2">
+                      <img src={teacherImage} alt="teacher image" className="w-1/2 h-12 mb-2" />
                       <svg
                         className="w-8 h-8 mb-4 text-black"
                         aria-hidden="true"
@@ -223,6 +254,7 @@ const AddServices = () => {
                           d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                         />
                       </svg>
+
                       <p className="mb-2 text-sm text-black">
                         <span className="font-semibold">Click to upload</span> or drag and drop
                       </p>
@@ -231,7 +263,7 @@ const AddServices = () => {
                     <input
                       id="dropzone-file"
                       type="file"
-                      {...register('teacherImageFile', { required: true })}
+                      {...register('teacherImageFile')}
                       name="teacherImageFile"
                     />
                   </label>
@@ -250,7 +282,7 @@ const AddServices = () => {
                   name="teachername"
                   {...register('teachername', { required: true })}
                   placeholder="Enter Teacher Name Here"
-                  id=""
+                  defaultValue={teachername}
                 />
               </div>
               {/* Teacher Qualification(Graduation) */}
@@ -264,7 +296,7 @@ const AddServices = () => {
                   name="graduation"
                   {...register('graduation', { required: true })}
                   placeholder="Enter Teacher Name Here"
-                  id=""
+                  defaultValue={graduation}
                 />
               </div>
               {/* Teacher Qualification(Post Graduation) */}
@@ -278,7 +310,7 @@ const AddServices = () => {
                   name="postgraduation"
                   {...register('postgraduation', { required: true })}
                   placeholder="Enter Teacher Name Here"
-                  id=""
+                  defaultValue={postgraduation}
                 />
               </div>
               {/* Teacher Designation */}
@@ -292,7 +324,7 @@ const AddServices = () => {
                   name="designation"
                   {...register('designation', { required: true })}
                   placeholder="Enter Teacher Name Here"
-                  id=""
+                  defaultValue={designation}
                 />
               </div>
             </div>
@@ -302,7 +334,7 @@ const AddServices = () => {
           <div className="col-span-full mt-5">
             <input
               type="submit"
-              value="Submit Courses"
+              value="Update Course"
               className="btn btn-block bg-[#4357AD] text-lg text-[#fff] hover:bg-[#154360] "
             />
           </div>
@@ -312,4 +344,4 @@ const AddServices = () => {
   );
 };
 
-export default AddServices;
+export default UpdateCourses;

@@ -129,10 +129,12 @@ const Review = () => {
                           style={{ maxWidth: 90 }}
                           value={post.rating}
                           readOnly
+
                         />
 
                        
                       </p>
+                      {/* solved */}
 
                       
                     </div>

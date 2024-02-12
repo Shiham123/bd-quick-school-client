@@ -34,6 +34,9 @@ import DashBoardCharts from '../DashBoard/DashBoard Charts/DashBoardCharts';
 import AdmissionTest from '../Pages/Courses/AdmissionTest';
 import JobPreparation from '../Pages/Courses/JobPreparation';
 import UserCOurse from '../UserDashbord/UserCOurse';
+import ManageCourses from '../DashBoard/ManageCourses/ManageCourses';
+import UpdateCourses from '../DashBoard/ManageCourses/UpdateCourses';
+import ManageQuizeUser from '../DashBoard/ManageReviewUser/ManageReviewUser';
 
 const Router = createBrowserRouter([
   {
@@ -108,12 +111,15 @@ const Router = createBrowserRouter([
       { path: 'adminprofile', element: <AdminProfile /> },
       { path: 'charts', element: <DashBoardCharts /> },
       { path: 'adminprofile', element: <AdminProfile /> },
+      { path: 'manage/courses', element: <ManageCourses /> },
       { path: 'add/services', element: <AddServices /> },
+      { path: 'update/courses', element: <UpdateCourses /> },
       { path: 'uploadcontent', element: <UploadContent /> },
       { path: 'soldcourses', element: <SoldCourses /> },
       { path: 'managepayment', element: <ManagePayment /> },
       { path: 'manageusers', element: <ManageUsers /> },
       { path: 'managereviews', element: <ManageReviews /> },
+      { path: '/dashboard/manage/quize/users', element: <ManageQuizeUser /> },
     ],
   },
 ]);

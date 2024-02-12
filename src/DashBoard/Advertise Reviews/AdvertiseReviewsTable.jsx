@@ -1,5 +1,4 @@
 
-
 const AdvertiseReviewsTable = ({ item, index, handleAdvertisement, handleRemoveAdvertisement }) => {
     return (
         <tr className="bg-blue-600 border-b border-blue-400 hover:bg-blue-500">

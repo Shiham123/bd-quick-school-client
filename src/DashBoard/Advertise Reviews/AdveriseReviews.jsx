@@ -29,6 +29,7 @@ const AdveriseReviews = () => {
     })
     // console.log(advertisement)
 
+    // filter the Advertise Data
     useEffect(() => {
         axiosPublic("api/v2/admin/advertise/reviews")
             .then((res) => {
@@ -53,7 +54,7 @@ const AdveriseReviews = () => {
     };
 
 
-    //  remov advertisement
+    //  remove advertisement
     const handleRemoveAdvertisement = (review) => {
         axiosSecure.patch(`/api/v2/admin/advertiseRemove/reviews/${review._id}`).then((res) => {
             console.log(res.data);

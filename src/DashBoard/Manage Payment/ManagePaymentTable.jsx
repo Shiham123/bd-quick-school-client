@@ -8,6 +8,9 @@ const ManagePaymentTable = ({ payment, index }) => {
             </th>
 
             <td className="px-6 py-4">
+                <img className="w-10 h-10 rounded-full" src={payment.cus_photo} alt="" />
+            </td>
+            <td className="px-6 py-4">
                 {payment.customerName}
             </td>
             <td className="px-6 py-4">
@@ -20,13 +23,13 @@ const ManagePaymentTable = ({ payment, index }) => {
                 {payment.totalamount}
             </td>
             <td className="px-6 py-4">
-                {payment.product_name}
+                {payment.product.title}
             </td>
             <td className="px-6 py-4">
                 {payment.time}
             </td>
             <td className="px-6 py-4 flex items-center gap-1">
-                <span>Paid</span> <span><FcPaid className="text-2xl"/></span>
+                <span>Paid</span> <span><FcPaid className="text-2xl" /></span>
             </td>
 
         </tr>

@@ -89,6 +89,9 @@ const ManageUsers = () => {
                             </th>
 
                             <th scope="col" className="px-6 py-3">
+                                Customer Photo
+                            </th>
+                            <th scope="col" className="px-6 py-3">
                                 Customer Name
                             </th>
                             <th scope="col" className="px-6 py-3">

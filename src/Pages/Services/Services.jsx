@@ -57,12 +57,13 @@ const Services = () => {
                     <button className="bg-servicesBg text-white font-bold py-2 px-4 border-b-4 border-borderColorOne hover:border-black rounded">
                       Explore
                     </button>
-                    
+
                     {/* <PayDataFrom/> */}
                   </div>
                 </div>
               </Link>
             ))}
+            {/* ldk */}
           </div>
         )}
       </div>

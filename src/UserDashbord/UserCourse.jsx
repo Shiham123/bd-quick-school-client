@@ -41,7 +41,7 @@ const UserCOurse = () => {
           </h2>
         ) : services.length === 0 ? (
           <div className="flex justify-center items-center min-h-[60vh]">
-            <Player className="" autoplay loop src="/public/JWpqkpQcm6.json"></Player>
+            <Player className="" autoplay loop src="/JWpqkpQcm6.json"></Player>
           </div>
         ) : (
           <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-2 gap-x-10 gap-y-10 py-10">
@@ -52,7 +52,7 @@ const UserCOurse = () => {
                 </figure>
                 <div className="card-body text-white">
                   <h2 className="card-title">{service?.product?.title}</h2>
-                  <p>{service?.product?.techer}</p>
+                  <p>{service?.product?.teachername}</p>
                   <div className=" flex gap-4 md:flex-row flex-col  justify-between">
                     <Link to={`Video`}>
                       <button className="btn ">Continue Course</button>

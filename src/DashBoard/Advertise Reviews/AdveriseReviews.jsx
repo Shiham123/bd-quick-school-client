@@ -32,22 +32,34 @@ const AdveriseReviews = () => {
     useEffect(() => {
         axiosPublic("api/v2/admin/advertise/reviews")
             .then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 const findTotalAds = res.data.filter((one) => (one.advertise = true));
                 setAds(findTotalAds);
             });
     }, [advertisement, axiosPublic]);
 
     //  add advertisement
-    const handleAdvertisement = (reviews) => {
+    const handleAdvertisement = (review) => {
         if (ads.length >= 6) {
             return toast.error('you cannot add More then 6 Reviews')
         }
-        axiosSecure.patch(`/advertise/${properties._id}`).then((res) => {
+        axiosSecure.patch(`/api/v2/admin/advertise/reviews/${review._id}`).then((res) => {
             console.log(res.data);
             if (res.data.modifiedCount > 0) {
                 refetch();
-                toast.success(`${properties.propertyname} Have Been Added`)
+                toast.success(`Review Have Been Added`)
+            }
+        });
+    };
+
+
+    //  remov advertisement
+    const handleRemoveAdvertisement = (review) => {
+        axiosSecure.patch(`/api/v2/admin/advertiseRemove/reviews/${review._id}`).then((res) => {
+            console.log(res.data);
+            if (res.data.modifiedCount > 0) {
+                refetch();
+                toast.success('Review Have Been Removed')
             }
         });
     };
@@ -135,7 +147,7 @@ const AdveriseReviews = () => {
                     {/* Table Data Fetching */}
                     <tbody className="font-lora">
                         {
-                            filteredData.map((advertise, index) => <AdvertiseReviewsTable key={advertise._id} advertise={advertise} index={index} refetch={refetch} />)
+                            filteredData.map((item, index) => <AdvertiseReviewsTable key={item._id} item={item} index={index} handleAdvertisement={handleAdvertisement} handleRemoveAdvertisement={handleRemoveAdvertisement} refetch={refetch} />)
                         }
                     </tbody>
                 </table>

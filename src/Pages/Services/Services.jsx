@@ -36,11 +36,23 @@ const Services = () => {
                   key={service.Id}
                   className="cursor-pointer bg-white text-black rounded-xl shadow-2xl border-b-8 border-borderColorOne transition duration-600 ease-in-out hover:scale-105"
                 >
-                  <img className="w-[100%] rounded-t-xl border-t " src={service.image} alt="" />
+                  <img className="w-[100%] h-[260px] rounded-t-xl border-t " src={service.image} alt="" />
                   <div className="p-4">
                     <h2 className="text-3xl font-bold py-6">{service.title}</h2>
-                    <p className="text-xl">{service.description}</p>
-                    <p className="py-6 text-2xl font-bold">Price: ${service.price}</p>
+                    <p className="text-lg md:text-xl">{service.shortdescription}</p>
+                    <div className='flex justify-between items-center mb-2'>
+
+                      <div className='flex items-center justify-start gap-2'>
+                        <img className='w-[30px] h-[30px] rounded-full' src={service.teacherImage} alt="" />
+                        <p className="text-lg md:text-2xl font-bold">{service.teachername}</p>
+                      </div>
+
+                     
+                      <p className="py-4 text-lg md:text-2xl font-bold">Price: ${service.price}</p>
+
+                    </div>
+                    
+                    
                     <button className="bg-servicesBg text-white font-bold py-2 px-4 border-b-4 border-borderColorOne hover:border-black rounded">
                       Explore
                     </button>

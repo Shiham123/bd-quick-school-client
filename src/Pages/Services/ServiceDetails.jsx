@@ -90,6 +90,7 @@ const ServiceDetails = () => {
                     alt=""
                     className="rounded-sm shadow-md shadow-yellow-400"
                   />
+                  
                 </Box>
                 <Box className="space-y-2">
                   <Typography variant="h5" className="font-bold text-yellow-200">

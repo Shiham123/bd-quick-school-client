@@ -8,6 +8,7 @@ import { useGetAllServicesQuery } from '../../redux/services/ServicesApiSlice';
 
 const Services = () => {
   const { data, isLoading } = useGetAllServicesQuery();
+  console.log(data);
 
   return (
     <div>

@@ -86,14 +86,14 @@ const ServiceDetails = () => {
               >
                 <Box>
                   <img
-                    src={data?.image}
+                    src={data?.teacherImage}
                     alt=""
                     className="rounded-sm shadow-md shadow-yellow-400"
                   />
                 </Box>
                 <Box className="space-y-2">
                   <Typography variant="h5" className="font-bold text-yellow-200">
-                    {data?.techer}
+                    {data?.teachername}
                   </Typography>
                   <Typography variant="h6" className="md:w-2/3">
                     {data?.techEdu}

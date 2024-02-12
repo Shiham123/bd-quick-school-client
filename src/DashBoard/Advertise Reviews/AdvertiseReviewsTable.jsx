@@ -18,7 +18,7 @@ const AdvertiseReviewsTable = ({ item, index, handleAdvertisement, handleRemoveA
             <td className="px-6 py-4">
                 {item.textarea}
             </td>
-            <td className="text-white flex items-center">
+            <td className="text-white flex items-center gap-2 mr-1">
                 <div className="flex-1">
                     <button
                         onClick={() => handleAdvertisement(item)}

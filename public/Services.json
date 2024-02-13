@@ -107,5 +107,24 @@
       "Maintain transparency in your learning process, fostering a sense of accountability for your own progress.",
       "Pinpoint specific areas that need improvement and tailor your focus accordingly."
     ]
+  },
+  {
+    "Id": "14f0a9d0-49f9-4020-a656-e23b7ac59216",
+    "price": 200,
+    "title": "English Grammer",
+    "techer": "Shiham Bin Usuf",
+    "techEdu": "B.A.-B.Ed. Integrated Course,University of Oxford (UK),PhD in Literature,University of Oxford (UK)",
+    "description": "Study English grammar for clear communication, precision, and effective language usage skills.",
+    "image": "https://cdn.10minuteschool.com/md/images/images/skills/career-guidance-course-thumbnail-16-9.jpg",
+    "details": "English grammar is the set of rules that govern the structure, formation, and usage of sentences in the English language. It includes elements such as syntax, morphology, punctuation, and vocabulary. Proper understanding and application of grammar are essential for effective communication, as it ensures clarity, coherence, and precision in writing and speaking. Grammar provides the framework for organizing ideas and conveying meaning accurately. While some aspects of grammar may seem complex, learning and mastering its principles can greatly enhance one's ability to express thoughts, convey information, and engage with others effectively in both formal and informal contexts, facilitating successful communication across diverse situations.",
+    "outcome": [
+      "Gain a comprehensive understanding of English grammar principles and rules.",
+      "Develop proficiency in identifying and correcting grammatical errors in writing and speech.",
+      "Apply grammatical rules effectively to improve clarity and coherence in written and spoken communication.",
+
+      "Demonstrate the ability to construct grammatically correct sentences and paragraphs.",
+      "Recognize and utilize various parts of speech, sentence structures, and punctuation marks accurately.",
+      "Develop critical thinking skills through analysis and interpretation of grammatical structures."
+    ]
   }
 ]

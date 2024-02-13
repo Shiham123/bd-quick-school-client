@@ -2,9 +2,11 @@ import { MdVerified } from "react-icons/md";
 import { MdOutlineCancel } from 'react-icons/md';
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/UseAxiosSecure/UseAxiosSecure";
+import { RiDeleteBin5Line } from "react-icons/ri";
 
 const ManageReviewsTable = ({ review, index, refetch }) => {
     const axiosSecure = useAxiosSecure()
+
     // Handle Accept Reject function
     const handleAcceptReject = (text, id) => {
         Swal.fire({
@@ -35,6 +37,37 @@ const ManageReviewsTable = ({ review, index, refetch }) => {
             }
         });
     }
+
+
+    // Delete a User by id
+
+    const handleDeleteReview = review => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/api/v2/admin/reviews/${review._id}`)
+                    .then(res => {
+                        // console.log(res.data)
+                        if (res.data.deletedCount > 0) {
+                            refetch()
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your Review has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+            }
+        });
+    }
+
 
     return (
         <tr className="bg-blue-600 border-b border-blue-400 hover:bg-blue-500">
@@ -73,7 +106,13 @@ const ManageReviewsTable = ({ review, index, refetch }) => {
                         </>
                     )
                 }
+                {(review?.status === "accepted" || review?.status === "rejected") && (
+                    <td className="px-6 py-4">
+                        <button onClick={() => handleDeleteReview(review)} className="btn btn-outline text-white"><RiDeleteBin5Line className="text-xl" /></button>
+                    </td>
+                )}
             </tr>
+            
 
         </tr>
     );

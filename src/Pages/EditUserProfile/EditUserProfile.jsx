@@ -1,5 +1,5 @@
 import { FaMobileAlt } from 'react-icons/fa';
-import { FiMail, FiUpload } from 'react-icons/fi';
+import { FiEdit, FiMail, FiUpload } from 'react-icons/fi';
 import { GoPerson } from 'react-icons/go';
 import { PiStudent } from 'react-icons/pi';
 import { BsCardImage } from 'react-icons/bs';

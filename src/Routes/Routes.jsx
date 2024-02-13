@@ -39,6 +39,7 @@ import ManageCourses from '../DashBoard/ManageCourses/ManageCourses';
 import UpdateCourses from '../DashBoard/ManageCourses/UpdateCourses';
 import ManageQuizeUser from '../DashBoard/ManageReviewUser/ManageReviewUser';
 import ManageAnnouncements from '../DashBoard/ManageAnnouncements/ManageAnnouncements';
+import Announcements from '../Pages/Announcements/Announcements';
 
 const Router = createBrowserRouter([
   {
@@ -61,6 +62,7 @@ const Router = createBrowserRouter([
         ),
       },
       { path: 'myprofile', element: <MyProfile /> },
+      { path: 'announcements', element: <Announcements /> },
       { path: '/ServiceDetails/:id', element: <ServiceDetails /> },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
       { path: '/MyCourses', element: <UserCOurse /> },

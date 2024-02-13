@@ -38,7 +38,6 @@ import AdveriseReviews from '../DashBoard/Advertise Reviews/AdveriseReviews';
 import ManageCourses from '../DashBoard/ManageCourses/ManageCourses';
 import UpdateCourses from '../DashBoard/ManageCourses/UpdateCourses';
 import ManageQuizeUser from '../DashBoard/ManageReviewUser/ManageReviewUser';
-import MainQuizSecond from '../2edQuiz/MainQuizSecond';
 
 const Router = createBrowserRouter([
   {
@@ -66,7 +65,6 @@ const Router = createBrowserRouter([
       { path: '/MyCourses/:tranID', element: <UserCOurse /> },
       { path: '/payment/fail/:tranID', element: <PaymentFailed /> },
       { path: '/quiz', element: <MainQuiz /> },
-      { path: '/second-quiz', element: <MainQuizSecond /> },
     ],
   },
   {

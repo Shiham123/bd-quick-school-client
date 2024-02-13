@@ -23,6 +23,7 @@ const PayDataFrom = () => {
     data.email = user.email;
     data.dateTime = formatDate();
     data.photo = user.photoURL;
+
     try {
       const response = await axiosPublic.post(`/api/v1/order`, data);
       const result = response.data;

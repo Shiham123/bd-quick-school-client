@@ -78,19 +78,9 @@ const ServiceDetails = () => {
                   Course instructor
                 </Typography>
               </Box>
-              <Stack
-                direction={{ xs: 'column', sm: 'row' }}
-                spacing={8}
-                sx={{ mt: 2 }}
-                alignItems="center"
-              >
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={8} sx={{ mt: 2 }} alignItems="center">
                 <Box>
-                  <img
-                    src={data?.teacherImage}
-                    alt=""
-                    className="h-[150px] w-[250px] rounded-sm shadow-md shadow-yellow-400 "
-                  />
-
+                  <img src={data?.teacherImage} alt="" className="h-[150px] w-[250px] rounded-sm shadow-md shadow-yellow-400 " />
                 </Box>
                 <Box className="space-y-2">
                   <Typography variant="h5" className="font-bold text-yellow-200 uppercase">
@@ -105,7 +95,6 @@ const ServiceDetails = () => {
                   <Typography variant="h6" className="md:w-2/3 lg:w-[650px]">
                     {data?.postgraduation}
                   </Typography>
-
                 </Box>
               </Stack>
             </Box>
@@ -144,11 +133,7 @@ const ServiceDetails = () => {
         {/* Right Sidebar */}
         <Grid item md={4} className="relative">
           <Box className="mt-6">
-            <img
-              src={data?.image}
-              alt=""
-              className="border-2 rounded-md border-yellow-400 w-full"
-            />
+            <img src={data?.image} alt="" className="border-2 rounded-md border-yellow-400 w-full" />
             {/* Price Section */}
             <Box className="flex items-center mt-6">
               {/* Regular Price */}
@@ -241,12 +226,7 @@ const ServiceDetails = () => {
           </Box>
 
           {/* Footer */}
-          <Grid
-            container
-            columns={{ xs: 12, sm: 12, md: 12 }}
-            spacing={{ md: 8, xs: 2, sm: 2 }}
-            className="md:absolute md:bottom-0"
-          >
+          <Grid container columns={{ xs: 12, sm: 12, md: 12 }} spacing={{ md: 8, xs: 2, sm: 2 }} className="md:absolute md:bottom-0">
             <Grid item md={6} xs={12} sm={12}>
               <Box className="flex items-center gap-2">
                 <IconButton>

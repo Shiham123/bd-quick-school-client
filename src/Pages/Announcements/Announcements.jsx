@@ -3,7 +3,7 @@ import './Announcements.css'; // Import your CSS file
 const Announcements = () => {
     return (
         <div className="font-lora max-w-7xl mx-auto flex items-start gap-5">
-            <div className="flex gap-5 items-start border-2 bg-[#383838] w-[660px] p-5 rounded-xl">
+            <div className="flex gap-5 items-start border-2 bg-gradient-to-b from-[#42275a] to-[#734b6d] w-[660px] p-5 rounded-xl">
                 <img src="https://i.ibb.co/kH6SbQN/download.png" alt="" />
                 <div>
                     <h5 className="text-white text-sm font-medium mb-1">মাত্র 12 ঘণ্টা বাকি !!!!</h5>
@@ -11,7 +11,7 @@ const Announcements = () => {
                     <h5 className="text-white text-sm font-medium break-all">Complete Web development with Jhankar Mahbub কোর্সের ৫ম ব্যাচের এনরলমেন্ট শেষ হওয়ার আর মাত্র 12 ঘণ্টা বাকি। এনরোলমেন্ট শেষ সময় ...</h5>
                 </div>
             </div>
-            <div className=" custom-scrollbar bg-[#383838] shadow-xl w-[710px] h-[500px] overflow-y-auto p-5 rounded-xl">
+            <div className=" custom-scrollbar bg-gradient-to-b from-[#42275a] to-[#734b6d] shadow-xl w-[710px] h-[500px] overflow-y-auto p-5 rounded-xl">
                 <h4 className="text-white text-lg font-semibold mb-1">মাত্র 12 ঘণ্টা বাকি !!!!</h4>
                 <p className="text-white break-all text-base font-medium mb-14">Complete Web development with Jhankar Mahbub কোর্সের ৫ম ব্যাচের এনরলমেন্ট শেষ হওয়ার আর মাত্র 12 ঘণ্টা বাকি। এনরোলমেন্ট শেষ সময় ২৪ তারিখ রাত ১১.৫৯ মিনিট। এর পর আর এনরোলমেন্ট করা যাবে না।</p>
                 <p className="text-white break-all text-base font-medium mb-2">আপনার যদি ফাইনেনশিয়াল সমস্যা থাকে তাহলে কুপন কোড ব্যবহার করতে পারেন।</p>

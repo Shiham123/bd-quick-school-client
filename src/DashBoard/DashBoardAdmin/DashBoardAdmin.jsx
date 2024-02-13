@@ -115,6 +115,15 @@ const DashBoardAdmin = () => {
             <span className="text-base font-semibold"> Manage Quize User </span>
           </NavLink>
         </li>
+        <li>
+          <NavLink
+            to="/dashboard/manageannouncements"
+            className="flex items-center gap-[14px] px-8 py-4 group dark:text-gray-400 dark:hover:bg-gray-700 hover:bg-gray-100"
+          >
+            <MdManageAccounts className="text-xl" />
+            <span className="text-base font-semibold">Announcements </span>
+          </NavLink>
+        </li>
       </ul>
     </div>
   );

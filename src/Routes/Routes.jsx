@@ -34,13 +34,11 @@ import DashBoardCharts from '../DashBoard/DashBoard Charts/DashBoardCharts';
 import AdmissionTest from '../Pages/Courses/AdmissionTest';
 import JobPreparation from '../Pages/Courses/JobPreparation';
 import UserCOurse from '../UserDashbord/UserCOurse';
-<<<<<<< HEAD
 import AdveriseReviews from '../DashBoard/Advertise Reviews/AdveriseReviews';
-=======
 import ManageCourses from '../DashBoard/ManageCourses/ManageCourses';
 import UpdateCourses from '../DashBoard/ManageCourses/UpdateCourses';
 import ManageQuizeUser from '../DashBoard/ManageReviewUser/ManageReviewUser';
->>>>>>> 0ca943ed1b06cbb515c0640fe81d390b720959ab
+import ManageAnnouncements from '../DashBoard/ManageAnnouncements/ManageAnnouncements';
 
 const Router = createBrowserRouter([
   {
@@ -125,6 +123,7 @@ const Router = createBrowserRouter([
       { path: 'managereviews', element: <ManageReviews /> },
       { path: 'advertisereviews', element: <AdveriseReviews /> },
       { path: '/dashboard/manage/quize/users', element: <ManageQuizeUser /> },
+      { path: 'manageannouncements', element: <ManageAnnouncements /> },
     ],
   },
 ]);

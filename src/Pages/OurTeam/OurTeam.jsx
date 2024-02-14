@@ -323,7 +323,7 @@ const OurTeam = () => {
 
               <div className="card-actions justify-end">
                 {/* <button className="btn btn-primary">Buy Now</button> */}
-                {/* <button className="btn btn-primary">Buy Now</button> */}
+               
               </div>
             </div>
           </div>
@@ -335,3 +335,6 @@ const OurTeam = () => {
 };
 
 export default OurTeam;
+
+
+{/* <button className="btn btn-primary">Buy Now</button> */ }

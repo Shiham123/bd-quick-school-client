@@ -1,6 +1,23 @@
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../Hooks/UseAxiosSecure/UseAxiosSecure";
 
 
 const ManageAnnouncements = () => {
+    const axiosSecure = useAxiosSecure()
+
+
+    // User Data fetching By tanstack query
+    const { data: announcements = [], refetch } = useQuery({
+        queryKey: ['announcements'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/api/v1/admin/announcement');
+            // console.log(res.data)
+            return res.data
+        }
+    });
+
+
+
     return (
         <div className="lg:p-16 min-h-screen">
             <h1 className="text-4xl text-center font-cinzel">Manage Announcement</h1>

@@ -8,6 +8,8 @@ import { RiAdvertisementLine } from "react-icons/ri";
 import { NavLink } from 'react-router-dom';
 import { MdOutlineManageSearch } from 'react-icons/md';
 import { MdManageAccounts } from 'react-icons/md';
+import { IoAlarmOutline } from "react-icons/io5";
+import { MdOutlineNotificationsPaused } from "react-icons/md";
 
 const DashBoardAdmin = () => {
   return (
@@ -120,7 +122,7 @@ const DashBoardAdmin = () => {
             to="/dashboard/addannouncements"
             className="flex items-center gap-[14px] px-8 py-4 group dark:text-gray-400 dark:hover:bg-gray-700 hover:bg-gray-100"
           >
-            <MdManageAccounts className="text-xl" />
+            <IoAlarmOutline className="text-xl" />
             <span className="text-base font-semibold">Add Announce </span>
           </NavLink>
         </li>
@@ -129,7 +131,7 @@ const DashBoardAdmin = () => {
             to="/dashboard/manageannouncements"
             className="flex items-center gap-[14px] px-8 py-4 group dark:text-gray-400 dark:hover:bg-gray-700 hover:bg-gray-100"
           >
-            <MdManageAccounts className="text-xl" />
+            <MdOutlineNotificationsPaused className="text-xl" />
             <span className="text-base font-semibold">Announcements </span>
           </NavLink>
         </li>

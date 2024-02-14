@@ -1,8 +1,5 @@
-/* eslint-disable react/no-unknown-property */
 import Services_banner from '../../Components/Services_Banner/Services_banner';
-// import { Link } from 'react-router-dom';
 import { ThreeCircles } from 'react-loader-spinner';
-// import PayDataFrom from './PayDataFrom';
 import { Link } from 'react-router-dom';
 import { useGetAllServicesQuery } from '../../redux/services/ServicesApiSlice';
 
@@ -52,8 +49,6 @@ const Services = () => {
                     <button className="bg-servicesBg text-white font-bold py-2 px-4 border-b-4 border-borderColorOne hover:border-black rounded">
                       Explore
                     </button>
-
-                    {/* <PayDataFrom/> */}
                   </div>
                 </div>
               </Link>

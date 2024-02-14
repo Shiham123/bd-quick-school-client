@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import PayDataFrom from './PayDataFrom';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { Box, Grid, IconButton, Typography } from '@material-ui/core';
 import { Stack } from '@mui/material';
@@ -12,13 +11,17 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
+
+import { AiFillLike, AiFillDislike, AiOutlineDislike, AiOutlineLike } from 'react-icons/ai';
+
+import PayDataFrom from './PayDataFrom';
 import QuizModal from '../../quiz/shared/QuizModal';
 import useLocationContext from '../../context/useLocationContext';
 import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 import useAuth from '../../Hooks/useAuth/useAuth';
 import { useGetIdBasedServicesQuery } from '../../redux/services/ServicesApiSlice';
-// import { useQuery } from '@tanstack/react-query';
-// import Video from './VideoStreming';
+import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 
 const ServiceDetails = () => {
   const { id } = useParams();
@@ -26,22 +29,18 @@ const ServiceDetails = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
   const { data, isLoading } = useGetIdBasedServicesQuery(id);
-  // TODO: here are alternative for get data
-  // const { data: quizData } = useQuery({
-  //   queryKey: ['quizData', user.email, id],
-  //   queryFn: async () => {
-  //     const response = await axiosPublic.get(`/api/v2/quizUsers/${id}/${user.email}`);
-  //     return response.data;
-  //   },
-  // });
+  const [isLiked, setIsLiked] = useState(false);
 
-  // console.log(quizData.submitQuiz);
+  const loggedInUserEmail = user?.email, // destructuring the value
+    currentProductId = data?._id;
 
-  // if (quizData?.submitQuiz) {
-  //   closeModal();
-  // } else {
-  //   openModal();
-  // }
+  const { data: likedData, refetch } = useQuery({
+    queryKey: ['likedData', currentProductId],
+    queryFn: async () => {
+      const response = await axiosPublic.get(`/api/v2/user/like/${currentProductId}`);
+      return response.data;
+    },
+  });
 
   axiosPublic
     .get(`/api/v2/quizUsers/${id}/${user?.email}`)
@@ -58,6 +57,31 @@ const ServiceDetails = () => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
+  const handleLike = async () => {
+    const likePayload = { loggedInUserEmail, currentProductId };
+    await axiosPublic
+      .post('/api/v2/like', likePayload) // post like to the database
+      .then((response) => {
+        setIsLiked(false);
+        console.log(response);
+        refetch();
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleLikeDelete = async (id) => {
+    console.log(id);
+    await axiosPublic
+      .delete(`/api/v2/delete/like/${id}`)
+      .then((response) => {
+        console.log(response);
+        setIsLiked(true);
+        refetch();
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <Box className=" max-w-screen-2xl mx-auto text-white px-3 mt-4 pr-2">
       <Grid container spacing={8} columns={{ md: 12 }}>
@@ -113,9 +137,7 @@ const ServiceDetails = () => {
                 alignItems="center"
               > */}
               <div
-                dangerouslySetInnerHTML={{
-                  __html: ` ${data?.outcome}`,
-                }}
+                dangerouslySetInnerHTML={{ __html: ` ${data?.outcome}` }}
                 className="text-xl font-bold max-w-3xl space-y-3 text-justify px-2"
               ></div>
               {/* <Grid item md={6}>
@@ -246,6 +268,18 @@ const ServiceDetails = () => {
           </Grid>
         </Grid>
       </Grid>
+
+      <Box className="flex gap-8">
+        <div className="flex justify-center items-center">
+          {isLiked ? (
+            <AiFillLike onClick={handleLike} className="cursor-pointer" size={70} />
+          ) : (
+            <AiOutlineLike onClick={() => handleLikeDelete(currentProductId)} className="cursor-pointer" size={70} />
+          )}
+          <p className="text-3xl font-cinzel">{likedData?.totalCountLikes}</p>
+        </div>
+        <AiFillDislike size={70} />
+      </Box>
       <hr className="my-16" />
     </Box>
   );

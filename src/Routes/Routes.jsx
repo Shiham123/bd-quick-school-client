@@ -34,13 +34,11 @@ import DashBoardCharts from '../DashBoard/DashBoard Charts/DashBoardCharts';
 import AdmissionTest from '../Pages/Courses/AdmissionTest';
 import JobPreparation from '../Pages/Courses/JobPreparation';
 import UserCOurse from '../UserDashbord/UserCOurse';
-<<<<<<< HEAD
 import AdveriseReviews from '../DashBoard/Advertise Reviews/AdveriseReviews';
-=======
 import ManageCourses from '../DashBoard/ManageCourses/ManageCourses';
 import UpdateCourses from '../DashBoard/ManageCourses/UpdateCourses';
 import ManageQuizeUser from '../DashBoard/ManageReviewUser/ManageReviewUser';
->>>>>>> 0ca943ed1b06cbb515c0640fe81d390b720959ab
+import ChatAsistant from '../UserDashbord/ChatAsistant';
 
 const Router = createBrowserRouter([
   {
@@ -65,7 +63,7 @@ const Router = createBrowserRouter([
       { path: 'myprofile', element: <MyProfile /> },
       { path: '/ServiceDetails/:id', element: <ServiceDetails /> },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
-      { path: '/MyCourses/:tranID', element: <UserCOurse /> },
+      { path: '/MyCourses', element: <UserCOurse /> },
       { path: '/payment/fail/:tranID', element: <PaymentFailed /> },
       { path: '/quiz', element: <MainQuiz /> },
     ],
@@ -85,6 +83,10 @@ const Router = createBrowserRouter([
       {
         path: 'support',
         element: <UserSupport />,
+      },
+      {
+        path: 'chat',
+        element: <ChatAsistant />,
       },
       {
         path: 'room/:roomId',

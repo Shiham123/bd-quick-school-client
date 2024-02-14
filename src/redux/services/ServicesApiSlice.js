@@ -6,16 +6,10 @@ export const addServicesApi = createApi({
   reducerPath: 'addServicesApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://quiz-school-server.vercel.app/api/v3' }),
   endpoints: (builder) => ({
-    getAllServices: builder.query({
-      query: () => '/',
-      providesTags: ['services'],
-    }),
+    getAllServices: builder.query({ query: () => '/', providesTags: ['services'] }),
 
     //Get Id base Services
-    getIdBasedServices: builder.query({
-      query: (id) => `/${id}`,
-      providesTags: ['services'],
-    }),
+    getIdBasedServices: builder.query({ query: (id) => `/${id}`, providesTags: ['services'] }),
 
     //Post Data
     addServices: builder.mutation({

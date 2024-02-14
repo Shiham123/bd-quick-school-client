@@ -3,6 +3,7 @@ import { CiEdit } from "react-icons/ci";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/UseAxiosSecure/UseAxiosSecure";
+import { Link } from "react-router-dom";
 
 const ManageAnnouncementsTable = ({ announcement, index, refetch }) => {
 
@@ -56,7 +57,9 @@ const ManageAnnouncementsTable = ({ announcement, index, refetch }) => {
                 <button className="btn btn-outline text-white"><IoMdEye className="text-xl" /></button>
             </td>
             <td className="px-6 py-4">
-                <button className="btn btn-outline text-white"><CiEdit className="text-xl" /></button>
+                <Link to={`updateannouncements/${announcement._id}`}>
+                    <button className="btn btn-outline text-white"><CiEdit className="text-xl" /></button>
+                </Link>
             </td>
             <td className="px-6 py-4">
                 <button onClick={() => { handleDeleteAnnouncement(announcement) }} className="btn btn-outline text-white"><RiDeleteBin5Line className="text-xl" /></button>

@@ -11,7 +11,7 @@ const AddAnnouncement = () => {
 
     return (
         <div className="mx-auto px-4 min-h-screen">
-            <h1 className=" text-2xl lg:text-4xl text-center font-cinzel mt-5">Add Annnouncement</h1>
+            <h1 className=" text-2xl lg:text-4xl text-center font-cinzel mt-10">Add Annnouncement</h1>
             <hr className="mb-5 border-2 mt-2 border-black w-[300px] lg:w-[430px] mx-auto" />
             <section className="lg:p-28">
                 <form className="container flex flex-col mx-auto space-y-12">
@@ -50,7 +50,7 @@ const AddAnnouncement = () => {
                             {/* Course Outcome */}
                             <div className="col-span-full">
                                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">
-                                    Course Outcome <span className="text-red-700">*</span>
+                                    Announcement Description <span className="text-red-700">*</span>
                                 </h2>
                                 <ReactQuill
                                     modules={modules}

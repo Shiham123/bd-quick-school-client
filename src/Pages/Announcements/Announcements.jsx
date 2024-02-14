@@ -66,13 +66,7 @@ const Announcements = () => {
                                 <p className="text-white break-all text-base font-medium mb-14">কুপনঃ hardwork , ১০০০ টাকার ডিস্কাউন্ট থাকবে।</p>
                                 <p className="text-white break-all text-base font-medium mb-3">কিভাবে এনরোলমেন্ট করবো ? </p>
                                 <p className="text-white break-all text-base font-medium mb-3">খুব সহজ আমাদের ওয়েবসাইট এ যেতে হবে,  </p>
-                                <p className="text-white break-all text-base font-medium mb-3">লিঙ্কঃ https://web.programming-hero.com/  </p>
-                                <p className="text-white break-all text-base font-medium mb-3">বাকি প্রসেস গুলো নিচের ভিডিও তে দেওয়া আছে। এনরোলমেন্ট শেষ হলে ইমেইল, এসএমএস পেয়ে যাবে।  </p>
-                                <p className="text-white break-all text-base font-medium mb-3">আমাদের সাথে যোগাযোগ করার মাধ্যমঃ</p>
-                                <p className="text-white break-all text-base font-medium mb-3">ওয়েবসাইটঃ https://web.programming-hero.com/</p>
-                                <p className="text-white break-all text-base font-medium mb-3">মেইলঃ web@programming-hero.com</p>
-                                <p className="text-white break-all text-base font-medium mb-3">ফোনঃ 01322810867 , 01322810869 , 01322901104 </p>
-                                <p className="text-white break-all text-base font-medium mb-3">পেইজঃ https://web.facebook.com/programmingHero  </p>
+                                
                             </div>
 
                         </>

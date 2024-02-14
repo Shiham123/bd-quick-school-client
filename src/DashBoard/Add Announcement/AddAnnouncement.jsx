@@ -64,7 +64,7 @@ const AddAnnouncement = () => {
                                 <input
                                     className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded"
                                     type="text"
-                                    name="title"
+                                    name="announcemensubdescription"
                                     {...register('announcemensubdescription', { required: true })}
                                     placeholder="Enter Announcement Sub-Description Here"
                                     id=""

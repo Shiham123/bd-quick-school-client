@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/UseAxiosSecure/UseAxiosSecure";
+import ManageAnnouncementsTable from "./ManageAnnouncementsTable";
 
 
 const ManageAnnouncements = () => {
@@ -51,11 +52,11 @@ const ManageAnnouncements = () => {
                     </thead>
                     {/* Table Heading End Here */}
                     {/* Table Data Fetching */}
-                    {/* <tbody className="font-lora">
+                    <tbody className="font-lora">
                         {
-                            filteredData.map((user, index) => <ManageUserTable key={user._id} user={user} index={index} refetch={refetch} />)
+                            announcements.map((announcement, index) => <ManageAnnouncementsTable key={announcement._id} announcement={announcement} index={index} refetch={refetch} />)
                         }
-                    </tbody> */}
+                    </tbody>
                 </table>
             </div>
 

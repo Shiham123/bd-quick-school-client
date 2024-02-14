@@ -37,7 +37,7 @@ const ServiceDetails = () => {
   const { data: likedData, refetch } = useQuery({
     queryKey: ['likedData', currentProductId],
     queryFn: async () => {
-      const response = await axiosPublic.get(`/api/v2/user/like/${currentProductId}`);
+      const response = await axiosPublic.get(`/api/v2/like/${currentProductId}`);
       return response.data;
     },
   });
@@ -70,10 +70,9 @@ const ServiceDetails = () => {
       .catch((error) => console.log(error));
   };
 
-  const handleLikeDelete = async (id) => {
-    console.log(id);
+  const handleLikeDelete = async (id, email) => {
     await axiosPublic
-      .delete(`/api/v2/delete/like/${id}`)
+      .delete(`/api/v2/delete/like/${id}/${email}`)
       .then((response) => {
         console.log(response);
         setIsLiked(true);
@@ -274,7 +273,7 @@ const ServiceDetails = () => {
           {isLiked ? (
             <AiFillLike onClick={handleLike} className="cursor-pointer" size={70} />
           ) : (
-            <AiOutlineLike onClick={() => handleLikeDelete(currentProductId)} className="cursor-pointer" size={70} />
+            <AiOutlineLike onClick={() => handleLikeDelete(currentProductId, loggedInUserEmail)} className="cursor-pointer" size={70} />
           )}
           <p className="text-3xl font-cinzel">{likedData?.totalCountLikes}</p>
         </div>

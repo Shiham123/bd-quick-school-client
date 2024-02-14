@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Announcements.css'; // Import your CSS file
 
 const Announcements = () => {
@@ -7,6 +7,10 @@ const Announcements = () => {
     const handleContentClick = (content) => {
         setSelectedContent(content);
     };
+
+    useEffect(() => {       
+        setSelectedContent("leftContent1");
+    }, []);
 
     return (
         <div>
@@ -61,7 +65,7 @@ const Announcements = () => {
                             <p className="text-white break-all text-base font-medium mb-3">খুব সহজ আমাদের ওয়েবসাইট এ যেতে হবে,  </p>
                             <p className="text-white break-all text-base font-medium mb-3">লিঙ্কঃ https://web.programming-hero.com/  </p>
                             <p className="text-white break-all text-base font-medium mb-3">বাকি প্রসেস গুলো নিচের ভিডিও তে দেওয়া আছে। এনরোলমেন্ট শেষ হলে ইমেইল, এসএমএস পেয়ে যাবে।  </p>
-                            
+
                         </>
                     )}
                     {/* Add more conditional rendering for other left side content */}

@@ -13,7 +13,7 @@ const Announcements = () => {
             <div className="font-lora max-w-7xl mx-auto flex items-start gap-5">
                 <div className="">
                     {/* Left side content */}
-                    <div className="cursor-pointer flex gap-5 items-start border-2 bg-gradient-to-b from-[#42275a] to-[#734b6d] w-[660px] p-5 rounded-xl mb-5" onClick={() => handleContentClick("leftContent1")}>
+                    <div className={`cursor-pointer flex gap-5 items-start  bg-gradient-to-b from-[#42275a] to-[#734b6d] w-[660px] p-5 rounded-xl mb-5 ${selectedContent === "leftContent1" ? "border-2" : ""}`} onClick={() => handleContentClick("leftContent1")}>
                         <img src="https://i.ibb.co/kH6SbQN/download.png" alt="" />
                         <div>
                             <h5 className="text-white text-sm font-medium mb-1">মাত্র 12 ঘণ্টা বাকি !!!!</h5>
@@ -21,7 +21,7 @@ const Announcements = () => {
                             <h5 className="text-white text-sm font-medium break-all">Complete Web development with Jhankar Mahbub কোর্সের ৫ম ব্যাচের এনরলমেন্ট শেষ হওয়ার আর মাত্র 12 ঘণ্টা বাকি। এনরোলমেন্ট শেষ সময় ...</h5>
                         </div>
                     </div>
-                    <div className="cursor-pointer flex gap-5 items-start border-2 bg-gradient-to-b from-[#42275a] to-[#734b6d] w-[660px] p-5 rounded-xl" onClick={() => handleContentClick("leftContent2")}>
+                    <div className={`cursor-pointer flex gap-5 items-start bg-gradient-to-b from-[#42275a] to-[#734b6d] w-[660px] p-5 rounded-xl ${selectedContent === "leftContent2" ? "border-2" : ""}`} onClick={() => handleContentClick("leftContent2")}>
                         <img src="https://i.ibb.co/kH6SbQN/download.png" alt="" />
                         <div>
                             <h5 className="text-white text-sm font-medium mb-1">মাত্র 12 ঘণ্টা বাকি !!!!</h5>

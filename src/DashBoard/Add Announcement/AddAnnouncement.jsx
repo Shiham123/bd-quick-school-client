@@ -16,9 +16,8 @@ const AddAnnouncement = () => {
             <section className="lg:p-28">
                 <form className="container flex flex-col mx-auto space-y-12">
                     <fieldset className="grid gap-6  font-lora dark:bg-gray-900">
-
                         <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-                            {/* Course Title */}
+                            {/* Announcement Title */}
                             <div className="col-span-full lg:col-span-3">
                                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">
                                     Announcement Title <span className="text-red-700">*</span>
@@ -32,6 +31,7 @@ const AddAnnouncement = () => {
                                     id=""
                                 />
                             </div>
+                            {/* Announcement Sub-Description */}
                             <div className="col-span-full lg:col-span-3">
                                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">
                                     Announcement Sub-Description <span className="text-red-700">*</span>
@@ -44,10 +44,7 @@ const AddAnnouncement = () => {
                                     id=""
                                 />
                             </div>
-
-
-
-                            {/* Course Outcome */}
+                            {/* Announcement Description */}
                             <div className="col-span-full">
                                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">
                                     Announcement Description <span className="text-red-700">*</span>

@@ -71,7 +71,7 @@ const Announcements = () => {
 
                         </>
                     )}
-                    {/* Add more conditional rendering for other left side content */}
+                    
                 </div>
             </div>
         </div>

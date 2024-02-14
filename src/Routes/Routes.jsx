@@ -40,6 +40,7 @@ import UpdateCourses from '../DashBoard/ManageCourses/UpdateCourses';
 import ManageQuizeUser from '../DashBoard/ManageReviewUser/ManageReviewUser';
 import ManageAnnouncements from '../DashBoard/ManageAnnouncements/ManageAnnouncements';
 import Announcements from '../Pages/Announcements/Announcements';
+import AddAnnouncement from '../DashBoard/Add Announcement/AddAnnouncement';
 
 const Router = createBrowserRouter([
   {
@@ -125,6 +126,7 @@ const Router = createBrowserRouter([
       { path: 'managereviews', element: <ManageReviews /> },
       { path: 'advertisereviews', element: <AdveriseReviews /> },
       { path: '/dashboard/manage/quize/users', element: <ManageQuizeUser /> },
+      { path: 'addannouncements', element: <AddAnnouncement /> },
       { path: 'manageannouncements', element: <ManageAnnouncements /> },
     ],
   },

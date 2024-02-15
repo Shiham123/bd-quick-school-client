@@ -1,22 +1,41 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import ReactQuill from "react-quill";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../Hooks/UseAxiosSecure/UseAxiosSecure";
+import toast, { Toaster } from "react-hot-toast";
 
 
 const UpdateAnnouncement = () => {
     // const [outcome, setOutcome] = useState('')
     const { register, handleSubmit, reset } = useForm();
+    const navigate = useNavigate()
+    const axiosSecure = useAxiosSecure()
     const announcements = useLoaderData()
-    const [outcomeFormValue, setOutcome] = useState(announcements.outcome);
+    const [outcomeFormValue, setOutcomeFormValue] = useState(announcements.outcome);
     // console.log(announcements)
 
 
     const onSubmit = async (data) => {
-        console.log(data)
+        // console.log(data)
+        const item = {
+            announcementtitle: data?.announcementtitle,
+            announcemensubdescription: data?.announcemensubdescription,
+            outcome: outcomeFormValue
+        }
+        // console.log(item)
+        const itemRes = await axiosSecure.put(`/api/v1/admin/announcements/${announcements._id}`, item)
+        // console.log(itemRes)
+        if (itemRes.data.modifiedCount > 0) {
+            toast.success('Your Announcement have been updated')
+            // reset()
+            navigate('/dashboard/manageannouncements')
+        }
     }
 
-
+    const handleOutcomeChange = (value) => {
+        setOutcomeFormValue(value);
+    };
 
     //React quil Modules Design
     const modules = {
@@ -71,7 +90,7 @@ const UpdateAnnouncement = () => {
                                     className="h-32 mb-12"
                                     // defaultValue={announcements.outcome}
                                     value={outcomeFormValue}
-                                    onChange={setOutcome}
+                                    onChange={handleOutcomeChange}
                                     theme="snow"
                                 />
                             </div>
@@ -87,7 +106,7 @@ const UpdateAnnouncement = () => {
                     </div>
                 </form>
             </section>
-            {/* <Toaster /> */}
+            <Toaster />
         </div>
     );
 };

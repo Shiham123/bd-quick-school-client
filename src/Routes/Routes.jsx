@@ -42,6 +42,7 @@ import ManageAnnouncements from '../DashBoard/ManageAnnouncements/ManageAnnounce
 import Announcements from '../Pages/Announcements/Announcements';
 import AddAnnouncement from '../DashBoard/Add Announcement/AddAnnouncement';
 import UpdateAnnouncement from '../DashBoard/UpdateAnnouncement/UpdateAnnouncement';
+import ChatAsistant from '../UserDashbord/ChatAsistant';
 
 const Router = createBrowserRouter([
   {
@@ -87,6 +88,10 @@ const Router = createBrowserRouter([
       {
         path: 'support',
         element: <UserSupport />,
+      },
+      {
+        path: 'chat',
+        element: <ChatAsistant />,
       },
       {
         path: 'room/:roomId',

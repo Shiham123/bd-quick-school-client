@@ -8,14 +8,14 @@ import toast, { Toaster } from "react-hot-toast";
 
 const UpdateAnnouncement = () => {
     // const [outcome, setOutcome] = useState('')
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit } = useForm();
     const navigate = useNavigate()
     const axiosSecure = useAxiosSecure()
     const announcements = useLoaderData()
     const [outcomeFormValue, setOutcomeFormValue] = useState(announcements.outcome);
     // console.log(announcements)
 
-
+    // Onsubmit By React Hook
     const onSubmit = async (data) => {
         // console.log(data)
         const item = {
@@ -28,11 +28,10 @@ const UpdateAnnouncement = () => {
         // console.log(itemRes)
         if (itemRes.data.modifiedCount > 0) {
             toast.success('Your Announcement have been updated')
-            // reset()
             navigate('/dashboard/manageannouncements')
         }
     }
-
+    // Handle Outcome Change
     const handleOutcomeChange = (value) => {
         setOutcomeFormValue(value);
     };

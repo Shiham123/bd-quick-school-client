@@ -43,6 +43,7 @@ import Announcements from '../Pages/Announcements/Announcements';
 import AddAnnouncement from '../DashBoard/Add Announcement/AddAnnouncement';
 import UpdateAnnouncement from '../DashBoard/UpdateAnnouncement/UpdateAnnouncement';
 import ChatAsistant from '../UserDashbord/ChatAsistant';
+import HelpDask from '../UserDashbord/HelpDask';
 
 const Router = createBrowserRouter([
   {
@@ -77,6 +78,44 @@ const Router = createBrowserRouter([
     path: '/MyCourses',
     element: <UserDashbordlayout />,
     children: [
+<<<<<<< HEAD
+      {
+        index: true,
+        element: <UserHome />,
+      },
+      {
+        path: 'next-step',
+        element: <ImportantNotice />,
+      },
+      {
+        path: 'support',
+        element: <UserSupport />,
+      },
+      {
+        path: 'chat',
+        element: <ChatAsistant />,
+      },
+      {
+        path: 'helpdask',
+        element: <HelpDask />,
+      },
+      {
+        path: 'room/:roomId',
+        element: <Support />,
+      },
+      {
+        path: 'supportSteap',
+        element: <SupportSteap />,
+      },
+      {
+        path: 'Video',
+        element: <Video />,
+      },
+      {
+        path: 'outline',
+        element: <Outline />,
+      },
+=======
       { index: true, element: <UserHome /> },
       { path: 'next-step', element: <ImportantNotice /> },
       { path: 'support', element: <UserSupport /> },
@@ -85,6 +124,7 @@ const Router = createBrowserRouter([
       { path: 'supportSteap', element: <SupportSteap /> },
       { path: 'Video', element: <Video /> },
       { path: 'outline', element: <Outline /> },
+>>>>>>> 041c565d91bf7375fb2077dfed40d3c954b28162
     ],
   },
   {

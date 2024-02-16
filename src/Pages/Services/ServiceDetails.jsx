@@ -18,7 +18,8 @@ import useLocationContext from '../../context/useLocationContext';
 import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 import useAuth from '../../Hooks/useAuth/useAuth';
 import { useGetIdBasedServicesQuery } from '../../redux/services/ServicesApiSlice';
-import LikeDislike from './LikeDislike';
+import LikeComponent from './LikeComponent';
+import DislikeComponent from './DislikeComponent';
 
 const ServiceDetails = () => {
   const { id } = useParams();
@@ -234,7 +235,8 @@ const ServiceDetails = () => {
       </Grid>
 
       <Box className="flex gap-8">
-        <LikeDislike loggedInUserEmail={loggedInUserEmail} currentProductId={currentProductId} />
+        <LikeComponent loggedInUserEmail={loggedInUserEmail} currentProductId={currentProductId} />
+        <DislikeComponent loggedInUserEmail={loggedInUserEmail} currentProductId={currentProductId} />
       </Box>
       <hr className="my-16" />
     </Box>

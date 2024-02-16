@@ -3,7 +3,7 @@ import { AiFillLike, AiOutlineLike } from 'react-icons/ai';
 import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 
-const LikeDislike = (props) => {
+const LikeComponent = (props) => {
   const { currentProductId, loggedInUserEmail } = props;
 
   const [isLiked, setIsLiked] = useState(false);
@@ -54,17 +54,20 @@ const LikeDislike = (props) => {
     <div>
       {isLiked ? (
         <>
-          <AiOutlineLike
-            onClick={() => {
-              handleLikeDelete(currentProductId, loggedInUserEmail);
-            }}
-            className="cursor-pointer"
-            size={70}
-          />
+          <button className="cursor-pointer">
+            <AiFillLike
+              onClick={() => {
+                handleLikeDelete(currentProductId, loggedInUserEmail);
+              }}
+              size={70}
+            />
+          </button>
         </>
       ) : (
         <>
-          <AiFillLike onClick={handleLike} className="cursor-pointer" size={70} />
+          <button className="cursor-pointer disabled:cursor-default">
+            <AiOutlineLike onClick={handleLike} size={70} />
+          </button>
         </>
       )}
       <p className="font-bold font-poppins text-4xl gap-8">Total Like this course : {likedData?.totalCountLikes}</p>
@@ -72,4 +75,4 @@ const LikeDislike = (props) => {
   );
 };
 
-export default LikeDislike;
+export default LikeComponent;

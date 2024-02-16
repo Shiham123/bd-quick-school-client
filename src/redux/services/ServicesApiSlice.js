@@ -4,21 +4,12 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const addServicesApi = createApi({
   reducerPath: 'addServicesApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'https://bd-quick-school-server-plum.vercel.app/api/v3',
-  }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://quiz-school-server.vercel.app/api/v3' }),
   endpoints: (builder) => ({
-    //Get Data
-    getAllServices: builder.query({
-      query: () => '/',
-      providesTags: ['services'],
-    }),
+    getAllServices: builder.query({ query: () => '/', providesTags: ['services'] }),
 
     //Get Id base Services
-    getIdBasedServices: builder.query({
-      query: (id) => `/${id}`,
-      providesTags: ['services'],
-    }),
+    getIdBasedServices: builder.query({ query: (id) => `/${id}`, providesTags: ['services'] }),
 
     //Post Data
     addServices: builder.mutation({
@@ -26,9 +17,7 @@ export const addServicesApi = createApi({
         url: `/create`,
         method: 'POST',
         body: payload,
-        headers: {
-          authorization: `Bearer ${localStorage.getItem('access-token')}`,
-        },
+        headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` },
       }),
       invalidatesTags: ['services'],
     }),
@@ -39,9 +28,7 @@ export const addServicesApi = createApi({
         url: `/course/update`,
         method: 'PUT',
         body: payload,
-        headers: {
-          authorization: `Bearer ${localStorage.getItem('access-token')}`,
-        },
+        headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` },
       }),
       invalidatesTags: ['services'],
     }),
@@ -51,9 +38,7 @@ export const addServicesApi = createApi({
       query: (id) => ({
         url: `/delete/${id}`,
         method: 'DELETE',
-        headers: {
-          authorization: `Bearer ${localStorage.getItem('access-token')}`,
-        },
+        headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` },
       }),
       invalidatesTags: ['services'],
     }),

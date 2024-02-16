@@ -78,7 +78,6 @@ const Router = createBrowserRouter([
     path: '/MyCourses',
     element: <UserDashbordlayout />,
     children: [
-<<<<<<< HEAD
       {
         index: true,
         element: <UserHome />,
@@ -115,16 +114,6 @@ const Router = createBrowserRouter([
         path: 'outline',
         element: <Outline />,
       },
-=======
-      { index: true, element: <UserHome /> },
-      { path: 'next-step', element: <ImportantNotice /> },
-      { path: 'support', element: <UserSupport /> },
-      { path: 'chat', element: <ChatAsistant /> },
-      { path: 'room/:roomId', element: <Support /> },
-      { path: 'supportSteap', element: <SupportSteap /> },
-      { path: 'Video', element: <Video /> },
-      { path: 'outline', element: <Outline /> },
->>>>>>> 041c565d91bf7375fb2077dfed40d3c954b28162
     ],
   },
   {

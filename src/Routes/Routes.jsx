@@ -38,6 +38,11 @@ import AdveriseReviews from '../DashBoard/Advertise Reviews/AdveriseReviews';
 import ManageCourses from '../DashBoard/ManageCourses/ManageCourses';
 import UpdateCourses from '../DashBoard/ManageCourses/UpdateCourses';
 import ManageQuizeUser from '../DashBoard/ManageReviewUser/ManageReviewUser';
+import ManageAnnouncements from '../DashBoard/ManageAnnouncements/ManageAnnouncements';
+import Announcements from '../Pages/Announcements/Announcements';
+import AddAnnouncement from '../DashBoard/Add Announcement/AddAnnouncement';
+import UpdateAnnouncement from '../DashBoard/UpdateAnnouncement/UpdateAnnouncement';
+import ChatAsistant from '../UserDashbord/ChatAsistant';
 
 const Router = createBrowserRouter([
   {
@@ -60,6 +65,7 @@ const Router = createBrowserRouter([
         ),
       },
       { path: 'myprofile', element: <MyProfile /> },
+      { path: 'announcements', element: <Announcements /> },
       { path: '/ServiceDetails/:id', element: <ServiceDetails /> },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
       { path: '/MyCourses', element: <UserCOurse /> },
@@ -74,6 +80,7 @@ const Router = createBrowserRouter([
       { index: true, element: <UserHome /> },
       { path: 'next-step', element: <ImportantNotice /> },
       { path: 'support', element: <UserSupport /> },
+      { path: 'chat', element: <ChatAsistant /> },
       { path: 'room/:roomId', element: <Support /> },
       { path: 'supportSteap', element: <SupportSteap /> },
       { path: 'Video', element: <Video /> },
@@ -101,6 +108,13 @@ const Router = createBrowserRouter([
       { path: 'managereviews', element: <ManageReviews /> },
       { path: 'advertisereviews', element: <AdveriseReviews /> },
       { path: '/dashboard/manage/quize/users', element: <ManageQuizeUser /> },
+      { path: 'addannouncements', element: <AddAnnouncement /> },
+      { path: 'manageannouncements', element: <ManageAnnouncements /> },
+      {
+        path: 'manageannouncements/updateannouncements/:id',
+        element: <UpdateAnnouncement />,
+        loader: ({ params }) => fetch(`https://quiz-school-server.vercel.app/api/v1/admin/announcements/${params.id}`),
+      },
     ],
   },
 ]);

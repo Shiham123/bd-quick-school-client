@@ -43,6 +43,7 @@ import Announcements from '../Pages/Announcements/Announcements';
 import AddAnnouncement from '../DashBoard/Add Announcement/AddAnnouncement';
 import UpdateAnnouncement from '../DashBoard/UpdateAnnouncement/UpdateAnnouncement';
 import ChatAsistant from '../UserDashbord/ChatAsistant';
+import HelpDask from '../UserDashbord/HelpDask';
 
 const Router = createBrowserRouter([
   {
@@ -92,6 +93,10 @@ const Router = createBrowserRouter([
       {
         path: 'chat',
         element: <ChatAsistant />,
+      },
+      {
+        path: 'helpdask',
+        element: <HelpDask />,
       },
       {
         path: 'room/:roomId',

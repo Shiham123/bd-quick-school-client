@@ -12,16 +12,13 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 
-import { AiFillLike, AiFillDislike, AiOutlineDislike, AiOutlineLike } from 'react-icons/ai';
-
 import PayDataFrom from './PayDataFrom';
 import QuizModal from '../../quiz/shared/QuizModal';
 import useLocationContext from '../../context/useLocationContext';
 import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 import useAuth from '../../Hooks/useAuth/useAuth';
 import { useGetIdBasedServicesQuery } from '../../redux/services/ServicesApiSlice';
-import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
+import LikeDislike from './LikeDislike';
 
 const ServiceDetails = () => {
   const { id } = useParams();
@@ -29,18 +26,9 @@ const ServiceDetails = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
   const { data, isLoading } = useGetIdBasedServicesQuery(id);
-  const [isLiked, setIsLiked] = useState(false);
 
   const loggedInUserEmail = user?.email, // destructuring the value
     currentProductId = data?._id;
-
-  const { data: likedData, refetch } = useQuery({
-    queryKey: ['likedData', currentProductId],
-    queryFn: async () => {
-      const response = await axiosPublic.get(`/api/v2/like/${currentProductId}`);
-      return response.data;
-    },
-  });
 
   axiosPublic
     .get(`/api/v2/quizUsers/${id}/${user?.email}`)
@@ -57,29 +45,6 @@ const ServiceDetails = () => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-
-  const handleLike = async () => {
-    const likePayload = { loggedInUserEmail, currentProductId };
-    await axiosPublic
-      .post('/api/v2/like', likePayload) // post like to the database
-      .then((response) => {
-        setIsLiked(false);
-        console.log(response);
-        refetch();
-      })
-      .catch((error) => console.log(error));
-  };
-
-  const handleLikeDelete = async (id, email) => {
-    await axiosPublic
-      .delete(`/api/v2/delete/like/${id}/${email}`)
-      .then((response) => {
-        console.log(response);
-        setIsLiked(true);
-        refetch();
-      })
-      .catch((error) => console.log(error));
-  };
 
   return (
     <Box className=" max-w-screen-2xl mx-auto text-white px-3 mt-4 pr-2">
@@ -269,15 +234,7 @@ const ServiceDetails = () => {
       </Grid>
 
       <Box className="flex gap-8">
-        <div className="flex justify-center items-center">
-          {isLiked ? (
-            <AiFillLike onClick={handleLike} className="cursor-pointer" size={70} />
-          ) : (
-            <AiOutlineLike onClick={() => handleLikeDelete(currentProductId, loggedInUserEmail)} className="cursor-pointer" size={70} />
-          )}
-          <p className="text-3xl font-cinzel">{likedData?.totalCountLikes}</p>
-        </div>
-        <AiFillDislike size={70} />
+        <LikeDislike loggedInUserEmail={loggedInUserEmail} currentProductId={currentProductId} />
       </Box>
       <hr className="my-16" />
     </Box>

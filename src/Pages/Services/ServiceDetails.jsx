@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import PayDataFrom from './PayDataFrom';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { Box, Grid, IconButton, Typography } from '@material-ui/core';
 import { Stack } from '@mui/material';
@@ -12,13 +11,15 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
+
+import PayDataFrom from './PayDataFrom';
 import QuizModal from '../../quiz/shared/QuizModal';
 import useLocationContext from '../../context/useLocationContext';
 import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 import useAuth from '../../Hooks/useAuth/useAuth';
 import { useGetIdBasedServicesQuery } from '../../redux/services/ServicesApiSlice';
-// import { useQuery } from '@tanstack/react-query';
-// import Video from './VideoStreming';
+import LikeComponent from './LikeComponent';
+import DislikeComponent from './DislikeComponent';
 
 const ServiceDetails = () => {
   const { id } = useParams();
@@ -26,22 +27,9 @@ const ServiceDetails = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
   const { data, isLoading } = useGetIdBasedServicesQuery(id);
-  // TODO: here are alternative for get data
-  // const { data: quizData } = useQuery({
-  //   queryKey: ['quizData', user.email, id],
-  //   queryFn: async () => {
-  //     const response = await axiosPublic.get(`/api/v2/quizUsers/${id}/${user.email}`);
-  //     return response.data;
-  //   },
-  // });
 
-  // console.log(quizData.submitQuiz);
-
-  // if (quizData?.submitQuiz) {
-  //   closeModal();
-  // } else {
-  //   openModal();
-  // }
+  const loggedInUserEmail = user?.email, // destructuring the value
+    currentProductId = data?._id;
 
   axiosPublic
     .get(`/api/v2/quizUsers/${id}/${user?.email}`)
@@ -58,6 +46,7 @@ const ServiceDetails = () => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
   return (
     <Box className=" max-w-screen-2xl mx-auto text-white px-3 mt-4 pr-2">
       <Grid container spacing={8} columns={{ md: 12 }}>
@@ -78,19 +67,9 @@ const ServiceDetails = () => {
                   Course instructor
                 </Typography>
               </Box>
-              <Stack
-                direction={{ xs: 'column', sm: 'row' }}
-                spacing={8}
-                sx={{ mt: 2 }}
-                alignItems="center"
-              >
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={8} sx={{ mt: 2 }} alignItems="center">
                 <Box>
-                  <img
-                    src={data?.teacherImage}
-                    alt=""
-                    className="h-[150px] w-[250px] rounded-sm shadow-md shadow-yellow-400 "
-                  />
-
+                  <img src={data?.teacherImage} alt="" className="h-[150px] w-[250px] rounded-sm shadow-md shadow-yellow-400 " />
                 </Box>
                 <Box className="space-y-2">
                   <Typography variant="h5" className="font-bold text-yellow-200 uppercase">
@@ -105,7 +84,6 @@ const ServiceDetails = () => {
                   <Typography variant="h6" className="md:w-2/3 lg:w-[650px]">
                     {data?.postgraduation}
                   </Typography>
-
                 </Box>
               </Stack>
             </Box>
@@ -124,9 +102,7 @@ const ServiceDetails = () => {
                 alignItems="center"
               > */}
               <div
-                dangerouslySetInnerHTML={{
-                  __html: ` ${data?.outcome}`,
-                }}
+                dangerouslySetInnerHTML={{ __html: ` ${data?.outcome}` }}
                 className="text-xl font-bold max-w-3xl space-y-3 text-justify px-2"
               ></div>
               {/* <Grid item md={6}>
@@ -144,11 +120,7 @@ const ServiceDetails = () => {
         {/* Right Sidebar */}
         <Grid item md={4} className="relative">
           <Box className="mt-6">
-            <img
-              src={data?.image}
-              alt=""
-              className="border-2 rounded-md border-yellow-400 w-full"
-            />
+            <img src={data?.image} alt="" className="border-2 rounded-md border-yellow-400 w-full" />
             {/* Price Section */}
             <Box className="flex items-center mt-6">
               {/* Regular Price */}
@@ -241,12 +213,7 @@ const ServiceDetails = () => {
           </Box>
 
           {/* Footer */}
-          <Grid
-            container
-            columns={{ xs: 12, sm: 12, md: 12 }}
-            spacing={{ md: 8, xs: 2, sm: 2 }}
-            className="md:absolute md:bottom-0"
-          >
+          <Grid container columns={{ xs: 12, sm: 12, md: 12 }} spacing={{ md: 8, xs: 2, sm: 2 }} className="md:absolute md:bottom-0">
             <Grid item md={6} xs={12} sm={12}>
               <Box className="flex items-center gap-2">
                 <IconButton>
@@ -266,6 +233,11 @@ const ServiceDetails = () => {
           </Grid>
         </Grid>
       </Grid>
+
+      <Box className="flex gap-8">
+        <LikeComponent loggedInUserEmail={loggedInUserEmail} currentProductId={currentProductId} />
+        <DislikeComponent loggedInUserEmail={loggedInUserEmail} currentProductId={currentProductId} />
+      </Box>
       <hr className="my-16" />
     </Box>
   );

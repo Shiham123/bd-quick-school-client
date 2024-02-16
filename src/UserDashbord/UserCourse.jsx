@@ -13,7 +13,7 @@ const UserCOurse = () => {
 
   useEffect(() => {
     axios
-      .get(`https://bd-quick-school-server-plum.vercel.app/payment/user/${user?.email}`)
+      .get(`https://quiz-school-server.vercel.app/payment/user/${user?.email}`)
       .then((response) => {
         console.log(response);
         const filteredServices = response.data.filter((service) => service.paidStatus === true);
@@ -31,13 +31,7 @@ const UserCOurse = () => {
       <div className="w-[100%] md:w-[75%] mx-auto text-white">
         {loading ? (
           <h2 className="flex justify-center items-center min-h-[60vh]">
-            <ThreeCircles
-              height="100"
-              width="100"
-              color="#4fa94d"
-              visible={true}
-              ariaLabel="three-circles-rotating"
-            />
+            <ThreeCircles height="100" width="100" color="#4fa94d" visible={true} ariaLabel="three-circles-rotating" />
           </h2>
         ) : services.length === 0 ? (
           <div className="flex justify-center items-center min-h-[60vh]">

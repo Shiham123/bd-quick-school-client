@@ -13,7 +13,7 @@ const UserCOurse = () => {
 
   useEffect(() => {
     axios
-      .get(`https://bd-quick-school-server-plum.vercel.app/payment/user/${user?.email}`)
+      .get(`http://localhost:5000/payment/user/${user?.email}`)
       .then((response) => {
         console.log(response);
         const filteredServices = response.data.filter((service) => service.paidStatus === true);

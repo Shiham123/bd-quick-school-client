@@ -5,7 +5,7 @@ import { Player } from '@lottiefiles/react-lottie-player';
 import { Link } from 'react-router-dom';
 
 const openai = new OpenAI({
-  apiKey: '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',
+  apiKey: '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',
   dangerouslyAllowBrowser: true,
 });
 
@@ -142,10 +142,7 @@ function ChatAsistant() {
               <h2> {user?.email} </h2>
             </div>
           </div>
-          <ul
-            tabIndex={0}
-            className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 text-black"
-          >
+          <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 text-black">
             <li>
               <Link to={'/myprofile'} className="justify-between">
                 Profile
@@ -156,10 +153,7 @@ function ChatAsistant() {
               <a>Settings</a>
             </li>
             <li>
-              <li
-                onClick={handleLogOut}
-                className="hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000"
-              >
+              <li onClick={handleLogOut} className="hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                 Logout
               </li>
             </li>
@@ -178,19 +172,11 @@ function ChatAsistant() {
           <div className="overflow-hidden overflow-y-scroll scroll-smooth w-[100%] max-w-screen flex flex-col gap-10 items-start m-[1rem] px-[2rem] ">
             <div className="flex gap-4">
               <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
-              <p className="rounded-tr-lg bg-[#1C1F3D] p-3 font-bold">
-                {userQuestions.length > 0 ? userQuestions[0] : ''}
-              </p>
+              <p className="rounded-tr-lg bg-[#1C1F3D] p-3 font-bold">{userQuestions.length > 0 ? userQuestions[0] : ''}</p>
             </div>
             <div className="flex gap-4 w-fit  rounded">
-              <img
-                className="w-10 h-10 rounded-full"
-                src="https://i.postimg.cc/yN6vH6zy/blog-featured-what-is-chatbot.png"
-                alt=""
-              />
-              <p className="rounded-md  bg-[#1C1F3D] p-3 font-bold">
-                {loading ? 'Thinking, please wait...' : response}
-              </p>
+              <img className="w-10 h-10 rounded-full" src="https://i.postimg.cc/yN6vH6zy/blog-featured-what-is-chatbot.png" alt="" />
+              <p className="rounded-md  bg-[#1C1F3D] p-3 font-bold">{loading ? 'Thinking, please wait...' : response}</p>
             </div>
           </div>
         )}

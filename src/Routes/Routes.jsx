@@ -1,49 +1,49 @@
 import { createBrowserRouter } from 'react-router-dom';
-import MainLayout from '../Layout/Root/MainLayout';
-import ErrorElement from '../Layout/ErrorElement/ErrorElement';
-import Home from '../Pages/Home/Home';
-import CourseDetails from '../Pages/Courses/CourseDetails';
-import Register from '../Pages/Register/Register';
-import Login from '../Pages/Login/Login';
-import Services from '../Pages/Services/Services';
-import MyProfile from '../Pages/UserProfile/MyProfile/MyProfile';
-import ServiceDetails from '../Pages/Services/ServiceDetails';
-import PaymentFailed from '../Pages/Services/PaymentFailed';
-import PayDataFrom from '../Pages/Services/PayDataFrom';
-import DashBoardLayout from '../DashBoard/DashBoard Layout/DashBoardLayout';
-import AdminProfile from '../DashBoard/Admin Profile/AdminProfile';
-import MainQuiz from '../quiz/MainQuiz';
-import PrivateRoute from './PrivateRoute';
 import AddServices from '../Components/AddServicesForm/AddServices';
-import AdminRoute from './AdminRoute';
-import UserDashbordlayout from '../UserDashbord/UserDashbordlayout';
+import AdminProfile from '../DashBoard/Admin Profile/AdminProfile';
+import DashBoardLayout from '../DashBoard/DashBoard Layout/DashBoardLayout';
+import ErrorElement from '../Layout/ErrorElement/ErrorElement';
+import MainLayout from '../Layout/Root/MainLayout';
+import CourseDetails from '../Pages/Courses/CourseDetails';
+import Home from '../Pages/Home/Home';
+import Login from '../Pages/Login/Login';
+import Register from '../Pages/Register/Register';
+import PayDataFrom from '../Pages/Services/PayDataFrom';
+import PaymentFailed from '../Pages/Services/PaymentFailed';
+import ServiceDetails from '../Pages/Services/ServiceDetails';
+import Services from '../Pages/Services/Services';
+import Video from '../Pages/Services/VideoStreming';
+import MyProfile from '../Pages/UserProfile/MyProfile/MyProfile';
 import ImportantNotice from '../UserDashbord/ImportantNotice';
-import UserHome from '../UserDashbord/UserHome';
-import UserSupport from '../UserDashbord/UserSupport';
+import Outline from '../UserDashbord/Outline';
 import Support from '../UserDashbord/Support';
 import SupportSteap from '../UserDashbord/SupportSteap';
-import Video from '../Pages/Services/VideoStreming';
-import Outline from '../UserDashbord/Outline';
+import UserDashbordlayout from '../UserDashbord/UserDashbordlayout';
+import UserHome from '../UserDashbord/UserHome';
+import UserSupport from '../UserDashbord/UserSupport';
+import MainQuiz from '../quiz/MainQuiz';
+import AdminRoute from './AdminRoute';
+import PrivateRoute from './PrivateRoute';
 
-import UploadContent from '../DashBoard/Upload Content/UploadContent';
-import SoldCourses from '../DashBoard/Sold Courses/SoldCourses';
-import ManagePayment from '../DashBoard/Manage Payment/ManagePayment';
-import ManageUsers from '../DashBoard/Manage Users/ManageUsers';
-import ManageReviews from '../DashBoard/Manage Reviews/ManageReviews';
-import DashBoardCharts from '../DashBoard/DashBoard Charts/DashBoardCharts';
-import AdmissionTest from '../Pages/Courses/AdmissionTest';
-import JobPreparation from '../Pages/Courses/JobPreparation';
-import UserCOurse from '../UserDashbord/UserCOurse';
+import AddAnnouncement from '../DashBoard/Add Announcement/AddAnnouncement';
 import AdveriseReviews from '../DashBoard/Advertise Reviews/AdveriseReviews';
+import DashBoardCharts from '../DashBoard/DashBoard Charts/DashBoardCharts';
+import ManagePayment from '../DashBoard/Manage Payment/ManagePayment';
+import ManageReviews from '../DashBoard/Manage Reviews/ManageReviews';
+import ManageUsers from '../DashBoard/Manage Users/ManageUsers';
+import ManageAnnouncements from '../DashBoard/ManageAnnouncements/ManageAnnouncements';
 import ManageCourses from '../DashBoard/ManageCourses/ManageCourses';
 import UpdateCourses from '../DashBoard/ManageCourses/UpdateCourses';
 import ManageQuizeUser from '../DashBoard/ManageReviewUser/ManageReviewUser';
-import ManageAnnouncements from '../DashBoard/ManageAnnouncements/ManageAnnouncements';
-import Announcements from '../Pages/Announcements/Announcements';
-import AddAnnouncement from '../DashBoard/Add Announcement/AddAnnouncement';
+import SoldCourses from '../DashBoard/Sold Courses/SoldCourses';
 import UpdateAnnouncement from '../DashBoard/UpdateAnnouncement/UpdateAnnouncement';
+import UploadContent from '../DashBoard/Upload Content/UploadContent';
+import Announcements from '../Pages/Announcements/Announcements';
+import AdmissionTest from '../Pages/Courses/AdmissionTest';
+import JobPreparation from '../Pages/Courses/JobPreparation';
 import ChatAsistant from '../UserDashbord/ChatAsistant';
 import HelpDask from '../UserDashbord/HelpDask';
+import UserCOurse from '../UserDashbord/UserCOurse';
 
 const Router = createBrowserRouter([
   {
@@ -142,7 +142,7 @@ const Router = createBrowserRouter([
       {
         path: 'manageannouncements/updateannouncements/:id',
         element: <UpdateAnnouncement />,
-        loader: ({ params }) => fetch(`https://quiz-school-server.vercel.app/api/v1/admin/announcements/${params.id}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/api/v1/admin/announcements/${params.id}`),
       },
     ],
   },

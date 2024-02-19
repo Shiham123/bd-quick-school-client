@@ -148,13 +148,13 @@ const Announcements = () => {
   }, []);
 
   return (
-    <div className="mt-20 font-lora max-w-7xl mx-auto  items-start gap-7  flex">
+    <div className="mt-20 font-lora max-w-7xl mx-auto  items-start gap-7  flex flex-col lg:flex-row">
       <div className="  ">
         {announcements?.map((item) => (
           <div key={item._id} className="">
             {/* Left side content */}
             <div
-              className={`cursor-pointer flex gap-5 items-start bg-gradient-to-b from-[#42275a] to-[#734b6d] w-[660px] p-5 rounded-xl mb-5 ${selectedContent === item._id ? 'border-2' : ''
+              className={`cursor-pointer flex  gap-5 items-start bg-gradient-to-b from-[#42275a] to-[#734b6d] ml-3 lg:ml-0 w-[400px] md:w-[660px] p-5 rounded-xl mb-5 ${selectedContent === item._id ? 'border-2' : ''
                 }`}
               onClick={() => handleContentClick(item._id)}
             >
@@ -163,7 +163,7 @@ const Announcements = () => {
                 <h5 className="text-white text-sm font-medium mb-1">{rightSide.announcementtitle}</h5>
                 <h5 className="text-white text-sm font-medium mb-2">Dec 24th 2021, 12:00 pm</h5>
                 <h5 className="text-white text-sm font-medium break-all">
-                  {rightSide.announcemensubdescription.slice(0,126)} ...
+                  {item.announcemensubdescription.slice(0, 126)} ...
                 </h5>
               </div>
             </div>
@@ -171,14 +171,14 @@ const Announcements = () => {
         ))}
       </div>
       {/* Right side content */}
-      <div className="custom-scrollbar bg-gradient-to-b from-[#42275a] to-[#734b6d] shadow-xl w-[710px] h-[500px] overflow-y-auto  rounded-xl">
+      <div className="custom-scrollbar bg-gradient-to-b from-[#42275a] to-[#734b6d] shadow-xl w-[400px] ml-3 lg:ml-0 lg:w-[710px] h-[500px] overflow-y-auto  rounded-xl">
         <h4 className="text-white text-xl font-semibold mb-1 sticky overflow-hidden top-0 bg-gradient-to-b from-[#42275a] to-[#734b6d] pl-5 pt-5 pb-2">
           {rightSide.announcementtitle}
         </h4>
         <div className="pl-5 pr-5 pt-1 pb-5">
           {rightSide ? (
             <div>
-              <p className="text-white break-all text-base font-medium ">
+              <p className="text-white break-all text-base font-medium mb-10">
                 {rightSide.announcemensubdescription}
               </p>
               {/* <p className="text-white break-all text-base font-medium mb-2">

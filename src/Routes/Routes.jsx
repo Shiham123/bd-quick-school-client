@@ -78,42 +78,15 @@ const Router = createBrowserRouter([
     path: '/MyCourses',
     element: <UserDashbordlayout />,
     children: [
-      {
-        index: true,
-        element: <UserHome />,
-      },
-      {
-        path: 'next-step',
-        element: <ImportantNotice />,
-      },
-      {
-        path: 'support',
-        element: <UserSupport />,
-      },
-      {
-        path: 'chat',
-        element: <ChatAsistant />,
-      },
-      {
-        path: 'helpdask',
-        element: <HelpDask />,
-      },
-      {
-        path: 'room/:roomId',
-        element: <Support />,
-      },
-      {
-        path: 'supportSteap',
-        element: <SupportSteap />,
-      },
-      {
-        path: 'Video',
-        element: <Video />,
-      },
-      {
-        path: 'outline',
-        element: <Outline />,
-      },
+      { index: true, element: <UserHome /> },
+      { path: 'next-step', element: <ImportantNotice /> },
+      { path: 'support', element: <UserSupport /> },
+      { path: 'chat', element: <ChatAsistant /> },
+      { path: 'helpdask', element: <HelpDask /> },
+      { path: 'room/:roomId', element: <Support /> },
+      { path: 'supportSteap', element: <SupportSteap /> },
+      { path: 'Video', element: <Video /> },
+      { path: 'outline', element: <Outline /> },
     ],
   },
   {
@@ -142,7 +115,7 @@ const Router = createBrowserRouter([
       {
         path: 'manageannouncements/updateannouncements/:id',
         element: <UpdateAnnouncement />,
-        loader: ({ params }) => fetch(`https://quiz-school-server.vercel.app/api/v1/admin/announcements/${params.id}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/api/v1/admin/announcements/${params.id}`),
       },
     ],
   },

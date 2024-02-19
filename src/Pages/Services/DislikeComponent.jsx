@@ -53,7 +53,9 @@ const DislikeComponent = (props) => {
       ) : (
         <AiOutlineDislike size={70} className="cursor-pointer" onClick={handleDislike} />
       )}
-      <p className="font-bold font-poppins text-4xl gap-8">Total Like this course : {dislikeData?.totalCountDislike}</p>
+      <p className="font-bold font-poppins text-4xl gap-8">
+        Total Like this course : {dislikeData?.totalCountDislike === undefined ? 0 : dislikeData?.totalCountDislike}
+      </p>
     </div>
   );
 };

@@ -148,13 +148,13 @@ const Announcements = () => {
   }, []);
 
   return (
-    <div className="mt-20 font-lora max-w-7xl mx-auto  items-start gap-7  flex flex-col lg:flex-row">
+    <div className="mt-20 font-lora max-w-7xl mx-auto  items-start gap-5 md:gap-2 lg:gap-7  flex flex-col md:flex-row">
       <div className="  ">
         {announcements?.map((item) => (
           <div key={item._id} className="">
             {/* Left side content */}
             <div
-              className={`cursor-pointer flex  gap-5 items-start bg-gradient-to-b from-[#42275a] to-[#734b6d] ml-3 lg:ml-0 w-[400px] md:w-[660px] p-5 rounded-xl mb-5 ${selectedContent === item._id ? 'border-2' : ''
+              className={`cursor-pointer flex  gap-5 items-start bg-gradient-to-b from-[#42275a] to-[#734b6d] ml-3 lg:ml-0 w-[400px] md:w-[300px] lg:w-[660px] p-5 rounded-xl mb-5 ${selectedContent === item._id ? 'border-2' : ''
                 }`}
               onClick={() => handleContentClick(item._id)}
             >
@@ -171,7 +171,7 @@ const Announcements = () => {
         ))}
       </div>
       {/* Right side content */}
-      <div className="custom-scrollbar bg-gradient-to-b from-[#42275a] to-[#734b6d] shadow-xl w-[400px] ml-3 lg:ml-0 lg:w-[710px] h-[500px] overflow-y-auto  rounded-xl">
+      <div className="custom-scrollbar bg-gradient-to-b from-[#42275a] to-[#734b6d] shadow-xl w-[400px] ml-3 lg:ml-0 md:w-[425px] lg:w-[710px] h-[500px] overflow-y-auto  rounded-xl">
         <h4 className="text-white text-xl font-semibold mb-1 sticky overflow-hidden top-0 bg-gradient-to-b from-[#42275a] to-[#734b6d] pl-5 pt-5 pb-2">
           {rightSide.announcementtitle}
         </h4>

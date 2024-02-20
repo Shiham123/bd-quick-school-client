@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
+import { ThreeCircles } from "react-loader-spinner";
 
 const PaymentHistory = () => {
     const { user } = useAuth()
     const axiosPublic = useAxiosPublic()
-    const { data: payments = [], refetch } = useQuery({
+    const { data: payments = [], isLoading, refetch } = useQuery({
         queryKey: ['payments', user?.email],
         queryFn: async () => {
             const res = await axiosPublic.get(`/api/v1/user/order/payment/history/${user?.email}`)
@@ -13,6 +14,27 @@ const PaymentHistory = () => {
             return res.data
         }
     })
+
+    if (isLoading) {
+        return (
+            <div className="container mx-auto">
+                <h2 className="flex justify-center items-center min-h-[60vh]">
+                    <ThreeCircles
+                        height="100"
+                        width="100"
+                        color="#4fa94d"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                        visible={true}
+                        ariaLabel="three-circles-rotating"
+                        outerCircleColor=""
+                        innerCircleColor=""
+                        middleCircleColor=""
+                    />
+                </h2>
+            </div>
+        );
+    }
 
     return (
         <div className="container mx-auto">

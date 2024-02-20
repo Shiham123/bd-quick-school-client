@@ -8,6 +8,10 @@ const HelpDeskShow = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [outcome, setOutcome] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
+  const { register, handleSubmit, reset } = useForm();
+  const [selectedPost, setSelectedPost] = useState(null);
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -20,6 +24,7 @@ const HelpDeskShow = () => {
 
     fetchPosts();
   }, [axiosSecure]);
+
   const formatTimeDifference = (publishedTime) => {
     const currentTime = new Date();
     const timeDifference = currentTime - new Date(publishedTime);
@@ -45,8 +50,7 @@ const HelpDeskShow = () => {
     }
   };
   // make a modal for user comment
-  const [modalOpen, setModalOpen] = useState(false);
-  const { register, handleSubmit, reset } = useForm();
+
   const openModal = () => {
     setModalOpen(true);
   };
@@ -76,11 +80,21 @@ const HelpDeskShow = () => {
     }
   };
 
+  const handlePostClick = async (postId) => {
+    try {
+      const response = await axiosSecure.get(`/api/v1/HelpDeskRoutes/${postId}`); // Fetch post data by ID
+      setSelectedPost(response.data); // Set selected post
+      setModalOpen(true); // Open modal
+    } catch (error) {
+      console.error('Error fetching post:', error);
+    }
+  };
+
   return (
     <>
       <div onClick={openModal}>
         {posts.map((post, index) => (
-          <div key={index} className="post">
+          <div key={index} onClick={() => handlePostClick(post._id)} className="post">
             <div className="card max-w-[1300px] border rounded-xl  bg-[#FFFFFF] border-primary-500 mx-auto shadow-xl">
               <div className="card-body">
                 <div className="flex justify-center items-center gap-5">
@@ -104,21 +118,21 @@ const HelpDeskShow = () => {
                 ✕
               </button>
               <div className="w-full mx-auto ">
-                {posts.map((post, index) => (
-                  <div key={index} className="post">
+                {selectedPost && (
+                  <div className="post">
                     <div className="card max-w-[1300px] border rounded-xl  bg-[#FFFFFF] border-primary-500 mx-auto shadow-xl">
                       <div className="card-body">
                         <div className="flex justify-center items-center gap-5">
                           <img className="rounded-full w-[48px] h-[48px]" src={user?.photoURL} alt="" />
                           <p> {user?.displayName}</p>
                         </div>
-                        <p>{formatTimeDifference(post.date)}</p>
-                        <h2 className="card-title">{post.title}</h2>
-                        <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
+                        <p>{formatTimeDifference(selectedPost.date)}</p>
+                        <h2 className="card-title">{selectedPost.title}</h2>
+                        <div dangerouslySetInnerHTML={{ __html: selectedPost.content }}></div>
                       </div>
                     </div>
                   </div>
-                ))}
+                )}
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="form-control w-full">
                     <label className="label">
@@ -128,28 +142,6 @@ const HelpDeskShow = () => {
                       type="text"
                       placeholder="Title"
                       {...register('title', { required: true })}
-                      className="input input-bordered w-full"
-                    />
-                  </div>
-                  <div className="form-control w-full">
-                    <label className="label">
-                      <span className="label-text">Platform</span>
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Platform"
-                      {...register('platform', { required: true })}
-                      className="input input-bordered w-full"
-                    />
-                  </div>
-                  <div className="form-control w-full">
-                    <label className="label">
-                      <span className="label-text">Post Type</span>
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Post Type"
-                      {...register('postType', { required: true })}
                       className="input input-bordered w-full"
                     />
                   </div>

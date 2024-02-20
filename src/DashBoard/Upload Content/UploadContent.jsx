@@ -66,11 +66,7 @@ const UploadContent = () => {
           <br />
           <br />
           {/* File input field */}
-          <input
-            type="file"
-            className="file-input file-input-bordered w-full max-w-xs"
-            onChange={(e) => setVideo(e.target.files[0])}
-          />
+          <input type="file" className="file-input file-input-bordered w-full max-w-xs" onChange={(e) => setVideo(e.target.files[0])} />
           <br />
           <br />
           {/* Submit button */}

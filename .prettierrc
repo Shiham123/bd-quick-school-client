@@ -5,5 +5,5 @@
   "trailingComma": "es5",
   "array": "single-line",
   "object": "single-line",
-  "printWidth": 100
+  "printWidth": 140
 }

@@ -9,11 +9,7 @@ const Services = () => {
   return (
     <div>
       <Services_banner></Services_banner>
-<<<<<<< HEAD
-      <div className="py-16 w-[90%] md:w-[75%]  mx-auto text-white">
-=======
       <div className="py-16 max-w-7xl mx-auto text-white">
->>>>>>> f6f651ceafbacbf69ff8e2b6c330dacba19304dd
         {isLoading ? (
           <h2 className="flex justify-center items-center min-h-[60vh]">
             <ThreeCircles

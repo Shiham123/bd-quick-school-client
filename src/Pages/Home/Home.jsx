@@ -12,7 +12,7 @@ import Work from '../How It Works/Work';
 import ChooseUs from '../Why Choose Us/ChooseUs';
 import CoursesType from '../Courses_Type/CoursesType';
 import ReviewForm from '../Review/ReviewForm';
-import OurTeam2 from '../OurTeam/OurTeam2';
+
 
 
 
@@ -21,7 +21,7 @@ const Home = () => {
   return (
     <div>
       <Banner />
-      <OurTeam2></OurTeam2>
+    
     <Counter></Counter>
       <Courses />
       <Work />

@@ -211,15 +211,16 @@ const AddServices = () => {
                   defaultValue={selectedOption}
                   onChange={setSelectedOption}
                   options={category}
+                  style={{ width: '2000px', height: '1140px', borderWidth: '10px', borderStyle: 'solid', }} 
                   //for color
                   theme={(theme) => ({
                     ...theme,
                     borderRadius: 0,
                     colors: {
                       ...theme.colors,
-                      text: 'black',
-                      primary25: '#B75CFF',
-                      primary: '#8F00FF ',
+                      text: 'white',
+                      // primary25: 'black',
+                      primary: 'black ',
                       font: 'extrabold',
                       // #B75CFF,#8F00FF
                     },

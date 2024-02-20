@@ -10,7 +10,7 @@ const Announcements = () => {
   const handleContentClick = (content) => {
     setSelectedContent(content);
     axios
-      .get(`https://quiz-school-server.vercel.app/api/v1/admin/announcements/${content}`)
+      .get(`http://localhost:5000/api/v1/admin/announcements/${content}`)
       .then((response) => {
         setRightSide(response.data);
         console.log(response.data);
@@ -23,7 +23,7 @@ const Announcements = () => {
   useEffect(() => {
     // Fetch data from the API endpoint
     axios
-      .get('https://quiz-school-server.vercel.app/api/v1/admin/announcement')
+      .get('http://localhost:5000/api/v1/admin/announcement')
       .then((response) => {
         setAnnouncements(response.data);
       })

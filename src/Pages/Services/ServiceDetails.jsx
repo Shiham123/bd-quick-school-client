@@ -20,6 +20,7 @@ import useAuth from '../../Hooks/useAuth/useAuth';
 import { useGetIdBasedServicesQuery } from '../../redux/services/ServicesApiSlice';
 import LikeComponent from './LikeComponent';
 import DislikeComponent from './DislikeComponent';
+import ServicesBookmark from './ServicesBookmark';
 
 const ServiceDetails = () => {
   const { id } = useParams();
@@ -238,6 +239,7 @@ const ServiceDetails = () => {
         <LikeComponent loggedInUserEmail={loggedInUserEmail} currentProductId={currentProductId} />
         <DislikeComponent loggedInUserEmail={loggedInUserEmail} currentProductId={currentProductId} />
       </Box>
+      <ServicesBookmark currentProductId={currentProductId} loggedInUserEmail={loggedInUserEmail} />
       <hr className="my-16" />
     </Box>
   );

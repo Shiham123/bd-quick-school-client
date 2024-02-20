@@ -160,15 +160,6 @@ const UserNavbar = () => {
                 <NavLink
                   style={activeRouteStyle}
                   className=" hover:text-[#deb2ac] uppercase font-medium"
-                  to={`support`}
-                >
-                  {t('Support')}
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  style={activeRouteStyle}
-                  className=" hover:text-[#deb2ac] uppercase font-medium"
                   to={`chat`}
                 >
                   Chat assistant

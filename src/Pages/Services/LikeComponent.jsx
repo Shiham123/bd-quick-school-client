@@ -5,7 +5,6 @@ import { useQuery } from '@tanstack/react-query';
 
 const LikeComponent = (props) => {
   const { currentProductId, loggedInUserEmail } = props;
-
   const [isLiked, setIsLiked] = useState(false);
   const axiosPublic = useAxiosPublic();
 

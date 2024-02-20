@@ -10,15 +10,14 @@ import Select from 'react-select';
 
 // react select options
 const category = [
-  { value: 'Admission Test', label: 'Admission Test' },
-  { value: 'Job Preparation', label: 'Job Preparation' },
-  { value: 'Our Services', label: 'Our Services' },
+  { value: 'Admission-Test', label: 'Admission-Test' },
+  { value: 'Job-Preparation', label: 'Job-Preparation' },
+  { value: 'Our-Services', label: 'Our-Services' },
  
 ];
 
-
 const AddServices = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(null);  // for react select
   const { register, handleSubmit, reset } = useForm();
   const [outcome, setOutcome] = useState('');
   const [AddServices] = useAddServicesMutation();
@@ -62,7 +61,7 @@ const AddServices = () => {
       shortdescription: data?.shortdescription,
       price: data?.price,
       details: data?.details,
-      category : selectedOption ? selectedOption.value : null, // Get selected rating value
+      category : selectedOption ? selectedOption.value : null, // Get selected  value
       outcome,
       teacherImage: teacherImageUrl,
       teachername: data?.teachername,
@@ -192,7 +191,8 @@ const AddServices = () => {
                 />
               </div>
 
-              {/* react select use */}
+              {/* react select use for category*/}
+
 
               <div className="col-span-full lg:col-span-3">
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">
@@ -205,8 +205,8 @@ const AddServices = () => {
                   {...register('category')}
                   placeholder="Category"
                   id=""
-                  
                 /> */}
+
                 <Select
                   defaultValue={selectedOption}
                   onChange={setSelectedOption}
@@ -227,6 +227,8 @@ const AddServices = () => {
                   })}
                 />
               </div>
+
+
               {/* <div className="form-control w-full">
                 <label className="label">
                   <span className="label-text text-xl font-bold font-lora">Rating</span>
@@ -256,6 +258,7 @@ const AddServices = () => {
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">
                   Course Outcome <span className="text-red-700">*</span>
                 </h2>
+
                 <ReactQuill
                   modules={modules}
                   className="h-32 mb-12"
@@ -284,6 +287,7 @@ const AddServices = () => {
                       <svg
                         className="w-8 h-8 mb-4 text-black"
                         aria-hidden="true"
+
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 20 16"

@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import Select from 'react-select';
 
 // react select options
+// react select options
 const category = [
   { value: 'Admission-Test', label: 'Admission-Test' },
   { value: 'Job-Preparation', label: 'Job-Preparation' },

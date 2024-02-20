@@ -6,8 +6,19 @@ import 'react-quill/dist/quill.snow.css';
 import { useAddServicesMutation } from '../../redux/services/ServicesApiSlice';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
+import Select from 'react-select';
+
+// react select options
+const category = [
+  { value: 'Admission Test', label: 'Admission Test' },
+  { value: 'Job Preparation', label: 'Job Preparation' },
+  { value: 'Our Services', label: 'Our Services' },
+ 
+];
+
 
 const AddServices = () => {
+  const [selectedOption, setSelectedOption] = useState(null);
   const { register, handleSubmit, reset } = useForm();
   const [outcome, setOutcome] = useState('');
   const [AddServices] = useAddServicesMutation();
@@ -51,6 +62,7 @@ const AddServices = () => {
       shortdescription: data?.shortdescription,
       price: data?.price,
       details: data?.details,
+      category : selectedOption ? selectedOption.value : null, // Get selected rating value
       outcome,
       teacherImage: teacherImageUrl,
       teachername: data?.teachername,
@@ -150,6 +162,7 @@ const AddServices = () => {
                   id=""
                 />
               </div>
+
               {/* Course Price */}
               <div className="col-span-full lg:col-span-3">
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">
@@ -178,6 +191,65 @@ const AddServices = () => {
                   id=""
                 />
               </div>
+
+              {/* react select use */}
+
+              <div className="col-span-full lg:col-span-3">
+                <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">
+                  Category Name  <span className="text-red-700">*</span>
+                </h2>
+                {/* <input
+                  className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded"
+                  type="text"
+                  name="category"
+                  {...register('category')}
+                  placeholder="Category"
+                  id=""
+                  
+                /> */}
+                <Select
+                  defaultValue={selectedOption}
+                  onChange={setSelectedOption}
+                  options={category}
+                  //for color
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 0,
+                    colors: {
+                      ...theme.colors,
+                      text: 'black',
+                      primary25: '#B75CFF',
+                      primary: '#8F00FF ',
+                      font: 'extrabold',
+                      // #B75CFF,#8F00FF
+                    },
+                  })}
+                />
+              </div>
+              {/* <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text text-xl font-bold font-lora">Rating</span>
+                </label>
+                <Select
+                  defaultValue={selectedOption}
+                  onChange={setSelectedOption}
+                  options={Rating}
+                  //for color
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 0,
+                    colors: {
+                      ...theme.colors,
+                      text: 'black',
+                      primary25: '#B75CFF',
+                      primary: '#8F00FF ',
+                      font: 'extrabold',
+                    },
+                  })}
+                />
+              </div> */}
+
+
               {/* Course Outcome */}
               <div className="col-span-full">
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">
@@ -295,6 +367,7 @@ const AddServices = () => {
                   id=""
                 />
               </div>
+            
             </div>
           </fieldset>
 

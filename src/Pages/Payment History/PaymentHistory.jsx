@@ -38,12 +38,12 @@ const PaymentHistory = () => {
 
     return (
         <div className="container mx-auto">
-            <h1 className="text-white text-3xl font-semibold mb-10 mt-10 text-center">Payment</h1>
+            <h1 className="text-white text-3xl font-semibold mb-10 mt-10 text-center font-cinzel">Payment</h1>
             {
                 payments.length === 0 ? (
-                    <p className="text-white text-4xl text-center pt-20">No payments Found</p>
+                    <p className="text-white text-4xl text-center pt-20 font-lora">No payments Found</p>
                 ) : (
-                    <div className="overflow-x-auto">
+                    <div className="overflow-x-auto font-lora">
                         <table className="table">
                             {/* head */}
                             <thead>

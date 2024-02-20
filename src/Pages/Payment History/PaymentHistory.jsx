@@ -38,6 +38,7 @@ const PaymentHistory = () => {
 
     return (
         <div className="container mx-auto">
+            <h1 className="text-white text-3xl font-semibold mb-10 mt-10 text-center">Payment</h1>
             {
                 payments.length === 0 ? (
                     <p className="text-white text-4xl text-center pt-20">No payments Found</p>

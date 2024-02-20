@@ -5,7 +5,6 @@ import { useQuery } from '@tanstack/react-query';
 
 const LikeComponent = (props) => {
   const { currentProductId, loggedInUserEmail } = props;
-
   const [isLiked, setIsLiked] = useState(false);
   const axiosPublic = useAxiosPublic();
 
@@ -70,7 +69,9 @@ const LikeComponent = (props) => {
           </button>
         </>
       )}
-      <p className="font-bold font-poppins text-4xl gap-8">Total Like this course : {likedData?.totalCountLikes}</p>
+      <p className="font-bold font-poppins text-4xl gap-8">
+        Total Like this course : {likedData?.totalCountLikes === undefined ? 0 : likedData?.totalCountLikes}
+      </p>
     </div>
   );
 };

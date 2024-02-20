@@ -10,7 +10,6 @@ export default {
         servicesBg: '#654168',
         backgroundColor1: '#2A9D8F',
         backgroundColor2: '#363A59',
-        
       },
     },
     fontFamily: {

@@ -26,7 +26,7 @@ const Services = () => {
             />
           </h2>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-3 md:gap-5 lg:gap-10 py-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-3 lg:mx-0 gap-3 md:gap-5 lg:gap-10 py-10">
             {data?.map((service) => (
               <Link to={`/ServiceDetails/${service._id}`} key={service._id}>
                 <div
@@ -35,15 +35,15 @@ const Services = () => {
                 >
                   <img className="w-full  rounded-t-xl  " src={service.image} alt="" />
                   <div className="p-4">
-                    <h2 className=" md:text-2xl lg:text-3xl font-bold py-6 font-cinzel">{service.title}</h2>
-                    <p className=" text-lg  font-lora">{service.shortdescription}</p>
+                    <h2 className="text-xl md:text-2xl lg:text-3xl font-bold py-6 font-cinzel">{service.title}</h2>
+                    <p className=" md:text-lg lg:text-xl font-lora">{service.shortdescription}</p>
                     <div className="flex justify-between items-center mb-2 font-lora">
                       <div className="flex items-center justify-start gap-2">
                         <img className="w-[30px] h-[30px] rounded-full" src={service.teacherImage} alt="" />
                         <p className="text-lg lg:text-2xl font-bold">{service.teachername}</p>
                       </div>
 
-                      <p className="py-4 text-lg md:text-2xl font-bold">Price: ${service.price}</p>
+                      <p className="py-4 text-lg md:text-2xl font-bold">Price: $ {service.price}</p>
                     </div>
 
                     <button className=" text-white font-bold py-2 px-4 border rounded font-cinzel">

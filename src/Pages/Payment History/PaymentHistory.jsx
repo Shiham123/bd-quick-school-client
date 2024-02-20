@@ -20,28 +20,28 @@ const PaymentHistory = () => {
                 payments.length === 0 ? (
                     <p className="text-white text-4xl text-center pt-20">No payments Found</p>
                 ) : (
-                    <div >
-                        <table className="table ">
+                    <div className="overflow-x-auto">
+                        <table className="table">
                             {/* head */}
                             <thead>
                                 <tr>
-                                    <th className="text-white text-xl">Number</th>
-                                    <th className="text-white text-xl">Title</th>
-                                    <th className="text-white text-xl">Name</th>
-                                    <th className="text-white text-xl">Price</th>
-                                    <th className="text-white text-xl">Transjection Id</th>
-                                    <th className="text-white text-xl">Time</th>
+                                    <th className="text-white text-xl text-center border border-gray-400 border-collapse">Number</th>
+                                    <th className="text-white text-xl text-center border border-gray-400 border-collapse">Title</th>
+                                    <th className="text-white text-xl text-center border border-gray-400 border-collapse">Name</th>
+                                    <th className="text-white text-xl text-center border border-gray-400 border-collapse">Price</th>
+                                    <th className="text-white text-xl text-center border border-gray-400 border-collapse">Transjection Id</th>
+                                    <th className="text-white text-xl text-center border border-gray-400 border-collapse">Time</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
                                     payments.map((item, index) => <tr key={item._id}>
-                                        <th className="text-white">{index + 1}</th>
-                                        <td className="text-white">{item.productDetails.title}</td>
-                                        <td className="text-white">{item.orderUser.name}</td>
-                                        <td className="text-white">{item.productDetails.price}</td>
-                                        <td className="text-white">{item.tranjactionId}</td>
-                                        <td className="text-white">{item.time}</td>
+                                        <th className="text-white border text-center border-gray-400 border-collapse">{index + 1}</th>
+                                        <td className="text-white border text-center border-gray-400 border-collapse">{item.productDetails.title}</td>
+                                        <td className="text-white border text-center border-gray-400 border-collapse">{item.orderUser.name}</td>
+                                        <td className="text-white border text-center border-gray-400 border-collapse">{item.productDetails.price}</td>
+                                        <td className="text-white border text-center border-gray-400 border-collapse">{item.tranjactionId}</td>
+                                        <td className="text-white border text-center border-gray-400 border-collapse">{item.time}</td>
                                     </tr>)
                                 }
                             </tbody>

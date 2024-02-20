@@ -33,7 +33,7 @@ const Services = () => {
                   key={service.Id}
                   className="cursor-pointer  text-white rounded-xl shadow-2xl shadow-[#2980b9] border"
                 >
-                  <img className="w-full  rounded-t-xl  " src={service.image} alt="" />
+                  <img className="w-full rounded-t-xl  " src={service.image} alt="" />
                   <div className="p-4">
                     <h2 className="text-xl md:text-2xl lg:text-3xl font-bold py-6 font-cinzel">{service.title}</h2>
                     <p className=" md:text-lg lg:text-xl font-lora">{service.shortdescription}</p>

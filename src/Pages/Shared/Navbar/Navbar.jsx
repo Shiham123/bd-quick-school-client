@@ -7,7 +7,7 @@ import useAuth from './../../../Hooks/useAuth/useAuth';
 import { ThemeContext } from '../../../context/Darkmode';
 import { useTranslation } from 'react-i18next';
 import VerifyAdmin from '../../../Hooks/useAdmin/useAdmin';
-import NavbarBgChange from './NavbarBgChange';
+
 
 const Navbar = () => {
   const [stickyClass, setStickyClass] = useState('');
@@ -288,7 +288,7 @@ const Navbar = () => {
               <button onClick={() => handelChangeLng('bn')}> বাং</button>
             </li>
 
-            <NavbarBgChange />
+            {/* <NavbarBgChange /> */}
           </div>
 
           {/* background color change */}

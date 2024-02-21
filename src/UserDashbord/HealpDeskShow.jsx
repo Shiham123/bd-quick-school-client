@@ -11,7 +11,9 @@ const HelpDeskShow = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const { register, handleSubmit, reset } = useForm();
   const [selectedPost, setSelectedPost] = useState(null);
+  const [comments, setComments] = useState([]);
 
+  // get post data
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -24,6 +26,23 @@ const HelpDeskShow = () => {
 
     fetchPosts();
   }, [axiosSecure]);
+
+  // // get comments data
+  useEffect(() => {
+    const fetchComments = async () => {
+      if (selectedPost) {
+        try {
+          const commentResponse = await axiosSecure.get(`/api/v1/CommentRoutes/${selectedPost._id}`);
+          setComments(commentResponse.data);
+          console.log(commentResponse.data);
+        } catch (error) {
+          console.error('Error fetching comments:', error);
+        }
+      }
+    };
+
+    fetchComments();
+  }, [axiosSecure, selectedPost]);
 
   const formatTimeDifference = (publishedTime) => {
     const currentTime = new Date();
@@ -64,7 +83,7 @@ const HelpDeskShow = () => {
       date: new Date().toISOString(),
       userEmail: user.email,
       userPhoto: user.photoURL,
-      postId: selectedPost._id, 
+      postId: selectedPost._id,
     };
 
     try {
@@ -104,6 +123,8 @@ const HelpDeskShow = () => {
                 <p>{formatTimeDifference(post.date)}</p>
                 <h2 className="card-title">{post.title}</h2>
                 <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
+                <p>{comments.filter((comment) => comment.postId === post._id).length} comments</p>
+                {/* show comment data  */}
               </div>
             </div>
           </div>
@@ -129,6 +150,19 @@ const HelpDeskShow = () => {
                       <h2 className="card-title">{selectedPost.title}</h2>
                       <div dangerouslySetInnerHTML={{ __html: selectedPost.content }}></div>
                     </div>
+                    <h3>Comments</h3>
+                    <ul>
+                      {comments.map((comment, index) => (
+                        <li key={index}>
+                          <div className="flex  items-center gap-5">
+                            <img className="rounded-full w-[48px] h-[48px]" src={user?.photoURL} alt="" />
+                            <p> {user?.displayName}</p>
+                            <p>{formatTimeDifference(comment.date)}</p>
+                          </div>
+                          <p className="text-start px-16 bg-slate-400"> {comment.Comment}</p>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 )}
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -151,7 +185,7 @@ const HelpDeskShow = () => {
                     </div>{' '}
                   </div>
                 </form>
-                
+                {/* show comments  */}
               </div>
             </div>
           </div>

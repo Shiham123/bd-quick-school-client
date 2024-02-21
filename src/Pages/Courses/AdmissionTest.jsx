@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const AdmissionTest = () => {
   // store data in state
@@ -60,9 +61,15 @@ const AdmissionTest = () => {
                 {/* <h2 className="text-xl">{admission.shortdescription}</h2> */}
                 <h2 className="text-base py-3">Teacher Name: {admission.teachername}</h2>
                 <h2 className="text-base">Course Price: $ {admission.price}</h2>
-                <button className="bg-white text-black font-bold py-1 px-3 border-b-4 border-borderColorOne hover:border-black rounded my-4">
-                  Purchase
-                </button>
+
+                <Link to={`/admissiondetails/${admission._id}`} key={admission._id}>
+                  <button className="bg-white text-black font-bold py-1 px-3 border-b-4 border-borderColorOne hover:border-black rounded my-4">
+                    Purchase
+                  </button>
+                
+                </Link>
+
+               
               </div>
             </div>
           ))}

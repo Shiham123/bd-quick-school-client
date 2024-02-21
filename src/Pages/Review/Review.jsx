@@ -45,7 +45,7 @@ const Review = () => {
 
   return (
     <div>
-      <div className=" lg:px-20">
+      <div className=" lg:px-20 mb-40">
         <div className="mt-16">
           <div className="container mx-auto">
             <h2 className="text-2xl font-cinzel lg:text-5xl text-center  font-bold  text-white mb-5 ">
@@ -112,7 +112,7 @@ const Review = () => {
         </div>
       </div>
 
-      
+     
     </div>
   );
 };

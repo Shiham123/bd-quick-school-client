@@ -61,7 +61,7 @@ const ReviewForm = () => {
   };
 
   return (
-    <div>
+    <div className=''>
       <div className="card-actions justify-end">
         <button
           className="btn bg-violet-500 text-white text-2xl text-center w-[250px] mx-auto font-bold mb-[150px]"
@@ -144,7 +144,7 @@ const ReviewForm = () => {
       </div>
 
       {/* for horizontal line */}
-      <hr className="w-[400px] mx-auto my-28 border-2" />
+      <hr className="w-[400px] mx-auto my- border-2 mb-32" />
 
     </div>
   );

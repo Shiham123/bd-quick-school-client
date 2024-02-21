@@ -98,6 +98,7 @@ const Review = () => {
                     </div>
 
                     {/* rating,status */}
+             
 
                     <div className="card-body  px-6 py-10">
                       <p className="w-full text-start mx-auto text-base font-lora">{post.textarea}</p>
@@ -107,6 +108,7 @@ const Review = () => {
                       <p className=" ">
                         <Rating itemStyles={myStyles} style={{ maxWidth: 90 }} value={post.rating} readOnly />
                       </p>
+                      {/* p tag */}
                     </div>
                   </div>
                 </div>

@@ -45,6 +45,10 @@ const Review = () => {
 
   return (
     <div>
+      for horizontal line
+      <hr className="w-[400px] mx-auto my- border-2 my-32 " />
+
+
       <div className=" lg:px-20 mb-40">
         <div className="mt-16">
           <div className="container mx-auto">

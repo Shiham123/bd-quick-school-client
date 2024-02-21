@@ -48,6 +48,7 @@ const AddServices = () => {
 
       return response.data.data.display_url;
     };
+  
 
     // Upload both images concurrently
     const [courseImageUrl, teacherImageUrl] = await Promise.all([

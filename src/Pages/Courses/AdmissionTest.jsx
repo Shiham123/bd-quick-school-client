@@ -9,7 +9,7 @@ const AdmissionTest = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('Admission_test.json');
+        const response = await axios.get('http://localhost:5000/api/v2/getAdmission');
         setAdmissionTest(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);

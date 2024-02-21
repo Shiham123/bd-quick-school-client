@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 const category = [
   { value: 'Admission-Test', label: 'Admission-Test' },
   { value: 'Job-Preparation', label: 'Job-Preparation' },
-  { value: 'Our-Services', label: 'Our-Services' },
+  // { value: 'Our-Services', label: 'Our-Services' },
 
 ];
 

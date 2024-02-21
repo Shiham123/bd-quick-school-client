@@ -46,6 +46,9 @@ import HelpDask from '../UserDashbord/HelpDask';
 import UserCOurse from '../UserDashbord/UserCOurse';
 import JobpreDetails from '../Pages/Courses/JobpreDetails';
 import AdmissionDetails from '../Pages/Courses/AdmissionDetails';
+import FreeJobPreDetails from '../Pages/Courses/FreeJobPreDetails';
+
+
 
 const Router = createBrowserRouter([
   {
@@ -58,6 +61,13 @@ const Router = createBrowserRouter([
         path: 'jobdetails/:id',
         element: <JobpreDetails></JobpreDetails>,
         loader: ({ params }) => fetch(`http://localhost:5000/api/v2/getJob/${params.id}`)
+
+      },
+     
+      {
+        path: 'freeCoursejobdetails/:id',
+        element:<FreeJobPreDetails></FreeJobPreDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/api/v2/getFreeJob/${params.id}`)
 
       },
       {

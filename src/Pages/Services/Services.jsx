@@ -29,6 +29,7 @@ const Services = () => {
           <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-3 lg:mx-0 gap-3 md:gap-5 lg:gap-10 py-10">
             {data?.map((service) => (
               <Link to={`/ServiceDetails/${service._id}`} key={service._id}>
+                
                 <div
                   key={service.Id}
                   className="cursor-pointer  text-white rounded-xl shadow-2xl shadow-[#2980b9]  "

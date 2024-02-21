@@ -112,8 +112,7 @@ const Review = () => {
         </div>
       </div>
 
-      {/* for horizontal line */}
-      <hr className="w-[400px] mx-auto my-32 border-2" />
+      
     </div>
   );
 };

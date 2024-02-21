@@ -142,6 +142,10 @@ const ReviewForm = () => {
           </div>
         </dialog>
       </div>
+
+      {/* for horizontal line */}
+      <hr className="w-[400px] mx-auto my-28 border-2" />
+
     </div>
   );
 };

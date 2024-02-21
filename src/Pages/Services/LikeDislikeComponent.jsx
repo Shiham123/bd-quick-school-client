@@ -9,25 +9,7 @@ const LikeDislikeComponent = (props) => {
   const [isDisliked, setIsDisliked] = useState(false);
   const axiosPublic = useAxiosPublic();
 
-  const handleLike = async () => {
-    const likePayload = { loggedInUserEmail, currentProductId };
-    await axiosPublic
-      .post('/api/v2/like', likePayload) // post like to the database
-      .then(() => {
-        setIsLiked(true);
-      })
-      .catch((error) => console.log(error));
-  };
-
-  const handleLikeDelete = async (id, email) => {
-    await axiosPublic
-      .delete(`/api/v2/delete/like/${id}/${email}`) // like delete from database based on id end email
-      .then(() => {
-        setIsLiked(false);
-      })
-      .catch((error) => console.log(error));
-  };
-
+  // check from database is user liked ?
   useEffect(() => {
     axiosPublic
       .get(`/api/v2/like/verify/${loggedInUserEmail}/${currentProductId}`) // get the status based on id and is user like or not
@@ -40,22 +22,7 @@ const LikeDislikeComponent = (props) => {
       });
   }, [axiosPublic, currentProductId, loggedInUserEmail]);
 
-  const { data: likedData } = useQuery({
-    queryKey: ['likedData', currentProductId],
-    queryFn: async () => {
-      const response = await axiosPublic.get(`/api/v2/like/${currentProductId}`); // get the total amount of like
-      return response.data;
-    },
-  });
-
-  const { data: dislikeData } = useQuery({
-    queryKey: ['dislikeData', currentProductId],
-    queryFn: async () => {
-      const response = await axiosPublic.get(`/api/v2/dislike/${currentProductId}`);
-      return response.data;
-    },
-  });
-
+  // check from database is user disliked ?
   useEffect(() => {
     axiosPublic(`/api/v2/dislike/verify/${loggedInUserEmail}/${currentProductId}`)
       .then((response) => {
@@ -65,21 +32,66 @@ const LikeDislikeComponent = (props) => {
       .catch((error) => console.log(error));
   }, [axiosPublic, currentProductId, loggedInUserEmail]);
 
+  // get liked data from database
+  const { data: likedData, refetch: fetchLiked } = useQuery({
+    queryKey: ['likedData', currentProductId],
+    queryFn: async () => {
+      const response = await axiosPublic.get(`/api/v2/like/${currentProductId}`); // get the total amount of like
+      return response.data;
+    },
+  });
+
+  // get disliked data from database
+  const { data: dislikeData, refetch: fetchDisliked } = useQuery({
+    queryKey: ['dislikeData', currentProductId],
+    queryFn: async () => {
+      const response = await axiosPublic.get(`/api/v2/dislike/${currentProductId}`);
+      return response.data;
+    },
+  });
+
+  // like posted to the database
+  const handleLike = async () => {
+    const likePayload = { loggedInUserEmail, currentProductId };
+    await axiosPublic
+      .post('/api/v2/like', likePayload) // post like to the database
+      .then(() => {
+        setIsLiked(true);
+        fetchLiked();
+      })
+      .catch((error) => console.log(error));
+  };
+
+  // handle dislike posted in database
   const handleDislike = async () => {
     const dislikePayload = { loggedInUserEmail, currentProductId };
     await axiosPublic
       .post('/api/v2/dislike', dislikePayload)
       .then(() => {
         setIsDisliked(true);
+        fetchDisliked();
       })
       .catch((error) => console.log(error));
   };
 
+  // like delete based on id and email
+  const handleLikeDelete = async (id, email) => {
+    await axiosPublic
+      .delete(`/api/v2/delete/like/${id}/${email}`) // like delete from database based on id end email
+      .then(() => {
+        setIsLiked(false);
+        fetchLiked();
+      })
+      .catch((error) => console.log(error));
+  };
+
+  // dislike delete based on id and email
   const handleDislikeDelete = async (id, email) => {
     await axiosPublic
       .delete(`/api/v2/dislike/delete/${id}/${email}`)
       .then(() => {
         setIsDisliked(false);
+        fetchDisliked();
       })
       .catch((error) => console.log(error));
   };

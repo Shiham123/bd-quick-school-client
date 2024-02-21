@@ -7,6 +7,7 @@ import useAuth from './../../../Hooks/useAuth/useAuth';
 import { ThemeContext } from '../../../context/Darkmode';
 import { useTranslation } from 'react-i18next';
 import VerifyAdmin from '../../../Hooks/useAdmin/useAdmin';
+import { IoNotifications } from "react-icons/io5";
 
 
 const Navbar = () => {
@@ -275,6 +276,9 @@ const Navbar = () => {
                   {t('MyCourses')}
                 </NavLink>
               </li>
+              <div className='ml-4 mr-4 '>
+                <IoNotifications className='text-white text-2xl' />
+              </div>
 
               {/* -------end here navbar without drop down */}
               {/* dak lite  */}

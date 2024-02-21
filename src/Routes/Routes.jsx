@@ -45,6 +45,7 @@ import ChatAsistant from '../UserDashbord/ChatAsistant';
 import HelpDask from '../UserDashbord/HelpDask';
 import UserCOurse from '../UserDashbord/UserCOurse';
 import Bookmark from '../Components/Bookmark/Bookmark';
+import PaymentHistory from '../Pages/Payment History/PaymentHistory';
 
 const Router = createBrowserRouter([
   {
@@ -68,6 +69,7 @@ const Router = createBrowserRouter([
         ),
       },
       { path: 'myprofile', element: <MyProfile /> },
+      { path: 'paymenthistory', element: <PaymentHistory /> },
       { path: 'announcements', element: <Announcements /> },
       { path: '/ServiceDetails/:id', element: <ServiceDetails /> },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },

@@ -13,7 +13,7 @@ import Select from 'react-select';
 const category = [
   { value: 'Admission-Test', label: 'Admission-Test' },
   { value: 'Job-Preparation', label: 'Job-Preparation' },
-  { value: 'Our-Services', label: 'Our-Services' },
+  // { value: 'Our-Services', label: 'Our-Services' },
  
 ];
 
@@ -30,6 +30,9 @@ const AddServices = () => {
 
   //
   const onSubmit = async (data) => {
+
+    setSelectedOption(null);
+
     //image send to the hosting site
     const { imageFile, teacherImageFile } = data;
     // Function to upload an image and return the URL
@@ -74,7 +77,9 @@ const AddServices = () => {
     AddServices(formData)
       .unwrap()
       .then(() => {
+        setSelectedOption(null);
         Swal.fire('Services Add SuccessFully');
+        
         reset();
         setOutcome(null);
       });
@@ -210,10 +215,11 @@ const AddServices = () => {
                 /> */}
 
                 <Select
-                  defaultValue={selectedOption}
+                  Value={selectedOption}
                   onChange={setSelectedOption}
                   options={category}
                   style={{ width: '2000px', height: '1140px', borderWidth: '10px', borderStyle: 'solid', }} 
+                  isClearable={true}
                   //for color
                   theme={(theme) => ({
                     ...theme,

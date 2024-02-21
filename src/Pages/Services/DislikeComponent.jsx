@@ -4,9 +4,13 @@ import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 
 const DislikeComponent = (props) => {
-  const { currentProductId, loggedInUserEmail } = props;
+  const { currentProductId, loggedInUserEmail, handleLikeDislike } = props;
   const axiosPublic = useAxiosPublic();
   const [isDisliked, setIsDisliked] = useState(false);
+
+  const handleFromDislike = () => {
+    handleLikeDislike();
+  };
 
   const { data: dislikeData, refetch } = useQuery({
     queryKey: ['dislikeData', currentProductId],
@@ -26,6 +30,7 @@ const DislikeComponent = (props) => {
   }, [axiosPublic, currentProductId, loggedInUserEmail]);
 
   const handleDislike = async () => {
+    handleFromDislike();
     const dislikePayload = { loggedInUserEmail, currentProductId };
     await axiosPublic
       .post('/api/v2/dislike', dislikePayload)

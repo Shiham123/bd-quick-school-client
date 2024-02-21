@@ -21,6 +21,7 @@ import { useGetIdBasedServicesQuery } from '../../redux/services/ServicesApiSlic
 import LikeComponent from './LikeComponent';
 import DislikeComponent from './DislikeComponent';
 import ServicesBookmark from './ServicesBookmark';
+import { useCallback } from 'react';
 
 const ServiceDetails = () => {
   const { id } = useParams();
@@ -28,6 +29,8 @@ const ServiceDetails = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
   const { data, isLoading } = useGetIdBasedServicesQuery(id);
+
+  const handleLikeDislike = useCallback(() => {}, []);
 
   const loggedInUserEmail = user?.email, // destructuring the value
     currentProductId = data?._id;
@@ -236,8 +239,8 @@ const ServiceDetails = () => {
       </Grid>
 
       <Box className="flex gap-8">
-        <LikeComponent loggedInUserEmail={loggedInUserEmail} currentProductId={currentProductId} />
-        <DislikeComponent loggedInUserEmail={loggedInUserEmail} currentProductId={currentProductId} />
+        <LikeComponent loggedInUserEmail={loggedInUserEmail} currentProductId={currentProductId} handleLikeDislike={handleLikeDislike} />
+        <DislikeComponent loggedInUserEmail={loggedInUserEmail} currentProductId={currentProductId} handleLikeDislike={handleLikeDislike} />
       </Box>
       <ServicesBookmark currentProductId={currentProductId} loggedInUserEmail={loggedInUserEmail} />
       <hr className="my-16" />

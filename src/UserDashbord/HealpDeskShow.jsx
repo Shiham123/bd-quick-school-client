@@ -101,9 +101,9 @@ const HelpDeskShow = () => {
 
   const handlePostClick = async (postId) => {
     try {
-      const response = await axiosSecure.get(`/api/v1/HelpDeskRoutes/${postId}`); // Fetch post data by ID
-      setSelectedPost(response.data); // Set selected post
-      setModalOpen(true); // Open modal
+      const response = await axiosSecure.get(`/api/v1/HelpDeskRoutes/${postId}`); 
+      setSelectedPost(response.data);
+      setModalOpen(true); 
     } catch (error) {
       console.error('Error fetching post:', error);
     }
@@ -137,6 +137,7 @@ const HelpDeskShow = () => {
             <div className="relative bg-white rounded-lg w-full md:w-1/2 mx-auto p-6">
               <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onClick={closeModal}>
                 ✕
+                
               </button>
               <div className="w-full mx-auto ">
                 {selectedPost && (

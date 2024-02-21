@@ -58,6 +58,9 @@ const LikeDislikeComponent = (props) => {
       .then(() => {
         setIsLiked(true);
         fetchLiked();
+        if (isDisliked) {
+          handleDislikeDelete(currentProductId, loggedInUserEmail);
+        }
       })
       .catch((error) => console.log(error));
   };
@@ -70,6 +73,9 @@ const LikeDislikeComponent = (props) => {
       .then(() => {
         setIsDisliked(true);
         fetchDisliked();
+        if (isLiked) {
+          handleLikeDelete(currentProductId, loggedInUserEmail);
+        }
       })
       .catch((error) => console.log(error));
   };
@@ -93,7 +99,7 @@ const LikeDislikeComponent = (props) => {
         setIsDisliked(false);
         fetchDisliked();
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error.response.data));
   };
 
   return (

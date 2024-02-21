@@ -16,6 +16,7 @@ const Navbar = () => {
   const { darkMode, setDarkMode } = useContext(ThemeContext);
   const { t, i18n } = useTranslation();
   const [isAdmin] = VerifyAdmin();
+  const [showNotificationDropdown, setShowNotificationDropdown] = useState(false);
 
   const handleLogOut = () => {
     logOut()
@@ -55,6 +56,11 @@ const Navbar = () => {
   const handelChangeLng = (lng) => {
     i18n.changeLanguage(lng);
     localStorage.setItem('lng', lng);
+  };
+
+  // Toggle notification dropdown visibility
+  const toggleNotificationDropdown = () => {
+    setShowNotificationDropdown((prev) => !prev);
   };
 
   return (
@@ -276,8 +282,17 @@ const Navbar = () => {
                   {t('MyCourses')}
                 </NavLink>
               </li>
-              <div className='ml-4 mr-4 '>
-                <IoNotifications className='text-white text-2xl' />
+              {/* Dropdown for Notification */}
+              <div className="relative ml-4 mr-4">
+                <IoNotifications className="text-2xl cursor-pointer" onClick={toggleNotificationDropdown} />
+                {showNotificationDropdown && (
+                  <div className="absolute top-full  mt-5 w-96 bg-white text-black shadow-lg rounded-lg">
+                    {/* Notification Dropdown Content Goes Here */}
+                    <p>Notification 1</p>
+                    <p>Notification 2</p>
+                    <p>Notification 3</p>
+                  </div>
+                )}
               </div>
 
               {/* -------end here navbar without drop down */}

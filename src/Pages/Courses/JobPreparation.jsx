@@ -64,12 +64,12 @@ const JobPreparation = () => {
                 <h2 className="text-xl font-semibold py-3">{admission.title}</h2>
                 <h2 className="text-xl">Price: $ {admission.price}</h2>
 
-                <Link to={`/ServiceDetails/${admission._id}`} key={admission._id}>
+                <Link to={`/jobdetails/${admission._id}`} key={admission._id}>
                   <button className="bg-white text-black font-bold py-1 px-3 border-b-4 border-borderColorOne hover:border-black rounded my-4">
                     Purchase
                   </button>
                   </Link>
-               
+              
               </div>
             </div>
           ))}

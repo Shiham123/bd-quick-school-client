@@ -44,6 +44,7 @@ import JobPreparation from '../Pages/Courses/JobPreparation';
 import ChatAsistant from '../UserDashbord/ChatAsistant';
 import HelpDask from '../UserDashbord/HelpDask';
 import UserCOurse from '../UserDashbord/UserCOurse';
+import JobpreDetails from '../Pages/Courses/JobpreDetails';
 
 const Router = createBrowserRouter([
   {
@@ -51,6 +52,12 @@ const Router = createBrowserRouter([
     element: <MainLayout />,
     errorElement: <ErrorElement />,
     children: [
+      {
+        path: 'jobdetails/:id',
+        element: <JobpreDetails></JobpreDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/api/v2/getJob/${params.id}`)
+
+      },
       { index: true, element: <Home /> },
       { path: 'Couredetails', element: <CourseDetails /> },
       { path: 'register', element: <Register /> },
@@ -112,6 +119,8 @@ const Router = createBrowserRouter([
       { path: '/dashboard/manage/quize/users', element: <ManageQuizeUser /> },
       { path: 'addannouncements', element: <AddAnnouncement /> },
       { path: 'manageannouncements', element: <ManageAnnouncements /> },
+
+     
       {
         path: 'manageannouncements/updateannouncements/:id',
         element: <UpdateAnnouncement />,

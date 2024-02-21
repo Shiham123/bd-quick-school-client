@@ -18,8 +18,6 @@ import useLocationContext from '../../context/useLocationContext';
 import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 import useAuth from '../../Hooks/useAuth/useAuth';
 import { useGetIdBasedServicesQuery } from '../../redux/services/ServicesApiSlice';
-import LikeComponent from './LikeComponent';
-import DislikeComponent from './DislikeComponent';
 import ServicesBookmark from './ServicesBookmark';
 import LikeDislikeComponent from './LikeDislikeComponent';
 
@@ -238,8 +236,6 @@ const ServiceDetails = () => {
 
       <Box className="flex gap-8">
         <LikeDislikeComponent currentProductId={currentProductId} loggedInUserEmail={loggedInUserEmail} />
-        {/* <LikeComponent currentProductId={currentProductId} loggedInUserEmail={loggedInUserEmail} /> */}
-        {/* <DislikeComponent currentProductId={currentProductId} loggedInUserEmail={loggedInUserEmail} /> */}
       </Box>
       <ServicesBookmark currentProductId={currentProductId} loggedInUserEmail={loggedInUserEmail} />
       <hr className="my-16" />

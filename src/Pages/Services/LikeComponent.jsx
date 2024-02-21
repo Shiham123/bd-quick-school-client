@@ -4,16 +4,11 @@ import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 
 const LikeComponent = (props) => {
-  const { currentProductId, loggedInUserEmail, handleLikeDislike } = props;
+  const { currentProductId, loggedInUserEmail } = props;
   const [isLiked, setIsLiked] = useState(false);
   const axiosPublic = useAxiosPublic();
 
-  const handleFromLike = () => {
-    handleLikeDislike();
-  };
-
   const handleLike = async () => {
-    handleFromLike();
     const likePayload = { loggedInUserEmail, currentProductId };
     await axiosPublic
       .post('/api/v2/like', likePayload) // post like to the database

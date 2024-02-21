@@ -44,6 +44,7 @@ import JobPreparation from '../Pages/Courses/JobPreparation';
 import ChatAsistant from '../UserDashbord/ChatAsistant';
 import HelpDask from '../UserDashbord/HelpDask';
 import UserCOurse from '../UserDashbord/UserCOurse';
+import Bookmark from '../Components/Bookmark/Bookmark';
 import PaymentHistory from '../Pages/Payment History/PaymentHistory';
 
 const Router = createBrowserRouter([
@@ -58,6 +59,7 @@ const Router = createBrowserRouter([
       { path: 'login', element: <Login /> },
       { path: 'addmissionTest', element: <AdmissionTest /> },
       { path: 'jobPreparation', element: <JobPreparation /> },
+      { path: 'bookmark', element: <Bookmark /> },
       {
         path: 'services',
         element: (

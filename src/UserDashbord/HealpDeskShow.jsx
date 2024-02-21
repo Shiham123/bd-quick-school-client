@@ -59,16 +59,16 @@ const HelpDeskShow = () => {
     setModalOpen(false);
   };
   const onSubmit = async (data) => {
-    const newPost = {
+    const Comments = {
       ...data,
       date: new Date().toISOString(),
       userEmail: user.email,
       userPhoto: user.photoURL,
-      content: outcome,
+      postId: selectedPost._id, 
     };
 
     try {
-      const itemRes = await axiosSecure.post('/api/v1/HelpDeskRoutes', newPost);
+      const itemRes = await axiosSecure.post('/api/v1/CommentRoutes', Comments);
       if (itemRes.data.insertedId) {
         reset();
         setOutcome('');
@@ -119,43 +119,39 @@ const HelpDeskShow = () => {
               </button>
               <div className="w-full mx-auto ">
                 {selectedPost && (
-                  <div className="post">
-                    <div className="card max-w-[1300px] border rounded-xl  bg-[#FFFFFF] border-primary-500 mx-auto shadow-xl">
-                      <div className="card-body">
-                        <div className="flex justify-center items-center gap-5">
-                          <img className="rounded-full w-[48px] h-[48px]" src={user?.photoURL} alt="" />
-                          <p> {user?.displayName}</p>
-                        </div>
-                        <p>{formatTimeDifference(selectedPost.date)}</p>
-                        <h2 className="card-title">{selectedPost.title}</h2>
-                        <div dangerouslySetInnerHTML={{ __html: selectedPost.content }}></div>
+                  <div className="">
+                    <div className="card-body">
+                      <div className="flex justify-center items-center gap-5">
+                        <img className="rounded-full w-[48px] h-[48px]" src={user?.photoURL} alt="" />
+                        <p> {user?.displayName}</p>
                       </div>
+                      <p>{formatTimeDifference(selectedPost.date)}</p>
+                      <h2 className="card-title">{selectedPost.title}</h2>
+                      <div dangerouslySetInnerHTML={{ __html: selectedPost.content }}></div>
                     </div>
                   </div>
                 )}
                 <form onSubmit={handleSubmit(onSubmit)}>
-                  <div className="form-control w-full">
-                    <label className="label">
-                      <span className="label-text">Title</span>
-                    </label>
+                  <div className="form-control w-full border p-2">
                     <input
                       type="text"
-                      placeholder="Title"
-                      {...register('title', { required: true })}
-                      className="input input-bordered w-full"
+                      placeholder="Write on your mind?"
+                      {...register('Comment', { required: true })}
+                      className="input  w-full border-none "
+                      style={{ border: 'none' }}
                     />
-                  </div>
-
-                  <div className="flex justify-between items-center gap-3 mt-3">
-                    <label htmlFor="fileInput" className="custom-file-upload text-[16px]">
-                      Photo/Video
-                      <input id="fileInput" type="file" style={{ display: 'none' }} />
-                    </label>
-                    <button type="submit" className="btn-grad btn text-white bg-gray-700 hidden md:block">
-                      Create Post
-                    </button>
+                    <div className="flex justify-between items-center gap-3 mt-3">
+                      <label htmlFor="fileInput" className="custom-file-upload text-[16px]">
+                        Photo
+                        <input id="fileInput" type="file" style={{ display: 'none' }} />
+                      </label>
+                      <button type="submit" className="btn-grad btn text-white bg-gray-700 hidden md:block">
+                        Post Comment
+                      </button>
+                    </div>{' '}
                   </div>
                 </form>
+                
               </div>
             </div>
           </div>

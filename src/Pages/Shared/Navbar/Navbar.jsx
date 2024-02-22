@@ -40,8 +40,8 @@ const Navbar = () => {
       // window height changed for the demo
       windowHeight > 50
         ? setStickyClass(
-          `fixed top-0 transition  bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:from-[#1A1B1F] dark:via-[#1A1B1F] dark:to-[#1A1B1F]   bg-opacity-100 duration-1000 ease-in-out`
-        )
+            `fixed top-0 transition  bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:from-[#1A1B1F] dark:via-[#1A1B1F] dark:to-[#1A1B1F]   bg-opacity-100 duration-1000 ease-in-out`
+          )
         : setStickyClass('');
     }
   };
@@ -129,44 +129,26 @@ const Navbar = () => {
                 </li>
 
                 <li>
-                  <NavLink
-                    style={activeRouteStyle}
-                    className=" hover:text-[#deb2ac] uppercase font-medium"
-                    to={'/addmissionTest'}
-                  >
+                  <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/addmissionTest'}>
                     {t('Nav2')}
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink
-                    style={activeRouteStyle}
-                    className=" hover:text-[#deb2ac] uppercase font-medium"
-                    to={'/jobPreparation'}
-                  >
+                  <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/jobPreparation'}>
                     {t('Nav3')}
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink
-                    style={activeRouteStyle}
-                    className=" hover:text-[#deb2ac] uppercase font-medium"
-                    to={'/online-batch'}
-                  >
+                  <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/online-batch'}>
                     {t('Nav4')}
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink
-                    style={activeRouteStyle}
-                    className=" hover:text-[#deb2ac] uppercase font-medium"
-                    to={'/services'}
-                  >
+                  <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/services'}>
                     {t('Nav5')}
                   </NavLink>
                 </li>
-                <li onClick={() => setDarkMode((darkMode) => !darkMode)}>
-                  {darkMode ? <CiLight size={60} /> : <CiDark size={60} />}
-                </li>
+                <li onClick={() => setDarkMode((darkMode) => !darkMode)}>{darkMode ? <CiLight size={60} /> : <CiDark size={60} />}</li>
                 <div className="flex flex-row gap-3  p-2 ">
                   <button onClick={() => handelChangeLng('en')}> En </button>
                   <button onClick={() => handelChangeLng('bn')}> বাং</button>
@@ -240,38 +222,22 @@ const Navbar = () => {
 
               {/* this is not drop down */}
               <li>
-                <NavLink
-                  style={activeRouteStyle}
-                  className=" hover:text-[#deb2ac] uppercase font-medium"
-                  to={'/addmissionTest'}
-                >
+                <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/addmissionTest'}>
                   {t('Nav2')}
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  style={activeRouteStyle}
-                  className=" hover:text-[#deb2ac] uppercase font-medium"
-                  to={'/jobPreparation'}
-                >
+                <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/jobPreparation'}>
                   {t('Nav3')}
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  style={activeRouteStyle}
-                  className=" hover:text-[#deb2ac] uppercase font-medium"
-                  to={'/online-batch'}
-                >
+                <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/online-batch'}>
                   {t('Nav4')}
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  style={activeRouteStyle}
-                  className=" hover:text-[#deb2ac] uppercase font-medium"
-                  to={'/services'}
-                >
+                <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/services'}>
                   {t('Nav5')}
                 </NavLink>
               </li>
@@ -303,9 +269,7 @@ const Navbar = () => {
 
               {/* -------end here navbar without drop down */}
               {/* dak lite  */}
-              <li onClick={() => setDarkMode((darkMode) => !darkMode)}>
-                {darkMode ? <CiLight size={70} /> : <CiDark size={70} />}
-              </li>
+              <li onClick={() => setDarkMode((darkMode) => !darkMode)}>{darkMode ? <CiLight size={70} /> : <CiDark size={70} />}</li>
               {/* translet  */}
             </ul>
             <li className="flex justify-between gap-3 border p-2 ">
@@ -342,17 +306,11 @@ const Navbar = () => {
                       <img src={user?.photoURL} alt="userPhoto" />
                     </div>
                     {/* View Profile Button */}
-                    <h1
-                      className="font-lora font-bold text-base mb-2"
-                      style={{ whiteSpace: 'nowrap' }}
-                    >
+                    <h1 className="font-lora font-bold text-base mb-2" style={{ whiteSpace: 'nowrap' }}>
                       {user?.displayName}
                     </h1>
                     <Link to={`/myprofile`}>
-                      <button
-                        className="btn btn-outline text-white"
-                        style={{ whiteSpace: 'nowrap' }}
-                      >
+                      <button className="btn btn-outline text-white" style={{ whiteSpace: 'nowrap' }}>
                         View Profile
                       </button>
                     </Link>
@@ -364,9 +322,11 @@ const Navbar = () => {
                     </li>
                   </NavLink>
                   <hr />
-                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
-                    Bookmark
-                  </li>
+                  <Link to={'/bookmark'}>
+                    <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
+                      Bookmark
+                    </li>
+                  </Link>
                   <hr />
                   <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                     Certificate
@@ -386,7 +346,7 @@ const Navbar = () => {
                     Student Analytics
                   </li>
                   <hr />
-                  <Link to='/announcements'>
+                  <Link to="/announcements">
                     <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                       Announcement
                     </li>

@@ -1,11 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import useAxiosSecure from '../Hooks/UseAxiosSecure/UseAxiosSecure';
 import useAuth from '../Hooks/useAuth/useAuth';
-
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 const HelpDeskShow = () => {
   const [posts, setPosts] = useState([]);
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  const [outcome, setOutcome] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
+  const { register, handleSubmit, reset } = useForm();
+  const [selectedPost, setSelectedPost] = useState(null);
+  const [comments, setComments] = useState([]);
+
+  // get post data
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -18,6 +26,24 @@ const HelpDeskShow = () => {
 
     fetchPosts();
   }, [axiosSecure]);
+
+  // // get comments data
+  useEffect(() => {
+    const fetchComments = async () => {
+      if (selectedPost) {
+        try {
+          const commentResponse = await axiosSecure.get(`/api/v1/CommentRoutes/${selectedPost._id}`);
+          setComments(commentResponse.data);
+          console.log(commentResponse.data);
+        } catch (error) {
+          console.error('Error fetching comments:', error);
+        }
+      }
+    };
+
+    fetchComments();
+  }, [axiosSecure, selectedPost]);
+
   const formatTimeDifference = (publishedTime) => {
     const currentTime = new Date();
     const timeDifference = currentTime - new Date(publishedTime);
@@ -42,24 +68,131 @@ const HelpDeskShow = () => {
       return `${yearsDifference} year${yearsDifference !== 1 ? 's' : ''} ago`;
     }
   };
+  // make a modal for user comment
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+  const onSubmit = async (data) => {
+    const Comments = {
+      ...data,
+      date: new Date().toISOString(),
+      userEmail: user.email,
+      userPhoto: user.photoURL,
+      postId: selectedPost._id,
+    };
+
+    try {
+      const itemRes = await axiosSecure.post('/api/v1/CommentRoutes', Comments);
+      if (itemRes.data.insertedId) {
+        reset();
+        setOutcome('');
+        toast.success('Your Announcement has been Added');
+        closeModal();
+      }
+    } catch (error) {
+      console.error('Error submitting post:', error);
+    }
+  };
+
+  const handlePostClick = async (postId) => {
+    try {
+      const response = await axiosSecure.get(`/api/v1/HelpDeskRoutes/${postId}`); 
+      setSelectedPost(response.data);
+      setModalOpen(true); 
+    } catch (error) {
+      console.error('Error fetching post:', error);
+    }
+  };
+
   return (
-    <div>
-      {posts.map((post, index) => (
-        <div key={index} className="post">
-          <div className="card max-w-[1300px] border rounded-xl  bg-[#FFFFFF] border-primary-500 mx-auto shadow-xl">
-            <div className="card-body">
-              <div className="flex justify-center items-center gap-5">
-                <img className="rounded-full w-[48px] h-[48px]" src={user?.photoURL} alt="" />
-                <p> {user?.displayName}</p>
+    <>
+      <div onClick={openModal}>
+        {posts.map((post, index) => (
+          <div key={index} onClick={() => handlePostClick(post._id)} className="post">
+            <div className="card max-w-[1300px] border rounded-xl  bg-[#FFFFFF] border-primary-500 mx-auto shadow-xl">
+              <div className="card-body">
+                <div className="flex justify-center items-center gap-5">
+                  <img className="rounded-full w-[48px] h-[48px]" src={user?.photoURL} alt="" />
+                  <p> {user?.displayName}</p>
+                </div>
+                <p>{formatTimeDifference(post.date)}</p>
+                <h2 className="card-title">{post.title}</h2>
+                <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
+                <p>{comments.filter((comment) => comment.postId === post._id).length} comments</p>
+                {/* show comment data  */}
               </div>
-              <p>{formatTimeDifference(post.date)}</p>
-              <h2 className="card-title">{post.title}</h2>
-              <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
+            </div>
+          </div>
+        ))}
+      </div>
+      {modalOpen && (
+        <div className="fixed inset-0 z-50 overflow-y-auto">
+          <div className="flex items-center justify-center min-h-screen">
+            <div className="fixed inset-0 bg-black opacity-50" onClick={closeModal}></div>
+            <div className="relative bg-white rounded-lg w-full md:w-1/2 mx-auto p-6">
+              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onClick={closeModal}>
+                ✕
+                
+              </button>
+              <div className="w-full mx-auto ">
+                {selectedPost && (
+                  <div className="">
+                    <div className="card-body">
+                      <div className="flex justify-center items-center gap-5">
+                        <img className="rounded-full w-[48px] h-[48px]" src={user?.photoURL} alt="" />
+                        <p> {user?.displayName}</p>
+                      </div>
+                      <p>{formatTimeDifference(selectedPost.date)}</p>
+                      <h2 className="card-title">{selectedPost.title}</h2>
+                      <div dangerouslySetInnerHTML={{ __html: selectedPost.content }}></div>
+                    </div>
+                    <h3>Comments</h3>
+                    <ul>
+                      {comments.map((comment, index) => (
+                        <li key={index}>
+                          <div className="flex  items-center gap-5">
+                            <img className="rounded-full w-[48px] h-[48px]" src={user?.photoURL} alt="" />
+                            <p> {user?.displayName}</p>
+                            <p>{formatTimeDifference(comment.date)}</p>
+                          </div>
+                          <p className="text-start px-16 bg-slate-400"> {comment.Comment}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div className="form-control w-full border p-2">
+                    <input
+                      type="text"
+                      placeholder="Write on your mind?"
+                      {...register('Comment', { required: true })}
+                      className="input  w-full border-none "
+                      style={{ border: 'none' }}
+                    />
+                    <div className="flex justify-between items-center gap-3 mt-3">
+                      <label htmlFor="fileInput" className="custom-file-upload text-[16px]">
+                        Photo
+                        <input id="fileInput" type="file" style={{ display: 'none' }} />
+                      </label>
+                      <button type="submit" className="btn-grad btn text-white bg-gray-700 hidden md:block">
+                        Post Comment
+                      </button>
+                    </div>{' '}
+                  </div>
+                </form>
+                {/* show comments  */}
+              </div>
             </div>
           </div>
         </div>
-      ))}
-    </div>
+      )}
+    </>
   );
 };
 

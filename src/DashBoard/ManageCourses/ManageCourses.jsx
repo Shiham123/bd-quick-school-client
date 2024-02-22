@@ -62,7 +62,7 @@ const ManageCourses = () => {
           {/* Table Heading End Here */}
           {/* Table Data Fetching */}
           <tbody className="font-lora">
-            {data?.map((course, idx) => (
+            {data && data.map((course, idx) => (
               <ManageCoursesTable key={course._id} course={course} index={idx + 1} />
             ))}
           </tbody>

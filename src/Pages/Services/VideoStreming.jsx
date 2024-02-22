@@ -45,7 +45,7 @@ const Video = () => {
       window.removeEventListener('offline', handleOnlineStatusChange);
     };
   }, []);
-
+  //Demo Functiion
   // const handleNextVideo = () => {
   //   setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videoPlaylist.length);
   // };

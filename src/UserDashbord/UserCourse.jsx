@@ -1,10 +1,10 @@
 /* eslint-disable react/no-unknown-property */
-import { useEffect, useState } from 'react';
+import { Player } from '@lottiefiles/react-lottie-player';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { ThreeCircles } from 'react-loader-spinner';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth/useAuth';
-import { Player } from '@lottiefiles/react-lottie-player';
 
 const UserCOurse = () => {
   const [services, setServices] = useState([]);
@@ -13,7 +13,7 @@ const UserCOurse = () => {
   const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/payment/user/${user?.email}`)
+      .get(`https://quiz-school-server.vercel.app/payment/user/${user?.email}`)
       .then((response) => {
         const filteredServices = response.data.filter((service) => service.paidStatus === true);
         setServices(filteredServices);

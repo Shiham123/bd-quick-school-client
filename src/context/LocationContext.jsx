@@ -12,9 +12,7 @@ const LocationProvider = ({ children }) => {
   const setGlobalLocation = (newLocation) => setLocation(newLocation);
 
   return (
-    <LocationContext.Provider
-      value={{ location, isModalOpen, setGlobalLocation, openModal, closeModal }}
-    >
+    <LocationContext.Provider value={{ location, isModalOpen, setGlobalLocation, openModal, closeModal }}>
       {children}
     </LocationContext.Provider>
   );

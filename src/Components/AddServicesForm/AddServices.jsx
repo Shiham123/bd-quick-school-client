@@ -6,8 +6,19 @@ import 'react-quill/dist/quill.snow.css';
 import { useAddServicesMutation } from '../../redux/services/ServicesApiSlice';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
+import Select from 'react-select';
+
+// react select options
+// react select options
+const category = [
+  { value: 'Admission-Test', label: 'Admission-Test' },
+  { value: 'Job-Preparation', label: 'Job-Preparation' },
+  // { value: 'Our-Services', label: 'Our-Services' },
+ 
+];
 
 const AddServices = () => {
+  const [selectedOption, setSelectedOption] = useState(null);  // for react select
   const { register, handleSubmit, reset } = useForm();
   const [outcome, setOutcome] = useState('');
   const [AddServices] = useAddServicesMutation();
@@ -19,6 +30,9 @@ const AddServices = () => {
 
   //
   const onSubmit = async (data) => {
+
+    setSelectedOption(null);
+
     //image send to the hosting site
     const { imageFile, teacherImageFile } = data;
     // Function to upload an image and return the URL
@@ -37,6 +51,7 @@ const AddServices = () => {
 
       return response.data.data.display_url;
     };
+  
 
     // Upload both images concurrently
     const [courseImageUrl, teacherImageUrl] = await Promise.all([
@@ -51,6 +66,7 @@ const AddServices = () => {
       shortdescription: data?.shortdescription,
       price: data?.price,
       details: data?.details,
+      category : selectedOption ? selectedOption.value : null, // Get selected  value
       outcome,
       teacherImage: teacherImageUrl,
       teachername: data?.teachername,
@@ -61,7 +77,9 @@ const AddServices = () => {
     AddServices(formData)
       .unwrap()
       .then(() => {
+        setSelectedOption(null);
         Swal.fire('Services Add SuccessFully');
+        
         reset();
         setOutcome(null);
       });
@@ -150,6 +168,7 @@ const AddServices = () => {
                   id=""
                 />
               </div>
+
               {/* Course Price */}
               <div className="col-span-full lg:col-span-3">
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">
@@ -178,11 +197,76 @@ const AddServices = () => {
                   id=""
                 />
               </div>
+
+              {/* react select use for category*/}
+
+
+              <div className="col-span-full lg:col-span-3">
+                <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">
+                  Category Name  <span className="text-red-700">*</span>
+                </h2>
+                {/* <input
+                  className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded"
+                  type="text"
+                  name="category"
+                  {...register('category')}
+                  placeholder="Category"
+                  id=""
+                /> */}
+
+                <Select
+                  Value={selectedOption}
+                  onChange={setSelectedOption}
+                  options={category}
+                  style={{ width: '2000px', height: '1140px', borderWidth: '10px', borderStyle: 'solid', }} 
+                  isClearable={true}
+                  //for color
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 0,
+                    colors: {
+                      ...theme.colors,
+                      text: 'white',
+                      // primary25: 'black',
+                      primary: 'black ',
+                      font: 'extrabold',
+                      // #B75CFF,#8F00FF
+                    },
+                  })}
+                />
+              </div>
+
+
+              {/* <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text text-xl font-bold font-lora">Rating</span>
+                </label>
+                <Select
+                  defaultValue={selectedOption}
+                  onChange={setSelectedOption}
+                  options={Rating}
+                  //for color
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 0,
+                    colors: {
+                      ...theme.colors,
+                      text: 'black',
+                      primary25: '#B75CFF',
+                      primary: '#8F00FF ',
+                      font: 'extrabold',
+                    },
+                  })}
+                />
+              </div> */}
+
+
               {/* Course Outcome */}
               <div className="col-span-full">
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">
                   Course Outcome <span className="text-red-700">*</span>
                 </h2>
+
                 <ReactQuill
                   modules={modules}
                   className="h-32 mb-12"
@@ -211,6 +295,7 @@ const AddServices = () => {
                       <svg
                         className="w-8 h-8 mb-4 text-black"
                         aria-hidden="true"
+
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 20 16"
@@ -295,6 +380,7 @@ const AddServices = () => {
                   id=""
                 />
               </div>
+            
             </div>
           </fieldset>
 

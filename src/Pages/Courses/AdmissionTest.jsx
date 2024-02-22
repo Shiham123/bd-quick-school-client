@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const AdmissionTest = () => {
   // store data in state
@@ -9,7 +10,9 @@ const AdmissionTest = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('Admission_test.json');
+        const response = await axios.get('http://localhost:5000/api/v2/getAdmission');
+        // const response = await axios.get('Admission_test.json');
+      
         setAdmissionTest(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -52,15 +55,21 @@ const AdmissionTest = () => {
               key={idx}
               className="text-white cursor-pointer rounded-lg shadow-2xl shadow-green-900 border transition duration-600 ease-in-out hover:scale-105 hover:border-[#1CAB55]"
             >
-              <img className="w-[100%] rounded-t-lg" src={admission.image} alt="" />
+              <img className="w-[100%] h-[170px] rounded-t-lg" src={admission.image} alt="" />
               <div className="px-4">
-                <h2 className="text-2xl font-semibold py-3">{admission.name}</h2>
-                <h2 className="text-xl">Course: {admission.year}</h2>
-                <h2 className="text-[17px] py-3">University: {admission.university}</h2>
-                <h2 className="text-xl">Price: $ {admission.price}</h2>
-                <button className="bg-white text-black font-bold py-1 px-3 border-b-4 border-borderColorOne hover:border-black rounded my-4">
-                  Purchase
-                </button>
+                <h2 className="text-xl font-semibold py-3">{admission.title}</h2>
+                {/* <h2 className="text-xl">{admission.shortdescription}</h2> */}
+                <h2 className="text-base py-3">Teacher Name: {admission.teachername}</h2>
+                <h2 className="text-base">Course Price: $ {admission.price}</h2>
+
+                <Link to={`/admissiondetails/${admission._id}`} key={admission._id}>
+                  <button className="bg-white text-black font-bold py-1 px-3 border-b-4 border-borderColorOne hover:border-black rounded my-4">
+                    Purchase
+                  </button>
+                
+                </Link>
+
+               
               </div>
             </div>
           ))}

@@ -4,9 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const addServicesApi = createApi({
   reducerPath: 'addServicesApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:5000/api/v3',
-  }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://quiz-school-server.vercel.app/api/v3' }),
   endpoints: (builder) => ({
     getAllServices: builder.query({ query: () => '/', providesTags: ['services'] }),
 
@@ -29,17 +27,6 @@ export const addServicesApi = createApi({
       query: (payload) => ({
         url: `/course/update`,
         method: 'PUT',
-        body: payload,
-        headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` },
-      }),
-      invalidatesTags: ['services'],
-    }),
-
-    //Course Patch
-    coursePatch: builder.mutation({
-      query: (payload) => ({
-        url: `/update/lession`,
-        method: 'PATCH',
         body: payload,
         headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` },
       }),

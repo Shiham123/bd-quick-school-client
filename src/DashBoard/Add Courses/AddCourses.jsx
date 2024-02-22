@@ -1,5 +1,4 @@
 
-
 const AddCourses = () => {
     return (
         <div>

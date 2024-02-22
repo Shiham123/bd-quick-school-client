@@ -10,7 +10,8 @@ import { Darkmode } from './context/Darkmode';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
-import './TransletLanguage/18next'
+import './TransletLanguage/18next';
+import { ToastContainer } from 'react-toastify';
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Darkmode>
             <LocationProvider>
               <RouterProvider router={Router} />
+              <ToastContainer />
             </LocationProvider>
           </Darkmode>
         </Authprovider>

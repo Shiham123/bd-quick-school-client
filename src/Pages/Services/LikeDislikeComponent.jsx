@@ -3,6 +3,9 @@ import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import { AiFillDislike, AiFillLike, AiOutlineDislike, AiOutlineLike } from 'react-icons/ai';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const LikeDislikeComponent = (props) => {
   const { currentProductId, loggedInUserEmail } = props;
   const [isLiked, setIsLiked] = useState(false);
@@ -56,6 +59,7 @@ const LikeDislikeComponent = (props) => {
     await axiosPublic
       .post('/api/v2/like', likePayload) // post like to the database
       .then(() => {
+        toast.success('wow ! You have liked this course', { position: 'bottom-left' });
         setIsLiked(true);
         fetchLiked();
         if (isDisliked) {
@@ -71,6 +75,7 @@ const LikeDislikeComponent = (props) => {
     await axiosPublic
       .post('/api/v2/dislike', dislikePayload)
       .then(() => {
+        toast.success('you have dislike this course', { position: 'bottom-right' });
         setIsDisliked(true);
         fetchDisliked();
         if (isLiked) {
@@ -104,40 +109,46 @@ const LikeDislikeComponent = (props) => {
 
   return (
     <>
-      <div>
+      <div className="flex items-center gap-4">
         {isLiked ? (
           <>
             <button className="cursor-pointer">
               <AiFillLike
+                color="#07bc0c"
                 onClick={() => {
                   handleLikeDelete(currentProductId, loggedInUserEmail);
                 }}
-                size={70}
+                size={30}
               />
             </button>
           </>
         ) : (
           <>
             <button className="cursor-pointer disabled:cursor-default">
-              <AiOutlineLike onClick={handleLike} size={70} />
+              <AiOutlineLike onClick={handleLike} size={30} color="#07bc0c" />
             </button>
           </>
         )}
-        <p className="font-bold font-poppins text-4xl gap-8">
-          Total Like this course : {likedData?.totalCountLikes === undefined ? 0 : likedData?.totalCountLikes}
+        <p className="font-bold font-poppins text-darkGreen gap-8">
+          Total Liked : {likedData?.totalCountLikes === undefined ? 0 : likedData?.totalCountLikes}
         </p>
       </div>
 
       {/* -------------------- */}
 
-      <div>
+      <div className="flex items-center gap-4">
         {isDisliked ? (
-          <AiFillDislike size={70} onClick={() => handleDislikeDelete(currentProductId, loggedInUserEmail)} className="cursor-pointer" />
+          <AiFillDislike
+            color="#07bc0c"
+            size={30}
+            onClick={() => handleDislikeDelete(currentProductId, loggedInUserEmail)}
+            className="cursor-pointer"
+          />
         ) : (
-          <AiOutlineDislike size={70} className="cursor-pointer" onClick={handleDislike} />
+          <AiOutlineDislike color="#07bc0c" size={30} className="cursor-pointer" onClick={handleDislike} />
         )}
-        <p className="font-bold font-poppins text-4xl gap-8">
-          Total Like this course : {dislikeData?.totalCountDislike === undefined ? 0 : dislikeData?.totalCountDislike}
+        <p className="font-bold font-poppins gap-8 text-darkGreen">
+          Total Disliked {dislikeData?.totalCountDislike === undefined ? 0 : dislikeData?.totalCountDislike}
         </p>
       </div>
     </>

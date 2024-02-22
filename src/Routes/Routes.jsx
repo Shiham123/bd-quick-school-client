@@ -34,9 +34,16 @@ import DashBoardCharts from '../DashBoard/DashBoard Charts/DashBoardCharts';
 import AdmissionTest from '../Pages/Courses/AdmissionTest';
 import JobPreparation from '../Pages/Courses/JobPreparation';
 import UserCOurse from '../UserDashbord/UserCOurse';
+import AdveriseReviews from '../DashBoard/Advertise Reviews/AdveriseReviews';
 import ManageCourses from '../DashBoard/ManageCourses/ManageCourses';
 import UpdateCourses from '../DashBoard/ManageCourses/UpdateCourses';
 import ManageQuizeUser from '../DashBoard/ManageReviewUser/ManageReviewUser';
+import ManageAnnouncements from '../DashBoard/ManageAnnouncements/ManageAnnouncements';
+import Announcements from '../Pages/Announcements/Announcements';
+import AddAnnouncement from '../DashBoard/Add Announcement/AddAnnouncement';
+import UpdateAnnouncement from '../DashBoard/UpdateAnnouncement/UpdateAnnouncement';
+import ChatAsistant from '../UserDashbord/ChatAsistant';
+import HelpDask from '../UserDashbord/HelpDask';
 
 const Router = createBrowserRouter([
   {
@@ -59,6 +66,7 @@ const Router = createBrowserRouter([
         ),
       },
       { path: 'myprofile', element: <MyProfile /> },
+      { path: 'announcements', element: <Announcements /> },
       { path: '/ServiceDetails/:id', element: <ServiceDetails /> },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },
       { path: '/MyCourses', element: <UserCOurse /> },
@@ -83,6 +91,14 @@ const Router = createBrowserRouter([
         element: <UserSupport />,
       },
       {
+        path: 'chat',
+        element: <ChatAsistant />,
+      },
+      {
+        path: 'helpdask',
+        element: <HelpDask />,
+      },
+      {
         path: 'room/:roomId',
         element: <Support />,
       },
@@ -91,7 +107,7 @@ const Router = createBrowserRouter([
         element: <SupportSteap />,
       },
       {
-        path: 'Video',
+        path: 'Video/:id',
         element: <Video />,
       },
       {
@@ -119,7 +135,15 @@ const Router = createBrowserRouter([
       { path: 'managepayment', element: <ManagePayment /> },
       { path: 'manageusers', element: <ManageUsers /> },
       { path: 'managereviews', element: <ManageReviews /> },
+      { path: 'advertisereviews', element: <AdveriseReviews /> },
       { path: '/dashboard/manage/quize/users', element: <ManageQuizeUser /> },
+      { path: 'addannouncements', element: <AddAnnouncement /> },
+      { path: 'manageannouncements', element: <ManageAnnouncements /> },
+      {
+        path: 'manageannouncements/updateannouncements/:id',
+        element: <UpdateAnnouncement />,
+        loader: ({ params }) => fetch(`https://quiz-school-server.vercel.app/api/v1/admin/announcements/${params.id}`),
+      },
     ],
   },
 ]);

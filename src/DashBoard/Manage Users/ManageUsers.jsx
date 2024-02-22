@@ -1,29 +1,45 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/UseAxiosSecure/UseAxiosSecure";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ManageUserTable from "./ManageUserTable";
 
 
 const ManageUsers = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState("")
+    const [userType, setUserType] = useState("");
     const axiosSecure = useAxiosSecure()
-
 
     // Toggle Function
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
 
+    // Function to handle dropdown selection
+    const handleDropdownSelection = (type) => {
+        setUserType(type === 'default' ? '' : type);
+        setIsOpen(false);
+        // Close dropdown after selection
+    };
+
     // User Data fetching By tanstack query
     const { data: users = [], refetch } = useQuery({
-        queryKey: ['users'],
+        queryKey: ['users', userType], // Add userType to queryKey
         queryFn: async () => {
-            const res = await axiosSecure.get('/api/v1/users')
-            return res.data
+            let url = '/api/v1/users';
+            if (userType) {
+                url += `?type=${userType}`; // Add type to the URL if userType is provided
+            }
+            const res = await axiosSecure.get(url);
+            return res.data;
         }
-    })
+    });
+
+    // Effect to fetch default data on component 
+    useEffect(() => {
+        refetch();
+    }, []); 
 
     // Search Functionality By users
     const filteredData = users?.filter((item) => {
@@ -55,13 +71,16 @@ const ManageUsers = () => {
                     <div id="dropdownAction" className={`z-10 ${isOpen ? '' : 'hidden'} bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}>
                         <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownActionButton">
                             <li>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Admin</a>
+                                <button onClick={() => handleDropdownSelection('default')} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Default</button>
                             </li>
                             <li>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">User</a>
+                                <button onClick={() => handleDropdownSelection('Admin')} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Admin</button>
                             </li>
                             <li>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Banned User</a>
+                                <button onClick={() => handleDropdownSelection('User')} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">User</button>
+                            </li>
+                            <li>
+                                <button onClick={() => handleDropdownSelection('Banned User')} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Banned User</button>
                             </li>
                         </ul>
                     </div>

@@ -74,41 +74,21 @@ const ReviewForm = () => {
             <div className="modal-action mx-0">
               {/* form start here */}
 
-              <form
-                onSubmit={handleAddReview}
-                ref={formRef}
-                className="card-body pt-0 w-[360px] md:w-[450px] mx-auto "
-              >
+              <form onSubmit={handleAddReview} ref={formRef} className="card-body pt-0 w-[360px] md:w-[450px] mx-auto ">
                 {/* Full name */}
                 <div className="form-control w-full">
                   <label className="label w-full">
-                    <span className="label-text text-xl font-bold font-lora">
-                      Enter Your Full Name
-                    </span>
+                    <span className="label-text text-xl font-bold font-lora">Enter Your Full Name</span>
                   </label>
-                  <input
-                    type="text"
-                    placeholder="Full Name"
-                    name="fullname"
-                    className="input input-bordered"
-                    required
-                  />
+                  <input type="text" placeholder="Full Name" name="fullname" className="input input-bordered" required />
                 </div>
 
                 {/* Designation */}
                 <div className="form-control w-full">
                   <label className="label">
-                    <span className="label-text text-xl font-bold font-lora">
-                      Enter Your Designation
-                    </span>
+                    <span className="label-text text-xl font-bold font-lora">Enter Your Designation</span>
                   </label>
-                  <input
-                    type="text"
-                    placeholder="Designation"
-                    name="designation"
-                    className="input input-bordered"
-                    required
-                  />
+                  <input type="text" placeholder="Designation" name="designation" className="input input-bordered" required />
                 </div>
 
                 {/* rating */}
@@ -138,9 +118,7 @@ const ReviewForm = () => {
                 {/* feedback */}
                 <label className="form-control w-full">
                   <div className="label">
-                    <span className="label-text text-xl font-bold font-lora">
-                      Share Your Feedback
-                    </span>
+                    <span className="label-text text-xl font-bold font-lora">Share Your Feedback</span>
                   </div>
                   <textarea
                     className="textarea textarea-bordered h-24"
@@ -152,17 +130,10 @@ const ReviewForm = () => {
 
                 {/* submit and cancel the form */}
                 <div className="form-control mt-6">
-                  <button
-                    type="submit"
-                    className="btn bg-violet-600 text-xl font-bold font-lora  text-white"
-                  >
+                  <button type="submit" className="btn bg-violet-600 text-xl font-bold font-lora  text-white">
                     Submit
                   </button>
-                  <button
-                    type="button"
-                    onClick={handleCancel}
-                    className="btn bg-violet-600 text-xl font-bold font-lora  text-white"
-                  >
+                  <button type="button" onClick={handleCancel} className="btn bg-violet-600 text-xl font-bold font-lora  text-white">
                     Cancel
                   </button>
                 </div>

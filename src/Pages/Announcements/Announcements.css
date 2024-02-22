@@ -1,0 +1,29 @@
+Announcements.css
+.custom-scrollbar {
+    scrollbar-width: auto;
+    /* "auto" or "thin" hides the scrollbar */
+    scrollbar-color: #888 #333;
+    /* color of the scrollbar thumb and track */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    max-width: 8px;
+    background-color: transparent;
+    
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #757575;
+    outline: 0;
+    border-radius: 15px
+}
+
+/* .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    box-shadow: none;
+    background-color: transparent
+} */
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    box-shadow: none;
+    background-color: transparent
+}

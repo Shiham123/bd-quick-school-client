@@ -1,46 +1,73 @@
 
+import { useEffect, useState } from 'react';
+import useAxiosPublic from './../../Hooks/useAxiosPublic/useAxiosPublic';
+import useAxiosSecure from './../../Hooks/UseAxiosSecure/UseAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
+import AdvertiseReviewsTable from './AdvertiseReviewsTable';
+import toast, { Toaster } from 'react-hot-toast';
 
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../Hooks/UseAxiosSecure/UseAxiosSecure";
-import ManageReviewsTable from "./ManageReviewsTable";
-import { useState } from "react";
-
-
-const ManageReviews = () => {
+const AdveriseReviews = () => {
+    const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const [isOpen, setIsOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState("")
-    const [reviewType, setReviewType] = useState("");
-    const axiosSecure = useAxiosSecure()
+    const [ads, setAds] = useState([])
 
     // Toggle Function
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
 
-    // Function to handle dropdown selection
-    const handleDropdownSelection = (type) => {
-        setReviewType(type === 'default' ? '' : type);
-        setIsOpen(false);
-        // Close dropdown after selection
-    };
 
-    // User Data fetching By tanstack query
-    const { data: reviews = [], refetch } = useQuery({
-        queryKey: ['reviews', reviewType],
+    // advertisement data fetching
+    const { data: advertisement = [], refetch } = useQuery({
+        queryKey: ["advertisement"],
         queryFn: async () => {
-            let url = '/api/v2/admin/reviews';
-            if (reviewType) {
-                url += `?type=${reviewType}`; // Add type to the URL if userType is provided
-            }
-            const res = await axiosSecure.get(url)
+            const res = await axiosSecure.get('/api/v2/admin/advertisement/reviews');
             return res.data
         }
     })
+    // console.log(advertisement)
 
+    // filter the Advertise Data
+    useEffect(() => {
+        axiosPublic("api/v2/admin/advertise/reviews")
+            .then((res) => {
+                // console.log(res.data);
+                const findTotalAds = res.data.filter((one) => (one.advertise = true));
+                setAds(findTotalAds);
+            });
+    }, [advertisement, axiosPublic]);
+
+    //  add advertisement
+    const handleAdvertisement = (review) => {
+        if (ads.length >= 6) {
+            return toast.error('you cannot add More then 6 Reviews')
+        }
+        axiosSecure.patch(`/api/v2/admin/advertise/reviews/${review._id}`).then((res) => {
+            console.log(res.data);
+            if (res.data.modifiedCount > 0) {
+                refetch();
+                toast.success(`Review Have Been Added`)
+            }
+        });
+    };
+
+
+    //  remove advertisement
+    const handleRemoveAdvertisement = (review) => {
+        axiosSecure.patch(`/api/v2/admin/advertiseRemove/reviews/${review._id}`).then((res) => {
+            console.log(res.data);
+            if (res.data.modifiedCount > 0) {
+                refetch();
+                toast.success('Review Have Been Removed')
+            }
+        });
+    };
 
 
     // Search Functionality By users
-    const filteredData = reviews?.filter((item) => {
+    const filteredData = advertisement?.filter((item) => {
         if (item && item.fullname) {
             return item.fullname.toLowerCase().includes(searchTerm.toLowerCase());
         }
@@ -51,11 +78,10 @@ const ManageReviews = () => {
 
 
 
-
     return (
         <div className="lg:p-16 min-h-screen">
-            <h1 className="text-4xl text-center font-cinzel">Manage Reviews</h1>
-            <hr className="mb-5 border-2 mt-2 border-black w-[330px] mx-auto" />
+            <h1 className="text-4xl text-center font-cinzel">Advertise Reviews</h1>
+            <hr className="mb-5 border-2 mt-2 border-black w-[360px] mx-auto" />
             <div className="flex items-center justify-between flex-column md:flex-row flex-wrap space-y-4 md:space-y-0 py-4  dark:bg-gray-900">
                 {/* Dropdown Button end here*/}
                 <div>
@@ -71,13 +97,10 @@ const ManageReviews = () => {
                     <div id="dropdownAction" className={`z-10 ${isOpen ? '' : 'hidden'} bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}>
                         <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownActionButton">
                             <li>
-                                <button onClick={() => handleDropdownSelection('default')} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Default</button>
+                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Accept</a>
                             </li>
                             <li>
-                                <button onClick={() => handleDropdownSelection('Accept')} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Accept</button>
-                            </li>
-                            <li>
-                                <button onClick={() => handleDropdownSelection('Reject')} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reject</button>
+                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reject</a>
                             </li>
                         </ul>
                     </div>
@@ -117,7 +140,7 @@ const ManageReviews = () => {
                                 Reviewer Text
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Status
+                                Advertise
                             </th>
                         </tr>
                     </thead>
@@ -125,14 +148,14 @@ const ManageReviews = () => {
                     {/* Table Data Fetching */}
                     <tbody className="font-lora">
                         {
-                            filteredData.map((review, index) => <ManageReviewsTable key={review._id} review={review} index={index} refetch={refetch} />)
+                            filteredData.map((item, index) => <AdvertiseReviewsTable key={item._id} item={item} index={index} handleAdvertisement={handleAdvertisement} handleRemoveAdvertisement={handleRemoveAdvertisement} refetch={refetch} />)
                         }
                     </tbody>
                 </table>
             </div>
-
+            <Toaster />
         </div>
     );
 };
 
-export default ManageReviews;
+export default AdveriseReviews;

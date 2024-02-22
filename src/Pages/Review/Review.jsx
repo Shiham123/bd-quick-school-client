@@ -45,7 +45,11 @@ const Review = () => {
 
   return (
     <div>
-      <div className=" lg:px-20">
+      for horizontal line
+      <hr className="w-[400px] mx-auto my- border-2 my-32 " />
+
+
+      <div className=" lg:px-20 mb-40">
         <div className="mt-16">
           <div className="container mx-auto">
             <h2 className="text-2xl font-cinzel lg:text-5xl text-center  font-bold  text-white mb-5 ">
@@ -94,6 +98,7 @@ const Review = () => {
                     </div>
 
                     {/* rating,status */}
+             
 
                     <div className="card-body  px-6 py-10">
                       <p className="w-full text-start mx-auto text-base font-lora">{post.textarea}</p>
@@ -103,6 +108,7 @@ const Review = () => {
                       <p className=" ">
                         <Rating itemStyles={myStyles} style={{ maxWidth: 90 }} value={post.rating} readOnly />
                       </p>
+                      {/* p tag */}
                     </div>
                   </div>
                 </div>
@@ -112,8 +118,7 @@ const Review = () => {
         </div>
       </div>
 
-      {/* for horizontal line */}
-      <hr className="w-[400px] mx-auto my-32 border-2" />
+     
     </div>
   );
 };

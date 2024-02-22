@@ -5,11 +5,21 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useUpdateServicesMutation } from '../../redux/services/ServicesApiSlice';
 import { useState } from 'react';
-
+import Select from 'react-select';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
+// react select options
+const category = [
+  { value: 'Admission-Test', label: 'Admission-Test' },
+  { value: 'Job-Preparation', label: 'Job-Preparation' },
+  // { value: 'Our-Services', label: 'Our-Services' },
+
+];
+
 const UpdateCourses = () => {
+
+  const [selectedOption, setSelectedOption] = useState(null);  // for react select
   const location = useLocation();
   const navigate = useNavigate();
   const {
@@ -79,6 +89,7 @@ const UpdateCourses = () => {
       shortdescription: data?.shortdescription,
       price: data?.price,
       details: data?.details,
+      category: selectedOption ? selectedOption.value : null, // Get selected  value
       outcome: outcomeFormValue,
       teacherImage: imageLink?.teacherImageUrl || teacherImage,
       teachername: data?.teachername,
@@ -208,6 +219,49 @@ const UpdateCourses = () => {
                   defaultValue={details}
                 />
               </div>
+
+
+
+              {/* react select use for category*/}
+
+
+              <div className="col-span-full lg:col-span-3">
+                <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">
+                  Category Name  <span className="text-red-700">*</span>
+                </h2>
+                {/* <input
+                  className="pt-4 pb-4 pl-2 md:p-4 w-full border border-black  text-base font-normal text-[#1B1A1A99] rounded"
+                  type="text"
+                  name="category"
+                  {...register('category')}
+                  placeholder="Category"
+                  id=""
+                /> */}
+
+                <Select
+                 
+                  onChange={setSelectedOption}
+                  options={category}
+                  defaultValue={category}
+                  style={{ width: '2000px', height: '1140px', borderWidth: '10px', borderStyle: 'solid', }}
+                  //for color
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 0,
+                    colors: {
+                      ...theme.colors,
+                      text: 'white',
+                      // primary25: 'black',
+                      primary: 'black ',
+                      font: 'extrabold',
+                      // #B75CFF,#8F00FF
+                    },
+                  })}
+                />
+              </div>
+
+
+
               {/* Course Outcome */}
               <div className="col-span-full">
                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">

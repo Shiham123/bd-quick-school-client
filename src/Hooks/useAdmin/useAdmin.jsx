@@ -10,7 +10,6 @@ const VerifyAdmin = () => {
     enabled: !!user?.email && !!localStorage.getItem('access-token'),
     queryFn: async () => {
       const response = await axiosSecure.get(`/api/v1/user/admin/${user.email}`);
-      console.log(response);
       return response.data.admin;
     },
   });

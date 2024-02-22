@@ -146,7 +146,7 @@ const Router = createBrowserRouter([
       {
         path: 'manageannouncements/updateannouncements/:id',
         element: <UpdateAnnouncement />,
-        loader: ({ params }) => fetch(`http://localhost:5000/api/v1/admin/announcements/${params.id}`),
+        loader: ({ params }) => fetch(`https://quiz-school-server.vercel.app/api/v1/admin/announcements/${params.id}`),
       },
     ],
   },

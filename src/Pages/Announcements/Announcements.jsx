@@ -10,7 +10,7 @@ const Announcements = () => {
   const handleContentClick = (content) => {
     setSelectedContent(content);
     axios
-      .get(`http://localhost:5000/api/v1/admin/announcements/${content}`)
+      .get(`https://quiz-school-server.vercel.app/api/v1/admin/announcements/${content}`)
       .then((response) => {
         setRightSide(response.data);
         console.log(response.data);
@@ -23,7 +23,7 @@ const Announcements = () => {
   useEffect(() => {
     // Fetch data from the API endpoint
     axios
-      .get('http://localhost:5000/api/v1/admin/announcement')
+      .get('https://quiz-school-server.vercel.app/api/v1/admin/announcement')
       .then((response) => {
         setAnnouncements(response.data);
       })
@@ -39,17 +39,16 @@ const Announcements = () => {
           <div key={item._id} className="">
             {/* Left side content */}
             <div
-              className={`cursor-pointer flex  gap-5 items-start bg-gradient-to-b from-[#42275a] to-[#734b6d] ml-3 lg:ml-0 w-[400px] md:w-[300px] lg:w-[660px] p-5 rounded-xl mb-5 ${selectedContent === item._id ? 'border-2' : ''
-                }`}
+              className={`cursor-pointer flex  gap-5 items-start bg-gradient-to-b from-[#42275a] to-[#734b6d] ml-3 lg:ml-0 w-[400px] md:w-[300px] lg:w-[660px] p-5 rounded-xl mb-5 ${
+                selectedContent === item._id ? 'border-2' : ''
+              }`}
               onClick={() => handleContentClick(item._id)}
             >
               <img src="https://i.ibb.co/kH6SbQN/download.png" alt="" />
               <div>
                 <h5 className="text-white text-sm font-medium mb-1">{rightSide.announcementtitle}</h5>
                 <h5 className="text-white text-sm font-medium mb-2">Dec 24th 2021, 12:00 pm</h5>
-                <h5 className="text-white text-sm font-medium break-all">
-                  {item.announcemensubdescription.slice(0, 126)} ...
-                </h5>
+                <h5 className="text-white text-sm font-medium break-all">{item.announcemensubdescription.slice(0, 126)} ...</h5>
               </div>
             </div>
           </div>
@@ -63,14 +62,11 @@ const Announcements = () => {
         <div className="pl-5 pr-5 pt-1 pb-5">
           {rightSide ? (
             <div>
-              <p className="text-white break-all text-base font-medium mb-10">
-                {rightSide.announcemensubdescription}
-              </p>
+              <p className="text-white break-all text-base font-medium mb-10">{rightSide.announcemensubdescription}</p>
               {/* <p className="text-white break-all text-base font-medium mb-2">
                 {rightSide.announcementtitle}
               </p> */}
-              <p dangerouslySetInnerHTML={{ __html: rightSide.outcome }} className="text-white break-all text-base font-medium mb-2">
-              </p>
+              <p dangerouslySetInnerHTML={{ __html: rightSide.outcome }} className="text-white break-all text-base font-medium mb-2"></p>
             </div>
           ) : (
             <p className="text-white">No data available</p>

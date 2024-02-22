@@ -51,6 +51,7 @@ import FreeJobPreDetails from '../Pages/Courses/FreeJobPreDetails';
 
 import Bookmark from '../Components/Bookmark/Bookmark';
 import PaymentHistory from '../Pages/Payment History/PaymentHistory';
+import StudentRoute from './StudentRoute';
 
 const Router = createBrowserRouter([
   {
@@ -105,7 +106,11 @@ const Router = createBrowserRouter([
   },
   {
     path: '/MyCourses',
-    element: <UserDashbordlayout />,
+    element: (
+      <StudentRoute>
+        <UserDashbordlayout />
+      </StudentRoute>
+    ),
     children: [
       { index: true, element: <UserHome /> },
       { path: 'next-step', element: <ImportantNotice /> },

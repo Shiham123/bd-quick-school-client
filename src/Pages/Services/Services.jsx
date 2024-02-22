@@ -46,6 +46,7 @@ const Services = () => {
 
                       <p className="py-4 text-lg md:text-xl font-bold font-lora">Price: $ {service.price}</p>
                     </div>
+                    {/* button */}
 
                     <button className=" text-white text-xl font-extrabold py-2 px-4 border rounded font-lora mt-1 mb-2">
                       Explore
@@ -54,7 +55,7 @@ const Services = () => {
                 </div>
               </Link>
             ))}
-            {/* ldk */}
+           
           </div>
         )}
       </div>

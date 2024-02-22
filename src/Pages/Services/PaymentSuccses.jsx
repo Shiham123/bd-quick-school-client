@@ -11,6 +11,7 @@ const PaymentSuccses = () => {
       <div className="w-[50%] mx-auto py-6">
         {/* <Video></Video> */}
          
+         
       </div>
     </div>
   );

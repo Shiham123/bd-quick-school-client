@@ -21,6 +21,7 @@ const ServicesBookmark = (props) => {
       .then((response) => {
         const isExitsBookmark = response.data?.isBookmark;
         setIsBookmark(isExitsBookmark);
+        setIsShowBookmarkRoute(isExitsBookmark);
       })
       .catch((error) => console.log(error.response));
   }, [axiosPublic, currentProductId, loggedInUserEmail]);

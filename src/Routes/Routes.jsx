@@ -49,6 +49,8 @@ import AdmissionDetails from '../Pages/Courses/AdmissionDetails';
 import FreeJobPreDetails from '../Pages/Courses/FreeJobPreDetails';
 
 
+import Bookmark from '../Components/Bookmark/Bookmark';
+import PaymentHistory from '../Pages/Payment History/PaymentHistory';
 
 const Router = createBrowserRouter([
   {
@@ -82,6 +84,7 @@ const Router = createBrowserRouter([
       { path: 'login', element: <Login /> },
       { path: 'addmissionTest', element: <AdmissionTest /> },
       { path: 'jobPreparation', element: <JobPreparation /> },
+      { path: 'bookmark', element: <Bookmark /> },
       {
         path: 'services',
         element: (
@@ -91,6 +94,7 @@ const Router = createBrowserRouter([
         ),
       },
       { path: 'myprofile', element: <MyProfile /> },
+      { path: 'paymenthistory', element: <PaymentHistory /> },
       { path: 'announcements', element: <Announcements /> },
       { path: '/ServiceDetails/:id', element: <ServiceDetails /> },
       { path: '/serviceDetails/payment/form', element: <PayDataFrom /> },

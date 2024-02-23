@@ -6,6 +6,33 @@ import Swal from "sweetalert2";
 const ManageUserTable = ({ user, index, refetch }) => {
     const axiosSecure = useAxiosSecure()
 
+    // handle banned agent
+    const handleBanned = (id, role) => {
+        Swal.fire({
+            title: "Are you sure make banned?",
+            text: "You won't recover it!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Make This Student Banned!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const res = await axiosSecure.patch(`/api/v1/userid/banned/${id}`, role)
+                console.log(res.data)
+                if (res.data.roleResult.modifiedCount > 0) {
+                    refetch()
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "All Courses Has Been Deleted.",
+                        icon: "success"
+                    });
+                }
+            }
+        });
+    }
+
+
 
     // Delete a User by id
 
@@ -21,17 +48,7 @@ const ManageUserTable = ({ user, index, refetch }) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 axiosSecure.delete(`/api/v1/userid/${user._id}`)
-                    .then(res => {
-                        // console.log(res.data)
-                        if (res.data.deletedCount > 0) {
-                            refetch()
-                            Swal.fire({
-                                title: "Deleted!",
-                                text: "Your file has been deleted.",
-                                icon: "success"
-                            });
-                        }
-                    })
+                    
             }
         });
     }
@@ -57,9 +74,7 @@ const ManageUserTable = ({ user, index, refetch }) => {
             <td className="px-6 py-4">
                 {user.role}
             </td>
-            <td className="px-6 py-4">
-                <button className="btn btn-outline text-white"><FaBan className="text-xl" /></button>
-            </td>
+            
             <td className="px-6 py-4">
                 <button onClick={() => handleDeleteUser(user)} className="btn btn-outline text-white"><RiDeleteBin5Line className="text-xl" /></button>
             </td>

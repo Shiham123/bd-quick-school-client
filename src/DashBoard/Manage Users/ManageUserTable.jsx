@@ -15,7 +15,10 @@ const ManageUserTable = ({ user, index, refetch }) => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, Make This Student Banned!"
+            confirmButtonText: "Yes, Make This Student Banned!",
+            customClass: {
+                title: 'font-cinzel',
+            }
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const res = await axiosSecure.patch(`/api/v1/userid/banned/${id}`, role)

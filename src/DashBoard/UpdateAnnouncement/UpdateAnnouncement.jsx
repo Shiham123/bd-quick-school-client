@@ -1,19 +1,18 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import ReactQuill from "react-quill";
-import { useLoaderData, useNavigate } from "react-router-dom";
-import useAxiosSecure from "../../Hooks/UseAxiosSecure/UseAxiosSecure";
-import toast, { Toaster } from "react-hot-toast";
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import ReactQuill from 'react-quill';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
+import { useUpdateAnnouncementMutation } from '../../redux/Announcement/announcementsApi';
 
 
 const UpdateAnnouncement = () => {
-    // const [outcome, setOutcome] = useState('')
+    const [updateData] = useUpdateAnnouncementMutation();
+    //   const [outcome, setOutcome] = useState('')
     const { register, handleSubmit } = useForm();
-    const navigate = useNavigate()
-    const axiosSecure = useAxiosSecure()
-    const announcements = useLoaderData()
+    const navigate = useNavigate();
+    const announcements = useLoaderData();
     const [outcomeFormValue, setOutcomeFormValue] = useState(announcements.outcome);
-    // console.log(announcements)
 
     // Onsubmit By React Hook
     const onSubmit = async (data) => {
@@ -21,16 +20,16 @@ const UpdateAnnouncement = () => {
         const item = {
             announcementtitle: data?.announcementtitle,
             announcemensubdescription: data?.announcemensubdescription,
-            outcome: outcomeFormValue
-        }
-        // console.log(item)
-        const itemRes = await axiosSecure.put(`/api/v1/admin/announcements/${announcements._id}`, item)
-        // console.log(itemRes)
-        if (itemRes.data.modifiedCount > 0) {
-            toast.success('Your Announcement have been updated')
-            navigate('/dashboard/manageannouncements')
-        }
-    }
+            outcome: outcomeFormValue,
+            id: announcements._id,
+        };
+        updateData(item)
+            .unwrap()
+            .then(() => {
+                toast.success('Your Announcement have been updated');
+                navigate('/dashboard/manageannouncements');
+            });
+    };
     // Handle Outcome Change
     const handleOutcomeChange = (value) => {
         setOutcomeFormValue(value);

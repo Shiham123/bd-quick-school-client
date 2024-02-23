@@ -51,6 +51,5 @@ export const {
   useGetIdBasedServicesQuery,
   useAddServicesMutation,
   useUpdateServicesMutation,
-  useCoursePatchMutation,
   useDeleteCoursesMutation,
 } = addServicesApi;

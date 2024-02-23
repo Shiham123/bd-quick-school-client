@@ -48,7 +48,17 @@ const ManageUserTable = ({ user, index, refetch }) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 axiosSecure.delete(`/api/v1/userid/${user._id}`)
-                    
+                    .then(res => {
+                        // console.log(res.data)
+                        if (res.data.deletedCount > 0) {
+                            refetch()
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
             }
         });
     }

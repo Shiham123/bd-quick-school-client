@@ -7,6 +7,8 @@ import useAuth from './../../../Hooks/useAuth/useAuth';
 import { ThemeContext } from '../../../context/Darkmode';
 import { useTranslation } from 'react-i18next';
 import VerifyAdmin from '../../../Hooks/useAdmin/useAdmin';
+import { IoNotifications } from "react-icons/io5";
+import useStudent from '../../../Hooks/useStudent/useStudent';
 
 
 const Navbar = () => {
@@ -15,6 +17,8 @@ const Navbar = () => {
   const { darkMode, setDarkMode } = useContext(ThemeContext);
   const { t, i18n } = useTranslation();
   const [isAdmin] = VerifyAdmin();
+  const [isStudent] = useStudent()
+  const [showNotificationDropdown, setShowNotificationDropdown] = useState(false);
 
   const handleLogOut = () => {
     logOut()
@@ -36,8 +40,8 @@ const Navbar = () => {
       // window height changed for the demo
       windowHeight > 50
         ? setStickyClass(
-            `fixed top-0 transition  bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:from-[#1A1B1F] dark:via-[#1A1B1F] dark:to-[#1A1B1F]   bg-opacity-100 duration-1000 ease-in-out`
-          )
+          `fixed top-0 transition  bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:from-[#1A1B1F] dark:via-[#1A1B1F] dark:to-[#1A1B1F]   bg-opacity-100 duration-1000 ease-in-out`
+        )
         : setStickyClass('');
     }
   };
@@ -54,6 +58,11 @@ const Navbar = () => {
   const handelChangeLng = (lng) => {
     i18n.changeLanguage(lng);
     localStorage.setItem('lng', lng);
+  };
+
+  // Toggle notification dropdown visibility
+  const toggleNotificationDropdown = () => {
+    setShowNotificationDropdown((prev) => !prev);
   };
 
   return (
@@ -232,11 +241,31 @@ const Navbar = () => {
                   {t('Nav5')}
                 </NavLink>
               </li>
-              <li>
-                <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/MyCourses'}>
-                  {t('MyCourses')}
-                </NavLink>
-              </li>
+              {
+                isStudent && (
+                  <li>
+                    <NavLink
+                      style={activeRouteStyle}
+                      className=" hover:text-[#deb2ac] uppercase font-medium"
+                      to={'/MyCourses'}
+                    >
+                      {t('MyCourses')}
+                    </NavLink>
+                  </li>
+                )
+              }
+              {/* Dropdown for Notification */}
+              <div className="relative ml-4 mr-4">
+                <IoNotifications className="text-2xl cursor-pointer" onClick={toggleNotificationDropdown} />
+                {showNotificationDropdown && (
+                  <div className="absolute top-full  mt-5 w-96 bg-white text-black shadow-lg rounded-lg">
+                    {/* Notification Dropdown Content Goes Here */}
+                    <p>Notification 1</p>
+                    <p>Notification 2</p>
+                    <p>Notification 3</p>
+                  </div>
+                )}
+              </div>
 
               {/* -------end here navbar without drop down */}
               {/* dak lite  */}

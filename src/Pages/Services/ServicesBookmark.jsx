@@ -1,23 +1,27 @@
 import { CiBookmark } from 'react-icons/ci';
-import { FaBookmark } from 'react-icons/fa';
+import { FaArrowLeft, FaBookmark } from 'react-icons/fa';
 import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ServicesBookmark = (props) => {
   const { loggedInUserEmail, currentProductId } = props;
   const location = useLocation();
   const [isBookmark, setIsBookmark] = useState(false);
   const axiosPublic = useAxiosPublic();
+  const [showBookmarkRoute, setIsShowBookmarkRoute] = useState(false);
 
   const currentPathLocation = location.pathname;
 
   useEffect(() => {
     axiosPublic
-      .get(`/api/v2//isBookmark/${currentProductId}/${loggedInUserEmail}`)
+      .get(`/api/v2/isBookmark/${currentProductId}/${loggedInUserEmail}`)
       .then((response) => {
         const isExitsBookmark = response.data?.isBookmark;
         setIsBookmark(isExitsBookmark);
+        setIsShowBookmarkRoute(isExitsBookmark);
       })
       .catch((error) => console.log(error.response));
   }, [axiosPublic, currentProductId, loggedInUserEmail]);
@@ -27,6 +31,8 @@ const ServicesBookmark = (props) => {
     await axiosPublic
       .post('/api/v2/bookmarked', payload)
       .then((response) => {
+        toast.success('you have added to bookmark', { position: 'bottom-center' });
+        setIsShowBookmarkRoute(true);
         console.log(response.data);
         setIsBookmark(true);
       })
@@ -36,20 +42,38 @@ const ServicesBookmark = (props) => {
   const handleDeleteBookmark = async () => {
     await axiosPublic
       .delete(`/api/v2/bookmark/${currentProductId}/${loggedInUserEmail}`)
-      .then((response) => {
-        console.log(response);
+      .then(() => {
+        toast.success('you have remove bookmark', { position: 'bottom-center' });
+        setIsShowBookmarkRoute(false);
         setIsBookmark(false);
       })
       .catch((error) => console.log(error));
   };
 
   return (
-    <div>
+    <div className="flex items-center my-20 gap-4">
       {isBookmark ? (
-        <FaBookmark size={50} className="cursor-pointer" onClick={handleDeleteBookmark} />
+        <FaBookmark color="#07bc0c" size={30} className="cursor-pointer" onClick={handleDeleteBookmark} />
       ) : (
-        <CiBookmark size={50} className="cursor-pointer" onClick={handleBookmarked} />
+        <CiBookmark color="#07bc0c" size={30} className="cursor-pointer" onClick={handleBookmarked} />
       )}
+
+      <div>
+        {showBookmarkRoute ? (
+          <Link to={`/bookmark`}>
+            <button className="bg-transparent border-[1px] border-darkGreen rounded-lg text-darkGreen font-poppins font-semibold px-4 py-2 hover:bg-darkGreen hover:text-black duration-300">
+              Go to bookmark
+            </button>
+          </Link>
+        ) : (
+          <div>
+            <button className="flex justify-center items-center gap-4 bg-transparent border-[1px] border-darkGreen rounded-lg text-darkGreen font-poppins font-semibold px-4 py-2 hover:bg-darkGreen hover:text-black duration-300">
+              <FaArrowLeft />
+              <span>Don&apos;t bookmark this?</span>
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// https://bd-quick-school-server-plum.vercel.app
+// http://localhost:5000
 
 export const addServicesApi = createApi({
   reducerPath: 'addServicesApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api/v3' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://quiz-school-server.vercel.app/api/v3' }),
   endpoints: (builder) => ({
     getAllServices: builder.query({ query: () => '/', providesTags: ['services'] }),
 
@@ -51,5 +51,6 @@ export const {
   useGetIdBasedServicesQuery,
   useAddServicesMutation,
   useUpdateServicesMutation,
+  useCoursePatchMutation,
   useDeleteCoursesMutation,
 } = addServicesApi;

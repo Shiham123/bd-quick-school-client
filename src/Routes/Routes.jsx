@@ -51,6 +51,7 @@ import FreeJobPreDetails from '../Pages/Courses/FreeJobPreDetails';
 
 import Bookmark from '../Components/Bookmark/Bookmark';
 import PaymentHistory from '../Pages/Payment History/PaymentHistory';
+import StudentRoute from './StudentRoute';
 
 const Router = createBrowserRouter([
   {
@@ -105,7 +106,11 @@ const Router = createBrowserRouter([
   },
   {
     path: '/MyCourses',
-    element: <UserDashbordlayout />,
+    element: (
+      <StudentRoute>
+        <UserDashbordlayout />
+      </StudentRoute>
+    ),
     children: [
       { index: true, element: <UserHome /> },
       { path: 'next-step', element: <ImportantNotice /> },
@@ -114,7 +119,7 @@ const Router = createBrowserRouter([
       { path: 'helpdask', element: <HelpDask /> },
       { path: 'room/:roomId', element: <Support /> },
       { path: 'supportSteap', element: <SupportSteap /> },
-      { path: 'Video', element: <Video /> },
+      { path: 'Video/:id', element: <Video /> },
       { path: 'outline', element: <Outline /> },
     ],
   },
@@ -146,7 +151,7 @@ const Router = createBrowserRouter([
       {
         path: 'manageannouncements/updateannouncements/:id',
         element: <UpdateAnnouncement />,
-        loader: ({ params }) => fetch(`http://localhost:5000/api/v1/admin/announcements/${params.id}`),
+        loader: ({ params }) => fetch(`https://quiz-school-server.vercel.app/api/v1/admin/announcements/${params.id}`),
       },
     ],
   },

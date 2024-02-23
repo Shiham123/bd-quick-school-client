@@ -6,6 +6,36 @@ import Swal from "sweetalert2";
 const ManageUserTable = ({ user, index, refetch }) => {
     const axiosSecure = useAxiosSecure()
 
+    // handle Banned Student
+    const handleBanned = (id, role) => {
+        Swal.fire({
+            title: "Are you sure make banned?",
+            text: "You won't recover it!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Make This Student Banned!",
+            customClass: {
+                title: 'font-cinzel',
+            }
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const res = await axiosSecure.patch(`/api/v1/userid/banned/${id}`, role)
+                console.log(res.data)
+                if (res.data.roleResult.modifiedCount > 0) {
+                    refetch()
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "All Courses Has Been Deleted.",
+                        icon: "success"
+                    });
+                }
+            }
+        });
+    }
+
+
 
     // Delete a User by id
 
@@ -58,7 +88,17 @@ const ManageUserTable = ({ user, index, refetch }) => {
                 {user.role}
             </td>
             <td className="px-6 py-4">
-                <button className="btn btn-outline text-white"><FaBan className="text-xl" /></button>
+                {
+                    user?.role === "Banned" ?
+                        <td className=" py-4 text-lg text-white">
+                            {user?.role}
+                        </td>
+                        : <button
+                            onClick={() => handleBanned(user?._id, { role: "Banned" })}
+                            disabled={user?.role === "user" || user?.role === "admin"} className="mr-4  btn bg-teal-500">
+                            <FaBan className="text-2xl text-white"></FaBan>
+                        </button>
+                }
             </td>
             <td className="px-6 py-4">
                 <button onClick={() => handleDeleteUser(user)} className="btn btn-outline text-white"><RiDeleteBin5Line className="text-xl" /></button>

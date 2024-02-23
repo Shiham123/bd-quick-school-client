@@ -9,6 +9,7 @@ import EditUserProfile from '../../EditUserProfile/EditUserProfile';
 const MyProfile = () => {
   const [id, setId] = useState(''),
     [name, setName] = useState(''),
+    [studentId, setStudentId] = useState(''),
     [phone, setPhone] = useState(''),
     [email, setEmail] = useState(''),
     [photoUrl, setPhotoUrl] = useState(null),
@@ -29,10 +30,11 @@ const MyProfile = () => {
 
   useEffect(() => {
     if (profileData && profileData.length > 0) {
-      const { _id, name, phone, email, photoURL, role } = profileData[0];
+      const { _id, name, phone, studentId, email, photoURL, role } = profileData[0];
       setId(_id),
         setName(name),
-        setPhone(phone),
+        setStudentId(studentId)
+      setPhone(phone),
         setEmail(email),
         setPhotoUrl(photoURL),
         setRole(role);
@@ -58,6 +60,7 @@ const MyProfile = () => {
           <EditUserProfile
             id={id}
             name={name}
+            studentId={studentId}
             email={email}
             photoURL={photoUrl}
             phone={phone}
@@ -80,11 +83,11 @@ const MyProfile = () => {
             </div>
           </div>
           {/* 2nd Line */}
-          <div className="mt-8 flex flex-col md:flex-row lg:items-center gap-8 md:gap-64 lg:gap-96">
+          <div className="mt-8 flex flex-col md:flex-row lg:items-center gap-8 md:gap-64 lg:gap-[450px]">
             {/* Student ID */}
             <div>
               <h3 className="text-lg font-lora font-medium text-white/60">{t('StudentID')}</h3>
-              <h2 className=" text-xl text-white font-lora font-semibold">{id}</h2>
+              <h2 className=" text-xl text-white font-lora font-semibold">{studentId}</h2>
             </div>
             {/* Mobile Number */}
             <div>

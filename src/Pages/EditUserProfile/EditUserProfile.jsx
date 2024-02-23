@@ -16,7 +16,7 @@ const image_Hosting_Key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_Hosting_Api = `https://api.imgbb.com/1/upload?key=${image_Hosting_Key}`;
 
 const EditUserProfile = (props) => {
-  const { id, name, phone, photoURL, email } = props;
+  const { id, name, studentId, phone, photoURL, email } = props;
   const { register, handleSubmit } = useForm();
   const { t } = useTranslation();
   const { user, changePassword, handleUpdateProfile, setUser } = useAuth();
@@ -144,7 +144,7 @@ const EditUserProfile = (props) => {
               type="text"
               id=""
               placeholder="Name Here"
-              defaultValue={id}
+              defaultValue={studentId}
               readOnly
             />
           </div>

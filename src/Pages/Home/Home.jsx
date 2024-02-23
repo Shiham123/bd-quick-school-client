@@ -5,7 +5,6 @@ import Faq from '../Faq/Faq';
 import OurTeam from '../OurTeam/OurTeam';
 import Review from '../Review/Review';
 import Counter from '../Counter/Counter';
-// import ChangeBackground from '../../Components/ChangeBackground/ChangeBackground';
 
 import './hover.css';
 import Work from '../How It Works/Work';
@@ -13,16 +12,10 @@ import ChooseUs from '../Why Choose Us/ChooseUs';
 import CoursesType from '../Courses_Type/CoursesType';
 import ReviewForm from '../Review/ReviewForm';
 
-
-
-
-
 const Home = () => {
   return (
     <div>
       <Banner />
-    
-    <Counter></Counter>
       <Courses />
       <Work />
       <ChooseUs />
@@ -32,7 +25,6 @@ const Home = () => {
       <Counter />
       <Review />
       <ReviewForm></ReviewForm>
-      {/* <ChangeBackground /> */}
 
       <ChatBoat />
     </div>

@@ -119,7 +119,7 @@ const Router = createBrowserRouter([
       { path: 'helpdask', element: <HelpDask /> },
       { path: 'room/:roomId', element: <Support /> },
       { path: 'supportSteap', element: <SupportSteap /> },
-      { path: 'Video', element: <Video /> },
+      { path: 'Video/:id', element: <Video /> },
       { path: 'outline', element: <Outline /> },
     ],
   },

@@ -1,5 +1,5 @@
 import { CiBookmark } from 'react-icons/ci';
-import { FaBookmark } from 'react-icons/fa';
+import { FaArrowLeft, FaBookmark } from 'react-icons/fa';
 import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
@@ -61,14 +61,17 @@ const ServicesBookmark = (props) => {
       <div>
         {showBookmarkRoute ? (
           <Link to={`/bookmark`}>
-            <button className="bg-transparent border-2 border-darkGreen rounded-lg text-darkGreen font-poppins font-semibold px-4 py-2">
+            <button className="bg-transparent border-[1px] border-darkGreen rounded-lg text-darkGreen font-poppins font-semibold px-4 py-2 hover:bg-darkGreen hover:text-black duration-300">
               Go to bookmark
             </button>
           </Link>
         ) : (
-          <button className="bg-transparent border-2 border-darkGreen rounded-lg text-darkGreen font-poppins font-semibold px-4 py-2">
-            Don&apos;t bookmark this?
-          </button>
+          <div>
+            <button className="flex justify-center items-center gap-4 bg-transparent border-[1px] border-darkGreen rounded-lg text-darkGreen font-poppins font-semibold px-4 py-2 hover:bg-darkGreen hover:text-black duration-300">
+              <FaArrowLeft />
+              <span>Don&apos;t bookmark this?</span>
+            </button>
+          </div>
         )}
       </div>
     </div>

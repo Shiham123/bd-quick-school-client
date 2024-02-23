@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { addServicesApi } from './services/ServicesApiSlice';
 import { quizeApiServices } from './services/QuizeApiSlice';
 import { orderApiSlice } from './services/OrderApiSlice';
+import { addCourseVideoAPi } from './services/VideoApiSlice.js/VideoApiSlice';
 
 import { announcementsApi } from './Announcement/announcementsApi';
 
@@ -13,6 +14,7 @@ const store = configureStore({
     [orderApiSlice.reducerPath]: orderApiSlice.reducer,
     // [addCourseVideoAPi.reducerPath]: addCourseVideoAPi.reducer,
     [announcementsApi.reducerPath]: announcementsApi.reducer,
+    [addCourseVideoAPi.reducerPath]: addCourseVideoAPi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([
@@ -20,6 +22,7 @@ const store = configureStore({
       quizeApiServices.middleware,
       orderApiSlice.middleware,
       announcementsApi.middleware,
+      addCourseVideoAPi.middleware,
     ]),
 });
 

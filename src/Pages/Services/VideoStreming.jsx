@@ -2,12 +2,22 @@ import { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player';
 import axios from 'axios';
 import { Player } from '@lottiefiles/react-lottie-player';
+import { useParams } from 'react-router-dom';
+import { useGetuserCourseVideoByIdQuery } from '../../redux/services/VideoApiSlice.js/VideoApiSlice';
 
 const Video = () => {
   const [videoPlaylist, setVideoPlaylist] = useState([]);
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  // const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [isOffline, setIsOffline] = useState(false);
-
+  //
+  const [lessionNameObject, setLessionNameObject] = useState(null);
+  const [selectedVideo, setSelectedVideo] = useState([]);
+  const [selectedLession, setSelectedLession] = useState('');
+  const [selectVideoUrl, setSelectVideoUrl] = useState('');
+  const { id } = useParams();
+  const lessionName = [];
+  const topicName = [];
+  const { data } = useGetuserCourseVideoByIdQuery(id);
   useEffect(() => {
     const handleOnlineStatusChange = () => {
       setIsOffline(!navigator.onLine);
@@ -30,21 +40,49 @@ const Video = () => {
           console.error('Error fetching video playlist:', error);
         });
     }
-
     return () => {
       window.removeEventListener('online', handleOnlineStatusChange);
       window.removeEventListener('offline', handleOnlineStatusChange);
     };
   }, []);
+  //Demo Functiion
+  // const handleNextVideo = () => {
+  //   setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videoPlaylist.length);
+  // };
 
-  const handleNextVideo = () => {
-    setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videoPlaylist.length);
+  // const handlePrevVideo = () => {
+  //   setCurrentVideoIndex((prevIndex) => (prevIndex === 0 ? videoPlaylist.length - 1 : prevIndex - 1));
+  // };
+
+  //Lession Name Genetator
+  if (data) {
+    for (let x in data[0]) {
+      lessionName.push(x);
+    }
+  }
+
+  //Handle Lessinon Name Based Topic Name Generated
+  const handleLessionName = (lession) => {
+    //Assign Values
+    if (data && lession) {
+      const selectLessionName = data[0][lession][0];
+      setLessionNameObject(selectLessionName);
+    }
   };
 
-  const handlePrevVideo = () => {
-    setCurrentVideoIndex((prevIndex) =>
-      prevIndex === 0 ? videoPlaylist.length - 1 : prevIndex - 1
-    );
+  //Topic Name Object Key Generation
+  if (lessionNameObject) {
+    for (let key in lessionNameObject) {
+      topicName.push(key);
+    }
+  }
+
+  //Topic video Select Generation
+  const handleSelectedTopic = (selectedTopic) => {
+    if (data && selectedTopic) {
+      const selectTopicVideo = data[0][selectedLession][0][selectedTopic];
+      setSelectedVideo(selectTopicVideo);
+    }
   };
 
   return (
@@ -57,37 +95,56 @@ const Video = () => {
         </div>
       )}
       {videoPlaylist.length > 0 && !isOffline && (
-        <div className="flex gap-8 items-center mx-auto max-w-7xl ">
-          <div>
-            <h2 className="text-white text-3xl font-bold">
-              {videoPlaylist[currentVideoIndex].title}
-            </h2>
-            <ReactPlayer
-              controls={true}
-              url={videoPlaylist[currentVideoIndex].videoUrl}
-              width="90%"
-              height="500px"
-            />
-            <div className="video-info">
-              <div className="flex gap-4 justify-evenly py-5">
-                <button className="btn text-xl" onClick={handlePrevVideo}>
-                  Previous
-                </button>
-                <button className="btn text-xl" onClick={handleNextVideo}>
-                  Next
-                </button>
-              </div>
-            </div>
+        <div className="grid md:grid-cols-4 grid-cols-1 gap-8 items-center mx-auto max-w-7xl ">
+          <div className="border-2 col-span-3">
+            <ReactPlayer controls={true} url={selectVideoUrl || 'https://youtu.be/TC8O3VE8QCU'} width="100%" height="500px" />
           </div>
-          <div className="bg-transparent border-2 text-white rounded-xl">
-            {videoPlaylist.map((video, idx) => (
-              <h1
-                className="py-3 px-3 border bg-purple-950 my-2 mx-2 rounded-lg cursor-pointer"
-                key={idx}
-              >
-                {video.title}
-              </h1>
-            ))}
+          <div className="bg-transparent border-2 text-white rounded-xl h-full">
+            <ul className="menu px-1">
+              <li>
+                {lessionName?.map((lessionValue, idx) => {
+                  return (
+                    <details key={idx + 'fkajfkljak'}>
+                      <summary
+                        className="font-bold text-yellow-500 text-2xl "
+                        onClick={() => {
+                          handleLessionName(lessionValue);
+                          setSelectedLession(lessionValue);
+                        }}
+                      >
+                        {lessionValue}
+                      </summary>
+
+                      {topicName?.map((topic, idx) => {
+                        return (
+                          <ul key={idx + 'hfjahfjah'} className="pl-1">
+                            <li key={idx}>
+                              <details>
+                                <summary className="font-bold text-yellow-400 text-2xl " onClick={() => handleSelectedTopic(topic)}>
+                                  {topic}
+                                </summary>
+                                {selectedVideo?.map((videoData, idx) => {
+                                  return (
+                                    <ul key={idx + 'hfjahfjah'} className="pl-3 mb-2 bg-orange-400 text-white">
+                                      <li
+                                        onClick={() => setSelectVideoUrl(videoData?.videoUrl)}
+                                        className="font-bold text-yellow-200 text-lg "
+                                      >
+                                        {videoData?.videoTitle}
+                                      </li>
+                                    </ul>
+                                  );
+                                })}
+                              </details>
+                            </li>
+                          </ul>
+                        );
+                      })}
+                    </details>
+                  );
+                })}
+              </li>
+            </ul>
           </div>
         </div>
       )}

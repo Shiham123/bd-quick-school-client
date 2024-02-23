@@ -29,11 +29,7 @@ const Services = () => {
           <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-3 lg:mx-0 gap-3 md:gap-5 lg:gap-10 py-10">
             {data?.map((service) => (
               <Link to={`/ServiceDetails/${service._id}`} key={service._id}>
-                
-                <div
-                  key={service.Id}
-                  className="cursor-pointer  text-white rounded-xl shadow-2xl shadow-[#2980b9]  "
-                >
+                <div key={service.Id} className="cursor-pointer  text-white rounded-xl shadow-2xl shadow-[#2980b9]  ">
                   <img className="w-full h-[250px]  rounded-t-xl  " src={service.image} alt="" />
                   <div className="p-4 h-[335px]">
                     <h2 className="text-lg md:text-xl lg:text-xl font-bold py-6 font-lora">{service.title}</h2>
@@ -48,14 +44,11 @@ const Services = () => {
                     </div>
                     {/* button */}
 
-                    <button className=" text-white text-xl font-extrabold py-2 px-4 border rounded font-lora mt-1 mb-2">
-                      Explore
-                    </button>
+                    <button className=" text-white text-xl font-extrabold py-2 px-4 border rounded font-lora mt-1 mb-2">Explore</button>
                   </div>
                 </div>
               </Link>
             ))}
-           
           </div>
         )}
       </div>

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// https://bd-quick-school-server-plum.vercel.app
+// http://localhost:5000
 
 export const addServicesApi = createApi({
   reducerPath: 'addServicesApi',

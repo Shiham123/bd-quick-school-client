@@ -54,7 +54,6 @@ const HelpDask = () => {
       ['clean'],
     ],
   };
-
   return (
     <>
       <div className="max-w-[1300px] border shadow-sm rounded-xl p-5 sm:p-7 bg-[#FFFFFF] border-primary-500 mx-auto my-5 ">

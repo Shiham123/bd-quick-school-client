@@ -85,11 +85,17 @@ const ManageUserTable = ({ user, index, refetch }) => {
                 {user.role}
             </td>
             <td className="px-6 py-4">
-                <button
-                    onClick={() => handleBanned(user?._id, { role: "Banned" })}
-                    disabled={user?.role === "user" || user?.role === "admin"} className="mr-4  btn bg-teal-500">
-                    <FaBan className="text-2xl text-white"></FaBan>
-                </button>
+                {
+                    user?.role === "Banned" ?
+                        <td className=" py-4 text-lg text-white">
+                            {user?.role}
+                        </td>
+                        : <button
+                            onClick={() => handleBanned(user?._id, { role: "Banned" })}
+                            disabled={user?.role === "user" || user?.role === "admin"} className="mr-4  btn bg-teal-500">
+                            <FaBan className="text-2xl text-white"></FaBan>
+                        </button>
+                }
             </td>
             <td className="px-6 py-4">
                 <button onClick={() => handleDeleteUser(user)} className="btn btn-outline text-white"><RiDeleteBin5Line className="text-xl" /></button>

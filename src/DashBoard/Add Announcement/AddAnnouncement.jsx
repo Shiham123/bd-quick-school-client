@@ -1,33 +1,31 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import ReactQuill from 'react-quill';
-import useAxiosSecure from './../../Hooks/UseAxiosSecure/UseAxiosSecure';
-import toast, { Toaster } from "react-hot-toast";
+import toast, { Toaster } from 'react-hot-toast';
+import { useAddAnnouncementMutation } from '../../redux/Announcement/announcementsApi';
+
 
 const AddAnnouncement = () => {
-    const [outcome, setOutcome] = useState('')
+    const [outcome, setOutcome] = useState('');
     const { register, handleSubmit, reset } = useForm();
-    const axiosSecure = useAxiosSecure()
-
+    const [AddAnnouncement] = useAddAnnouncementMutation();
 
     const onSubmit = async (data) => {
         // console.log(data)
         const item = {
             announcementtitle: data?.announcementtitle,
             announcemensubdescription: data?.announcemensubdescription,
-            outcome
-
-        }
+            outcome,
+        };
         // console.log(item)
-        const itemRes = await axiosSecure.post('/api/v1/admin/announcement', item)
-        // console.log(itemRes)
-        if (itemRes.data.insertedId) {
-            reset()
-            setOutcome(null);
-            toast.success('Your Announcement Have be Added')
-        }
-    }
-
+        AddAnnouncement(item)
+            .unwrap()
+            .then(() => {
+                reset();
+                setOutcome('');
+                toast.success('Your Announcement Have be Added');
+            });
+    };
 
     //React quil Modules Design
     const modules = {
@@ -75,13 +73,7 @@ const AddAnnouncement = () => {
                                 <h2 className=" text-base md:text-xl font-semibold text-black mb-2 lg:mb-4">
                                     Announcement Description <span className="text-red-700">*</span>
                                 </h2>
-                                <ReactQuill
-                                    modules={modules}
-                                    className="h-32 mb-12"
-                                    value={outcome}
-                                    onChange={setOutcome}
-                                    theme="snow"
-                                />
+                                <ReactQuill modules={modules} className="h-32 mb-12" value={outcome} onChange={setOutcome} theme="snow" />
                             </div>
                         </div>
                     </fieldset>

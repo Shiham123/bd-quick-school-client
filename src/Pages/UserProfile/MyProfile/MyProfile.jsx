@@ -60,6 +60,7 @@ const MyProfile = () => {
           <EditUserProfile
             id={id}
             name={name}
+            studentId={studentId}
             email={email}
             photoURL={photoUrl}
             phone={phone}

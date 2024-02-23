@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const ManageUserTable = ({ user, index, refetch }) => {
     const axiosSecure = useAxiosSecure()
 
-    // handle banned agent
+    // handle Banned Student
     const handleBanned = (id, role) => {
         Swal.fire({
             title: "Are you sure make banned?",

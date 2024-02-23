@@ -41,11 +41,13 @@ const ManageAnnouncementsTable = ({ announcement, index }) => {
 
             <td className="px-6 py-4">{announcement.announcementtitle}</td>
             <td className="px-6 py-4">{announcement.announcemensubdescription}</td>
-            <td className="px-6 py-4">
-                <button className="btn btn-outline text-white">
-                    <IoMdEye className="text-xl" />
-                </button>
-            </td>
+            <Link to='/announcements'>
+                <td className="px-6 py-4">
+                    <button className="btn btn-outline text-white">
+                        <IoMdEye className="text-xl" />
+                    </button>
+                </td>
+            </Link>
             <td className="px-6 py-4">
                 <Link to={`updateannouncements/${announcement._id}`}>
                     <button className="btn btn-outline text-white">

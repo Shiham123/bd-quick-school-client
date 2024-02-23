@@ -24,8 +24,7 @@ const Home = () => {
       <Faq />
       <Counter />
       <Review />
-      <ReviewForm></ReviewForm>
-
+      <ReviewForm />
       <ChatBoat />
     </div>
   );

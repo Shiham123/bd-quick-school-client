@@ -48,7 +48,6 @@ import JobpreDetails from '../Pages/Courses/JobpreDetails';
 import AdmissionDetails from '../Pages/Courses/AdmissionDetails';
 import FreeJobPreDetails from '../Pages/Courses/FreeJobPreDetails';
 
-
 import Bookmark from '../Components/Bookmark/Bookmark';
 import PaymentHistory from '../Pages/Payment History/PaymentHistory';
 import StudentRoute from './StudentRoute';
@@ -59,25 +58,21 @@ const Router = createBrowserRouter([
     element: <MainLayout />,
     errorElement: <ErrorElement />,
     children: [
-      
       {
         path: 'jobdetails/:id',
         element: <JobpreDetails></JobpreDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/api/v2/getJob/${params.id}`)
-
+        loader: ({ params }) => fetch(`http://localhost:5000/api/v2/getJob/${params.id}`),
       },
-     
+
       {
         path: 'freeCoursejobdetails/:id',
-        element:<FreeJobPreDetails></FreeJobPreDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/api/v2/getFreeJob/${params.id}`)
-
+        element: <FreeJobPreDetails></FreeJobPreDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/api/v2/getFreeJob/${params.id}`),
       },
       {
         path: 'admissiondetails/:id',
         element: <AdmissionDetails></AdmissionDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/api/v2/getadmission/${params.id}`)
-
+        loader: ({ params }) => fetch(`http://localhost:5000/api/v2/getadmission/${params.id}`),
       },
       { index: true, element: <Home /> },
       { path: 'Couredetails', element: <CourseDetails /> },
@@ -119,7 +114,7 @@ const Router = createBrowserRouter([
       { path: 'helpdask', element: <HelpDask /> },
       { path: 'room/:roomId', element: <Support /> },
       { path: 'supportSteap', element: <SupportSteap /> },
-      { path: 'Video', element: <Video /> },
+      { path: 'Video/:id', element: <Video /> },
       { path: 'outline', element: <Outline /> },
     ],
   },
@@ -147,11 +142,10 @@ const Router = createBrowserRouter([
       { path: 'addannouncements', element: <AddAnnouncement /> },
       { path: 'manageannouncements', element: <ManageAnnouncements /> },
 
-     
       {
         path: 'manageannouncements/updateannouncements/:id',
         element: <UpdateAnnouncement />,
-        loader: ({ params }) => fetch(`https://quiz-school-server.vercel.app/api/v1/admin/announcements/${params.id}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/api/v1/admin/announcements/${params.id}`),
       },
     ],
   },

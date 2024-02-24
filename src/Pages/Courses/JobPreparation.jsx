@@ -16,7 +16,7 @@ const JobPreparation = () => {
       try {
         const response = await axiosPublic.get('/api/v2/getJob');
         // const response = await axios.get('Job_Preparation_Paid.json');
-        
+
         setPaidJobPreparation(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -27,9 +27,8 @@ const JobPreparation = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-   
       try {
-        const response = await axios.get('http://localhost:5000/api/v2/getFreeJob');
+        const response = await axios.get('https://quiz-school-server.vercel.app/api/v2/getFreeJob');
         setFreeJobPreparation(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -71,14 +70,12 @@ const JobPreparation = () => {
                   <button className="bg-white text-black font-bold py-1 px-3 border-b-4 border-borderColorOne hover:border-black rounded my-4">
                     Purchase
                   </button>
-                  </Link>
-              
+                </Link>
               </div>
             </div>
           ))}
         </div>
       </div>
-
 
       {/* free job preparation */}
       <div className="w-[70%] mx-auto">
@@ -95,9 +92,9 @@ const JobPreparation = () => {
                 <h2 className="text-xl">Price: $ {admission.price}</h2>
 
                 <Link to={`/freeCoursejobdetails/${admission._id}`} key={admission._id}>
-                <button className="bg-white text-black font-bold py-1 px-3 border-b-4 border-borderColorOne hover:border-black rounded my-4">
-                  Purchase
-                </button>
+                  <button className="bg-white text-black font-bold py-1 px-3 border-b-4 border-borderColorOne hover:border-black rounded my-4">
+                    Purchase
+                  </button>
                 </Link>
               </div>
             </div>
@@ -107,9 +104,7 @@ const JobPreparation = () => {
 
       {/* FeedBack from former student */}
       <div className="w-[70%] mx-auto">
-        <h2 className="text-4xl font-bold py-12 text-white text-center">
-          Video Feedback From Former Student{' '}
-        </h2>
+        <h2 className="text-4xl font-bold py-12 text-white text-center">Video Feedback From Former Student </h2>
         <div className="grid grid-cols-1  lg:grid-cols-2 gap-10 pb-24">
           {feedBacks.map((feedBack, idx) => (
             <div key={idx}>

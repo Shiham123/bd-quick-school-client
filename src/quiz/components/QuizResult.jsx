@@ -41,9 +41,7 @@ const QuizResult = (props) => {
         <QuizHeading headingText="This is your result" />
 
         <div className="flex flex-col justify-center items-center">
-          <h1 className="font-lora text-xl md:text-2xl lg:text-3xl font-semibold text-white my-5">
-            {resultText}
-          </h1>
+          <h1 className="font-lora text-xl md:text-2xl lg:text-3xl font-semibold text-white my-5">{resultText}</h1>
           <h2 className="font-lora text-xl md:text-2xl lg:text-3xl font-semibold text-white my-5">
             Your score is <span className="font-semibold">{mark}</span> out of
             <span className="font-semibold">{quiz.length * 5}</span>

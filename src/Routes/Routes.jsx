@@ -61,18 +61,18 @@ const Router = createBrowserRouter([
       {
         path: 'jobdetails/:id',
         element: <JobpreDetails></JobpreDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/api/v2/getJob/${params.id}`),
+        loader: ({ params }) => fetch(`https://quiz-school-server.vercel.app/api/v2/getJob/${params.id}`),
       },
 
       {
         path: 'freeCoursejobdetails/:id',
         element: <FreeJobPreDetails></FreeJobPreDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/api/v2/getFreeJob/${params.id}`),
+        loader: ({ params }) => fetch(`https://quiz-school-server.vercel.app/api/v2/getFreeJob/${params.id}`),
       },
       {
         path: 'admissiondetails/:id',
         element: <AdmissionDetails></AdmissionDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/api/v2/getadmission/${params.id}`),
+        loader: ({ params }) => fetch(`https://quiz-school-server.vercel.app/api/v2/getadmission/${params.id}`),
       },
       { index: true, element: <Home /> },
       { path: 'Couredetails', element: <CourseDetails /> },

@@ -10,9 +10,9 @@ const AdmissionTest = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/v2/getAdmission');
+        const response = await axios.get('https://quiz-school-server.vercel.app/api/v2/getAdmission');
         // const response = await axios.get('Admission_test.json');
-      
+
         setAdmissionTest(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -36,11 +36,7 @@ const AdmissionTest = () => {
             </button>
           </div>
           <div className="w-[90%] lg:w-[40%] py-6">
-            <img
-              className="w-[80%] mx-auto"
-              src="https://cdn.10minuteschool.com/images/Medi-web_2_1705561549733.png"
-              alt=""
-            />
+            <img className="w-[80%] mx-auto" src="https://cdn.10minuteschool.com/images/Medi-web_2_1705561549733.png" alt="" />
           </div>
         </div>
       </div>
@@ -66,10 +62,7 @@ const AdmissionTest = () => {
                   <button className="bg-white text-black font-bold py-1 px-3 border-b-4 border-borderColorOne hover:border-black rounded my-4">
                     Purchase
                   </button>
-                
                 </Link>
-
-               
               </div>
             </div>
           ))}

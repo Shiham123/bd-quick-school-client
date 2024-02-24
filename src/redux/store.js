@@ -5,11 +5,14 @@ import { orderApiSlice } from './services/OrderApiSlice';
 import { addCourseVideoAPi } from './services/VideoApiSlice.js/VideoApiSlice';
 import { announcementsApi } from './services/AnnouncementSlice';
 
+
 const store = configureStore({
   reducer: {
     [addServicesApi.reducerPath]: addServicesApi.reducer,
     [quizeApiServices.reducerPath]: quizeApiServices.reducer,
     [orderApiSlice.reducerPath]: orderApiSlice.reducer,
+    // [addCourseVideoAPi.reducerPath]: addCourseVideoAPi.reducer,
+    [announcementsApi.reducerPath]: announcementsApi.reducer,
     [addCourseVideoAPi.reducerPath]: addCourseVideoAPi.reducer,
     [announcementsApi.reducerPath]: announcementsApi.reducer,
   },
@@ -21,7 +24,9 @@ const store = configureStore({
       quizeApiServices.middleware,
       orderApiSlice.middleware,
       announcementsApi.middleware,
+      addCourseVideoAPi.middleware,
     ]),
 });
 
 export default store;
+

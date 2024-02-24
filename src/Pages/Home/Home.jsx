@@ -16,8 +16,6 @@ const Home = () => {
   return (
     <div>
       <Banner />
-
-      <Counter></Counter>
       <Courses />
       <Work />
       <ChooseUs />
@@ -26,8 +24,7 @@ const Home = () => {
       <Faq />
       <Counter />
       <Review />
-      <ReviewForm></ReviewForm>
-
+      <ReviewForm />
       <ChatBoat />
     </div>
   );

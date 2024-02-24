@@ -3,16 +3,20 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../Hooks/useAuth/useAuth';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import useAxiosSecure from '../Hooks/UseAxiosSecure/UseAxiosSecure';
+
 import toast from 'react-hot-toast';
 import HelpDeskShow from './HealpDeskShow';
+import { useAddHelpPostMutation } from '../redux/services/HelpDeskApiSlice';
 
 const HelpDask = () => {
   const { user } = useAuth();
   const { register, handleSubmit, reset } = useForm();
   const [outcome, setOutcome] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
-  const axiosSecure = useAxiosSecure();
+
+
+// post i use redux 
+const [addHelpDesk] = useAddHelpPostMutation() 
 
   const openModal = () => {
     setModalOpen(true);
@@ -32,13 +36,13 @@ const HelpDask = () => {
     };
 
     try {
-      const itemRes = await axiosSecure.post('/api/v1/HelpDeskRoutes', newPost);
-      if (itemRes.data.insertedId) {
-        reset();
+      addHelpDesk(newPost).unwrap().then(()=>{
         setOutcome('');
+        reset();
         toast.success('Your Announcement has been Added');
         closeModal();
-      }
+      })
+    
     } catch (error) {
       console.error('Error submitting post:', error);
     }

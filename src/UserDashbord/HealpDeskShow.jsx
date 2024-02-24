@@ -1,48 +1,59 @@
 import { useEffect, useState } from 'react';
-import useAxiosSecure from '../Hooks/UseAxiosSecure/UseAxiosSecure';
 import useAuth from '../Hooks/useAuth/useAuth';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import {
+  useAddCommentPostMutation,
+  useGetAllHelpPostQuery,
+  useGetIdBasedCommentQuery,
+  useGetIdBasedPostQuery,
+} from '../redux/services/HelpDeskApiSlice';
 const HelpDeskShow = () => {
-  const [posts, setPosts] = useState([]);
-  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [outcome, setOutcome] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
   const { register, handleSubmit, reset } = useForm();
-  const [selectedPost, setSelectedPost] = useState(null);
-  const [comments, setComments] = useState([]);
+  const [selectedPost, setSelectedPost] = useState('');
+  // const [comments, setComments] = useState([]);
+
+  // redux data get
+  const { data: posts } = useGetAllHelpPostQuery();
+
+  const { data: comments } = useGetIdBasedCommentQuery(selectedPost);
+  const { data: helpPost } = useGetIdBasedPostQuery(selectedPost);
+  const [addComment] = useAddCommentPostMutation();
+  console.log(helpPost);
 
   // get post data
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await axiosSecure.get('/api/v1/HelpDeskRoutes');
-        setPosts(response.data);
-      } catch (error) {
-        console.error('Error fetching posts:', error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchPosts = async () => {
+  //     try {
+  //       const response = await axiosSecure.get('/api/v1/HelpDeskRoutes');
+  //       setPosts(response.data);
+  //     } catch (error) {
+  //       console.error('Error fetching posts:', error);
+  //     }
+  //   };
 
-    fetchPosts();
-  }, [axiosSecure]);
+  //   fetchPosts();
+  // }, [axiosSecure]);
 
   // // get comments data
-  useEffect(() => {
-    const fetchComments = async () => {
-      if (selectedPost) {
-        try {
-          const commentResponse = await axiosSecure.get(`/api/v1/CommentRoutes/${selectedPost._id}`);
-          setComments(commentResponse.data);
-          console.log(commentResponse.data);
-        } catch (error) {
-          console.error('Error fetching comments:', error);
-        }
-      }
-    };
+  // useEffect(() => {
+  //   const fetchComments = async () => {
+  //     if (selectedPost) {
+  //       try {
+  //         const commentResponse = await axiosSecure.get(`/api/v1/CommentRoutes/${selectedPost._id}`);
+  //         setComments(commentResponse.data);
+  //         console.log(commentResponse.data);
+  //       } catch (error) {
+  //         console.error('Error fetching comments:', error);
+  //       }
+  //     }
+  //   };
 
-    fetchComments();
-  }, [axiosSecure, selectedPost]);
+  //   fetchComments();
+  // }, [axiosSecure, selectedPost]);
 
   const formatTimeDifference = (publishedTime) => {
     const currentTime = new Date();
@@ -83,37 +94,28 @@ const HelpDeskShow = () => {
       date: new Date().toISOString(),
       userEmail: user.email,
       userPhoto: user.photoURL,
-      postId: selectedPost._id,
+      postId: helpPost._id,
     };
 
     try {
-      const itemRes = await axiosSecure.post('/api/v1/CommentRoutes', Comments);
-      if (itemRes.data.insertedId) {
-        reset();
-        setOutcome('');
-        toast.success('Your Announcement has been Added');
-        closeModal();
-      }
+      addComment(Comments)
+        .unwrap()
+        .then(() => {
+          setOutcome('');
+          reset();
+          toast.success('Your comment has been Added');
+          closeModal();
+        });
     } catch (error) {
       console.error('Error submitting post:', error);
-    }
-  };
-
-  const handlePostClick = async (postId) => {
-    try {
-      const response = await axiosSecure.get(`/api/v1/HelpDeskRoutes/${postId}`); 
-      setSelectedPost(response.data);
-      setModalOpen(true); 
-    } catch (error) {
-      console.error('Error fetching post:', error);
     }
   };
 
   return (
     <>
       <div onClick={openModal}>
-        {posts.map((post, index) => (
-          <div key={index} onClick={() => handlePostClick(post._id)} className="post">
+        {posts?.map((post, index) => (
+          <div key={index} onClick={() => setSelectedPost(post._id)} className="post">
             <div className="card max-w-[1300px] border rounded-xl  bg-[#FFFFFF] border-primary-500 mx-auto shadow-xl">
               <div className="card-body">
                 <div className="flex justify-center items-center gap-5">
@@ -123,7 +125,7 @@ const HelpDeskShow = () => {
                 <p>{formatTimeDifference(post.date)}</p>
                 <h2 className="card-title">{post.title}</h2>
                 <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
-                <p>{comments.filter((comment) => comment.postId === post._id).length} comments</p>
+                <p>{comments?.filter((comment) => comment?.postId === post._id).length} comments</p>
                 {/* show comment data  */}
               </div>
             </div>
@@ -137,7 +139,6 @@ const HelpDeskShow = () => {
             <div className="relative bg-white rounded-lg w-full md:w-1/2 mx-auto p-6">
               <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onClick={closeModal}>
                 ✕
-                
               </button>
               <div className="w-full mx-auto ">
                 {selectedPost && (
@@ -147,20 +148,20 @@ const HelpDeskShow = () => {
                         <img className="rounded-full w-[48px] h-[48px]" src={user?.photoURL} alt="" />
                         <p> {user?.displayName}</p>
                       </div>
-                      <p>{formatTimeDifference(selectedPost.date)}</p>
-                      <h2 className="card-title">{selectedPost.title}</h2>
-                      <div dangerouslySetInnerHTML={{ __html: selectedPost.content }}></div>
+                      <p>{formatTimeDifference(helpPost?.date)}</p>
+                      <h2 className="card-title">{helpPost?.title}</h2>
+                      <div dangerouslySetInnerHTML={{ __html: helpPost?.content }}></div>
                     </div>
                     <h3>Comments</h3>
                     <ul>
-                      {comments.map((comment, index) => (
+                      {comments?.map((comment, index) => (
                         <li key={index}>
                           <div className="flex  items-center gap-5">
                             <img className="rounded-full w-[48px] h-[48px]" src={user?.photoURL} alt="" />
                             <p> {user?.displayName}</p>
-                            <p>{formatTimeDifference(comment.date)}</p>
+                            <p>{formatTimeDifference(comment?.date)}</p>
                           </div>
-                          <p className="text-start px-16 bg-slate-400"> {comment.Comment}</p>
+                          <p className="text-start px-16 bg-slate-400"> {comment?.Comment}</p>
                         </li>
                       ))}
                     </ul>

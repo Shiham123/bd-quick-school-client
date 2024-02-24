@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// https://quiz-school-server.vercel.app
+// https://quiz-school-server.vercel.app //
 
 export const announcementsApi = createApi({
   reducerPath: 'announcementsApi',

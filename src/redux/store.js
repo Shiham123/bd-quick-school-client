@@ -3,9 +3,8 @@ import { addServicesApi } from './services/ServicesApiSlice';
 import { quizeApiServices } from './services/QuizeApiSlice';
 import { orderApiSlice } from './services/OrderApiSlice';
 import { addCourseVideoAPi } from './services/VideoApiSlice.js/VideoApiSlice';
-
 import { announcementsApi } from './Announcement/announcementsApi';
-
+import { quizApi } from './IsQuizUser/QuizUserSlice';
 
 const store = configureStore({
   reducer: {
@@ -15,6 +14,7 @@ const store = configureStore({
     // [addCourseVideoAPi.reducerPath]: addCourseVideoAPi.reducer,
     [announcementsApi.reducerPath]: announcementsApi.reducer,
     [addCourseVideoAPi.reducerPath]: addCourseVideoAPi.reducer,
+    [quizApi.reducerPath]: quizApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([
@@ -23,8 +23,8 @@ const store = configureStore({
       orderApiSlice.middleware,
       announcementsApi.middleware,
       addCourseVideoAPi.middleware,
+      quizApi.middleware,
     ]),
 });
 
 export default store;
-

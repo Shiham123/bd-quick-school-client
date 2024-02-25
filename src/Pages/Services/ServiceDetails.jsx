@@ -15,48 +15,35 @@ import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import PayDataFrom from './PayDataFrom';
 import QuizModal from '../../quiz/shared/QuizModal';
 import useLocationContext from '../../context/useLocationContext';
-// import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
+import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 import useAuth from '../../Hooks/useAuth/useAuth';
 import { useGetIdBasedServicesQuery } from '../../redux/services/ServicesApiSlice';
 import ServicesBookmark from './ServicesBookmark';
 import LikeDislikeComponent from './LikeDislikeComponent';
-import { useGetQuizUserByEmailQuery } from '../../redux/IsQuizUser/QuizUserSlice';
-import { useEffect } from 'react';
 
 const ServiceDetails = () => {
   const { id } = useParams();
   const { isModalOpen, closeModal, openModal } = useLocationContext();
-  // const axiosPublic = useAxiosPublic();
+  const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
   const { data, isLoading } = useGetIdBasedServicesQuery(id);
 
   const loggedInUserEmail = user?.email, // destructuring the value
     currentProductId = data?._id;
 
-  const { data: quizUserData, isLoading: quizUserLoading } = useGetQuizUserByEmailQuery({ id: currentProductId, email: loggedInUserEmail });
+  axiosPublic
+    .get(`/api/v2/quizUsers/${id}/${user?.email}`)
+    .then((response) => {
+      const submitQuiz = response.data?.submitQuiz;
+      if (submitQuiz) {
+        closeModal();
+      } else {
+        openModal();
+      }
+    })
+    .catch((error) => console.log(error));
 
-  useEffect(() => {
-    const isSubmit = quizUserData?.submitQuiz;
-    if (isSubmit) {
-      closeModal();
-    } else {
-      openModal();
-    }
-  }, [closeModal, openModal, quizUserData?.submitQuiz, quizUserData]);
-
-  // axiosPublic
-  //   .get(`/api/v2/quizUsers/${id}/${user?.email}`)
-  //   .then((response) => {
-  //     const submitQuiz = response.data?.submitQuiz;
-  //     if (submitQuiz) {
-  //       closeModal();
-  //     } else {
-  //       openModal();
-  //     }
-  //   })
-  //   .catch((error) => console.log(error));
-
-  if (isLoading || quizUserLoading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 

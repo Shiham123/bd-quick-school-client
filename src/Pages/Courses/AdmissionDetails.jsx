@@ -14,8 +14,8 @@ const AdmissionDetails = () => {
 
                 </div>
 
-                <div className="w-[50%]  h-[500px] pt-10 px-6">
-                    <h2 className="font-bold text-4xl my-5 font-lora ">{detailsAdmission.title}</h2>
+                <div className="w-[50%]  h-[500px] pt-10 px-6 text-white">
+                    <h2 className="font-bold text-4xl my-5 font-lora  ">{detailsAdmission.title}</h2>
                     <p className="font-medium text-xl mb-2 font-lora">{detailsAdmission.details}</p>
                     <p className="font-medium text-xl mb-6 font-lora">{detailsAdmission.outcome}</p>
                     <p className="font-medium text-xl mb-6 font-lora">Course Price : ${detailsAdmission.price}</p>

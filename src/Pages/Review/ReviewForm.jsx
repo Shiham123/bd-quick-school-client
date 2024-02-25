@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import Swal from 'sweetalert2';
-import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 import Select from 'react-select';
+import { useAddReviewPostMutation } from '../../redux/services/ReviewApiSlice';
 
 // react select options
 const Rating = [
@@ -15,9 +15,11 @@ const Rating = [
 const ReviewForm = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const formRef = useRef();
-  const axiosPublic = useAxiosPublic();
 
-  const handleAddReview = (event) => {
+  const [FormPost] = useAddReviewPostMutation();
+  // console.log(FormPost);
+
+  const handleAddReview = async (event) => {
     event.preventDefault();
     const form = formRef.current;
 
@@ -26,31 +28,26 @@ const ReviewForm = () => {
     const rating = selectedOption ? selectedOption.value : null; // Get selected rating value
     const textarea = form.textarea.value;
     const ReviewForm = { fullname, designation, rating, textarea, status: 'pending' };
+    console.log(ReviewForm);
 
-    axiosPublic
-      .post('/api/v2/reviewpost', ReviewForm)
-      .then((res) => {
-        console.log(res.data);
-        form.reset();
-        if (res.data.insertedId) {
+   
+    try {
+      FormPost(ReviewForm)
+        .unwrap()
+        .then(() => {
+          form.reset();
+          document.getElementById('my_modal_5').close();
           Swal.fire({
             title: 'Success!',
             text: 'Feedback Added Successfully',
             icon: 'success',
             confirmButtonText: 'Cool',
           });
-          document.getElementById('my_modal_5').close();
-        }
-      })
-      .catch((error) => {
-        console.error('Error adding feedback:', error);
-        Swal.fire({
-          title: 'Error!',
-          text: 'Failed to add feedback',
-          icon: 'error',
-          confirmButtonText: 'Ok',
         });
-      });
+    } catch (error) {
+      console.error('Error adding feedback:', error);
+    }
+
   };
 
   const handleCancel = () => {

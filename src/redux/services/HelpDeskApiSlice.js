@@ -35,12 +35,10 @@ export const helpDeskApiSlice = createApi({
       }),
       invalidatesTags: ['HelpDesk'],
     }),
-
-    
   }),
 });
 
-// expoer all routes 
+// expoer all routes
 export const {
   useGetAllHelpPostQuery,
   useGetIdBasedCommentQuery,

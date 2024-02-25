@@ -8,8 +8,7 @@ i18next.use(initReactI18next).init({
         hello: 'hello',
         baner1: '6th-HSC Class',
         baner2: 'Online Batch Admission Is Going On!',
-        baner3:
-          ' 💯 to 💯 preparation of complete syllabus with experienced teachers throughout 2023!',
+        baner3: ' 💯 to 💯 preparation of complete syllabus with experienced teachers throughout 2023!',
         coursehead1: '  Great discounts on select skill development courses!',
         coursehead2:
           '  Get selected BD Quick School courses at special prices throughout the month. Start learning now with BD Quick School! ',
@@ -45,7 +44,7 @@ i18next.use(initReactI18next).init({
         skill5: 'React',
         Nav2: ' Admission test',
         Nav3: ' Job-Preparation',
-        Nav4: ' Online batch',
+        Nav4: ' Contact us',
         Nav5: ' Our Services',
         Nav6: 'Skills',
         MyCourses: 'My Courses ',
@@ -54,24 +53,19 @@ i18next.use(initReactI18next).init({
         Support: 'Support',
         HowItWork: 'How it works?',
         Signup: 'Sign up',
-        Signup1:
-          'Our services and collections adhere to cutting-edge solutions in the design world.',
+        Signup1: 'Our services and collections adhere to cutting-edge solutions in the design world.',
         Selectcourse: 'Select course',
-        Selectcourse1:
-          'We have everything for effective learning and delivery of assignments by students.',
+        Selectcourse1: 'We have everything for effective learning and delivery of assignments by students.',
         StartLearning: 'Start Learning',
-        StartLearning1:
-          'After completing the course, you will receive a certificate confirming your knowledge.',
+        StartLearning1: 'After completing the course, you will receive a certificate confirming your knowledge.',
         Whychooseus: 'Why choose us',
         Professionalchoice: 'Professional choice',
-        Professionalchoice1:
-          'Each lesson includes a variety of speaking, listening, translation and multiple choice challenge.',
+        Professionalchoice1: 'Each lesson includes a variety of speaking, listening, translation and multiple choice challenge.',
         Qualitycontrol: 'Quality control',
         Qualitycontrol1:
           'BD Quick School motivates you to stay on track by recording how many days in a row you spend learning a language.',
         Hearts: 'Hearts',
-        Hearts1:
-          'Learning with BD Quick School is fun and addictive. Earn points for correct answers, race against the clock.',
+        Hearts1: 'Learning with BD Quick School is fun and addictive. Earn points for correct answers, race against the clock.',
         WiderangeofCourses: 'Wide range of Courses',
         WiderangeofCourses1:
           'Instantly see which answers you get correct. When you miss a challenge, we’ll quickly show you how to improve. Start with Professionals.',
@@ -88,8 +82,7 @@ i18next.use(initReactI18next).init({
         hello: 'হ্যালো',
         baner1: ' ৬ষ্ঠ-এইচএসসি শ্রেণির',
         baner2: ' অনলাইন ব্যাচে ভর্তি চলছে!',
-        baner3:
-          '২০২৩ সাল জুড়ে অভিজ্ঞ শিক্ষকদের সাথে সম্পূর্ণ সিলেবাসের 💯 তে 💯 প্রস্তুতি!        ',
+        baner3: '২০২৩ সাল জুড়ে অভিজ্ঞ শিক্ষকদের সাথে সম্পূর্ণ সিলেবাসের 💯 তে 💯 প্রস্তুতি!        ',
         coursehead1: 'স্কিল ডেভেলপমেন্টের নির্দিষ্ট কোর্সে দারুণ ছাড়! ',
         coursehead2:
           '  পুরো মাস জুড়ে বিডি কুইক স্কুলের নির্দিষ্ট কোর্সসমূহ পেয়ে যান বিশেষ মূল্যে। এবার শেখার শুরু হোক বিডি কুইক স্কুলের সাথে!',
@@ -125,7 +118,7 @@ i18next.use(initReactI18next).init({
         skill5: 'রিয়েক্ট',
         Nav2: '  ভর্তি পরীক্ষা',
         Nav3: ' চাকরি প্রস্তুতি  ',
-        Nav4: 'অনলাইন ব্যাচ',
+        Nav4: 'যোগাযোগ করুন',
         Nav5: ' আমাদের সেবা সমূহ',
         MyCourses: 'আমার কোস ',
         Home: 'হোম',
@@ -135,20 +128,16 @@ i18next.use(initReactI18next).init({
         Signup: 'সাইন আপ',
         Signup1: 'আমাদের পরিষেবা এবং সংগ্রহগুলি ডিজাইনের জগতে অত্যাধুনিক সমাধানগুলি মেনে চলে৷',
         Selectcourse: 'সিলেক্ট কোস',
-        Selectcourse1:
-          'কার্যকরী শেখার জন্য এবং শিক্ষার্থীদের দ্বারা অ্যাসাইনমেন্ট প্রদানের জন্য আমাদের কাছে সবকিছু রয়েছে।',
+        Selectcourse1: 'কার্যকরী শেখার জন্য এবং শিক্ষার্থীদের দ্বারা অ্যাসাইনমেন্ট প্রদানের জন্য আমাদের কাছে সবকিছু রয়েছে।',
         StartLearning: 'শেখা শুরু করো',
         StartLearning1: 'কোর্স শেষ করার পরে, আপনি আপনার জ্ঞান নিশ্চিত করে একটি শংসাপত্র পাবেন।',
         Whychooseus: 'কেন আমাদের চয়েজ করবেন',
         Professionalchoice: 'প্রোফেশনাল চয়েজ',
-        Professionalchoice1:
-          'প্রতিটি পাঠে বিভিন্ন ধরনের কথা বলা, শোনা, অনুবাদ এবং একাধিক পছন্দের চ্যালেঞ্জ অন্তর্ভুক্ত থাকে।',
+        Professionalchoice1: 'প্রতিটি পাঠে বিভিন্ন ধরনের কথা বলা, শোনা, অনুবাদ এবং একাধিক পছন্দের চ্যালেঞ্জ অন্তর্ভুক্ত থাকে।',
         Qualitycontrol: 'মান নিয়ন্ত্রণ',
-        Qualitycontrol1:
-          'বিডি কুইক স্কুল আপনাকে একটি ভাষা শেখার জন্য পরপর কত দিন ব্যয় করেছে তা রেকর্ড করে ট্র্যাকে থাকতে অনুপ্রাণিত করে।',
+        Qualitycontrol1: 'বিডি কুইক স্কুল আপনাকে একটি ভাষা শেখার জন্য পরপর কত দিন ব্যয় করেছে তা রেকর্ড করে ট্র্যাকে থাকতে অনুপ্রাণিত করে।',
         Hearts: 'হার্টস',
-        Hearts1:
-          'বিডি কুইক স্কুলের সাথে শেখা মজাদার এবং আসক্তিপূর্ণ। সঠিক উত্তরের জন্য পয়েন্ট অর্জন করুন, ঘড়ির বিপরীতে দৌড়।',
+        Hearts1: 'বিডি কুইক স্কুলের সাথে শেখা মজাদার এবং আসক্তিপূর্ণ। সঠিক উত্তরের জন্য পয়েন্ট অর্জন করুন, ঘড়ির বিপরীতে দৌড়।',
         WiderangeofCourses: 'কোর্সের বিস্তৃত পরিসর',
         WiderangeofCourses1:
           'Iঅবিলম্বে আপনি সঠিক উত্তর পেতে দেখুন. আপনি যখন কোনো চ্যালেঞ্জ মিস করেন, আমরা দ্রুত আপনাকে দেখাব কীভাবে উন্নতি করা যায়। পেশাদারদের সাথে শুরু করুন।',

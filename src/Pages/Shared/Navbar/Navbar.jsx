@@ -7,9 +7,8 @@ import useAuth from './../../../Hooks/useAuth/useAuth';
 import { ThemeContext } from '../../../context/Darkmode';
 import { useTranslation } from 'react-i18next';
 import VerifyAdmin from '../../../Hooks/useAdmin/useAdmin';
-import { IoNotifications } from "react-icons/io5";
+import { IoNotifications } from 'react-icons/io5';
 import useStudent from '../../../Hooks/useStudent/useStudent';
-
 
 const Navbar = () => {
   const [stickyClass, setStickyClass] = useState('');
@@ -17,7 +16,7 @@ const Navbar = () => {
   const { darkMode, setDarkMode } = useContext(ThemeContext);
   const { t, i18n } = useTranslation();
   const [isAdmin] = VerifyAdmin();
-  const [isStudent] = useStudent()
+  const [isStudent] = useStudent();
   const [showNotificationDropdown, setShowNotificationDropdown] = useState(false);
 
   const handleLogOut = () => {
@@ -40,8 +39,8 @@ const Navbar = () => {
       // window height changed for the demo
       windowHeight > 50
         ? setStickyClass(
-          `fixed top-0 transition  bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:from-[#1A1B1F] dark:via-[#1A1B1F] dark:to-[#1A1B1F]   bg-opacity-100 duration-1000 ease-in-out`
-        )
+            `fixed top-0 transition  bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:from-[#1A1B1F] dark:via-[#1A1B1F] dark:to-[#1A1B1F]   bg-opacity-100 duration-1000 ease-in-out`
+          )
         : setStickyClass('');
     }
   };
@@ -139,7 +138,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/online-batch'}>
+                  <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/contactUs'}>
                     {t('Nav4')}
                   </NavLink>
                 </li>
@@ -232,7 +231,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/online-batch'}>
+                <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/contactUs'}>
                   {t('Nav4')}
                 </NavLink>
               </li>
@@ -241,19 +240,13 @@ const Navbar = () => {
                   {t('Nav5')}
                 </NavLink>
               </li>
-              {
-                isStudent && (
-                  <li>
-                    <NavLink
-                      style={activeRouteStyle}
-                      className=" hover:text-[#deb2ac] uppercase font-medium"
-                      to={'/MyCourses'}
-                    >
-                      {t('MyCourses')}
-                    </NavLink>
-                  </li>
-                )
-              }
+              {isStudent && (
+                <li>
+                  <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/MyCourses'}>
+                    {t('MyCourses')}
+                  </NavLink>
+                </li>
+              )}
               {/* Dropdown for Notification */}
               <div className="relative ml-4 mr-4">
                 <IoNotifications className="text-2xl cursor-pointer" onClick={toggleNotificationDropdown} />
@@ -332,7 +325,7 @@ const Navbar = () => {
                     Certificate
                   </li>
                   <hr />
-                  <Link to='/paymenthistory'>
+                  <Link to="/paymenthistory">
                     <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                       Payment History
                     </li>

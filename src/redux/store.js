@@ -5,6 +5,7 @@ import { orderApiSlice } from './services/OrderApiSlice';
 import { addCourseVideoAPi } from './services/VideoApiSlice.js/VideoApiSlice';
 
 import { announcementsApi } from './Announcement/announcementsApi';
+import { helpDeskApiSlice } from './services/HelpDeskApiSlice';
 
 
 const store = configureStore({
@@ -15,6 +16,7 @@ const store = configureStore({
     // [addCourseVideoAPi.reducerPath]: addCourseVideoAPi.reducer,
     [announcementsApi.reducerPath]: announcementsApi.reducer,
     [addCourseVideoAPi.reducerPath]: addCourseVideoAPi.reducer,
+    [helpDeskApiSlice.reducerPath]: helpDeskApiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([
@@ -23,6 +25,7 @@ const store = configureStore({
       orderApiSlice.middleware,
       announcementsApi.middleware,
       addCourseVideoAPi.middleware,
+      helpDeskApiSlice.middleware,
     ]),
 });
 

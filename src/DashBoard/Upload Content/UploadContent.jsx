@@ -87,7 +87,12 @@ const UploadContent = () => {
             // notificationIs,
           };
 
-          
+          axiosSecure
+            .patch(`/api/v1/notification`, newNotification)
+            .then((res) => {
+              console.log(res.data);
+              navigate("/");
+            });
 
 
 

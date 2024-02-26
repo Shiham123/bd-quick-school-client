@@ -71,12 +71,16 @@ const UploadContent = () => {
         .unwrap()
         .then((res) => {
           Swal.fire('Video Successfully Added');
+          
+          // New Notification Function sent to the database
           const newNotification = {
             courseId: courseSelect,
             title: data?.title,
             isRead: false,
             date,
           };
+          
+          // axios secure and using patch method
           axiosSecure
             .patch(`/api/v1/notification`, newNotification)
             .then((res) => {
@@ -84,6 +88,7 @@ const UploadContent = () => {
               navigate("/");
             });
         })
+        // Catching error 
         .catch(() => {
           Swal.fire('!!!Sorry,Upload Failed');
         });

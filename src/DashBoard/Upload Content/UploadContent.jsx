@@ -71,31 +71,18 @@ const UploadContent = () => {
         .unwrap()
         .then((res) => {
           Swal.fire('Video Successfully Added');
-
-          // const notificationIs = {
-          //   title: `New video "${data?.title}" uploaded for course "${courseSelect}"`,
-          //   redirect: "/",
-          //   isRead: false,
-          //   date,
-          // };
-
           const newNotification = {
             courseId: courseSelect,
             title: data?.title,
             isRead: false,
             date,
-            // notificationIs,
           };
-
           axiosSecure
             .patch(`/api/v1/notification`, newNotification)
             .then((res) => {
               console.log(res.data);
               navigate("/");
             });
-
-
-
         })
         .catch(() => {
           Swal.fire('!!!Sorry,Upload Failed');

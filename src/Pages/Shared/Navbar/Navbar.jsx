@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation, useParams } from 'react-router-dom';
 import { IoMenuSharp } from 'react-icons/io5';
 import { useContext, useEffect, useState } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
@@ -7,17 +7,33 @@ import useAuth from './../../../Hooks/useAuth/useAuth';
 import { ThemeContext } from '../../../context/Darkmode';
 import { useTranslation } from 'react-i18next';
 import VerifyAdmin from '../../../Hooks/useAdmin/useAdmin';
-import { IoNotifications } from 'react-icons/io5';
+import { IoMdNotifications } from "react-icons/io";
 import useStudent from '../../../Hooks/useStudent/useStudent';
+import useAxiosPublic from '../../../Hooks/useAxiosPublic/useAxiosPublic';
 
 const Navbar = () => {
   const [stickyClass, setStickyClass] = useState('');
   const { user, logOut } = useAuth();
+  const axiosPublic = useAxiosPublic()
   const { darkMode, setDarkMode } = useContext(ThemeContext);
   const { t, i18n } = useTranslation();
   const [isAdmin] = VerifyAdmin();
   const [isStudent] = useStudent();
-  const [showNotificationDropdown, setShowNotificationDropdown] = useState(false);
+  const [notification, setNotification] = useState(false);
+  const [notifications, setNotifications] = useState({});
+
+
+
+
+
+  // Toggle notification dropdown
+  const handleNotification = () => {
+    setNotification(!notification);
+  };
+
+
+
+
 
   const handleLogOut = () => {
     logOut()
@@ -39,8 +55,8 @@ const Navbar = () => {
       // window height changed for the demo
       windowHeight > 50
         ? setStickyClass(
-            `fixed top-0 transition  bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:from-[#1A1B1F] dark:via-[#1A1B1F] dark:to-[#1A1B1F]   bg-opacity-100 duration-1000 ease-in-out`
-          )
+          `fixed top-0 transition  bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:from-[#1A1B1F] dark:via-[#1A1B1F] dark:to-[#1A1B1F]   bg-opacity-100 duration-1000 ease-in-out`
+        )
         : setStickyClass('');
     }
   };
@@ -59,10 +75,7 @@ const Navbar = () => {
     localStorage.setItem('lng', lng);
   };
 
-  // Toggle notification dropdown visibility
-  const toggleNotificationDropdown = () => {
-    setShowNotificationDropdown((prev) => !prev);
-  };
+
 
   return (
     <>
@@ -248,17 +261,14 @@ const Navbar = () => {
                 </li>
               )}
               {/* Dropdown for Notification */}
-              <div className="relative ml-4 mr-4">
-                <IoNotifications className="text-2xl cursor-pointer" onClick={toggleNotificationDropdown} />
-                {showNotificationDropdown && (
-                  <div className="absolute top-full  mt-5 w-96 bg-white text-black shadow-lg rounded-lg">
-                    {/* Notification Dropdown Content Goes Here */}
-                    <p>Notification 1</p>
-                    <p>Notification 2</p>
-                    <p>Notification 3</p>
-                  </div>
-                )}
-              </div>
+              <span
+                onClick={handleNotification}
+                className="ml-4 mr-4"
+              >
+                <IoMdNotifications className="text-2xl cursor-pointer"></IoMdNotifications>
+
+                
+              </span>
 
               {/* -------end here navbar without drop down */}
               {/* dak lite  */}

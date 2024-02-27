@@ -33,11 +33,24 @@ const Navbar = () => {
 
 
   useEffect(() => {
-    axiosPublic(`/api/v1/notification/update/${user?.email}`).then((res) => {
-      setNotifications(res.data);
-      // console.log(res.data)
-    });
+    axiosPublic(`/api/v1/notification/update/${user?.email}`)
+      .then((res) => {
+        // Log the response data to ensure it's correctly fetched
+        console.log("API Response Data:", res.data);
+
+        // Check if the response data contains notifications array
+        if (res.data && Array.isArray(res.data) && res.data.length > 0) {
+          setNotifications(res.data[0]); // Assuming the response is an array with a single object containing notifications
+        } else {
+          // Handle case when data is not found or structured incorrectly
+          console.error("Notification data not found or structured incorrectly.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching notification data:", error);
+      });
   }, [user?.email, axiosPublic, location.pathname]);
+
 
 
 
@@ -276,7 +289,7 @@ const Navbar = () => {
                 <div
                   className={
                     notification
-                      ? "w-96 bg-gradient-to-b from-[#42275a] to-[#734b6d] max-h-screen absolute right-[240px] top-24 text-white border rounded-md py-4 ease-in duration-300 border-[#e9f0ec]"
+                      ? "w-96 bg-gradient-to-b from-[#42275a] to-[#734b6d] max-h-screen absolute right-[240px] top-24  border rounded-md py-4 ease-in duration-300 border-[#e9f0ec]"
                       : "w-96 primary-bg overflow-hidden absolute right-0 -top-[500px] py-10 z-10 ease-in duration-300 max-h-80"
                   }
                 >
@@ -287,7 +300,10 @@ const Navbar = () => {
                     notifications?.notificationTitle.map(
                       (notification, index) => (
                         <Link key={index} to={notification.redirect}>
+                          <div className="px-4 py-2 border-b border-b-white hover:bg-white">
+                            <p className='text-white'>{notification}</p>
 
+                          </div>
                         </Link>
                       )
                     )}

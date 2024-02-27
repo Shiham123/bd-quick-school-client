@@ -21,7 +21,7 @@ const Navbar = () => {
   const [isStudent] = useStudent();
   const [notification, setNotification] = useState(false);
   const [notifications, setNotifications] = useState({});
-
+  const location = useLocation();
 
 
 
@@ -32,6 +32,12 @@ const Navbar = () => {
   };
 
 
+  useEffect(() => {
+    axiosPublic(`/api/v1/notification/update/${user?.email}`).then((res) => {
+      setNotifications(res.data);
+      // console.log(res.data)
+    });
+  }, [user?.email, axiosPublic, location.pathname]);
 
 
 
@@ -267,7 +273,7 @@ const Navbar = () => {
               >
                 <IoMdNotifications className="text-2xl cursor-pointer"></IoMdNotifications>
 
-                
+
               </span>
 
               {/* -------end here navbar without drop down */}

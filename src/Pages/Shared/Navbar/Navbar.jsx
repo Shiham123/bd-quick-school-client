@@ -8,7 +8,7 @@ import { ThemeContext } from '../../../context/Darkmode';
 import { useTranslation } from 'react-i18next';
 import VerifyAdmin from '../../../Hooks/useAdmin/useAdmin';
 import { IoMdNotifications } from "react-icons/io";
-import {FaRegEnvelope,FaRegEnvelopeOpen} from "react-icons/fa";
+import { FaRegEnvelope, FaRegEnvelopeOpen } from "react-icons/fa";
 import useStudent from '../../../Hooks/useStudent/useStudent';
 import useAxiosPublic from '../../../Hooks/useAxiosPublic/useAxiosPublic';
 import moment from 'moment';
@@ -283,15 +283,17 @@ const Navbar = () => {
               )}
               {/* Dropdown for Notification */}
               <span
+                tabIndex={0}
                 onClick={handleNotification}
                 className="ml-4 mr-4"
               >
                 <IoMdNotifications className="text-2xl cursor-pointer"></IoMdNotifications>
 
                 <div
+                  tabIndex={0}
                   className={
                     notification
-                      ? "w-96 bg-gradient-to-b from-[#42275a] to-[#734b6d] max-h-screen absolute right-[240px] top-24  border rounded-md py-4 ease-in duration-300 border-[#e9f0ec]"
+                      ? "w-96 bg-gradient-to-b from-[#42275a] to-[#734b6d] max-h-screen absolute right-[240px] z-[1] top-24  border rounded-md py-4 ease-in duration-300 border-[#e9f0ec]"
                       : "w-96 primary-bg overflow-hidden absolute right-0 -top-[500px] py-10 z-10 ease-in duration-300 max-h-80"
                   }
                 >
@@ -302,8 +304,8 @@ const Navbar = () => {
                     notifications?.notificationTitle.map(
                       (notification, index) => (
                         <Link key={index} to={notification.redirect}>
-                          <div className="px-4 py-2 border-b border-b-white hover:bg-white">
-                            <p className='text-white'>{notification}</p>
+                          <div className="px-4 py-2 border-b border-b-white hover:bg-white overflow-y-auto">
+                            <p className='text-white'>{notification} has been released</p>
                             <div className="flex justify-between items-center">
                               <p className="text-[10px]">
                                 {moment(
@@ -311,7 +313,7 @@ const Navbar = () => {
                                   "YYYYMMDDHHmm"
                                 ).fromNow()}
                               </p>
-                              {notification.isRead ? (
+                              {notification?.isRead ? (
                                 <p className="w-5 ">
                                   <FaRegEnvelopeOpen></FaRegEnvelopeOpen>
                                 </p>

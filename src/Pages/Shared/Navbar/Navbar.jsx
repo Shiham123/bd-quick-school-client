@@ -10,6 +10,7 @@ import VerifyAdmin from '../../../Hooks/useAdmin/useAdmin';
 import { IoMdNotifications } from "react-icons/io";
 import useStudent from '../../../Hooks/useStudent/useStudent';
 import useAxiosPublic from '../../../Hooks/useAxiosPublic/useAxiosPublic';
+import moment from 'moment';
 
 const Navbar = () => {
   const [stickyClass, setStickyClass] = useState('');
@@ -302,7 +303,15 @@ const Navbar = () => {
                         <Link key={index} to={notification.redirect}>
                           <div className="px-4 py-2 border-b border-b-white hover:bg-white">
                             <p className='text-white'>{notification}</p>
-
+                            <div className="flex justify-between items-center">
+                              <p className="text-[10px]">
+                                {moment(
+                                  notifications.date[index],
+                                  "YYYYMMDDHHmm"
+                                ).fromNow()}
+                              </p>
+                              
+                            </div>
                           </div>
                         </Link>
                       )

@@ -8,6 +8,7 @@ import { ThemeContext } from '../../../context/Darkmode';
 import { useTranslation } from 'react-i18next';
 import VerifyAdmin from '../../../Hooks/useAdmin/useAdmin';
 import { IoMdNotifications } from "react-icons/io";
+import {FaRegEnvelope,FaRegEnvelopeOpen} from "react-icons/fa";
 import useStudent from '../../../Hooks/useStudent/useStudent';
 import useAxiosPublic from '../../../Hooks/useAxiosPublic/useAxiosPublic';
 import moment from 'moment';
@@ -310,7 +311,15 @@ const Navbar = () => {
                                   "YYYYMMDDHHmm"
                                 ).fromNow()}
                               </p>
-                              
+                              {notification.isRead ? (
+                                <p className="w-5 ">
+                                  <FaRegEnvelopeOpen></FaRegEnvelopeOpen>
+                                </p>
+                              ) : (
+                                <p className="w-5">
+                                  <FaRegEnvelope></FaRegEnvelope>
+                                </p>
+                              )}
                             </div>
                           </div>
                         </Link>

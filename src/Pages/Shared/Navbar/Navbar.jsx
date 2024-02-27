@@ -283,7 +283,14 @@ const Navbar = () => {
                   <h1 className="border-b border-b-white px-4 pb-4">
                     Notification
                   </h1>
+                  {notifications?.notificationTitle &&
+                    notifications?.notificationTitle.map(
+                      (notification, index) => (
+                        <Link key={index} to={notification.redirect}>
 
+                        </Link>
+                      )
+                    )}
                 </div>
 
               </span>

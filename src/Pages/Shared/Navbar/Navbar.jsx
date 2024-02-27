@@ -273,6 +273,18 @@ const Navbar = () => {
               >
                 <IoMdNotifications className="text-2xl cursor-pointer"></IoMdNotifications>
 
+                <div
+                  className={
+                    notification
+                      ? "w-96 bg-gradient-to-b from-[#42275a] to-[#734b6d] max-h-screen absolute right-[240px] top-24 text-white border rounded-md py-4 ease-in duration-300 border-[#e9f0ec]"
+                      : "w-96 primary-bg overflow-hidden absolute right-0 -top-[500px] py-10 z-10 ease-in duration-300 max-h-80"
+                  }
+                >
+                  <h1 className="border-b border-b-white px-4 pb-4">
+                    Notification
+                  </h1>
+
+                </div>
 
               </span>
 

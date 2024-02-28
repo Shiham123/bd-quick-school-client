@@ -289,13 +289,13 @@ const Navbar = () => {
                       : "w-96 primary-bg overflow-hidden absolute right-0 -top-[500px] py-10 z-10 ease-in duration-300 max-h-80"
                   }
                 >
-                  <h1 className="border-b border-b-white px-4 pb-4">
+                  <h1 className="border-b border-b-white px-4 pb-4 font-cinzel font-semibold">
                     Notification
                   </h1>
                   {Array.isArray(notifications) && notifications.length > 0 ? (
                     notifications.map((notification, index) => (
                       <Link key={index} to={notification.redirect}>
-                        <div className="px-4 py-2 border-b border-b-white hover:bg-white overflow-y-auto">
+                        <div className="px-4 py-2 border-b border-b-white hover:bg-white overflow-y-auto font-lora">
                           <p className="text-white">
                             {notification.title} has been released
                           </p>
@@ -317,7 +317,7 @@ const Navbar = () => {
                       </Link>
                     ))
                   ) : (
-                    <p className='px-4 pt-4'>No notifications found</p>
+                    <p className='px-4 pt-4 font-lora'>No notifications found</p>
                   )}
                 </div>
 

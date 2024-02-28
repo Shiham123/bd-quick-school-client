@@ -303,7 +303,7 @@ const Navbar = () => {
                   {Array.isArray(notifications) && notifications.length > 0 ? (
                     notifications.map((notification, index) => (
                       <Link key={index} to={notification.redirect}>
-                        <div  className="px-4 py-2 border-b border-b-white hover:bg-white overflow-y-auto font-lora">
+                        <div onClick={() => handleNotificationClick(index)} className="px-4 py-2 border-b border-b-white hover:bg-white overflow-y-auto font-lora">
                           <p className="text-white">
                             {notification.title} has been released
                           </p>
@@ -313,11 +313,11 @@ const Navbar = () => {
                             </p>
                             {notification.isRead ? (
                               <p className="w-5 ">
-                                <FaRegEnvelope />
+                                <FaRegEnvelopeOpen />
                               </p>
                             ) : (
                               <p className="w-5">
-                                <FaRegEnvelopeOpen />
+                                <FaRegEnvelope />
                               </p>
                             )}
                           </div>

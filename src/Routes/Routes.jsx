@@ -52,7 +52,7 @@ import Bookmark from '../Components/Bookmark/Bookmark';
 import PaymentHistory from '../Pages/Payment History/PaymentHistory';
 import StudentRoute from './StudentRoute';
 import Contact from '../Pages/ContactUs/Contact';
-import PrivacyPolicy from '../Pages/Privacy Policy/PrivacyPolicy';
+import NormalTerm from '../Pages/Privacy Policy/NormalTerm';
 
 const Router = createBrowserRouter([
   {
@@ -84,7 +84,7 @@ const Router = createBrowserRouter([
       { path: 'jobPreparation', element: <JobPreparation /> },
       { path: 'contactUs', element: <Contact /> },
       { path: 'bookmark', element: <Bookmark /> },
-      { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },
+      { path: 'PrivacyPolicy', element: <NormalTerm /> },
       {
         path: 'services',
         element: (

@@ -57,7 +57,13 @@ const Navbar = () => {
     setNotifications(updatedNotifications);
 
     // Make a PATCH request to update isRead field in the backend
-
+    axiosPublic.patch(`/api/v1/notification/update/${_id}`, { isRead: true })
+      .then(response => {
+        console.log('Notification marked as read:', response.data);
+      })
+      .catch(error => {
+        console.error('Error marking notification as read:', error);
+      });
   };
 
   // Handle logout 

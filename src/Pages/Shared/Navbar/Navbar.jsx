@@ -292,7 +292,7 @@ const Navbar = () => {
                   className={
                     notification
                       ? "w-96 bg-gradient-to-b from-[#42275a] to-[#734b6d] h-96 overflow-y-auto custom-scrollbar absolute right-[240px] z-[1] top-24  border rounded-md py-4 ease-in duration-300 border-[#e9f0ec]"
-                      : "w-96 primary-bg overflow-hidden absolute right-0 -top-[500px] py-10 z-10 ease-in duration-300 h-96"
+                      : "w-96 primary-bg overflow-hidden absolute right-0 -top-[500px] py-10 z-10 ease-in duration-300 max-h-screen"
                   }
                 >
                   <h1 className="border-b border-b-white px-4 pb-4 font-cinzel font-semibold">

@@ -271,7 +271,7 @@ const Navbar = () => {
                   {Array.isArray(notifications) && notifications.length > 0 ? (
                     notifications.map((notification, index) => (
                       <Link key={index} to={notification.redirect}>
-                        <div onClick={() => handleNotificationClick(index)} className="px-4 py-2 border-b border-b-white hover:bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:bg-black dark:text-white  font-lora">
+                        <div onClick={() => handleNotificationClick(notification._id)} className="px-4 py-2 border-b border-b-white hover:bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:bg-black dark:text-white  font-lora">
                           <p className="text-white">
                             {notification.title} has been released
                           </p>

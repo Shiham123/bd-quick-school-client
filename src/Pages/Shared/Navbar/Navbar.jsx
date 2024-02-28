@@ -34,6 +34,7 @@ const Navbar = () => {
     setNotification(!notification);
   };
 
+  // calculateUnreadNotificationsCount Function for count
   const calculateUnreadNotificationsCount = (notifications) => {
     if (Array.isArray(notifications)) {
       const unreadCount = notifications.filter(notification => !notification.isRead).length;
@@ -54,6 +55,7 @@ const Navbar = () => {
       });
   }, [user?.email, axiosPublic, location.pathname]);
 
+  // calculateUnreadNotificationsCount Function for refetch
   useEffect(() => {
     calculateUnreadNotificationsCount(notifications);
   }, [notifications]);
@@ -180,20 +182,22 @@ const Navbar = () => {
                 <span className="text-xl text-white font-bold font-cinzel">BD Quick School </span>
               </span>
             </NavLink>
+
+            {/* Responsive Notification */}
             <span
               tabIndex={0}
               onClick={handleNotification}
               className="ml-4 mr-4 lg:hidden"
             >
               <div className='relative'>
-                <IoMdNotifications className="text-2xl cursor-pointer"></IoMdNotifications>
+                <IoMdNotifications className="text-2xl cursor-pointer md:ml-44"></IoMdNotifications>
                 {unreadNotificationsCount > 0 && (
                   <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
                     {unreadNotificationsCount}
                   </span>
                 )}
               </div>
-
+              {/* Dropdown start */}
               <div
                 tabIndex={0}
                 className={
@@ -235,6 +239,7 @@ const Navbar = () => {
               </div>
 
             </span>
+            {/* Dropdown end */}
           </div>
 
           {/* NavLink */}
@@ -269,7 +274,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
               )}
-              {/* Dropdown for Notification */}
+              {/* Dropdown for Notification Large device*/}
               <span
                 tabIndex={0}
                 onClick={handleNotification}
@@ -283,6 +288,7 @@ const Navbar = () => {
                     </span>
                   )}
                 </div>
+                {/* Dropdown start */}
                 <div
                   tabIndex={0}
                   className={
@@ -324,6 +330,7 @@ const Navbar = () => {
                 </div>
 
               </span>
+              {/* Dropdown end */}
 
               {/* -------end here navbar without drop down */}
               {/* dak lite  */}

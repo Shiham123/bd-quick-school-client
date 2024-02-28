@@ -47,7 +47,7 @@ const Navbar = () => {
       .then((res) => {
         // console.log(res.data)
         setNotifications(res.data)
-        
+        calculateUnreadNotificationsCount(res.data);
       })
       .catch((error) => {
         console.error(error);

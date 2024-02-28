@@ -12,6 +12,7 @@ import { FaRegEnvelope, FaRegEnvelopeOpen } from "react-icons/fa";
 import useStudent from '../../../Hooks/useStudent/useStudent';
 import useAxiosPublic from '../../../Hooks/useAxiosPublic/useAxiosPublic';
 import moment from 'moment';
+import './Navbar.css';
 
 const Navbar = () => {
   const [stickyClass, setStickyClass] = useState('');
@@ -290,8 +291,8 @@ const Navbar = () => {
                   tabIndex={0}
                   className={
                     notification
-                      ? "w-96 bg-gradient-to-b from-[#42275a] to-[#734b6d] max-h-screen absolute right-[240px] z-[1] top-24  border rounded-md py-4 ease-in duration-300 border-[#e9f0ec]"
-                      : "w-96 primary-bg overflow-hidden absolute right-0 -top-[500px] py-10 z-10 ease-in duration-300 max-h-80"
+                      ? "w-96 bg-gradient-to-b from-[#42275a] to-[#734b6d] h-96 overflow-y-auto custom-scrollbar absolute right-[240px] z-[1] top-24  border rounded-md py-4 ease-in duration-300 border-[#e9f0ec]"
+                      : "w-96 primary-bg overflow-hidden absolute right-0 -top-[500px] py-10 z-10 ease-in duration-300 h-96"
                   }
                 >
                   <h1 className="border-b border-b-white px-4 pb-4 font-cinzel font-semibold">
@@ -300,7 +301,7 @@ const Navbar = () => {
                   {Array.isArray(notifications) && notifications.length > 0 ? (
                     notifications.map((notification, index) => (
                       <Link key={index} to={notification.redirect}>
-                        <div onClick={() => handleNotificationClick(index)} className="px-4 py-2 border-b border-b-white hover:bg-white overflow-y-auto font-lora">
+                        <div onClick={() => handleNotificationClick(index)} className="px-4 py-2 border-b border-b-white hover:bg-white  font-lora">
                           <p className="text-white">
                             {notification.title} has been released
                           </p>

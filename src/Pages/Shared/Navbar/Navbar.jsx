@@ -266,14 +266,16 @@ const Navbar = () => {
               <span
                 tabIndex={0}
                 onClick={handleNotification}
-                className="ml-4 mr-4 relative"
+                className="ml-4 mr-4 "
               >
-                <IoMdNotifications className="text-2xl cursor-pointer"></IoMdNotifications>
-                {unreadNotificationsCount > 0 && (
-                  <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                    {unreadNotificationsCount}
-                  </span>
-                )}
+                <div className='relative'>
+                  <IoMdNotifications className="text-2xl cursor-pointer"></IoMdNotifications>
+                  {unreadNotificationsCount > 0 && (
+                    <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                      {unreadNotificationsCount}
+                    </span>
+                  )}
+                </div>
                 <div
                   tabIndex={0}
                   className={

@@ -46,13 +46,21 @@ const Navbar = () => {
   }, [user?.email, axiosPublic, location.pathname]);
 
   // Handle Notification Click Function
-  const handleNotificationClick = (index) => {
-    const updatedNotifications = [...notifications];
-    updatedNotifications[index].isRead = true;
+  const handleNotificationClick = (_id) => {
+    // Update the isRead field locally
+    const updatedNotifications = notifications.map(notification => {
+      if (notification._id === _id) {
+        return { ...notification, isRead: true };
+      }
+      return notification;
+    });
     setNotifications(updatedNotifications);
+
+    // Make a PATCH request to update isRead field in the backend
+
   };
 
-
+  // Handle logout 
   const handleLogOut = () => {
     logOut()
       .then((result) => {

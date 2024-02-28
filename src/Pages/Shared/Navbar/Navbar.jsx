@@ -302,7 +302,33 @@ const Navbar = () => {
                   <h1 className="border-b border-b-white px-4 pb-4">
                     Notification
                   </h1>
-                  
+                  {Array.isArray(notifications) && notifications.length > 0 ? (
+                    notifications.map((notification, index) => (
+                      <Link key={index} to={notification.redirect}>
+                        <div className="px-4 py-2 border-b border-b-white hover:bg-white overflow-y-auto">
+                          <p className="text-white">
+                            {notification.title} has been released
+                          </p>
+                          <div className="flex justify-between items-center">
+                            <p className="text-[10px]">
+                              {moment(notification.date, "YYYY MM DD HH mm").fromNow()}
+                            </p>
+                            {notification.isRead ? (
+                              <p className="w-5 ">
+                                <FaRegEnvelopeOpen />
+                              </p>
+                            ) : (
+                              <p className="w-5">
+                                <FaRegEnvelope />
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </Link>
+                    ))
+                  ) : (
+                    <p>No notifications found</p>
+                  )}
                 </div>
 
               </span>

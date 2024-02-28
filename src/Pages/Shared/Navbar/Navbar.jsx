@@ -24,6 +24,7 @@ const Navbar = () => {
   const [isStudent] = useStudent();
   const [notification, setNotification] = useState(false);
   const [notifications, setNotifications] = useState({});
+  const [unreadNotificationsCount, setUnreadNotificationsCount] = useState(0);
   const location = useLocation();
 
 
@@ -33,17 +34,27 @@ const Navbar = () => {
     setNotification(!notification);
   };
 
+  const calculateUnreadNotificationsCount = (notifications) => {
+    if (Array.isArray(notifications)) {
+      const unreadCount = notifications.filter(notification => !notification.isRead).length;
+      setUnreadNotificationsCount(unreadCount);
+    }
+  };
+
   // Data Get By User Email
   useEffect(() => {
     axiosPublic(`/api/v1/notification/update/${user?.email}`)
       .then((res) => {
         // console.log(res.data)
         setNotifications(res.data)
+        
       })
       .catch((error) => {
         console.error(error);
       });
   }, [user?.email, axiosPublic, location.pathname]);
+
+  
 
   // Handle Notification Click Function
   const handleNotificationClick = (_id) => {
@@ -253,10 +264,14 @@ const Navbar = () => {
               <span
                 tabIndex={0}
                 onClick={handleNotification}
-                className="ml-4 mr-4 "
+                className="ml-4 mr-4 relative"
               >
                 <IoMdNotifications className="text-2xl cursor-pointer"></IoMdNotifications>
-
+                {unreadNotificationsCount > 0 && (
+                  <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                    {unreadNotificationsCount}
+                  </span>
+                )}
                 <div
                   tabIndex={0}
                   className={

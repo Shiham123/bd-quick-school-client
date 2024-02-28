@@ -317,7 +317,7 @@ const Navbar = () => {
                       </Link>
                     ))
                   ) : (
-                    <p>No notifications found</p>
+                    <p className='px-4 pt-4'>No notifications found</p>
                   )}
                 </div>
 

@@ -28,7 +28,6 @@ const Navbar = () => {
 
 
 
-
   // Toggle notification dropdown
   const handleNotification = () => {
     setNotification(!notification);
@@ -292,7 +291,7 @@ const Navbar = () => {
                   className={
                     notification
                       ? "w-96 bg-gradient-to-b from-[#42275a] to-[#734b6d] h-96 overflow-y-auto custom-scrollbar absolute right-[240px] z-[1] top-24  border rounded-md py-4 ease-in duration-300 border-[#e9f0ec]"
-                      : "w-96 primary-bg overflow-hidden absolute right-0 -top-[500px] py-10 z-10 ease-in duration-300 max-h-screen"
+                      : "w-96 primary-bg overflow-hidden absolute right-0 -top-[500px] py-10 z-10 ease-in duration-300 h-96"
                   }
                 >
                   <h1 className="border-b border-b-white px-4 pb-4 font-cinzel font-semibold">
@@ -361,7 +360,7 @@ const Navbar = () => {
                 {/* Dropdown Menu */}
                 <ul
                   tabIndex={0}
-                  className=" menu-sm dropdown-content mt-3 z-[1] shadow border border-white rounded-lg w-80 px-10  text-white btn-toggle-style bg-gradient-to-b from-[#42275a] to-[#734b6d] overflow-hidden"
+                  className=" menu-sm dropdown-content mt-3 z-[1] shadow border border-white rounded-lg w-80 px-10  text-white btn-toggle-style bg-gradient-to-b from-[#42275a] to-[#734b6d] overflow-y-auto h-[420px] md:h-[440px] lg:h-auto lg:overflow-hidden"
                 >
                   <label tabIndex={0} className="btn btn-ghost btn-circle avatar mb-28 mt-5">
                     <div className="w-24 rounded-full">

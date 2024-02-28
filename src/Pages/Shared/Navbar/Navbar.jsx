@@ -38,15 +38,17 @@ const Navbar = () => {
     axiosPublic(`/api/v1/notification/update/${user?.email}`)
       .then((res) => {
         // Log the response data to ensure it's correctly fetched
-        console.log("API Response Data:", res.data);
+        // console.log("API Response Data:", res.data);
+        // console.log(res.data)
+        setNotifications(res.data)
 
         // Check if the response data contains notifications array
-        if (res.data && Array.isArray(res.data) && res.data.length > 0) {
-          setNotifications(res.data[0]); // Assuming the response is an array with a single object containing notifications
-        } else {
-          // Handle case when data is not found or structured incorrectly
-          console.error("Notification data not found or structured incorrectly.");
-        }
+        // if (res.data && Array.isArray(res.data) && res.data.length > 0) {
+        //   setNotifications(res.data[0]); // Assuming the response is an array with a single object containing notifications
+        // } else {
+        //   // Handle case when data is not found or structured incorrectly
+        //   console.error("Notification data not found or structured incorrectly.");
+        // }
       })
       .catch((error) => {
         console.error("Error fetching notification data:", error);
@@ -300,33 +302,7 @@ const Navbar = () => {
                   <h1 className="border-b border-b-white px-4 pb-4">
                     Notification
                   </h1>
-                  {notifications?.notificationTitle &&
-                    notifications?.notificationTitle.map(
-                      (notification, index) => (
-                        <Link key={index} to={notification.redirect}>
-                          <div className="px-4 py-2 border-b border-b-white hover:bg-white overflow-y-auto">
-                            <p className='text-white'>{notification} has been released</p>
-                            <div className="flex justify-between items-center">
-                              <p className="text-[10px]">
-                                {moment(
-                                  notifications.date[index],
-                                  "YYYYMMDDHHmm"
-                                ).fromNow()}
-                              </p>
-                              {notification?.isRead ? (
-                                <p className="w-5 ">
-                                  <FaRegEnvelopeOpen></FaRegEnvelopeOpen>
-                                </p>
-                              ) : (
-                                <p className="w-5">
-                                  <FaRegEnvelope></FaRegEnvelope>
-                                </p>
-                              )}
-                            </div>
-                          </div>
-                        </Link>
-                      )
-                    )}
+                  
                 </div>
 
               </span>

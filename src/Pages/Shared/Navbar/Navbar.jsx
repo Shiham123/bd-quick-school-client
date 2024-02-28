@@ -54,7 +54,9 @@ const Navbar = () => {
       });
   }, [user?.email, axiosPublic, location.pathname]);
 
-  
+  useEffect(() => {
+    calculateUnreadNotificationsCount(notifications);
+  }, [notifications]);
 
   // Handle Notification Click Function
   const handleNotificationClick = (_id) => {

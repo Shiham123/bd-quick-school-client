@@ -282,7 +282,7 @@ const Navbar = () => {
               <span
                 tabIndex={0}
                 onClick={handleNotification}
-                className="ml-4 mr-4"
+                className="ml-4 mr-4 "
               >
                 <IoMdNotifications className="text-2xl cursor-pointer"></IoMdNotifications>
 
@@ -290,17 +290,17 @@ const Navbar = () => {
                   tabIndex={0}
                   className={
                     notification
-                      ? "w-96 bg-gradient-to-b from-[#42275a] to-[#734b6d] h-96 overflow-y-auto custom-scrollbar absolute right-[240px] z-[1] top-24  border rounded-md py-4 ease-in duration-300 border-[#e9f0ec]"
+                      ? "w-96 bg-gradient-to-b from-[#42275a] to-[#734b6d] h-96 overflow-y-auto custom-scrollbar absolute right-[240px] z-[1] top-24  border rounded-md py-4 dark:py-0 ease-in duration-300 border-[#e9f0ec]"
                       : "w-96 primary-bg overflow-hidden absolute right-0 -top-[500px] py-10 z-10 ease-in duration-300 h-96"
                   }
                 >
-                  <h1 className="border-b border-b-white px-4 pb-4 font-cinzel font-semibold">
+                  <h1 className="border-b border-b-white px-4 pb-4 dark:pt-4 font-cinzel font-semibold dark:bg-black dark:text-white">
                     Notification
                   </h1>
                   {Array.isArray(notifications) && notifications.length > 0 ? (
                     notifications.map((notification, index) => (
                       <Link key={index} to={notification.redirect}>
-                        <div onClick={() => handleNotificationClick(index)} className="px-4 py-2 border-b border-b-white hover:bg-gradient-to-b from-[#42275a] to-[#734b6d]  font-lora">
+                        <div onClick={() => handleNotificationClick(index)} className="px-4 py-2 border-b border-b-white hover:bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:bg-black dark:text-white  font-lora">
                           <p className="text-white">
                             {notification.title} has been released
                           </p>

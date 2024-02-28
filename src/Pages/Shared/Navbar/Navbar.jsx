@@ -203,53 +203,7 @@ const Navbar = () => {
           {/* NavLink */}
           <div className="navbar-center hidden lg:flex">
             <ul className="menu dropdown-content menu-horizontal px-1 justify-center items-center flex text-base font-poppins">
-              {/* ---------- navbar route without dropdown------------ */}
-
-              <li>
-                <details>
-                  <summary> {t('Nav1')} </summary>
-                  <ul className="text-white">
-                    <li>
-                      <NavLink
-                        to={'/Photoshop'}
-                        style={activeRouteStyle}
-                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                      >
-                        {t('skill1')}
-                      </NavLink>
-                      <NavLink
-                        to={'/JavaScript'}
-                        style={activeRouteStyle}
-                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                      >
-                        {t('skill2')}
-                      </NavLink>
-                      <NavLink
-                        to={'/HTML'}
-                        style={activeRouteStyle}
-                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                      >
-                        {t('skill3')}
-                      </NavLink>
-                      <NavLink
-                        to={'/CSS3'}
-                        style={activeRouteStyle}
-                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                      >
-                        {t('skill4')}
-                      </NavLink>
-                      <NavLink
-                        to={'/React'}
-                        style={activeRouteStyle}
-                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                      >
-                        {t('skill5')}
-                      </NavLink>
-                    </li>
-                  </ul>
-                </details>
-              </li>
-
+              
               {/* this is not drop down */}
               <li>
                 <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/addmissionTest'}>

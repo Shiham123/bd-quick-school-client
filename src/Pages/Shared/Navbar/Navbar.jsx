@@ -185,7 +185,14 @@ const Navbar = () => {
               onClick={handleNotification}
               className="ml-4 mr-4 lg:hidden"
             >
-              <IoMdNotifications className="text-2xl cursor-pointer md:ml-44"></IoMdNotifications>
+              <div className='relative'>
+                <IoMdNotifications className="text-2xl cursor-pointer"></IoMdNotifications>
+                {unreadNotificationsCount > 0 && (
+                  <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                    {unreadNotificationsCount}
+                  </span>
+                )}
+              </div>
 
               <div
                 tabIndex={0}
@@ -201,7 +208,7 @@ const Navbar = () => {
                 {Array.isArray(notifications) && notifications.length > 0 ? (
                   notifications.map((notification, index) => (
                     <Link key={index} to={notification.redirect}>
-                      <div onClick={() => handleNotificationClick(index)} className="px-4 py-2 border-b border-b-white hover:bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:bg-black dark:text-white  font-lora">
+                      <div onClick={() => handleNotificationClick(notification._id)} className="px-4 py-2 border-b border-b-white hover:bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:bg-black dark:text-white  font-lora">
                         <p className="text-white">
                           {notification.title} has been released
                         </p>

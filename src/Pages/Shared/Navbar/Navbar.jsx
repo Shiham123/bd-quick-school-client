@@ -33,7 +33,7 @@ const Navbar = () => {
     setNotification(!notification);
   };
 
-
+  // Data Get By User Email
   useEffect(() => {
     axiosPublic(`/api/v1/notification/update/${user?.email}`)
       .then((res) => {
@@ -45,13 +45,10 @@ const Navbar = () => {
       });
   }, [user?.email, axiosPublic, location.pathname]);
 
-
+  // Handle Notification Click Function
   const handleNotificationClick = (index) => {
-    // Create a copy of notifications array
     const updatedNotifications = [...notifications];
-    // Update the isRead property of the clicked notification to true
     updatedNotifications[index].isRead = true;
-    // Update state with the modified array
     setNotifications(updatedNotifications);
   };
 

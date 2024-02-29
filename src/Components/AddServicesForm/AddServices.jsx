@@ -168,6 +168,7 @@ const AddServices = () => {
                   id=""
                 />
               </div>
+              
 
               {/* Course Price */}
               <div className="col-span-full lg:col-span-3">

@@ -14,7 +14,7 @@ import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { signIn, setLoading, signInWithGoogle, signInWithGithub } = useAuth();
+  const { user, signIn, setLoading, signInWithGoogle, signInWithGithub } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const axiosPublic = useAxiosPublic();
@@ -31,7 +31,7 @@ const Login = () => {
     signIn(data.email, data.password)
       .then((result) => {
         console.log(result);
-        postDeviceInfo();
+        postDeviceInfo(data?.email);
         navigate(location?.state ? location.state : '/');
         swal('Good job!', 'User logged Successfully', 'success');
       })
@@ -44,13 +44,15 @@ const Login = () => {
 
 
 
-  const postDeviceInfo = async () => {
+  const postDeviceInfo = async (email) => {
     try {
       const deviceInfo = {
         userAgent: navigator.userAgent,
         screenWidth: window.screen.width,
         screenHeight: window.screen.height,
+        email: email,
       };
+
       const response = await axiosPublic.post('/api/v1/device', { deviceInfo });
 
       console.log('Device info saved successfully:', response.data);

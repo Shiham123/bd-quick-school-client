@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation, useParams } from 'react-router-dom';
 import { IoMenuSharp } from 'react-icons/io5';
 import { useContext, useEffect, useState } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
@@ -7,19 +7,81 @@ import useAuth from './../../../Hooks/useAuth/useAuth';
 import { ThemeContext } from '../../../context/Darkmode';
 import { useTranslation } from 'react-i18next';
 import VerifyAdmin from '../../../Hooks/useAdmin/useAdmin';
-import { IoNotifications } from "react-icons/io5";
+import { IoMdNotifications } from "react-icons/io";
+import { FaRegEnvelope, FaRegEnvelopeOpen } from "react-icons/fa";
 import useStudent from '../../../Hooks/useStudent/useStudent';
-
+import useAxiosPublic from '../../../Hooks/useAxiosPublic/useAxiosPublic';
+import moment from 'moment';
+import './Navbar.css';
 
 const Navbar = () => {
   const [stickyClass, setStickyClass] = useState('');
   const { user, logOut } = useAuth();
+  const axiosPublic = useAxiosPublic()
   const { darkMode, setDarkMode } = useContext(ThemeContext);
   const { t, i18n } = useTranslation();
   const [isAdmin] = VerifyAdmin();
-  const [isStudent] = useStudent()
-  const [showNotificationDropdown, setShowNotificationDropdown] = useState(false);
+  const [isStudent] = useStudent();
+  const [notification, setNotification] = useState(false);
+  const [notifications, setNotifications] = useState({});
+  const [unreadNotificationsCount, setUnreadNotificationsCount] = useState(0);
+  const location = useLocation();
 
+
+
+  // Toggle notification dropdown
+  const handleNotification = () => {
+    setNotification(!notification);
+  };
+
+  // calculateUnreadNotificationsCount Function for count
+  const calculateUnreadNotificationsCount = (notifications) => {
+    if (Array.isArray(notifications)) {
+      const unreadCount = notifications.filter(notification => !notification.isRead).length;
+      setUnreadNotificationsCount(unreadCount);
+    }
+  };
+
+  // Data Get By User Email
+  useEffect(() => {
+    axiosPublic(`/api/v1/notification/update/${user?.email}`)
+      .then((res) => {
+        // console.log(res.data)
+        setNotifications(res.data)
+        calculateUnreadNotificationsCount(res.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [user?.email, axiosPublic, location.pathname]);
+
+  // calculateUnreadNotificationsCount Function for refetch
+  useEffect(() => {
+    calculateUnreadNotificationsCount(notifications);
+  }, [notifications]);
+
+  // Handle Notification Click Function
+  const handleNotificationClick = (_id) => {
+    // Update the isRead field locally
+    const updatedNotifications = notifications.map(notification => {
+      if (notification._id === _id) {
+        return { ...notification, isRead: true };
+      }
+      return notification;
+    });
+    setNotifications(updatedNotifications);
+
+    // Make a PATCH request to update isRead field in the backend
+    axiosPublic.patch(`/api/v1/notification/update/${_id}`, { isRead: true })
+      .then(response => {
+        console.log('Notification marked as read:', response.data);
+      })
+      .catch(error => {
+        console.error('Error marking notification as read:', error);
+      });
+  };
+
+  // Handle logout 
   const handleLogOut = () => {
     logOut()
       .then((result) => {
@@ -60,10 +122,7 @@ const Navbar = () => {
     localStorage.setItem('lng', lng);
   };
 
-  // Toggle notification dropdown visibility
-  const toggleNotificationDropdown = () => {
-    setShowNotificationDropdown((prev) => !prev);
-  };
+
 
   return (
     <>
@@ -84,51 +143,6 @@ const Navbar = () => {
                 {/* this is dropdown navbar in responsive ------------------- */}
 
                 <li>
-                  <details>
-                    <summary> {t('Nav1')}</summary>
-                    <ul className="text-white">
-                      <li>
-                        <NavLink
-                          to={'/Photoshop'}
-                          style={activeRouteStyle}
-                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                        >
-                          {t('skill1')}
-                        </NavLink>
-                        <NavLink
-                          to={'/JavaScript'}
-                          style={activeRouteStyle}
-                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                        >
-                          {t('skill2')}
-                        </NavLink>
-                        <NavLink
-                          to={'/HTML'}
-                          style={activeRouteStyle}
-                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                        >
-                          {t('skill3')}
-                        </NavLink>
-                        <NavLink
-                          to={'/CSS3'}
-                          style={activeRouteStyle}
-                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                        >
-                          {t('skill4')}
-                        </NavLink>
-                        <NavLink
-                          to={'/React'}
-                          style={activeRouteStyle}
-                          className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                        >
-                          {t('skill5')}
-                        </NavLink>
-                      </li>
-                    </ul>
-                  </details>
-                </li>
-
-                <li>
                   <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/addmissionTest'}>
                     {t('Nav2')}
                   </NavLink>
@@ -139,7 +153,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/online-batch'}>
+                  <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/contactUs'}>
                     {t('Nav4')}
                   </NavLink>
                 </li>
@@ -164,61 +178,73 @@ const Navbar = () => {
                 loop
                 src="https://lottie.host/f3cfffce-06c0-498f-92b2-3c564fb9f40f/DVZgFbgX9m.json"
               ></Player>
-              <span className="text-white font-semibold hover:">
+              <span className="text-white font-semibold hover:" style={{ whiteSpace: 'nowrap' }}>
                 <span className="text-xl text-white font-bold font-cinzel">BD Quick School </span>
               </span>
             </NavLink>
+
+            {/* Responsive Notification */}
+            <span
+              tabIndex={0}
+              onClick={handleNotification}
+              className="ml-4 mr-4 lg:hidden"
+            >
+              <div className='relative'>
+                <IoMdNotifications className="text-2xl cursor-pointer md:ml-44"></IoMdNotifications>
+                {unreadNotificationsCount > 0 && (
+                  <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                    {unreadNotificationsCount}
+                  </span>
+                )}
+              </div>
+              {/* Dropdown start */}
+              <div
+                tabIndex={0}
+                className={
+                  notification
+                    ? "w-96 bg-gradient-to-b from-[#42275a] to-[#734b6d] h-96 overflow-y-auto custom-scrollbar absolute right-[20px] z-[1] top-24  border rounded-md py-4 dark:py-0 ease-in duration-300 border-[#e9f0ec]"
+                    : "w-96 primary-bg overflow-hidden absolute right-0 -top-[500px] py-10 z-10 ease-in duration-300 h-96"
+                }
+              >
+                <h1 className="border-b border-b-white px-4 pb-4 dark:pt-4 font-cinzel font-semibold dark:bg-black dark:text-white">
+                  Notification
+                </h1>
+                {Array.isArray(notifications) && notifications.length > 0 ? (
+                  notifications.map((notification, index) => (
+                    <Link key={index} to={notification.redirect}>
+                      <div onClick={() => handleNotificationClick(notification._id)} className="px-4 py-2 border-b border-b-white hover:bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:bg-black dark:text-white  font-lora">
+                        <p className="text-white">
+                          {notification.title} has been released
+                        </p>
+                        <div className="flex justify-between items-center">
+                          <p className="text-[10px]">
+                            {moment(notification.date, "YYYY MM DD HH mm").fromNow()}
+                          </p>
+                          {notification.isRead ? (
+                            <p className="w-5 ">
+                              <FaRegEnvelopeOpen />
+                            </p>
+                          ) : (
+                            <p className="w-5">
+                              <FaRegEnvelope />
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </Link>
+                  ))
+                ) : (
+                  <p className='px-4 pt-4 font-lora'>No notifications found</p>
+                )}
+              </div>
+
+            </span>
+            {/* Dropdown end */}
           </div>
 
           {/* NavLink */}
           <div className="navbar-center hidden lg:flex">
             <ul className="menu dropdown-content menu-horizontal px-1 justify-center items-center flex text-base font-poppins">
-              {/* ---------- navbar route without dropdown------------ */}
-
-              <li>
-                <details>
-                  <summary> {t('Nav1')} </summary>
-                  <ul className="text-white">
-                    <li>
-                      <NavLink
-                        to={'/Photoshop'}
-                        style={activeRouteStyle}
-                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                      >
-                        {t('skill1')}
-                      </NavLink>
-                      <NavLink
-                        to={'/JavaScript'}
-                        style={activeRouteStyle}
-                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                      >
-                        {t('skill2')}
-                      </NavLink>
-                      <NavLink
-                        to={'/HTML'}
-                        style={activeRouteStyle}
-                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                      >
-                        {t('skill3')}
-                      </NavLink>
-                      <NavLink
-                        to={'/CSS3'}
-                        style={activeRouteStyle}
-                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                      >
-                        {t('skill4')}
-                      </NavLink>
-                      <NavLink
-                        to={'/React'}
-                        style={activeRouteStyle}
-                        className="px-8 py-2 mb-1 bg-gradient-to-b from-[#42275a] to-[#734b6d]  hover:text-[#deb2ac] uppercase font-medium"
-                      >
-                        {t('skill5')}
-                      </NavLink>
-                    </li>
-                  </ul>
-                </details>
-              </li>
 
               {/* this is not drop down */}
               <li>
@@ -232,7 +258,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/online-batch'}>
+                <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/contactUs'}>
                   {t('Nav4')}
                 </NavLink>
               </li>
@@ -241,35 +267,74 @@ const Navbar = () => {
                   {t('Nav5')}
                 </NavLink>
               </li>
-              {
-                isStudent && (
-                  <li>
-                    <NavLink
-                      style={activeRouteStyle}
-                      className=" hover:text-[#deb2ac] uppercase font-medium"
-                      to={'/MyCourses'}
-                    >
-                      {t('MyCourses')}
-                    </NavLink>
-                  </li>
-                )
-              }
-              {/* Dropdown for Notification */}
-              <div className="relative ml-4 mr-4">
-                <IoNotifications className="text-2xl cursor-pointer" onClick={toggleNotificationDropdown} />
-                {showNotificationDropdown && (
-                  <div className="absolute top-full  mt-5 w-96 bg-white text-black shadow-lg rounded-lg">
-                    {/* Notification Dropdown Content Goes Here */}
-                    <p>Notification 1</p>
-                    <p>Notification 2</p>
-                    <p>Notification 3</p>
-                  </div>
-                )}
-              </div>
+              {isStudent && (
+                <li>
+                  <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/MyCourses'}>
+                    {t('MyCourses')}
+                  </NavLink>
+                </li>
+              )}
+              {/* Dropdown for Notification Large device*/}
+              <span
+                tabIndex={0}
+                onClick={handleNotification}
+                className="ml-4 mr-4 "
+              >
+                <div className='relative'>
+                  <IoMdNotifications className="text-2xl cursor-pointer"></IoMdNotifications>
+                  {unreadNotificationsCount > 0 && (
+                    <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                      {unreadNotificationsCount}
+                    </span>
+                  )}
+                </div>
+                {/* Dropdown start */}
+                <div
+                  tabIndex={0}
+                  className={
+                    notification
+                      ? "w-96 bg-gradient-to-b from-[#42275a] to-[#734b6d] h-96 overflow-y-auto custom-scrollbar absolute right-[240px] z-[1] top-24  border rounded-md py-4 dark:py-0 ease-in duration-300 border-[#e9f0ec]"
+                      : "w-96 primary-bg overflow-hidden absolute right-0 -top-[500px] py-10 z-10 ease-in duration-300 h-96"
+                  }
+                >
+                  <h1 className="border-b border-b-white px-4 pb-4 dark:pt-4 font-cinzel font-semibold dark:bg-black dark:text-white">
+                    Notification
+                  </h1>
+                  {Array.isArray(notifications) && notifications.length > 0 ? (
+                    notifications.map((notification, index) => (
+                      <Link key={index} to={notification.redirect}>
+                        <div onClick={() => handleNotificationClick(notification._id)} className="px-4 py-2 border-b border-b-white hover:bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:bg-black dark:text-white  font-lora">
+                          <p className="text-white">
+                            {notification.title} has been released
+                          </p>
+                          <div className="flex justify-between items-center">
+                            <p className="text-[10px]">
+                              {moment(notification.date, "YYYY MM DD HH mm").fromNow()}
+                            </p>
+                            {notification.isRead ? (
+                              <p className="w-5 ">
+                                <FaRegEnvelopeOpen />
+                              </p>
+                            ) : (
+                              <p className="w-5">
+                                <FaRegEnvelope />
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </Link>
+                    ))
+                  ) : (
+                    <p className='px-4 pt-4 font-lora'>No notifications found</p>
+                  )}
+                </div>
+
+              </span>
+              {/* Dropdown end */}
 
               {/* -------end here navbar without drop down */}
               {/* dak lite  */}
-              <li onClick={() => setDarkMode((darkMode) => !darkMode)}>{darkMode ? <CiLight size={70} /> : <CiDark size={70} />}</li>
+              <li className=' mr-4' onClick={() => setDarkMode((darkMode) => !darkMode)}>{darkMode ? <CiLight size={70} /> : <CiDark size={70} />}</li>
               {/* translet  */}
             </ul>
             <li className="flex justify-between gap-3 border p-2 ">
@@ -299,7 +364,7 @@ const Navbar = () => {
                 {/* Dropdown Menu */}
                 <ul
                   tabIndex={0}
-                  className=" menu-sm dropdown-content mt-3 z-[1] shadow border border-white rounded-lg w-80 px-10  text-white btn-toggle-style bg-gradient-to-b from-[#42275a] to-[#734b6d] overflow-hidden"
+                  className=" menu-sm dropdown-content mt-3 z-[1] shadow border border-white rounded-lg w-80 px-10  text-white btn-toggle-style bg-gradient-to-b from-[#42275a] to-[#734b6d] overflow-y-auto h-[420px] md:h-[440px] lg:h-auto lg:overflow-hidden"
                 >
                   <label tabIndex={0} className="btn btn-ghost btn-circle avatar mb-28 mt-5">
                     <div className="w-24 rounded-full">
@@ -332,7 +397,7 @@ const Navbar = () => {
                     Certificate
                   </li>
                   <hr />
-                  <Link to='/paymenthistory'>
+                  <Link to="/paymenthistory">
                     <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                       Payment History
                     </li>

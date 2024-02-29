@@ -4,6 +4,7 @@ import { FaPinterestP } from 'react-icons/fa6';
 import { CiTwitter } from 'react-icons/ci';
 import { IoIosArrowForward } from 'react-icons/io';
 import { Player } from '@lottiefiles/react-lottie-player';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -21,9 +22,8 @@ const Footer = () => {
               <a className="w-64 text-xl text-white font-bold font-cinzel">BD Quick School</a>
             </div>
             <p className="text-base text-white font-semibold w-[400px] mx-auto text-center md:text-start lg:mx-0 md:ml-5 font-lora">
-              Welcome to BD Quick School, your reliable destination for comprehensive educational
-              support. We seamlessly integrate innovative learning methodologies with a nurturing
-              approach to prioritize your academic success
+              Welcome to BD Quick School, your reliable destination for comprehensive educational support. We seamlessly integrate
+              innovative learning methodologies with a nurturing approach to prioritize your academic success
             </p>
             <div className="flex items-center justify-center md:justify-start gap-2 mt-4 ml-0 md:ml-5 lg:ml-0">
               <div className="border max-w-full px-3 py-3 rounded-full hover:bg-[#0AB99D] cursor-pointer">
@@ -51,12 +51,12 @@ const Footer = () => {
                 <IoIosArrowForward />
                 <span className="text-lg font-medium font-poppins">Join as a teacher</span>
               </div>
-              <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
+              {/* <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
-                <span className="text-lg font-medium hover:translate-x-4 hover:ease-out hover:duration-1000 font-poppins">
+               <Link to={`/PrivacyPolicy`}> <span className="text-lg font-medium hover:translate-x-4 hover:ease-out hover:duration-1000 font-poppins">
                   Privacy Policy
-                </span>
-              </div>
+                </span></Link>
+              </div> */}
               <div className="flex items-center gap-3 text-white hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                 <IoIosArrowForward />
                 <span className="text-lg font-medium font-poppins">Refund Policy</span>
@@ -105,12 +105,12 @@ const Footer = () => {
       </div>
       <hr className="pb-5" />
       <div className=" container mx-auto pb-5 flex items-center justify-between flex-col lg:flex-row">
-        <small className="text-white text-base font-semibold pb-5 pt-3">
-          {' '}
-          BD Quick School © 2024. All rights reserved.
-        </small>
+        <small className="text-white text-base font-semibold pb-5 pt-3"> BD Quick School © 2024. All rights reserved.</small>
         <div className="flex items-center gap-5">
-          <p className="text-white text-base font-semibold ">Privacy Policy</p>
+          <Link to={`/PrivacyPolicy`}>
+            {' '}
+            <p className="text-white text-base font-semibold ">Privacy Policy</p>
+          </Link>
           <p className="text-white text-base font-semibold ">Terms and Conditions</p>
         </div>
       </div>

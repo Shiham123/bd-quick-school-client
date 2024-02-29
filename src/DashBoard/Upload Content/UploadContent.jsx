@@ -6,6 +6,9 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAddCourseVideoMutation } from '../../redux/services/VideoApiSlice.js/VideoApiSlice';
 import Swal from 'sweetalert2';
+import moment from 'moment';
+import useAxiosSecure from './../../Hooks/UseAxiosSecure/UseAxiosSecure';
+import { useNavigate } from 'react-router-dom';
 
 const UploadContent = () => {
   const [courseSelect, setSelectedCourse] = useState('');
@@ -15,9 +18,12 @@ const UploadContent = () => {
   const [loading, setLoading] = useState(false);
   const { data } = useGetAllServicesQuery();
   const { data: idBasedData } = useGetIdBasedServicesQuery(courseSelect);
-  const [addVideoCours, { isLoading }] = useAddCourseVideoMutation();
+  const [addVideoCours, isLoading] = useAddCourseVideoMutation();
+  const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
   //React Hooks Dependencies
   const { register, handleSubmit, reset } = useForm();
+  const date = moment().format('YYYY MM DD HH mm');
 
   //topic Datas selection based on Lession
   useEffect(() => {
@@ -66,7 +72,22 @@ const UploadContent = () => {
         .unwrap()
         .then((res) => {
           Swal.fire('Video Successfully Added');
+
+          // New Notification Function sent to the database
+          const newNotification = {
+            courseId: courseSelect,
+            title: data?.title,
+            isRead: false,
+            date,
+          };
+
+          // axios secure and using patch method
+          axiosSecure.patch(`/api/v1/notification`, newNotification).then((res) => {
+            console.log(res.data);
+            navigate('/');
+          });
         })
+        // Catching error
         .catch(() => {
           Swal.fire('!!!Sorry,Upload Failed');
         });

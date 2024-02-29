@@ -18,18 +18,10 @@ const ManageQuizeUser = () => {
               <th scope="col" className="px-6 py-3 border border-gray-400 border-collapse">
                 #
               </th>
-              <th
-                scope="col"
-                className="px-6 py-3 border border-gray-400 border-collapse"
-                colSpan={3}
-              >
+              <th scope="col" className="px-6 py-3 border border-gray-400 border-collapse" colSpan={3}>
                 User Email
               </th>
-              <th
-                scope="col"
-                className="px-6 py-3 border border-gray-400 border-collapse"
-                colSpan={2}
-              >
+              <th scope="col" className="px-6 py-3 border border-gray-400 border-collapse" colSpan={2}>
                 User Name
               </th>
               <th scope="col" className="px-6 py-3 border border-gray-400 border-collapse">

@@ -178,6 +178,8 @@ const OurTeam = () => {
 
           {/* Israil's information end*/}
 
+          {/* Shaif Shajed Tonoy information start*/}
+
           <div className="card card-compact w-80 bg-base-100 shadow-xl m-5 pt-5 relative hover:bg-slate-200">
             <div className="absolute h-[150px] w-[150px]  mx-auto rounded-full -left-0 -top-20 -right-1 avatar flex justify-center border">
               <div className="w-36 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
@@ -227,6 +229,8 @@ const OurTeam = () => {
               </div>
             </div>
           </div>
+
+          {/* Shaif Shajed Tonoy information start*/}
 
           <div className="card card-compact w-80 bg-base-100 shadow-xl m-5 pt-5 relative hover:bg-slate-200">
             <div className="absolute h-[150px] w-[150px]  mx-auto rounded-full -left-0 -top-20 -right-1 avatar flex justify-center border">

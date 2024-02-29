@@ -4,7 +4,9 @@ import { quizeApiServices } from './services/QuizeApiSlice';
 import { orderApiSlice } from './services/OrderApiSlice';
 import { addCourseVideoAPi } from './services/VideoApiSlice.js/VideoApiSlice';
 import { announcementsApi } from './Announcement/announcementsApi';
-
+import { quizApi } from './IsQuizUser/QuizUserSlice';
+import { helpDeskApiSlice } from './services/HelpDeskApiSlice';
+import { ReviewApiSlice } from './services/ReviewApiSlice';
 
 const store = configureStore({
   reducer: {
@@ -14,6 +16,9 @@ const store = configureStore({
     // [addCourseVideoAPi.reducerPath]: addCourseVideoAPi.reducer,
     [announcementsApi.reducerPath]: announcementsApi.reducer,
     [addCourseVideoAPi.reducerPath]: addCourseVideoAPi.reducer,
+    [quizApi.reducerPath]: quizApi.reducer,
+    [helpDeskApiSlice.reducerPath]: helpDeskApiSlice.reducer,
+    [ReviewApiSlice.reducerPath]: ReviewApiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([
@@ -22,8 +27,9 @@ const store = configureStore({
       orderApiSlice.middleware,
       announcementsApi.middleware,
       addCourseVideoAPi.middleware,
+      quizApi.middleware,
+      ReviewApiSlice.middleware,
     ]),
 });
 
 export default store;
-

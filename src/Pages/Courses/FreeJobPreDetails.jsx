@@ -9,8 +9,10 @@ const FreeJobPreDetails = () => {
     return (
         <div>
 
+          
 
-            <div>
+
+            {/* <div>
                 <div className="w-[420px] md:w-[720px] lg:w-[1000px] border-2 rounded-lg border-black md:h-[354px]  lg:h-[390px] mt-32 mx-auto md:flex justify-between gap-2 items-center">
                     <div className="md:w-[50%] h-[300px] md:h-full ">
                         <figure> <img className="w-full h-[300px] md:h-[350px] lg:h-[386px] " src={freedetailsJob.image} alt="Shoes" /></figure>
@@ -26,7 +28,7 @@ const FreeJobPreDetails = () => {
 
                     </div>
                 </div>
-            </div>
+            </div> */}
 
 
             

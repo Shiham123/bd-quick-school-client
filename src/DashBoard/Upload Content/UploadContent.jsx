@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-import { ThreeDots } from 'react-loader-spinner';
 import { useForm } from 'react-hook-form';
 import { useGetAllServicesQuery, useGetIdBasedServicesQuery } from '../../redux/services/ServicesApiSlice';
 import AddUploadMenu from './AddUploadMenu';
@@ -16,7 +15,7 @@ const UploadContent = () => {
   const [loading, setLoading] = useState(false);
   const { data } = useGetAllServicesQuery();
   const { data: idBasedData } = useGetIdBasedServicesQuery(courseSelect);
-  const [addVideoCours, isLoading] = useAddCourseVideoMutation();
+  const [addVideoCours, { isLoading }] = useAddCourseVideoMutation();
   //React Hooks Dependencies
   const { register, handleSubmit, reset } = useForm();
 
@@ -34,6 +33,7 @@ const UploadContent = () => {
 
   //upload Video
   const uploadFile = async (videoData) => {
+    setLoading(true);
     const data = new FormData();
     data.append('file', videoData);
     data.append('upload_preset', 'videos_preset');
@@ -44,6 +44,7 @@ const UploadContent = () => {
     let api = `https://api.cloudinary.com/v1_1/${cloudeName}/${reSourceType}/upload`;
 
     const videoUrl = await axios.post(api, data).then((res) => {
+      setLoading(false);
       return res.data?.url;
     });
     return videoUrl;
@@ -71,6 +72,7 @@ const UploadContent = () => {
         });
     }
   };
+
   return (
     <div className=" mx-auto px-4">
       <h1 className="text-4xl text-center font-cinzel mt-5">Upload Video Content</h1>
@@ -189,23 +191,13 @@ const UploadContent = () => {
 
         {/* Button */}
         <div className="col-span-full mt-5">
-          <input type="submit" value="Submit Courses" className="btn btn-block bg-[#4357AD] text-lg text-[#fff] hover:bg-[#154360] " />
+          <input
+            type="submit"
+            value={isLoading || loading ? 'Uploading...' : 'Upload Video'}
+            className="btn btn-block bg-[#4357AD] text-lg text-[#fff] hover:bg-[#154360] "
+          />
         </div>
       </form>
-
-      {/* Loading spinner */}
-      {/* <div className="w-[60%] mx-auto">
-        <ThreeDots
-          visible={true}
-          height="80"
-          width="80"
-          color="#4fa94d"
-          radius="9"
-          ariaLabel="three-dots-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-        />
-      </div> */}
     </div>
   );
 };

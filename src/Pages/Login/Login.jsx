@@ -31,6 +31,7 @@ const Login = () => {
     signIn(data.email, data.password)
       .then((result) => {
         console.log(result);
+        
         navigate(location?.state ? location.state : '/');
         swal('Good job!', 'User logged Successfully', 'success');
       })
@@ -40,6 +41,28 @@ const Login = () => {
         setLoading(false);
       });
   };
+
+
+
+  const postDeviceInfo = async () => {
+    try {
+      const deviceInfo = {
+        userAgent: navigator.userAgent,
+        screenWidth: window.screen.width,
+        screenHeight: window.screen.height,
+      };
+
+      const response = await axiosPublic.post('/api/v1/device', { deviceInfo });
+
+      console.log('Device info saved successfully:', response.data);
+    } catch (error) {
+      console.error('Error saving device info:', error);
+    }
+  };
+
+
+
+
 
   // Google sign in
   const handleGoogleSignIn = () => {

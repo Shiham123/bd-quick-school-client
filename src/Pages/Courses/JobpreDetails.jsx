@@ -30,6 +30,7 @@ const JobpreDetails = () => {
                     <p className="font-medium text-xl md:text-base lg:text-xl mb-6 font-lora"> Teacher Name : {detailsJob.teachername}</p>
                     <p className="font-medium  text-xl md:text-base lg:text-xl mb-4 md:mb-2 lg:mb-6 font-lora"> Teacher Designation : {detailsJob.designation}</p>
                     
+                    
                 </div>
             </div>
         </div>

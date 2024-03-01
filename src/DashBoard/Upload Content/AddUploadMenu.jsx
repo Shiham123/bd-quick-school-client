@@ -1,5 +1,9 @@
 import { useForm } from 'react-hook-form';
-import { useUpdateServicesMutation, useGetAllServicesQuery, useGetIdBasedServicesQuery } from '../../redux/services/ServicesApiSlice';
+import {
+  useGetAllServicesQuery,
+  useGetIdBasedServicesQuery,
+  useUpdateServicesLessionAndTopicMutation,
+} from '../../redux/services/ServicesApiSlice';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 
@@ -8,7 +12,7 @@ const AddUploadMenu = () => {
   const { register, handleSubmit, reset } = useForm();
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [selectedLession, setSelectedLession] = useState(null);
-  const [updatedCourse] = useUpdateServicesMutation();
+  const [updatedCourse] = useUpdateServicesLessionAndTopicMutation();
   const { data: idBasedData } = useGetIdBasedServicesQuery(selectedCourse);
   //
   const onSubmit = async (data) => {
@@ -19,7 +23,6 @@ const AddUploadMenu = () => {
         reset();
       });
   };
-
   const handleTopic = async (e) => {
     e.preventDefault();
     const topicName = e.target.topicName.value;

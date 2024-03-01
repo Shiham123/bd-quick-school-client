@@ -14,8 +14,9 @@ const Announcements = () => {
           <div key={item._id} className="">
             {/* Left side content */}
             <div
-              className={`cursor-pointer flex  gap-5 items-start bg-gradient-to-b from-[#42275a] to-[#734b6d] ml-3 lg:ml-0 w-[400px] md:w-[300px] lg:w-[660px] p-5 rounded-xl mb-5 ${selectedContent === item._id ? 'border-2' : ''
-                }`}
+              className={`cursor-pointer flex  gap-5 items-start bg-gradient-to-b from-[#42275a] to-[#734b6d] ml-3 lg:ml-0 w-[400px] md:w-[300px] lg:w-[660px] p-5 rounded-xl mb-5 ${
+                selectedContent === item._id ? 'border-2' : ''
+              }`}
               onClick={() => setSelectedContent(item._id)}
             >
               <img src="https://i.ibb.co/kH6SbQN/download.png" alt="" />

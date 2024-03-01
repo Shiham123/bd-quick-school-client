@@ -10,14 +10,16 @@ import useAuth from './../../Hooks/useAuth/useAuth';
 import toast, { Toaster } from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
+import moment from "moment";
 import useAxiosPublic from '../../Hooks/useAxiosPublic/useAxiosPublic';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { signIn, setLoading, signInWithGoogle, signInWithGithub } = useAuth();
+  const { user, signIn, setLoading, signInWithGoogle, signInWithGithub } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const axiosPublic = useAxiosPublic();
+  const date = moment().format("YYYY MM DD HH mm");
 
   // form functionality
   const {
@@ -31,6 +33,7 @@ const Login = () => {
     signIn(data.email, data.password)
       .then((result) => {
         console.log(result);
+        postDeviceInfo(data?.email);
         navigate(location?.state ? location.state : '/');
         swal('Good job!', 'User logged Successfully', 'success');
       })
@@ -40,6 +43,28 @@ const Login = () => {
         setLoading(false);
       });
   };
+
+  const postDeviceInfo = async (email) => {
+    try {
+      const deviceInfo = {
+        userAgent: navigator.userAgent,
+        screenWidth: window.screen.width,
+        screenHeight: window.screen.height,
+        email: email,
+        date: date
+      };
+
+      const response = await axiosPublic.post('/api/v1/device', { deviceInfo });
+
+      console.log('Device info saved successfully:', response.data);
+    } catch (error) {
+      console.error('Error saving device info:', error);
+    }
+  };
+
+
+
+
 
   // Google sign in
   const handleGoogleSignIn = () => {

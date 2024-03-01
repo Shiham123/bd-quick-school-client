@@ -5,6 +5,7 @@ import useAuth from '../../../Hooks/useAuth/useAuth';
 import useAxiosSecure from '../../../Hooks/UseAxiosSecure/UseAxiosSecure';
 import { useTranslation } from 'react-i18next';
 import EditUserProfile from '../../EditUserProfile/EditUserProfile';
+import DeviceActivity from '../../Device Activity/DeviceActivity';
 
 const MyProfile = () => {
   const [id, setId] = useState(''),
@@ -101,6 +102,9 @@ const MyProfile = () => {
       {/* Device Activity */}
       <div className="flex items-center justify-between border-b-2 border-dashed border-b-white/30 pb-4 mt-16 mb-10">
         <h1 className="text-2xl font-poppins font-semibold text-white">Device Activity</h1>
+      </div>
+      <div>
+        <DeviceActivity />
       </div>
     </div>
   );

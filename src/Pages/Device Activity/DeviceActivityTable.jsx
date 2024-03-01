@@ -32,7 +32,7 @@ const DeviceActivityTable = ({ item, index, refetch }) => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Yes, Remove it!"
         }).then((result) => {
             if (result.isConfirmed) {
                 axiosPublic.delete(`/api/v1/device/${itemId}`)
@@ -42,7 +42,7 @@ const DeviceActivityTable = ({ item, index, refetch }) => {
                             refetch()
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                text: "Device Removed.",
                                 icon: "success"
                             });
                         }

@@ -1,59 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ReactPlayer from 'react-player';
-import axios from 'axios';
-import { Player } from '@lottiefiles/react-lottie-player';
 import { useParams } from 'react-router-dom';
 import { useGetuserCourseVideoByIdQuery } from '../../redux/services/VideoApiSlice.js/VideoApiSlice';
+import VideoLiskeDislikeNote from './VideoLiskeDislikeNote';
+import useAuth from '../../Hooks/useAuth/useAuth';
 
 const Video = () => {
-  const [videoPlaylist, setVideoPlaylist] = useState([]);
-  // const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const [isOffline, setIsOffline] = useState(false);
-  //
   const [lessionNameObject, setLessionNameObject] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState([]);
   const [selectedLession, setSelectedLession] = useState('');
+  const [selectedLessionsTopic, setSelectedLessionsTopic] = useState('');
   const [selectVideoUrl, setSelectVideoUrl] = useState('');
+  const [selectVideoId, setSelectVideoId] = useState('');
   const { id } = useParams();
   const lessionName = [];
   const topicName = [];
+  const { user } = useAuth();
   const { data } = useGetuserCourseVideoByIdQuery(id);
-  useEffect(() => {
-    const handleOnlineStatusChange = () => {
-      setIsOffline(!navigator.onLine);
-    };
-
-    window.addEventListener('online', handleOnlineStatusChange);
-    window.addEventListener('offline', handleOnlineStatusChange);
-
-    setIsOffline(!navigator.onLine);
-
-    if (navigator.onLine) {
-      axios
-        .get(
-          'https://gist.githubusercontent.com/poudyalanil/ca84582cbeb4fc123a13290a586da925/raw/14a27bd0bcd0cd323b35ad79cf3b493dddf6216b/videos.json'
-        )
-        .then((response) => {
-          setVideoPlaylist(response.data);
-        })
-        .catch((error) => {
-          console.error('Error fetching video playlist:', error);
-        });
-    }
-    return () => {
-      window.removeEventListener('online', handleOnlineStatusChange);
-      window.removeEventListener('offline', handleOnlineStatusChange);
-    };
-  }, []);
-  //Demo Functiion
-  // const handleNextVideo = () => {
-  //   setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videoPlaylist.length);
-  // };
-
-  // const handlePrevVideo = () => {
-  //   setCurrentVideoIndex((prevIndex) => (prevIndex === 0 ? videoPlaylist.length - 1 : prevIndex - 1));
-  // };
-
   //Lession Name Genetator
   if (data) {
     for (let x in data[0]) {
@@ -85,69 +48,85 @@ const Video = () => {
     }
   };
 
+  const payloadData = {
+    lessionName: selectedLession,
+    topicName: selectedLessionsTopic,
+    courseId: id,
+    videoId: selectVideoId,
+    email: user?.email,
+  };
   return (
-    <div className={`app-container ${isOffline ? 'offline' : ''}`}>
-      {isOffline && (
-        <div className="offline-modal text-center text-white">
-          <h2 className="text-4xl">You are currently offline</h2>
-          <p className="text-3xl">Please check your internet connection and try again.</p>
-          <Player className="" autoplay loop src="/public/JWpqkpQcm6.json"></Player>
+    <div className="grid md:grid-cols-5 grid-cols-1 gap-8 items-center mx-auto max-w-7xl ">
+      <div className=" col-span-3">
+        <div className="border-2">
+          <ReactPlayer controls={true} url={selectVideoUrl || 'https://youtu.be/TC8O3VE8QCU'} width="100%" height="500px" />
         </div>
-      )}
-      {videoPlaylist.length > 0 && !isOffline && (
-        <div className="grid md:grid-cols-4 grid-cols-1 gap-8 items-center mx-auto max-w-7xl ">
-          <div className="border-2 col-span-3">
-            <ReactPlayer controls={true} url={selectVideoUrl || 'https://youtu.be/TC8O3VE8QCU'} width="100%" height="500px" />
-          </div>
-          <div className="bg-transparent border-2 text-white rounded-xl h-full">
-            <ul className="menu px-1">
-              <li>
-                {lessionName?.map((lessionValue, idx) => {
-                  return (
-                    <details key={idx + 'fkajfkljak'}>
-                      <summary
-                        className="font-bold text-yellow-500 text-2xl "
-                        onClick={() => {
-                          handleLessionName(lessionValue);
-                          setSelectedLession(lessionValue);
-                        }}
-                      >
-                        {lessionValue}
-                      </summary>
+        {selectedLession && topicName && selectVideoId && <VideoLiskeDislikeNote payload={payloadData} />}
+      </div>
+      <div className="bg-transparent col-span-2 text-white rounded-xl h-full">
+        <ul className="menu border">
+          <li className="mb-2 border border-orange-400">
+            {lessionName?.map((lessionValue, idx1) => {
+              return (
+                <details key={idx1 + 'fkajfkljak'} className=" pb-4 pr-1">
+                  <summary
+                    className="font-bold text-yellow-500"
+                    onClick={() => {
+                      handleLessionName(lessionValue);
+                      setSelectedLession(lessionValue);
+                    }}
+                  >
+                    <span className="text-2xl">#{idx1} </span> <span className="text-2xl">{lessionValue}</span>
+                  </summary>
 
-                      {topicName?.map((topic, idx) => {
-                        return (
-                          <ul key={idx + 'hfjahfjah'} className="pl-1">
-                            <li key={idx}>
-                              <details>
-                                <summary className="font-bold text-yellow-400 text-2xl " onClick={() => handleSelectedTopic(topic)}>
-                                  {topic}
-                                </summary>
-                                {selectedVideo?.map((videoData, idx) => {
-                                  return (
-                                    <ul key={idx + 'hfjahfjah'} className="pl-3 mb-2 bg-orange-400 text-white">
-                                      <li
-                                        onClick={() => setSelectVideoUrl(videoData?.videoUrl)}
-                                        className="font-bold text-yellow-200 text-lg "
-                                      >
-                                        {videoData?.videoTitle}
-                                      </li>
-                                    </ul>
-                                  );
-                                })}
-                              </details>
-                            </li>
-                          </ul>
-                        );
-                      })}
-                    </details>
-                  );
-                })}
-              </li>
-            </ul>
-          </div>
-        </div>
-      )}
+                  {topicName?.map((topic, idx2) => {
+                    return (
+                      <ul key={idx2 + 'hfjahfjah'}>
+                        <li>
+                          <details>
+                            <summary
+                              className="font-bold text-yellow-500 text-xl px-2"
+                              onClick={() => {
+                                handleSelectedTopic(topic);
+                                setSelectedLessionsTopic(topic);
+                              }}
+                            >
+                              <span>
+                                {idx1}.{idx2}{' '}
+                              </span>{' '}
+                              {topic}
+                            </summary>
+                            {selectedVideo?.map((videoData, idx3) => {
+                              return (
+                                <ul key={idx3 + 'hfjahfjah'} className="mb-2 text-yellow-400 ">
+                                  <li
+                                    onClick={() => {
+                                      setSelectVideoId(null);
+                                      setSelectVideoUrl(videoData?.videoUrl);
+                                      setSelectVideoId(videoData.id);
+                                    }}
+                                  >
+                                    <div>
+                                      <span>
+                                        {idx1}.{idx2}.{idx3 + 1}
+                                      </span>{' '}
+                                      <span>{videoData?.videoTitle}</span>
+                                    </div>
+                                  </li>
+                                </ul>
+                              );
+                            })}
+                          </details>
+                        </li>
+                      </ul>
+                    );
+                  })}
+                </details>
+              );
+            })}
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

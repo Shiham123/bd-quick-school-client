@@ -1,4 +1,4 @@
-import { Link, NavLink, useLocation, useParams } from 'react-router-dom';
+import { Link, NavLink, useLocation} from 'react-router-dom';
 import { IoMenuSharp } from 'react-icons/io5';
 import { useContext, useEffect, useState } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
@@ -26,8 +26,6 @@ const Navbar = () => {
   const [notifications, setNotifications] = useState({});
   const [unreadNotificationsCount, setUnreadNotificationsCount] = useState(0);
   const location = useLocation();
-
-
 
   // Toggle notification dropdown
   const handleNotification = () => {

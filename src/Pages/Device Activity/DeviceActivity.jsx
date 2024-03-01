@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
+import DeviceActivityTable from "./DeviceActivityTable";
 
 
 const DeviceActivity = () => {
@@ -23,18 +24,21 @@ const DeviceActivity = () => {
 
                 <table className="w-full text-sm text-left rtl:text-right text-blue-100 dark:text-blue-100">
                     {/* Table Heading Start Here */}
-                    <thead className="text-xs text-white uppercase   border dark:text-white">
+                    <thead className="text-xs text-white uppercase   border dark:text-white ">
                         <tr className="font-cinzel">
-                            <th scope="col" className="px-6 py-3">
+                            <th scope="col" className="px-6 py-3 border-collapse border">
                                 Serial
                             </th>
-                            <th scope="col" className="px-6 py-3">
+                            <th scope="col" className="px-6 py-3 border border-collapse">
                                 Platform
                             </th>
-                            <th scope="col" className="px-6 py-3">
+                            <th scope="col" className="px-6 py-3 border-collapse border">
+                                Browser
+                            </th>
+                            <th scope="col" className="px-6 py-3 border border-collapse">
                                 Date
                             </th>
-                            <th scope="col" className="px-6 py-3">
+                            <th scope="col" className="px-6 py-3 border-collapse border">
                                 Action
                             </th>
 
@@ -43,7 +47,9 @@ const DeviceActivity = () => {
                     {/* Table Heading End Here */}
                     {/* Table Data Fetching */}
                     <tbody className="font-lora">
-
+                        {
+                            device.map((item, index) => <DeviceActivityTable key={item._id} item={item} index={index} refetch={refetch} />)
+                        }
                     </tbody>
                 </table>
             </div>

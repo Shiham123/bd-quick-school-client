@@ -2,11 +2,13 @@ import moment from "moment";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const DeviceActivityTable = ({ item, index, refetch }) => {
-    const { user, logOut } = useAuth();
+    const {  logOut } = useAuth();
     const axiosPublic = useAxiosPublic()
+    const navigate = useNavigate()
 
 
 
@@ -45,6 +47,8 @@ const DeviceActivityTable = ({ item, index, refetch }) => {
                                 text: "Device Removed.",
                                 icon: "success"
                             });
+                            handleLogOut()
+                            navigate('/login')
                         }
                     })
             }

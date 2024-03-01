@@ -7,6 +7,7 @@ const DeviceActivityTable = ({ item, index }) => {
 
     // Format the date in the desired format
     const formattedDate = date.format('DD-MM-YYYY hh:mm A');
+    
 
     return (
         <tr className=" border-b  ">

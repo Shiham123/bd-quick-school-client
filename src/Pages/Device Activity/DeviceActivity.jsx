@@ -22,7 +22,7 @@ const DeviceActivity = () => {
         <div>
             <div className="relative overflow-x-auto shadow-md ">
 
-                <table className="w-full text-sm text-left rtl:text-right text-blue-100 dark:text-blue-100">
+                <table className="w-full text-sm text-left rtl:text-right text-white dark:text-blue-100">
                     {/* Table Heading Start Here */}
                     <thead className="text-xs text-white uppercase  border-b dark:text-white ">
                         <tr className="font-cinzel">

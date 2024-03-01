@@ -7,11 +7,11 @@ const DeviceActivityTable = ({ item, index }) => {
 
     // Format the date in the desired format
     const formattedDate = date.format('DD-MM-YYYY hh:mm A');
-    
+
 
     return (
         <tr className=" border-b  ">
-            <th scope="row" className="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
+            <th scope="row" className="px-6 py-4 font-medium text-white whitespace-nowrap dark:text-blue-100">
                 {index + 1}
             </th>
 
@@ -24,7 +24,9 @@ const DeviceActivityTable = ({ item, index }) => {
             <td className="px-6 py-4">
                 {formattedDate}
             </td>
-
+            <td className="px-6 py-4">
+                <button className="">Remove</button>
+            </td>
 
 
 

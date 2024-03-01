@@ -24,21 +24,21 @@ const DeviceActivity = () => {
 
                 <table className="w-full text-sm text-left rtl:text-right text-blue-100 dark:text-blue-100">
                     {/* Table Heading Start Here */}
-                    <thead className="text-xs text-white uppercase   border dark:text-white ">
+                    <thead className="text-xs text-white uppercase  border-b dark:text-white ">
                         <tr className="font-cinzel">
-                            <th scope="col" className="px-6 py-3 border-collapse border">
+                            <th scope="col" className="px-6 py-3">
                                 Serial
                             </th>
-                            <th scope="col" className="px-6 py-3 border border-collapse">
+                            <th scope="col" className="px-6 py-3">
                                 Platform
                             </th>
-                            <th scope="col" className="px-6 py-3 border-collapse border">
+                            <th scope="col" className="px-6 py-3">
                                 Browser
                             </th>
-                            <th scope="col" className="px-6 py-3 border border-collapse">
+                            <th scope="col" className="px-6 py-3">
                                 Date
                             </th>
-                            <th scope="col" className="px-6 py-3 border-collapse border">
+                            <th scope="col" className="px-6 py-3">
                                 Action
                             </th>
 

@@ -1,6 +1,22 @@
+import { useQuery } from "@tanstack/react-query";
+import useAuth from "../../Hooks/useAuth/useAuth";
+import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
 
 
 const DeviceActivity = () => {
+    const { user } = useAuth()
+    const axiosPublic = useAxiosPublic()
+    const { data: device = [], refetch } = useQuery({
+        queryKey: ['device', user?.email],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/api/v1/device/update/${user?.email}`)
+            // console.log(res.data)
+            return res.data
+        }
+    })
+
+
+
     return (
         <div>
             <div className="relative overflow-x-auto shadow-md ">
@@ -27,7 +43,7 @@ const DeviceActivity = () => {
                     {/* Table Heading End Here */}
                     {/* Table Data Fetching */}
                     <tbody className="font-lora">
-                        
+
                     </tbody>
                 </table>
             </div>

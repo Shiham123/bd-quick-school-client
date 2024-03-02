@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const DeviceActivityTable = ({ item, index, refetch }) => {
-    const {  logOut } = useAuth();
+    const { logOut } = useAuth();
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
 
@@ -61,7 +61,7 @@ const DeviceActivityTable = ({ item, index, refetch }) => {
 
     // Format the date in the desired format
     const formattedDate = date.format('DD-MM-YYYY hh:mm A');
-
+    const deviceContent = item.device === "Unknown Device" ? item.os : item.device;
 
     return (
         <tr className=" border-b  ">
@@ -70,7 +70,7 @@ const DeviceActivityTable = ({ item, index, refetch }) => {
             </th>
 
             <td className="px-6 py-4">
-                {item.os}
+                {deviceContent}
             </td>
             <td className="px-6 py-4">
                 {item.browser}

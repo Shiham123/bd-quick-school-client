@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-import { ThreeDots } from 'react-loader-spinner';
 import { useForm } from 'react-hook-form';
 import { useGetAllServicesQuery, useGetIdBasedServicesQuery } from '../../redux/services/ServicesApiSlice';
 import AddUploadMenu from './AddUploadMenu';
@@ -7,9 +6,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAddCourseVideoMutation } from '../../redux/services/VideoApiSlice.js/VideoApiSlice';
 import Swal from 'sweetalert2';
-import moment from "moment";
+import moment from 'moment';
 import useAxiosSecure from './../../Hooks/UseAxiosSecure/UseAxiosSecure';
-import { useNavigate } from 'react-router-dom';
 
 const UploadContent = () => {
   const [courseSelect, setSelectedCourse] = useState('');
@@ -20,11 +18,10 @@ const UploadContent = () => {
   const { data } = useGetAllServicesQuery();
   const { data: idBasedData } = useGetIdBasedServicesQuery(courseSelect);
   const [addVideoCours, isLoading] = useAddCourseVideoMutation();
-  const axiosSecure = useAxiosSecure()
-  const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
   //React Hooks Dependencies
   const { register, handleSubmit, reset } = useForm();
-  const date = moment().format("YYYY MM DD HH mm");
+  const date = moment().format('YYYY MM DD HH mm');
 
   //topic Datas selection based on Lession
   useEffect(() => {
@@ -40,6 +37,7 @@ const UploadContent = () => {
 
   //upload Video
   const uploadFile = async (videoData) => {
+    setLoading(true);
     const data = new FormData();
     data.append('file', videoData);
     data.append('upload_preset', 'videos_preset');
@@ -50,6 +48,7 @@ const UploadContent = () => {
     let api = `https://api.cloudinary.com/v1_1/${cloudeName}/${reSourceType}/upload`;
 
     const videoUrl = await axios.post(api, data).then((res) => {
+      setLoading(false);
       return res.data?.url;
     });
     return videoUrl;
@@ -71,7 +70,7 @@ const UploadContent = () => {
         .unwrap()
         .then((res) => {
           Swal.fire('Video Successfully Added');
-          
+
           // New Notification Function sent to the database
           const newNotification = {
             courseId: courseSelect,
@@ -79,21 +78,19 @@ const UploadContent = () => {
             isRead: false,
             date,
           };
-          
+
           // axios secure and using patch method
-          axiosSecure
-            .patch(`/api/v1/notification`, newNotification)
-            .then((res) => {
-              console.log(res.data);
-              navigate("/");
-            });
+          axiosSecure.patch(`/api/v1/notification`, newNotification).then((res) => {
+            console.log(res.data);
+          });
         })
-        // Catching error 
+        // Catching error
         .catch(() => {
           Swal.fire('!!!Sorry,Upload Failed');
         });
     }
   };
+
   return (
     <div className=" mx-auto px-4">
       <h1 className="text-4xl text-center font-cinzel mt-5">Upload Video Content</h1>
@@ -110,7 +107,7 @@ const UploadContent = () => {
               <select
                 onChange={(e) => setSelectedCourse(e.target.value)}
                 className="select w-full mt-4 max-w-xs"
-              // {...register('course', { required: true })}
+                // {...register('course', { required: true })}
               >
                 <option disabled selected>
                   Choose Course
@@ -212,23 +209,13 @@ const UploadContent = () => {
 
         {/* Button */}
         <div className="col-span-full mt-5">
-          <input type="submit" value="Submit Courses" className="btn btn-block bg-[#4357AD] text-lg text-[#fff] hover:bg-[#154360] " />
+          <input
+            type="submit"
+            value={isLoading || loading ? 'Uploading...' : 'Upload Video'}
+            className="btn btn-block bg-[#4357AD] text-lg text-[#fff] hover:bg-[#154360] "
+          />
         </div>
       </form>
-
-      {/* Loading spinner */}
-      {/* <div className="w-[60%] mx-auto">
-        <ThreeDots
-          visible={true}
-          height="80"
-          width="80"
-          color="#4fa94d"
-          radius="9"
-          ariaLabel="three-dots-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-        />
-      </div> */}
     </div>
   );
 };

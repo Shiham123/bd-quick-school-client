@@ -13,8 +13,6 @@ export const quizeApiServices = createApi({
       query: () => '/quizusers',
       providesTags: ['quize'],
     }),
-
-    //
   }),
 });
 

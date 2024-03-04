@@ -33,6 +33,17 @@ export const addServicesApi = createApi({
       invalidatesTags: ['services'],
     }),
 
+    //Course update
+    updateServicesLessionAndTopic: builder.mutation({
+      query: (payload) => ({
+        url: `/update/lession`,
+        method: 'PATCH',
+        body: payload,
+        headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` },
+      }),
+      invalidatesTags: ['services'],
+    }),
+
     //Delete Course Data
     deleteCourses: builder.mutation({
       query: (id) => ({
@@ -52,4 +63,5 @@ export const {
   useAddServicesMutation,
   useUpdateServicesMutation,
   useDeleteCoursesMutation,
+  useUpdateServicesLessionAndTopicMutation,
 } = addServicesApi;

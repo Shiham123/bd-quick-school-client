@@ -4,7 +4,7 @@ const Work = () => {
   const { t } = useTranslation();
   return (
     <div className="max-w-7xl mx-auto mb-32">
-      <h1 className="text-white text-4xl font-cinzel font-semibold text-center mb-10">
+      <h1 className="text-white xs:text-lg sm:text-xl semi-sm:text-2xl md:text-3xl lg:text-4xl font-cinzel font-semibold text-center mb-10">
         {' '}
         {t('HowItWork')}
       </h1>

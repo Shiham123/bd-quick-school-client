@@ -14,24 +14,24 @@ const Work = () => {
           <h2 className="semi-sm:text-2xl md:text-xl lg:text-2xl font-bold text-white text-center mt-4 mb-6">
             {t('Signup')}
           </h2>
-          <p className="text-white/70 text-center"> {t('Signup1')}</p>
+          <p className="text-white/70 text-center xs:text-sm sm:text-sm semi-sm:text-base md:text-base lg:text-base"> {t('Signup1')}</p>
         </div>
         <div className="xs:w-[250px] sm:w-[300px] semi-sm:w-[350px] md:w-[180px] lg:w-[350px] mx-auto">
           <img src="https://i.ibb.co/NScDsqv/21-layers-123x123-1.png" className="mx-auto" alt="" />
           <h2 className="semi-sm:text-2xl md:text-xl lg:text-2xl font-bold text-white text-center mt-4 mb-6">
             {t('Selectcourse')}
           </h2>
-          <p className="text-white/70 text-center"> {t('Selectcourse1')}</p>
+          <p className="text-white/70 text-center xs:text-sm sm:text-sm semi-sm:text-base md:text-base lg:text-base"> {t('Selectcourse1')}</p>
         </div>
         <div className="xs:w-[250px] sm:w-[300px] semi-sm:w-[350px] md:w-[180px] lg:w-[350px] mx-auto">
           <img src="https://i.ibb.co/Jn9Fbmy/28-layers.png" className="mx-auto" alt="" />
           <h2 className="semi-sm:text-2xl md:text-xl lg:text-2xl font-bold text-white text-center mt-4 mb-6">
             {t('StartLearning')}
           </h2>
-          <p className="text-white/70 text-center">{t('StartLearning1')}</p>
+          <p className="text-white/70 text-center xs:text-sm sm:text-sm semi-sm:text-base md:text-base lg:text-base">{t('StartLearning1')}</p>
         </div>
       </div>
-      <hr className="w-[400px] mx-auto mt-32 mb-10 border-2" />
+      <hr className=" xs:w-[300px] sm:w-[350px] semi-sm:w-[400px] mx-auto mt-32 mb-10 border-2" />
     </div>
   );
 };

@@ -26,23 +26,23 @@ const ChooseUs = () => {
           </div>
         </div>
         {/* 2nd Step */}
-        <div className="flex items-start justify-center md:justify-start gap-4">
+        <div className="flex items-start justify-center md:justify-start gap-5 md:gap-4">
           <div className=" py-4 px-4 lg:py-5 lg:px-5 border rounded-full bg-[#18BC6D]">
-            <FaBook className="text-4xl text-white" />
+            <FaBook className="xs:text-xl sm:text-xl semi-sm:text-2xl md:text-3xl lg:text-4xl text-white" />
           </div>
-          <div className="w-72 md:w-64 lg:w-72">
+          <div className="xs:w-52 sm:w-64 semi-sm:w-72 md:w-64 lg:w-72">
             <h3 className="text-white text-xl lg:text-2xl mb-5">{t('Qualitycontrol')}</h3>
-            <p className="text-white lg:text-base">{t('Qualitycontrol1')}</p>
+            <p className="text-white xs:text-sm sm:text-sm semi-sm:text-base md:text-base lg:text-base">{t('Qualitycontrol1')}</p>
           </div>
         </div>
         {/* 3rd Step */}
-        <div className="flex items-start justify-center md:justify-start gap-4">
+        <div className="flex items-start justify-center md:justify-start gap-5 md:gap-4">
           <div className=" py-4 px-4 lg:py-5 lg:px-5 border rounded-full bg-[#FFCC51]">
-            <FaIdCard className="text-4xl text-white" />
+            <FaIdCard className="xs:text-xl sm:text-xl semi-sm:text-2xl md:text-3xl lg:text-4xl text-white" />
           </div>
-          <div className="w-72 md:w-64 lg:w-72">
+          <div className="xs:w-52 sm:w-64 semi-sm:w-72 md:w-64 lg:w-72">
             <h3 className="text-white text-xl lg:text-2xl mb-5">{t('Hearts')}</h3>
-            <p className="text-white lg:text-base">{t('Hearts1')}</p>
+            <p className="text-white xs:text-sm sm:text-sm semi-sm:text-base md:text-base lg:text-base">{t('Hearts1')}</p>
           </div>
         </div>
         {/* 4th Step */}

@@ -6,24 +6,11 @@ import { useNavigate } from "react-router-dom";
 
 
 const DeviceActivityTable = ({ item, index, refetch }) => {
-    const { logOut } = useAuth();
+    const { logOut, userDevice } = useAuth();
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
 
 
-
-
-    // Handle logout 
-    const handleLogOut = () => {
-        logOut()
-            .then((result) => {
-                console.log(result.user);
-                handleActivityDelete(result.user._id)
-            })
-            .then((error) => {
-                console.log(error);
-            });
-    };
 
 
     const handleActivityDelete = itemId => {
@@ -47,7 +34,7 @@ const DeviceActivityTable = ({ item, index, refetch }) => {
                                 text: "Device Removed.",
                                 icon: "success"
                             });
-                            handleLogOut()
+                            logOut()
                             navigate('/login')
                         }
                     })

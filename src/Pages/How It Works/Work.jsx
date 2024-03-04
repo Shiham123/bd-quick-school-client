@@ -9,9 +9,9 @@ const Work = () => {
         {t('HowItWork')}
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 font-lora">
-        <div className="w-[350px] md:w-[180px] lg:w-[350px] mx-auto">
+        <div className="xs:w-[250px] sm:w-[300px] semi-sm:w-[350px] md:w-[180px] lg:w-[350px] mx-auto">
           <img src="https://i.ibb.co/4mFY1sX/25-layers.png" className="mx-auto" alt="" />
-          <h2 className="text-2xl md:text-xl lg:text-2xl font-bold text-white text-center mt-4 mb-6">
+          <h2 className="semi-sm:text-2xl md:text-xl lg:text-2xl font-bold text-white text-center mt-4 mb-6">
             {t('Signup')}
           </h2>
           <p className="text-white/70 text-center"> {t('Signup1')}</p>

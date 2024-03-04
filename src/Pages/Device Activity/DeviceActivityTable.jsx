@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const DeviceActivityTable = ({ item, index, refetch }) => {
-    const { logOut, userDevice } = useAuth();
+    const { logOut } = useAuth();
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
 

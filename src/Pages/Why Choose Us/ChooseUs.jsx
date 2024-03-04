@@ -10,19 +10,19 @@ const ChooseUs = () => {
   const { t } = useTranslation();
   return (
     <div className="max-w-7xl mx-auto mb-28">
-      <h1 className="text-4xl font-cinzel font-bold text-white text-center mb-20">
+      <h1 className="xs:text-lg sm:text-xl semi-sm:text-2xl md:text-3xl lg:text-4xl font-cinzel font-bold text-white text-center mb-20">
         {' '}
         {t('Whychooseus')}
       </h1>
       <div className="font-lora grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 md:gap-5 lg:gap-16 md:ml-3">
         {/* 1st Step */}
-        <div className="flex items-start justify-center md:justify-start gap-4">
+        <div className="flex items-start justify-center md:justify-start gap-5 md:gap-4">
           <div className=" py-4 px-4 lg:py-5 lg:px-5 border rounded-full bg-[#DD9933]">
-            <FaGraduationCap className="text-4xl text-white" />
+            <FaGraduationCap className=" xs:text-xl sm:text-xl semi-sm:text-2xl md:text-3xl lg:text-4xl text-white" />
           </div>
-          <div className="w-72 md:w-64 lg:w-72">
+          <div className="xs:w-52 sm:w-64 semi-sm:w-72 md:w-64 lg:w-72">
             <h3 className="text-white text-xl lg:text-2xl mb-5"> {t('Professionalchoice')}</h3>
-            <p className="text-white lg:text-base">{t('Professionalchoice1')}</p>
+            <p className="text-white xs:text-sm sm:text-sm semi-sm:text-base md:text-base lg:text-base">{t('Professionalchoice1')}</p>
           </div>
         </div>
         {/* 2nd Step */}

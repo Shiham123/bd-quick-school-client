@@ -43,6 +43,7 @@ const JobpreDetails = () => {
             </div>
 
             {/* teacher details */}
+            {/* teacher details */}
 
             <div className=" w-[420px] md:w-[720px] lg:w-[1200px]  mx-auto">
                 <h1 className="text-white font-bold mb-10 text-3xl md:text-3xl lg:text-4xl font-lora text-center md:text-left">Teacher Details</h1>

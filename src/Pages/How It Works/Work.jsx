@@ -16,16 +16,16 @@ const Work = () => {
           </h2>
           <p className="text-white/70 text-center"> {t('Signup1')}</p>
         </div>
-        <div className="w-[350px] md:w-[180px] lg:w-[350px] mx-auto">
+        <div className="xs:w-[250px] sm:w-[300px] semi-sm:w-[350px] md:w-[180px] lg:w-[350px] mx-auto">
           <img src="https://i.ibb.co/NScDsqv/21-layers-123x123-1.png" className="mx-auto" alt="" />
-          <h2 className="text-2xl md:text-xl lg:text-2xl font-bold text-white text-center mt-4 mb-6">
+          <h2 className="semi-sm:text-2xl md:text-xl lg:text-2xl font-bold text-white text-center mt-4 mb-6">
             {t('Selectcourse')}
           </h2>
           <p className="text-white/70 text-center"> {t('Selectcourse1')}</p>
         </div>
-        <div className="w-[350px] md:w-[180px] lg:w-[350px] mx-auto">
+        <div className="xs:w-[250px] sm:w-[300px] semi-sm:w-[350px] md:w-[180px] lg:w-[350px] mx-auto">
           <img src="https://i.ibb.co/Jn9Fbmy/28-layers.png" className="mx-auto" alt="" />
-          <h2 className="text-2xl md:text-xl lg:text-2xl font-bold text-white text-center mt-4 mb-6">
+          <h2 className="semi-sm:text-2xl md:text-xl lg:text-2xl font-bold text-white text-center mt-4 mb-6">
             {t('StartLearning')}
           </h2>
           <p className="text-white/70 text-center">{t('StartLearning1')}</p>

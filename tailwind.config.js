@@ -15,6 +15,7 @@ export default {
       screens: {
         'xs': '320px', // 320px width
         'sm': '375px', // 375px width
+        'semi-sm': '425px', // 425px width
       },
     },
     fontFamily: {

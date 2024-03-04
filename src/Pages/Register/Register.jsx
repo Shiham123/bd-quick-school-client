@@ -103,7 +103,7 @@ const Register = () => {
           {/* form */}
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="md:col-span-2 w-full py-6 px-6 sm:px-16"
+            className="md:col-span-2 w-full py-6 semi-sm:px-6 md:px-8 lg:px-16"
           >
             <div className="mb-6">
               <h3 className="text-2xl lg:text-3xl font-bold text-white">Create an account</h3>

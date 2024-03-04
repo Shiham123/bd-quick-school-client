@@ -30,7 +30,7 @@ const ReviewForm = () => {
     const ReviewForm = { fullname, designation, rating, textarea, status: 'pending' };
     console.log(ReviewForm);
 
-   
+
     try {
       FormPost(ReviewForm)
         .unwrap()
@@ -141,7 +141,7 @@ const ReviewForm = () => {
       </div>
 
       {/* for horizontal line */}
-      <hr className="w-[400px] mx-auto my- border-2 mb-32" />
+      <hr className=" xs:w-[300px] sm:w-[350px] semi-sm:w-[400px] mx-auto mt-32 mb-10 border-2" />
 
     </div>
   );

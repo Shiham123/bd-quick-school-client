@@ -24,7 +24,7 @@ const ManageUsers = () => {
     <div className="lg:p-16 min-h-screen">
       <h1 className="xs:text-2xl semi-sm:text-3xl md:text-4xl text-center font-cinzel">Manage Payment</h1>
       <hr className="mb-5 border-2 mt-2 border-black xs:w-[230px] semi-sm:w-[280px] md:w-[330px] mx-auto" />
-      <div className="flex items-center  justify-between flex-column md:flex-row flex-wrap space-y-4 md:space-y-0 py-4  dark:bg-gray-900">
+      <div className="flex ml-2 md:ml-0 md:items-center justify-between flex-col md:flex-row flex-wrap space-y-4 md:space-y-0 py-4  dark:bg-gray-900">
         <Box className="w-1/6">
           <FormControl sx={{ m: 1, minwidth: 300 }} className=" w-full">
             <InputLabel id="demo-simple-select-filled-label">Filter Price</InputLabel>
@@ -67,7 +67,7 @@ const ManageUsers = () => {
             onChange={(e) => handleSearch(e.target.value)}
             type="text"
             id="table-search-users"
-            className="block py-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="block py-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg xs:w-72 sm:w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Search for Users Name"
           />
         </div>

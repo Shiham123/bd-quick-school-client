@@ -11,10 +11,13 @@ export const addCourseVideoAPi = createApi({
     getAllCourseVideo: builder.query({ query: () => '/video', providesTags: ['videoCourse'] }),
 
     //Get Id base Services
-    getuserCourseVideoById: builder.query({ query: (id) => `/video/${id}`, providesTags: ['videoCourse'] }),
+    getuserCourseVideoById: builder.query({ query: (id) => `/video/${id}`, providesTags: ['videoCourse', 'reaction'] }),
 
     //Get Id base Services
-    getuserReactionVideoById: builder.query({ query: (payload) => `/video/reaction/single/${payload}`, providesTags: ['videoCourse'] }),
+    getuserReactionVideoById: builder.query({
+      query: (payload) => `/video/reaction/single/${payload}`,
+      providesTags: ['videoCourse'],
+    }),
 
     //Post Data
     addCourseVideo: builder.mutation({

@@ -14,9 +14,8 @@ const HelpDask = () => {
   const [outcome, setOutcome] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
 
-
-// post i use redux 
-const [addHelpDesk] = useAddHelpPostMutation() 
+  // post i use redux
+  const [addHelpDesk] = useAddHelpPostMutation();
 
   const openModal = () => {
     setModalOpen(true);
@@ -36,13 +35,14 @@ const [addHelpDesk] = useAddHelpPostMutation()
     };
 
     try {
-      addHelpDesk(newPost).unwrap().then(()=>{
-        setOutcome('');
-        reset();
-        toast.success('Your Announcement has been Added');
-        closeModal();
-      })
-    
+      addHelpDesk(newPost)
+        .unwrap()
+        .then(() => {
+          setOutcome('');
+          reset();
+          toast.success('Your Announcement has been Added');
+          closeModal();
+        });
     } catch (error) {
       console.error('Error submitting post:', error);
     }

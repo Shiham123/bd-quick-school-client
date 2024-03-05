@@ -1,6 +1,6 @@
 
 import Marquee from "react-fast-marquee";
-import {  FaFacebook, FaGithub } from "react-icons/fa";
+import { FaFacebook, FaGithub } from "react-icons/fa";
 
 const OurTeam = () => {
   return (
@@ -327,13 +327,13 @@ const OurTeam = () => {
 
               <div className="card-actions justify-end">
                 {/* <button className="btn btn-primary">Buy Now</button> */}
-               
+
               </div>
             </div>
           </div>
         </div>
       </Marquee>
-      <hr className="w-[400px] mx-auto mb-20 border-2" />
+      <hr className=" xs:w-[300px] sm:w-[350px] semi-sm:w-[400px] mx-auto mt-32 mb-10 border-2" />
     </>
   );
 };

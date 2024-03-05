@@ -103,7 +103,7 @@ const Register = () => {
           {/* form */}
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="md:col-span-2 w-full py-6 px-6 sm:px-16"
+            className="md:col-span-2 w-full py-6 xs:px-1 sm:px-2 semi-sm:px-6 md:px-8 lg:px-16"
           >
             <div className="mb-6">
               <h3 className="text-2xl lg:text-3xl font-bold text-white">Create an account</h3>
@@ -117,7 +117,7 @@ const Register = () => {
                     {...register('name', { required: true })}
                     name="name"
                     type="text"
-                    className="bg-white border border-dashed border-gray-300 w-[350px] md:w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
+                    className="bg-white border border-dashed border-gray-300 xs:w-[280px] sm:w-[330px] semi-sm:w-[350px] md:w-full text-sm px-2 semi-sm:px-4 py-2.5 rounded-md outline-blue-500"
                     placeholder="Enter name"
                   />
                   <FaUserCheck className="text-2xl absolute right-3"></FaUserCheck>
@@ -138,10 +138,10 @@ const Register = () => {
                     })}
                     name="phone"
                     type="number"
-                    className="bg-white border border-dashed border-gray-300 w-[350px] md:w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
+                    className="bg-white border border-dashed border-gray-300 xs:w-[280px] sm:w-[330px] semi-sm:w-[350px] md:w-full text-sm px-2 semi-sm:px-4 py-2.5 rounded-md outline-blue-500"
                     placeholder="Enter Phone"
                   />
-                  <FaPhone className="text-xl absolute right-3"></FaPhone>
+                  <FaPhone className="text-2xl absolute right-3"></FaPhone>
                 </div>
                 {errors.phone?.type === 'required' && (
                   <span className="text-red-500 font-medium">This field is required</span>
@@ -161,7 +161,7 @@ const Register = () => {
                     {...register('email', { required: true })}
                     name="email"
                     type="email"
-                    className="bg-white border border-dashed border-gray-300 w-[350px] md:w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
+                    className="bg-white border border-dashed border-gray-300 xs:w-[280px] sm:w-[330px] semi-sm:w-[350px] md:w-full text-sm px-2 semi-sm:px-4 py-2.5 rounded-md outline-blue-500"
                     placeholder="Enter email"
                   />
                   <MdOutlineEmail className="text-2xl absolute right-3"></MdOutlineEmail>

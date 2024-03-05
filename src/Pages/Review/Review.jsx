@@ -1,4 +1,4 @@
-import {  useState } from 'react';
+import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -48,8 +48,8 @@ const Review = () => {
 
   return (
     <div>
-      for horizontal line
-      <hr className="w-[400px] mx-auto my- border-2 my-32 " />
+      {/* for horizontal line */}
+      <hr className=" xs:w-[300px] sm:w-[350px] semi-sm:w-[400px] mx-auto mt-32 mb-10 border-2" />
 
 
       <div className=" lg:px-20 mb-40">
@@ -101,7 +101,7 @@ const Review = () => {
                     </div>
 
                     {/* rating,status */}
-             
+
 
                     <div className="card-body  px-6 py-10">
                       <p className="w-full text-start mx-auto text-base font-lora">{post?.textarea}</p>
@@ -121,7 +121,7 @@ const Review = () => {
         </div>
       </div>
 
-     
+
     </div>
   );
 };

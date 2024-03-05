@@ -5,19 +5,16 @@ import { IoIosSearch } from 'react-icons/io';
 import { IoLogOutOutline } from 'react-icons/io5';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 import useAuth from '../../Hooks/useAuth/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const DashBoardNav = ({ open, setOpen, dropdown, setDropdown }) => {
   const { user, logOut } = useAuth();
-
+  const navigate = useNavigate();
   // Handle Logout Function to logout the User
   const handleLogOut = () => {
-    logOut()
-      .then((result) => {
-        console.log(result.user);
-      })
-      .then((error) => {
-        console.log(error);
-      });
+    logOut().then(() => {
+      navigate('/');
+    });
   };
 
   return (
@@ -30,9 +27,7 @@ const DashBoardNav = ({ open, setOpen, dropdown, setDropdown }) => {
             <div>
               <button
                 onClick={() => setOpen(!open)}
-                className={`px-2 py-3  bg-blue-200 rounded ${
-                  open ? 'dark:text-gray-400 dark:bg-gray-800' : ''
-                }`}
+                className={`px-2 py-3  bg-blue-200 rounded ${open ? 'dark:text-gray-400 dark:bg-gray-800' : ''}`}
               >
                 <FaListUl className="text-2xl w-6" />
               </button>
@@ -106,9 +101,7 @@ const DashBoardNav = ({ open, setOpen, dropdown, setDropdown }) => {
                 <div className="lg:block" onClick={() => setDropdown(!dropdown)}>
                   <button className="flex items-center">
                     <div className="hidden mr-3 text-right md:block">
-                      <p className="text-sm font-bold text-black dark:text-gray-400">
-                        {user?.displayName}
-                      </p>
+                      <p className="text-sm font-bold text-black dark:text-gray-400">{user?.displayName}</p>
                     </div>
                     <div className="mr-2">
                       <img

@@ -164,7 +164,7 @@ const Faq = () => {
           </Accordion>
         </div>
       </div>
-      <hr className="w-[400px] mx-auto mb-20 border-2" />
+      <hr className=" xs:w-[300px] sm:w-[350px] semi-sm:w-[400px] mx-auto mt-32 mb-10 border-2" />
     </div>
   );
 };

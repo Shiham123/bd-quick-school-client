@@ -6,8 +6,8 @@ const ManageCourses = () => {
 
   return (
     <div className="lg:p-16 min-h-screen">
-      <h1 className="text-4xl text-center font-cinzel">Manage Courses</h1>
-      <hr className="mb-5 border-2 mt-2 border-black w-[330px] mx-auto" />
+      <h1 className=" xs:text-2xl semi-sm:text-3xl md:text-4xl text-center font-cinzel">Manage Courses</h1>
+      <hr className="mb-5 border-2 mt-2 border-black xs:w-[230px] semi-sm:w-[280px] md:w-[330px] mx-auto" />
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm border border-gray-400 border-collapse  rtl:text-right text-blue-100 dark:text-blue-100">
           {/* Table Heading Start Here */}

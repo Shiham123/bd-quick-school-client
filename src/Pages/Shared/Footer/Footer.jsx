@@ -12,16 +12,16 @@ const Footer = () => {
       <div className="container mx-auto mt-10">
         <div className="flex flex-col lg:flex-row lg:gap-28">
           <div className="mb-5  lg:ml-0">
-            <div className="flex items-center ml-14 md:ml-5 lg:ml-0 gap-5 md:gap-3 mb-3">
+            <div className="flex items-center xs:ml-8 sm:ml-14 md:ml-5 lg:ml-0 gap-5 md:gap-3 mb-3">
               <Player
-                className="w-20"
+                className="xs:w-12 sm:w-14 semi-sm:w-20"
                 autoplay
                 loop
                 src="https://lottie.host/f3cfffce-06c0-498f-92b2-3c564fb9f40f/DVZgFbgX9m.json"
               ></Player>
-              <a className="w-64 text-xl text-white font-bold font-cinzel">BD Quick School</a>
+              <a className=" semi-sm:w-64 text-xl text-white font-bold font-cinzel">BD Quick School</a>
             </div>
-            <p className="text-base text-white font-semibold w-[400px] mx-auto text-center md:text-start lg:mx-0 md:ml-5 font-lora">
+            <p className="text-base text-white font-semibold xs:w-[310px] sm:w-[350px] semi-sm:w-[400px] mx-auto text-center md:text-start lg:mx-0 md:ml-5 font-lora">
               Welcome to BD Quick School, your reliable destination for comprehensive educational support. We seamlessly integrate
               innovative learning methodologies with a nurturing approach to prioritize your academic success
             </p>
@@ -105,7 +105,7 @@ const Footer = () => {
       </div>
       <hr className="pb-5" />
       <div className=" container mx-auto pb-5 flex items-center justify-between flex-col lg:flex-row">
-        <small className="text-white text-base font-semibold pb-5 pt-3"> BD Quick School © 2024. All rights reserved.</small>
+        <small  className="text-white xs:text-sm sm:text-base font-semibold pb-5 pt-3"> BD Quick School © 2024. All rights reserved.</small>
         <div className="flex items-center gap-5">
           <Link to={`/PrivacyPolicy`}>
             {' '}

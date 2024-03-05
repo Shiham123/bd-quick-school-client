@@ -109,7 +109,7 @@ const EditUserProfile = (props) => {
             </div>
             <input
               {...register('name')}
-              className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none"
+              className="py-2 xs:w-[290px] sm:w-[340px] semi-sm:w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none"
               type="text"
               id=""
               placeholder="Name Here"
@@ -123,7 +123,7 @@ const EditUserProfile = (props) => {
               <h3 className="text-lg  font-medium text-white">{t('Email')}</h3>
             </div>
             <input
-              className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none"
+              className="py-2 xs:w-[290px] sm:w-[340px] semi-sm:w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none"
               type="text"
               id=""
               defaultValue={email}
@@ -140,7 +140,7 @@ const EditUserProfile = (props) => {
               <h3 className="text-lg  font-medium text-white">{t('StudentID')}</h3>
             </div>
             <input
-              className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none"
+              className="py-2 xs:w-[290px] sm:w-[340px] semi-sm:w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none"
               type="text"
               id=""
               placeholder="Name Here"
@@ -156,7 +156,7 @@ const EditUserProfile = (props) => {
             </div>
             <input
               {...register('phone')}
-              className="py-2 w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none"
+              className="py-2 xs:w-[290px] sm:w-[340px] semi-sm:w-96 md:w-[353px] lg:w-[470px] pl-3 rounded-lg outline-none"
               type="text"
               id=""
               defaultValue={phone}

@@ -16,7 +16,7 @@ const DashBoardAdmin = () => {
     <div className="font-lora">
       {/* Dashboard Route */}
       <ul className="menu mb-8 text-sm">
-        <li>
+        {/* <li>
           <NavLink
             to="/dashboard/charts"
             className="flex items-center gap-[14px] px-8 py-4 group dark:text-gray-400 dark:hover:bg-gray-700 hover:bg-gray-100"
@@ -24,7 +24,7 @@ const DashBoardAdmin = () => {
             <GrDashboard className="text-xl" />
             <span className="text-base font-semibold">Dashboard</span>
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink
             to="/dashboard/adminprofile"

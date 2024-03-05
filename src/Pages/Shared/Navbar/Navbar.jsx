@@ -1,4 +1,4 @@
-import { Link, NavLink, useLocation} from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { IoMenuSharp } from 'react-icons/io5';
 import { useContext, useEffect, useState } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
@@ -131,7 +131,7 @@ const Navbar = () => {
             <div className="dropdown">
               <div>
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                  <IoMenuSharp className="text-2xl" />
+                  <IoMenuSharp className="xs:text-lg sm:text-xl semi-sm:text-2xl" />
                 </label>
               </div>
               <ul
@@ -171,13 +171,13 @@ const Navbar = () => {
             </div>
             <NavLink to="/" className="flex items-center justify-center normal-case lg:pl-2">
               <Player
-                className="w-16"
+                className="xs:w-6 sm:w-10 semi-sm:w-14 md:w-16"
                 autoplay
                 loop
                 src="https://lottie.host/f3cfffce-06c0-498f-92b2-3c564fb9f40f/DVZgFbgX9m.json"
               ></Player>
               <span className="text-white font-semibold hover:" style={{ whiteSpace: 'nowrap' }}>
-                <span className="text-xl text-white font-bold font-cinzel">BD Quick School </span>
+                <span className="xs:text-sm sm:text-base semi-sm:text-xl text-white font-bold font-cinzel">BD Quick School </span>
               </span>
             </NavLink>
 
@@ -188,7 +188,7 @@ const Navbar = () => {
               className="ml-4 mr-4 lg:hidden"
             >
               <div className='relative'>
-                <IoMdNotifications className="text-2xl cursor-pointer md:ml-44"></IoMdNotifications>
+                <IoMdNotifications className="sm:text-2xl cursor-pointer md:ml-56"></IoMdNotifications>
                 {unreadNotificationsCount > 0 && (
                   <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
                     {unreadNotificationsCount}
@@ -200,7 +200,7 @@ const Navbar = () => {
                 tabIndex={0}
                 className={
                   notification
-                    ? "w-96 bg-gradient-to-b from-[#42275a] to-[#734b6d] h-96 overflow-y-auto custom-scrollbar absolute right-[20px] z-[1] top-24  border rounded-md py-4 dark:py-0 ease-in duration-300 border-[#e9f0ec]"
+                    ? " xs:w-72 sm:w-80 semi-sm:w-96 bg-gradient-to-b from-[#42275a] to-[#734b6d] h-96 overflow-y-auto custom-scrollbar absolute right-[20px] z-[1] top-24  border rounded-md py-4 dark:py-0 ease-in duration-300 border-[#e9f0ec]"
                     : "w-96 primary-bg overflow-hidden absolute right-0 -top-[500px] py-10 z-10 ease-in duration-300 h-96"
                 }
               >
@@ -362,7 +362,7 @@ const Navbar = () => {
                 {/* Dropdown Menu */}
                 <ul
                   tabIndex={0}
-                  className=" menu-sm dropdown-content mt-3 z-[1] shadow border border-white rounded-lg w-80 px-10  text-white btn-toggle-style bg-gradient-to-b from-[#42275a] to-[#734b6d] overflow-y-auto h-[420px] md:h-[440px] lg:h-auto lg:overflow-hidden"
+                  className=" menu-sm dropdown-content mt-3 z-[1] shadow border border-white rounded-lg xs:w-72 sm:w-80 px-10  text-white btn-toggle-style bg-gradient-to-b from-[#42275a] to-[#734b6d] overflow-y-auto h-[420px] md:h-[440px] lg:h-auto lg:overflow-hidden"
                 >
                   <label tabIndex={0} className="btn btn-ghost btn-circle avatar mb-28 mt-5">
                     <div className="w-24 rounded-full">
@@ -401,13 +401,13 @@ const Navbar = () => {
                     </li>
                   </Link>
                   <hr />
-                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
+                  {/* <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                     Payment Management
-                  </li>
-                  <hr />
-                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
+                  </li> */}
+                  {/* <hr /> */}
+                  {/* <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                     Student Analytics
-                  </li>
+                  </li> */}
                   <hr />
                   <Link to="/announcements">
                     <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">

@@ -7,8 +7,8 @@ const ManageQuizeUser = () => {
   const { data } = useGetAllQUizeUsersQuery();
   return (
     <div className="lg:p-16 min-h-screen">
-      <h1 className="text-4xl text-center font-cinzel">Manage Quize Users</h1>
-      <hr className="mb-5 border-2 mt-2 border-black w-[280px] mx-auto" />
+      <h1 className="xs:text-2xl semi-sm:text-3xl md:text-4xl text-center font-cinzel">Manage Quize Users</h1>
+      <hr className="mb-5 border-2 mt-2 border-black xs:w-[270px] semi-sm:w-[330px] md:w-[400px] mx-auto" />
 
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm  rtl:text-right text-blue-100 dark:text-blue-100">

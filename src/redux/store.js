@@ -28,6 +28,7 @@ const store = configureStore({
       announcementsApi.middleware,
       addCourseVideoAPi.middleware,
       quizApi.middleware,
+      helpDeskApiSlice.middleware,
       ReviewApiSlice.middleware,
     ]),
 });

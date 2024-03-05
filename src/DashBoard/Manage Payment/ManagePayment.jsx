@@ -22,8 +22,8 @@ const ManageUsers = () => {
   };
   return (
     <div className="lg:p-16 min-h-screen">
-      <h1 className="text-4xl text-center font-cinzel">Manage Payment</h1>
-      <hr className="mb-5 border-2 mt-2 border-black w-[330px] mx-auto" />
+      <h1 className="xs:text-2xl semi-sm:text-3xl md:text-4xl text-center font-cinzel">Manage Payment</h1>
+      <hr className="mb-5 border-2 mt-2 border-black xs:w-[230px] semi-sm:w-[280px] md:w-[330px] mx-auto" />
       <div className="flex items-center  justify-between flex-column md:flex-row flex-wrap space-y-4 md:space-y-0 py-4  dark:bg-gray-900">
         <Box className="w-1/6">
           <FormControl sx={{ m: 1, minwidth: 300 }} className=" w-full">

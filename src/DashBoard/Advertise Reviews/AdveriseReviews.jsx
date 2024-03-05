@@ -80,8 +80,8 @@ const AdveriseReviews = () => {
 
     return (
         <div className="lg:p-16 min-h-screen">
-            <h1 className="text-4xl text-center font-cinzel">Advertise Reviews</h1>
-            <hr className="mb-5 border-2 mt-2 border-black w-[360px] mx-auto" />
+            <h1 className="xs:text-2xl semi-sm:text-3xl md:text-4xl text-center font-cinzel">Advertise Reviews</h1>
+            <hr className="mb-5 border-2 mt-2 border-black xs:w-[240px] semi-sm:w-[290px] md:w-[360px] mx-auto" />
             <div className="flex items-center justify-between flex-column md:flex-row flex-wrap space-y-4 md:space-y-0 py-4  dark:bg-gray-900">
                 {/* Dropdown Button end here*/}
                 <div>

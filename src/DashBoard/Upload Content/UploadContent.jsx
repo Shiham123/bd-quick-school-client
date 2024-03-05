@@ -93,8 +93,8 @@ const UploadContent = () => {
 
   return (
     <div className=" mx-auto px-4">
-      <h1 className="text-4xl text-center font-cinzel mt-5">Upload Video Content</h1>
-      <hr className="mb-5 border-2 mt-2 border-black w-2/3 mx-auto" />
+      <h1 className="xs:text-2xl semi-sm:text-3xl md:text-4xl text-center font-cinzel mt-5" style={{ whiteSpace: 'nowrap' }}>Upload Video Content</h1>
+      <hr className="mb-5 border-2 mt-2 border-black xs:w-[300px] semi-sm:w-[380px] md:w-[460px] mx-auto" />
       <AddUploadMenu />
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col mx-auto space-y-12">
         <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
@@ -107,7 +107,7 @@ const UploadContent = () => {
               <select
                 onChange={(e) => setSelectedCourse(e.target.value)}
                 className="select w-full mt-4 max-w-xs"
-                // {...register('course', { required: true })}
+              // {...register('course', { required: true })}
               >
                 <option disabled selected>
                   Choose Course

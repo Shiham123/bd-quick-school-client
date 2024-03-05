@@ -1,4 +1,4 @@
-import { Link, NavLink, useParams } from 'react-router-dom';
+import { Link, NavLink, useNavigate, useParams } from 'react-router-dom';
 import { IoMenuSharp } from 'react-icons/io5';
 import { useContext, useEffect, useState } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
@@ -14,15 +14,11 @@ const UserNavbar = () => {
   const { darkMode, setDarkMode } = useContext(ThemeContext);
   const { t, i18n } = useTranslation();
   const { roomId } = useParams();
-
+  const navigate = useNavigate();
   const handleLogOut = () => {
-    logOut()
-      .then((result) => {
-        console.log(result.user);
-      })
-      .then((error) => {
-        console.log(error);
-      });
+    logOut().then(() => {
+      navigate('/');
+    });
   };
 
   useEffect(() => {
@@ -74,20 +70,12 @@ const UserNavbar = () => {
                 {/* this is dropdown navbar in responsive ------------------- */}
 
                 <li>
-                  <NavLink
-                    style={activeRouteStyle}
-                    className=" hover:text-[#deb2ac] uppercase font-medium"
-                    to={'/'}
-                  >
+                  <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/'}>
                     {t('Home')}
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink
-                    style={activeRouteStyle}
-                    className=" hover:text-[#deb2ac] uppercase font-medium"
-                    to={'/job-Preparation'}
-                  >
+                  <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/job-Preparation'}>
                     {t('Blog')}
                   </NavLink>
                 </li>
@@ -101,17 +89,11 @@ const UserNavbar = () => {
                   </NavLink>
                 </li> */}
                 <li>
-                  <NavLink
-                    style={activeRouteStyle}
-                    className=" hover:text-[#deb2ac] uppercase font-medium"
-                    to={'/services'}
-                  >
+                  <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/services'}>
                     {t('Nav5')}
                   </NavLink>
                 </li>
-                <li onClick={() => setDarkMode((darkMode) => !darkMode)}>
-                  {darkMode ? <CiLight size={60} /> : <CiDark size={60} />}
-                </li>
+                <li onClick={() => setDarkMode((darkMode) => !darkMode)}>{darkMode ? <CiLight size={60} /> : <CiDark size={60} />}</li>
                 <div className="flex flex-row gap-3  p-2 ">
                   <button onClick={() => handelChangeLng('en')}> En </button>
                   <button onClick={() => handelChangeLng('bn')}> বাং</button>
@@ -138,58 +120,36 @@ const UserNavbar = () => {
             <ul className="menu dropdown-content menu-horizontal px-1 justify-center items-center flex text-base font-poppins">
               {/* this is not drop down */}
               <li>
-                <NavLink
-                  style={activeRouteStyle}
-                  className=" hover:text-[#deb2ac] uppercase font-medium"
-                  to={'/'}
-                >
+                <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/'}>
                   {t('Home')}
                 </NavLink>
               </li>
 
               <li>
-                <NavLink
-                  style={activeRouteStyle}
-                  className=" hover:text-[#deb2ac] uppercase font-medium"
-                  to={`support`}
-                >
+                <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={`support`}>
                   {t('Support')}
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  style={activeRouteStyle}
-                  className=" hover:text-[#deb2ac] uppercase font-medium"
-                  to={`chat`}
-                >
+                <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={`chat`}>
                   Chat assistant
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  style={activeRouteStyle}
-                  className=" hover:text-[#deb2ac] uppercase font-medium"
-                  to={`helpdask`}
-                >
+                <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={`helpdask`}>
                   Help Desk
                 </NavLink>
               </li>
 
               <li>
-                <NavLink
-                  style={activeRouteStyle}
-                  className=" hover:text-[#deb2ac] uppercase font-medium"
-                  to={'/MyCourses'}
-                >
+                <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/MyCourses'}>
                   {t('MyCourses')}
                 </NavLink>
               </li>
 
               {/* -------end here navbar without drop down */}
               {/* dak lite  */}
-              <li onClick={() => setDarkMode((darkMode) => !darkMode)}>
-                {darkMode ? <CiLight size={70} /> : <CiDark size={70} />}
-              </li>
+              <li onClick={() => setDarkMode((darkMode) => !darkMode)}>{darkMode ? <CiLight size={70} /> : <CiDark size={70} />}</li>
               {/* translet  */}
             </ul>
             <li className="flex justify-between gap-3 border p-2 ">
@@ -222,17 +182,11 @@ const UserNavbar = () => {
                       <img src={user?.photoURL} alt="userPhoto" />
                     </div>
                     {/* View Profile Button */}
-                    <h1
-                      className="font-lora font-bold text-base mb-2"
-                      style={{ whiteSpace: 'nowrap' }}
-                    >
+                    <h1 className="font-lora font-bold text-base mb-2" style={{ whiteSpace: 'nowrap' }}>
                       {user?.displayName}
                     </h1>
                     <Link to={`/myprofile`}>
-                      <button
-                        className="btn btn-outline text-white"
-                        style={{ whiteSpace: 'nowrap' }}
-                      >
+                      <button className="btn btn-outline text-white" style={{ whiteSpace: 'nowrap' }}>
                         View Profile
                       </button>
                     </Link>

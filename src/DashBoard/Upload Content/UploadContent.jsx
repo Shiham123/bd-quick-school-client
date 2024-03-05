@@ -17,7 +17,7 @@ const UploadContent = () => {
   const [loading, setLoading] = useState(false);
   const { data } = useGetAllServicesQuery();
   const { data: idBasedData } = useGetIdBasedServicesQuery(courseSelect);
-  const [addVideoCours, isLoading] = useAddCourseVideoMutation();
+  const [addVideoCours, { isLoading }] = useAddCourseVideoMutation();
   const axiosSecure = useAxiosSecure();
   //React Hooks Dependencies
   const { register, handleSubmit, reset } = useForm();

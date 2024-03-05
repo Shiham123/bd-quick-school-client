@@ -14,7 +14,8 @@ const VideoLiskeDislikeNote = ({ payload }) => {
     courseId || ''
   }&email=${email || ''}`;
 
-  const { data, isLoading } = useGetuserReactionVideoByIdQuery(getSingleVideoLink);
+  const { data, isLoading, refetch } = useGetuserReactionVideoByIdQuery(getSingleVideoLink);
+  //
   if (isLoading) {
     return;
   }
@@ -33,7 +34,7 @@ const VideoLiskeDislikeNote = ({ payload }) => {
       addAndRemoveReactions(postDatas)
         .unwrap()
         .then(() => {
-          console.log('Liked');
+          refetch();
         });
     }
   };
@@ -54,6 +55,7 @@ const VideoLiskeDislikeNote = ({ payload }) => {
       .unwrap()
       .then(() => {
         Swal.fire('Save Your Data');
+        refetch();
       });
   };
   return (
@@ -62,7 +64,7 @@ const VideoLiskeDislikeNote = ({ payload }) => {
         <div className="flex items-center">
           <span className="text-2xl mr-1">{data[0]?.likesArrayLength}</span>
           <span className="mr-2">Likes</span>
-          <button onClick={() => handleClicked({ likes: true })} className="px-2 mr-2 bg-orange-600 rounded-btn my-2">
+          <div onClick={() => handleClicked({ likes: true })} className="px-2 mr-2 bg-orange-600 rounded-btn my-2">
             {data[0]?.likesIncludeEmail ? (
               <>
                 <IconButton>
@@ -76,7 +78,7 @@ const VideoLiskeDislikeNote = ({ payload }) => {
                 </IconButton>
               </>
             )}
-          </button>
+          </div>
         </div>
         <div>
           <button
@@ -91,16 +93,16 @@ const VideoLiskeDislikeNote = ({ payload }) => {
               <form onSubmit={handleSubmit}>
                 <textarea
                   placeholder="Your Video Note"
-                  defaultValue={data[0]?.note}
+                  defaultValue={data[0]?.note[0]?.notes}
                   name="notdown"
                   className="textarea textarea-bordered area-lg text-black font-bold w-full"
                 ></textarea>
                 <div className="flex space-x-4 justify-end">
                   <input type="submit" value="Save" className="btn bg-orange-600 text-white border hover:text-black px-3 mt-2" />
-                  <form method="dialog">
-                    <button className="btn btn-primary hover:bg-orange-600 px-3 mt-2">Close</button>
-                  </form>
                 </div>
+              </form>
+              <form method="dialog" className="inline">
+                <button className="btn btn-primary hover:bg-orange-600 px-3 inline">Close</button>
               </form>
             </div>
           </dialog>
@@ -108,7 +110,7 @@ const VideoLiskeDislikeNote = ({ payload }) => {
         <div className="flex items-center">
           <span className="text-2xl mr-1">{data[0]?.disLikesArrayLength}</span>
           <span className="mr-2">DisLikes</span>
-          <button onClick={() => handleClicked({ dislikes: true })} className="px-2 bg-orange-600 rounded-btn my-2">
+          <div onClick={() => handleClicked({ dislikes: true })} className="px-2 bg-orange-600 rounded-btn my-2">
             {data[0]?.disLikesIncludeEmail ? (
               <IconButton>
                 <BiSolidDislike className="text-xl text-white" />
@@ -118,7 +120,7 @@ const VideoLiskeDislikeNote = ({ payload }) => {
                 <AiOutlineDislike className="text-xl text-white" />
               </IconButton>
             )}
-          </button>
+          </div>
         </div>
       </div>
     </div>

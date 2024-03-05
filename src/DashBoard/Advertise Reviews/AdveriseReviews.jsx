@@ -82,7 +82,7 @@ const AdveriseReviews = () => {
         <div className="lg:p-16 min-h-screen">
             <h1 className="xs:text-2xl semi-sm:text-3xl md:text-4xl text-center font-cinzel">Advertise Reviews</h1>
             <hr className="mb-5 border-2 mt-2 border-black xs:w-[240px] semi-sm:w-[290px] md:w-[360px] mx-auto" />
-            <div className="flex items-center justify-between flex-column md:flex-row flex-wrap space-y-4 md:space-y-0 py-4  dark:bg-gray-900">
+            <div className="flex ml-2 md:ml-0 md:items-center justify-between flex-col md:flex-row flex-wrap space-y-4 md:space-y-0 py-4  dark:bg-gray-900">
                 {/* Dropdown Button end here*/}
                 <div>
                     <button onClick={toggleDropdown} id="dropdownActionButton" data-dropdown-toggle="dropdownAction" className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
@@ -114,7 +114,7 @@ const AdveriseReviews = () => {
                             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                         </svg>
                     </div>
-                    <input value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} type="text" id="table-search-users" className="block py-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for Users Name" />
+                    <input value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} type="text" id="table-search-users" className="block py-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg xs:w-72 sm:w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for Users Name" />
                 </div>
                 {/* Search Input End Here */}
             </div>

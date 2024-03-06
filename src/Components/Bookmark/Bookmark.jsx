@@ -16,7 +16,7 @@ const Bookmark = () => {
   });
 
   return (
-    <div className="lg:m-20 md:m-10 m-10 flex gap-8 flex-col justify-center items-start">
+    <div className="lg:m-20 md:m-10 m-10 lg:grid lg:grid-cols-2 flex gap-8 flex-col justify-center items-start">
       {bookmarkedData?.map((item) => {
         const { _id, courseRouteLocation, servicesData } = item;
 
@@ -25,7 +25,13 @@ const Bookmark = () => {
             className="flex lg:flex-row md:flex-col flex-col gap-4 bg-transparent border-2 border-white/50 p-4 rounded-lg w-full"
             key={_id}
           >
-            <img src={servicesData?.image} width={500} height={300} className="rounded-lg" alt="" />
+            <div className="w-full h-full">
+              <img
+                src={servicesData?.image}
+                className="rounded-lg object-contain w-full h-full hover:scale-110 duration-300 transition-all"
+                alt=""
+              />
+            </div>
             <div className="flex flex-col my-10 gap-4">
               <h1 className="text-orange-300 font-poppins lg:text-2xl md:text-xl text-sm">
                 <span className="font-semibold tracking-widest text-orange-400">Title : {''}</span> {servicesData?.title}

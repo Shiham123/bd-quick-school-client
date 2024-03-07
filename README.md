@@ -1,10 +1,18 @@
-# website Name : Bd-quick-school
+# Website Name : Bd-quick-school
 
-# Website live link :
+## Website live link :
 
-- _**[Live Link](https://quick-school-client.netlify.app)**_
+- _**<a href="https://quick-school-client.netlify.app" target="_blank">Live Link</a>**_
 
-## Technologies User
+## How to Run this project
+
+#### after cloning this in your local computer type <span style="color:#FF6347;">npm install --force</span>
+
+#### And After that type <span style="color:#ff6347">npm run dev</span> to run this project in your local computer.
+
+#### We use a [vercel](https://vercel.com/dashboard) deploy link in 23 places if you have to run in your local database then remove those
+
+## Technologies We have Used
 
 - _**Fronted**_
   - HTML
@@ -14,6 +22,7 @@
     - [React Router](https://reactrouter.com/en/main)
   - [Redux](https://redux.js.org)
   - [Tanstack query](https://tanstack.com/query/latest)
+  - [Axios](https://axios-http.com/docs/intro)
 - _**Backend**_
   - [ExpressJs](https://expressjs.com)
   - [NodeJs](https://nodejs.org/en)
@@ -31,7 +40,7 @@
   - Fronted Hosting [Netlify](https://www.netlify.com)
   - Backend Hosting [Vercel](https://vercel.com/dashboard)
 
-# Explanation Of All pages Features :
+## Explanation Of All pages Features :
 
 ## Home Page
 

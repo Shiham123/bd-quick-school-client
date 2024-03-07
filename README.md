@@ -2,7 +2,7 @@
 
 # Website live link :
 
-- **[Live Link](https://quick-school-client.netlify.app)**
+- _**[Live Link](https://quick-school-client.netlify.app)**_
 
 ## Technologies User
 
@@ -58,7 +58,7 @@
    - In this section we use React [countUp](https://www.npmjs.com/package/react-countup) Package
 10. **Our feedback section**
 
-- In this section we use [Swiper js](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjB4J20oeGEAxUF2DgGHaUUBscQFnoECAYQAQ&url=https%3A%2F%2Fswiperjs.com%2F&usg=AOvVaw0niHET1zHIJweC_aCjAeJC&opi=89978449) and a custom form to get feedback our all website visitors, with fully backend interactions
+    - In this section we use [Swiper js](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjB4J20oeGEAxUF2DgGHaUUBscQFnoECAYQAQ&url=https%3A%2F%2Fswiperjs.com%2F&usg=AOvVaw0niHET1zHIJweC_aCjAeJC&opi=89978449) and a custom form to get feedback our all website visitors, with fully backend interactions
 
 11. **Footer**
     - This is responsive footer we have.

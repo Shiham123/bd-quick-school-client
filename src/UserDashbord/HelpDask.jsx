@@ -15,9 +15,14 @@ const HelpDask = () => {
   const [outcome, setOutcome] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
 
+<<<<<<< HEAD
 
   // post i use redux 
   const [addHelpDesk] = useAddHelpPostMutation()
+=======
+  // post i use redux
+  const [addHelpDesk] = useAddHelpPostMutation();
+>>>>>>> 44ee52b4d4fe05b7f488eea293c9121fc8710e8f
 
   const openModal = () => {
     setModalOpen(true);

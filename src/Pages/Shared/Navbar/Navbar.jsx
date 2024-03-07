@@ -7,8 +7,8 @@ import useAuth from './../../../Hooks/useAuth/useAuth';
 import { ThemeContext } from '../../../context/Darkmode';
 import { useTranslation } from 'react-i18next';
 import VerifyAdmin from '../../../Hooks/useAdmin/useAdmin';
-import { IoMdNotifications } from "react-icons/io";
-import { FaRegEnvelope, FaRegEnvelopeOpen } from "react-icons/fa";
+import { IoMdNotifications } from 'react-icons/io';
+import { FaRegEnvelope, FaRegEnvelopeOpen } from 'react-icons/fa';
 import useStudent from '../../../Hooks/useStudent/useStudent';
 import useAxiosPublic from '../../../Hooks/useAxiosPublic/useAxiosPublic';
 import moment from 'moment';
@@ -17,7 +17,7 @@ import './Navbar.css';
 const Navbar = () => {
   const [stickyClass, setStickyClass] = useState('');
   const { user, logOut } = useAuth();
-  const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
   const { darkMode, setDarkMode } = useContext(ThemeContext);
   const { t, i18n } = useTranslation();
   const [isAdmin] = VerifyAdmin();
@@ -35,7 +35,7 @@ const Navbar = () => {
   // calculateUnreadNotificationsCount Function for count
   const calculateUnreadNotificationsCount = (notifications) => {
     if (Array.isArray(notifications)) {
-      const unreadCount = notifications.filter(notification => !notification.isRead).length;
+      const unreadCount = notifications.filter((notification) => !notification.isRead).length;
       setUnreadNotificationsCount(unreadCount);
     }
   };
@@ -45,7 +45,7 @@ const Navbar = () => {
     axiosPublic(`/api/v1/notification/update/${user?.email}`)
       .then((res) => {
         // console.log(res.data)
-        setNotifications(res.data)
+        setNotifications(res.data);
         calculateUnreadNotificationsCount(res.data);
       })
       .catch((error) => {
@@ -61,7 +61,7 @@ const Navbar = () => {
   // Handle Notification Click Function
   const handleNotificationClick = (_id) => {
     // Update the isRead field locally
-    const updatedNotifications = notifications.map(notification => {
+    const updatedNotifications = notifications.map((notification) => {
       if (notification._id === _id) {
         return { ...notification, isRead: true };
       }
@@ -70,16 +70,17 @@ const Navbar = () => {
     setNotifications(updatedNotifications);
 
     // Make a PATCH request to update isRead field in the backend
-    axiosPublic.patch(`/api/v1/notification/update/${_id}`, { isRead: true })
-      .then(response => {
+    axiosPublic
+      .patch(`/api/v1/notification/update/${_id}`, { isRead: true })
+      .then((response) => {
         console.log('Notification marked as read:', response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error marking notification as read:', error);
       });
   };
 
-  // Handle logout 
+  // Handle logout
   const handleLogOut = () => {
     logOut()
       .then((result) => {
@@ -100,8 +101,8 @@ const Navbar = () => {
       // window height changed for the demo
       windowHeight > 50
         ? setStickyClass(
-          `fixed top-0 transition  bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:from-[#1A1B1F] dark:via-[#1A1B1F] dark:to-[#1A1B1F]   bg-opacity-100 duration-1000 ease-in-out`
-        )
+            `fixed top-0 transition  bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:from-[#1A1B1F] dark:via-[#1A1B1F] dark:to-[#1A1B1F]   bg-opacity-100 duration-1000 ease-in-out`
+          )
         : setStickyClass('');
     }
   };
@@ -114,13 +115,10 @@ const Navbar = () => {
     };
   };
 
-  // transletor handelr
   const handelChangeLng = (lng) => {
     i18n.changeLanguage(lng);
     localStorage.setItem('lng', lng);
   };
-
-
 
   return (
     <>
@@ -182,12 +180,8 @@ const Navbar = () => {
             </NavLink>
 
             {/* Responsive Notification */}
-            <span
-              tabIndex={0}
-              onClick={handleNotification}
-              className="ml-4 mr-4 lg:hidden"
-            >
-              <div className='relative'>
+            <span tabIndex={0} onClick={handleNotification} className="ml-4 mr-4 lg:hidden">
+              <div className="relative">
                 <IoMdNotifications className="sm:text-2xl cursor-pointer md:ml-56"></IoMdNotifications>
                 {unreadNotificationsCount > 0 && (
                   <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
@@ -200,8 +194,8 @@ const Navbar = () => {
                 tabIndex={0}
                 className={
                   notification
-                    ? " xs:w-72 sm:w-80 semi-sm:w-96 bg-gradient-to-b from-[#42275a] to-[#734b6d] h-96 overflow-y-auto custom-scrollbar absolute right-[20px] z-[1] top-24  border rounded-md py-4 dark:py-0 ease-in duration-300 border-[#e9f0ec]"
-                    : "w-96 primary-bg overflow-hidden absolute right-0 -top-[500px] py-10 z-10 ease-in duration-300 h-96"
+                    ? ' xs:w-72 sm:w-80 semi-sm:w-96 bg-gradient-to-b from-[#42275a] to-[#734b6d] h-96 overflow-y-auto custom-scrollbar absolute right-[20px] z-[1] top-24  border rounded-md py-4 dark:py-0 ease-in duration-300 border-[#e9f0ec]'
+                    : 'w-96 primary-bg overflow-hidden absolute right-0 -top-[500px] py-10 z-10 ease-in duration-300 h-96'
                 }
               >
                 <h1 className="border-b border-b-white px-4 pb-4 dark:pt-4 font-cinzel font-semibold dark:bg-black dark:text-white">
@@ -210,14 +204,13 @@ const Navbar = () => {
                 {Array.isArray(notifications) && notifications.length > 0 ? (
                   notifications.map((notification, index) => (
                     <Link key={index} to={notification.redirect}>
-                      <div onClick={() => handleNotificationClick(notification._id)} className="px-4 py-2 border-b border-b-white hover:bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:bg-black dark:text-white  font-lora">
-                        <p className="text-white">
-                          {notification.title} has been released
-                        </p>
+                      <div
+                        onClick={() => handleNotificationClick(notification._id)}
+                        className="px-4 py-2 border-b border-b-white hover:bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:bg-black dark:text-white  font-lora"
+                      >
+                        <p className="text-white">{notification.title} has been released</p>
                         <div className="flex justify-between items-center">
-                          <p className="text-[10px]">
-                            {moment(notification.date, "YYYY MM DD HH mm").fromNow()}
-                          </p>
+                          <p className="text-[10px]">{moment(notification.date, 'YYYY MM DD HH mm').fromNow()}</p>
                           {notification.isRead ? (
                             <p className="w-5 ">
                               <FaRegEnvelopeOpen />
@@ -232,10 +225,9 @@ const Navbar = () => {
                     </Link>
                   ))
                 ) : (
-                  <p className='px-4 pt-4 font-lora'>No notifications found</p>
+                  <p className="px-4 pt-4 font-lora">No notifications found</p>
                 )}
               </div>
-
             </span>
             {/* Dropdown end */}
           </div>
@@ -243,7 +235,6 @@ const Navbar = () => {
           {/* NavLink */}
           <div className="navbar-center hidden lg:flex">
             <ul className="menu dropdown-content menu-horizontal px-1 justify-center items-center flex text-base font-poppins">
-
               {/* this is not drop down */}
               <li>
                 <NavLink style={activeRouteStyle} className=" hover:text-[#deb2ac] uppercase font-medium" to={'/addmissionTest'}>
@@ -273,12 +264,8 @@ const Navbar = () => {
                 </li>
               )}
               {/* Dropdown for Notification Large device*/}
-              <span
-                tabIndex={0}
-                onClick={handleNotification}
-                className="ml-4 mr-4 "
-              >
-                <div className='relative'>
+              <span tabIndex={0} onClick={handleNotification} className="ml-4 mr-4 ">
+                <div className="relative">
                   <IoMdNotifications className="text-2xl cursor-pointer"></IoMdNotifications>
                   {unreadNotificationsCount > 0 && (
                     <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
@@ -291,8 +278,8 @@ const Navbar = () => {
                   tabIndex={0}
                   className={
                     notification
-                      ? "w-96 bg-gradient-to-b from-[#42275a] to-[#734b6d] h-96 overflow-y-auto custom-scrollbar absolute right-[240px] z-[1] top-24  border rounded-md py-4 dark:py-0 ease-in duration-300 border-[#e9f0ec]"
-                      : "w-96 primary-bg overflow-hidden absolute right-0 -top-[500px] py-10 z-10 ease-in duration-300 h-96"
+                      ? 'w-96 bg-gradient-to-b from-[#42275a] to-[#734b6d] h-96 overflow-y-auto custom-scrollbar absolute right-[240px] z-[1] top-24  border rounded-md py-4 dark:py-0 ease-in duration-300 border-[#e9f0ec]'
+                      : 'w-96 primary-bg overflow-hidden absolute right-0 -top-[500px] py-10 z-10 ease-in duration-300 h-96'
                   }
                 >
                   <h1 className="border-b border-b-white px-4 pb-4 dark:pt-4 font-cinzel font-semibold dark:bg-black dark:text-white">
@@ -301,14 +288,13 @@ const Navbar = () => {
                   {Array.isArray(notifications) && notifications.length > 0 ? (
                     notifications.map((notification, index) => (
                       <Link key={index} to={notification.redirect}>
-                        <div onClick={() => handleNotificationClick(notification._id)} className="px-4 py-2 border-b border-b-white hover:bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:bg-black dark:text-white  font-lora">
-                          <p className="text-white">
-                            {notification.title} has been released
-                          </p>
+                        <div
+                          onClick={() => handleNotificationClick(notification._id)}
+                          className="px-4 py-2 border-b border-b-white hover:bg-gradient-to-b from-[#42275a] to-[#734b6d] dark:bg-black dark:text-white  font-lora"
+                        >
+                          <p className="text-white">{notification.title} has been released</p>
                           <div className="flex justify-between items-center">
-                            <p className="text-[10px]">
-                              {moment(notification.date, "YYYY MM DD HH mm").fromNow()}
-                            </p>
+                            <p className="text-[10px]">{moment(notification.date, 'YYYY MM DD HH mm').fromNow()}</p>
                             {notification.isRead ? (
                               <p className="w-5 ">
                                 <FaRegEnvelopeOpen />
@@ -323,16 +309,17 @@ const Navbar = () => {
                       </Link>
                     ))
                   ) : (
-                    <p className='px-4 pt-4 font-lora'>No notifications found</p>
+                    <p className="px-4 pt-4 font-lora">No notifications found</p>
                   )}
                 </div>
-
               </span>
               {/* Dropdown end */}
 
               {/* -------end here navbar without drop down */}
               {/* dak lite  */}
-              <li className=' mr-4' onClick={() => setDarkMode((darkMode) => !darkMode)}>{darkMode ? <CiLight size={70} /> : <CiDark size={70} />}</li>
+              <li className=" mr-4" onClick={() => setDarkMode((darkMode) => !darkMode)}>
+                {darkMode ? <CiLight size={70} /> : <CiDark size={70} />}
+              </li>
               {/* translet  */}
             </ul>
             <li className="flex justify-between gap-3 border p-2 ">
@@ -379,7 +366,7 @@ const Navbar = () => {
                     </Link>
                   </label>
                   {/* Dropdown Nav Start Here */}
-                  <NavLink>
+                  <NavLink to={`/MyCourses`}>
                     <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                       My Courses
                     </li>
@@ -391,10 +378,7 @@ const Navbar = () => {
                     </li>
                   </Link>
                   <hr />
-                  <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
-                    Certificate
-                  </li>
-                  <hr />
+
                   <Link to="/paymenthistory">
                     <li className="hover:font-semibold py-1  text-start font-lora font-medium hover:text-[#ffbe0b] mb-1 mt-2 hover:translate-x-4 hover:ease-out hover:duration-1000">
                       Payment History

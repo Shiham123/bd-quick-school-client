@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../Hooks/useAuth/useAuth';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { AiFillPicture } from "react-icons/ai";
+import { AiFillPicture } from 'react-icons/ai';
 
 import toast from 'react-hot-toast';
 import HelpDeskShow from './HealpDeskShow';
@@ -15,14 +15,8 @@ const HelpDask = () => {
   const [outcome, setOutcome] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
 
-<<<<<<< HEAD
-
-  // post i use redux 
-  const [addHelpDesk] = useAddHelpPostMutation()
-=======
   // post i use redux
   const [addHelpDesk] = useAddHelpPostMutation();
->>>>>>> 44ee52b4d4fe05b7f488eea293c9121fc8710e8f
 
   const openModal = () => {
     setModalOpen(true);
@@ -42,13 +36,14 @@ const HelpDask = () => {
     };
 
     try {
-      addHelpDesk(newPost).unwrap().then(() => {
-        setOutcome('');
-        reset();
-        toast.success('Your Announcement has been Added');
-        closeModal();
-      })
-
+      addHelpDesk(newPost)
+        .unwrap()
+        .then(() => {
+          setOutcome('');
+          reset();
+          toast.success('Your Announcement has been Added');
+          closeModal();
+        });
     } catch (error) {
       console.error('Error submitting post:', error);
     }
@@ -141,8 +136,8 @@ const HelpDask = () => {
           )}
         </div>
         <div className="flex items-center justify-between gap-3 mt-3">
-          <span className='flex items-center gap-2'>
-            <AiFillPicture className='text-2xl text-white' />
+          <span className="flex items-center gap-2">
+            <AiFillPicture className="text-2xl text-white" />
             <button className="btn-grad text-white font-cinzel h-[70px]" onClick={openModal}>
               Photo/Video
             </button>
@@ -157,4 +152,4 @@ const HelpDask = () => {
   );
 };
 
-export default HelpDask
+export default HelpDask;

@@ -6,9 +6,9 @@
 
 ## How to Run this project
 
-#### after cloning this in your local computer type <span style="color:#FF6347;">npm install --force</span>
+#### after cloning this in your local computer type <code style="color:#FF6347;">npm install --force</code>
 
-#### And After that type <span style="color:#ff6347">npm run dev</span> to run this project in your local computer.
+#### And After that type <code style="color:#ff6347">npm run dev</code> to run this project in your local computer.
 
 #### We use a [vercel](https://vercel.com/dashboard) deploy link in 23 places if you have to run in your local database then remove those
 
